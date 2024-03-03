@@ -9,13 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            Color.init(uiColor: UIColor(named: "DarkGrey")!).ignoresSafeArea()
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Hello, world!")
+            }
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    HStack(spacing: 50) {
+                        Image(systemName: "house")
+                        Image(systemName: "person.crop.circle")
+                    }
+                    .foregroundColor(.white)
+                }
+            }
+            .toolbarBackground(<#T##visibility: Visibility##Visibility#>, for: <#T##ToolbarPlacement...##ToolbarPlacement#>)
         }
-        .padding()
     }
 }
 
