@@ -13,12 +13,12 @@ struct ContentView: View {
         ZStack {
             TabView {
                 Group {
-
                     HomeView()
-                    .tabItem {
-                        Image(systemName: "info.square")
-                            .font(.title)
-                    }
+                        .tabItem {
+                            Image(systemName: "info.square")
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                        }
 
                     HomeView()
                         .tabItem {

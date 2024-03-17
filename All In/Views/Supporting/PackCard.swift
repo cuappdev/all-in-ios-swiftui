@@ -16,7 +16,7 @@ struct PackCard: View {
                 Text("HELlo WORLD").foregroundStyle(.white)
             }
 
-            Constants.Colors.grey0
+            Constants.Colors.grey00
                 .frame(height: 112)
                 .opacity(1)
         }

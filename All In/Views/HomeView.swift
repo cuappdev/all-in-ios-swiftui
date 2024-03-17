@@ -12,15 +12,20 @@ struct HomeView: View {
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                Color.init(uiColor: UIColor(named: "DarkGrey")!).ignoresSafeArea()
+                Constants.Colors.grey00.ignoresSafeArea()
                 Text("HELlo WORLD").foregroundStyle(.white)
             }
 
-            Constants.Colors.grey0
-                .frame(height: 112)
+            Constants.Colors.grey02
+                .frame(height: 96)
                 .opacity(1)
+                .shadow(color: .gray, radius: 15)
         }
         .ignoresSafeArea(edges: .bottom)
     }
 
+}
+
+#Preview {
+    HomeView()
 }
