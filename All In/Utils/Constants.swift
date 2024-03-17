@@ -10,7 +10,7 @@ import SwiftUI
 struct Constants {
 
     enum Colors {
-        static let grey0 = Color(red: 229, green: 229, blue: 229)
+        static let grey0 = Color(hex: 0xE5E5E5)
     }
 
 }
