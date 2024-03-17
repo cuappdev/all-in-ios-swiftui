@@ -21,9 +21,5 @@ struct Constants {
         static let white = Color(hex: 0xFFFFFF)
         static let red = Color(hex: 0xD43333)
     }
-
-    enum Fonts {
-
-    }
-
+    
 }
