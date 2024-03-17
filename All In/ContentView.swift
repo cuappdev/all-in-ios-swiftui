@@ -9,25 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
 
+    let tabItemSize: CGFloat = 48
+
     var body: some View {
         ZStack {
             TabView {
                 Group {
                     HomeView()
                         .tabItem {
-                            Image(systemName: "info.square")
+                            Image("Home")
+                        }
+
+                    HomeView()
+                        .tabItem {
+                            Image("Person")
                                 .resizable()
-                                .frame(width: 100, height: 100)
+                                .frame(width: tabItemSize, height: tabItemSize)
                         }
 
                     HomeView()
                         .tabItem {
-                            Image(systemName: "house")
-                        }
-
-                    HomeView()
-                        .tabItem {
-                            Image(systemName: "person.crop.circle")
+                            Image("Market")
+                                .resizable()
+                                .frame(width: tabItemSize, height: tabItemSize)
                         }
                 }
             }

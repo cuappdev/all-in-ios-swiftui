@@ -12,7 +12,7 @@ struct ContractCard: View {
     var body: some View {
         VStack{
             ZStack{
-                Constants.Colors.grey0.ignoresSafeArea()
+                Constants.Colors.grey00.ignoresSafeArea()
                 
                 // Card Content VStack
                 VStack {

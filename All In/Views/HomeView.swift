@@ -17,7 +17,7 @@ struct HomeView: View {
             }
 
             Constants.Colors.grey02
-                .frame(height: 96)
+                .frame(height: 108)
                 .opacity(1)
                 .shadow(color: .gray, radius: 15)
         }
