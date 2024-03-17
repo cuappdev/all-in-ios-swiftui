@@ -8,27 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+
     var body: some View {
         ZStack {
-            Color.init(uiColor: UIColor(named: "DarkGrey")!).ignoresSafeArea()
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
-            }
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    HStack(spacing: 50) {
-                        Image(systemName: "house")
-                        Image(systemName: "person.crop.circle")
+            TabView {
+                Group {
+
+                    HomeView()
+                    .tabItem {
+                        Image(systemName: "info.square")
+                            .font(.title)
                     }
-                    .foregroundColor(.white)
+
+                    HomeView()
+                        .tabItem {
+                            Image(systemName: "house")
+                        }
+
+                    HomeView()
+                        .tabItem {
+                            Image(systemName: "person.crop.circle")
+                        }
                 }
             }
-            .toolbarBackground(<#T##visibility: Visibility##Visibility#>, for: <#T##ToolbarPlacement...##ToolbarPlacement#>)
+            .onAppear {
+                UITabBar.appearance().unselectedItemTintColor = .white
+            }
         }
     }
+
 }
 
 #Preview {
