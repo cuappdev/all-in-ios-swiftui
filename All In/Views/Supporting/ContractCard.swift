@@ -21,14 +21,19 @@ struct ContractCard: View {
                     HStack {
                         VStack (alignment: .leading) {
                             Text("C. Manon")
+                                .font(.system(size: 16, weight: .bold))
                             Text("4 rebounds")
+                                .font(.system(size: 10, weight: .semibold))
+                                .foregroundStyle(Constants.Colors.grey02)
                         }
                         
                         VStack (alignment: .trailing) {
                             Text("+3.2K")
+                                .font(Constants.Fonts.playerHeader)
                             Text("exp. 3/24")
                         }
                     }
+                    .padding(EdgeInsets(top: 11, leading: 0, bottom: 0, trailing: 0))
 
                     Spacer()
                     
@@ -36,6 +41,7 @@ struct ContractCard: View {
                     Image("PlayerCManon")
                         .resizable()
                         .frame(width: 133, height: 164)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     
                     
                     Spacer()
