@@ -19,6 +19,7 @@
 		D0155A9E2B950FF7003FE6BC /* All_InUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0155A9D2B950FF7003FE6BC /* All_InUITestsLaunchTests.swift */; };
 		D0155AAC2B9526A8003FE6BC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0155AAB2B9526A8003FE6BC /* HomeView.swift */; };
 		D057FD852BA76F8600EF552D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D057FD842BA76F8600EF552D /* Constants.swift */; };
+		D057FD872BA77DE500EF552D /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D057FD862BA77DE500EF552D /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		D0155A9D2B950FF7003FE6BC /* All_InUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = All_InUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D0155AAB2B9526A8003FE6BC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D057FD842BA76F8600EF552D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D057FD862BA77DE500EF552D /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				CE101CD62BA771AE00218E40 /* ContractCard.swift */,
 				CE101CD82BA771B800218E40 /* PackCard.swift */,
+				D057FD862BA77DE500EF552D /* TabBar.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				D0155AAC2B9526A8003FE6BC /* HomeView.swift in Sources */,
 				D0155A832B950FF6003FE6BC /* ContentView.swift in Sources */,
 				CE101CD92BA771B800218E40 /* PackCard.swift in Sources */,
+				D057FD872BA77DE500EF552D /* TabBar.swift in Sources */,
 				D0155A812B950FF6003FE6BC /* All_InApp.swift in Sources */,
 				CE101CD72BA771AE00218E40 /* ContractCard.swift in Sources */,
 				CE101CDB2BA7747900218E40 /* ColorHex.swift in Sources */,

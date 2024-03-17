@@ -11,17 +11,33 @@ struct HomeView: View {
 
     var body: some View {
         VStack(spacing: 0) {
+            ZStack(alignment: .bottomLeading) {
+                Constants.Colors.red
+                    .frame(height: 129)
+                HStack(alignment: .center) {
+                    Text("Packs")
+                        .font(.system(size: 34, weight: .heavy))
+                        .foregroundStyle(.white)
+                    Spacer()
+                    HStack {
+                        Image("Money")
+                        Text("1000")
+                            .font(.system(size: 18, weight: .heavy))
+                            .foregroundStyle(.white)
+                    }
+                }
+                .padding()
+            }
+
             ZStack {
-                Constants.Colors.grey00.ignoresSafeArea()
+                Constants.Colors.greybg
                 Text("HELlo WORLD").foregroundStyle(.white)
             }
 
-            Constants.Colors.grey02
+            TabBar(page: "home")
                 .frame(height: 108)
-                .opacity(1)
-                .shadow(color: .gray, radius: 15)
         }
-        .ignoresSafeArea(edges: .bottom)
+        .ignoresSafeArea(edges: .all)
     }
 
 }

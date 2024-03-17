@@ -9,31 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
 
-    let tabItemSize: CGFloat = 48
 
     var body: some View {
         ZStack {
             TabView {
-                Group {
-                    HomeView()
-                        .tabItem {
-                            Image("Home")
-                        }
+                HomeView()
+                    .tabItem {
+                        EmptyView()
+                    }
 
-                    HomeView()
-                        .tabItem {
-                            Image("Person")
-                                .resizable()
-                                .frame(width: tabItemSize, height: tabItemSize)
-                        }
+                Text("POOP")
+                    .tabItem {
+                        EmptyView()
+                    }
 
-                    HomeView()
-                        .tabItem {
-                            Image("Market")
-                                .resizable()
-                                .frame(width: tabItemSize, height: tabItemSize)
-                        }
-                }
+                Text("poop2")
+                    .tabItem {
+                        EmptyView()
+                    }
             }
             .onAppear {
                 UITabBar.appearance().unselectedItemTintColor = .white

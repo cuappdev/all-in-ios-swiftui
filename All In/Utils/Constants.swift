@@ -20,11 +20,10 @@ struct Constants {
         static let black = Color(hex: 0x000000)
         static let white = Color(hex: 0xFFFFFF)
         static let red = Color(hex: 0xD43333)
-        static let
     }
-    
+
     enum Fonts {
-        Font.custom("MyFont", size: 32, relativeTo: .title)
+
     }
 
 }
