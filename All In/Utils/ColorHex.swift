@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// https://stackoverflow.com/questions/71744888/swiftui-view-with-rounded-corners-and-border
 extension Color {
     init(hex: Int, opacity: Double = 1) {
         self.init(

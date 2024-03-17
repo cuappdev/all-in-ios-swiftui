@@ -12,8 +12,38 @@ struct ContractCard: View {
     var body: some View {
         VStack{
             ZStack{
-                Color.init(uiColor: UIColor(named: "DarkGrey")!).ignoresSafeArea()
-                Text("C. Manon")
+                Constants.Colors.grey0.ignoresSafeArea()
+                
+                // Card Content VStack
+                VStack {
+                    
+                    // Header
+                    HStack {
+                        VStack (alignment: .leading) {
+                            Text("C. Manon")
+                            Text("4 rebounds")
+                        }
+                        
+                        VStack (alignment: .trailing) {
+                            Text("+3.2K")
+                            Text("exp. 3/24")
+                        }
+                    }
+
+                    Spacer()
+                    
+                    // Player Image
+                    
+                    
+                    
+                    
+                    Spacer()
+                    
+                }
+                
+                // Image
+                
+                // 
             }
             .frame(width: 180, height: 254)
             .cornerRadius(10)
