@@ -12,7 +12,7 @@ struct ContractCard: View {
     var body: some View {
         VStack{
             ZStack{
-                Constants.Colors.grey0.ignoresSafeArea()
+                Constants.Colors.grey00.ignoresSafeArea()
                 
                 // Card Content VStack
                 VStack {
@@ -33,11 +33,30 @@ struct ContractCard: View {
                     Spacer()
                     
                     // Player Image
-                    
-                    
+                    Image("PlayerCManon")
+                        .resizable()
+                        .frame(width: 133, height: 164)
                     
                     
                     Spacer()
+                    
+                    // Buttons for purchase and info
+                    HStack {
+                        // Purchase Button
+//                        Button(action: ) {
+                        Rectangle()
+                            .frame(width: 135, height: 29)
+                            .cornerRadius(7)
+//                        }
+                        
+                        // Info Button
+//                        Button () {
+                            Rectangle()
+                            .frame(width: 29, height: 29)
+                            .cornerRadius(7)
+//                        }
+                    }
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 7, trailing: 0))
                     
                 }
                 
