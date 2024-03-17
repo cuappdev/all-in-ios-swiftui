@@ -90,6 +90,14 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
+		CE101CDC2BA776ED00218E40 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D0155A842B950FF7003FE6BC /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		D0155A742B950FF6003FE6BC = {
 			isa = PBXGroup;
 			children = (
@@ -113,11 +121,11 @@
 		D0155A7F2B950FF6003FE6BC /* All In */ = {
 			isa = PBXGroup;
 			children = (
+				CE101CDC2BA776ED00218E40 /* Assets */,
 				D057FD832BA76F7B00EF552D /* Utils */,
 				D0155AAA2B952697003FE6BC /* Views */,
 				D0155A802B950FF6003FE6BC /* All_InApp.swift */,
 				D0155A822B950FF6003FE6BC /* ContentView.swift */,
-				D0155A842B950FF7003FE6BC /* Assets.xcassets */,
 				D0155A862B950FF7003FE6BC /* Preview Content */,
 			);
 			path = "All In";
