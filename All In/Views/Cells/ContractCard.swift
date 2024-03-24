@@ -8,64 +8,69 @@
 import SwiftUI
 
 struct ContractCard: View {
-    
+
     @State private var contract: Contract
-    @State private var player : Player
-    
+    @State private var player: Player
+
     init(contract: Contract) {
         _contract = State(initialValue: contract)
         _player = State(initialValue: getPlayer(contract))
     }
-    
+
     var body: some View {
-        VStack{
-            ZStack{
+        VStack {
+            ZStack {
                 Constants.Colors.grey00.ignoresSafeArea()
-                
+
                 // Card Content VStack
                 VStack {
-                    
+
                     // Header
                     HStack {
-                        VStack (alignment: .leading) {
+                        VStack(alignment: .leading) {
+                            Text("\(contract.threshold) \(contract.metric)")
+                                .font(.system(size: 14, weight: .bold))
                             Text(convertName(getPlayer(contract).name))
-                                .font(.system(size: 16, weight: .bold))
-                            Text("\(contract.threshold) \(contract.metric)" )
                                 .font(.system(size: 10, weight: .semibold))
                                 .foregroundStyle(Constants.Colors.grey02)
+                                .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
                         }
-                        
-                        VStack (alignment: .trailing) {
-                            HStack (spacing: 2) {
-                                Text("+\(contract.payoff)")
+
+                        Spacer()
+
+                        VStack(alignment: .trailing, spacing: 0) {
+                            HStack(spacing: 4) {
+                                Text("\(contract.payoff)")
                                     .font(.system(size: 14, weight: .semibold))
                                 Image("IconCash")
-                                    .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .aspectRatio(contentMode: .fit)
                                     .foregroundStyle(Constants.Colors.red)
+                                    .frame(height: 13)
                             }
                             Text("exp. \(dateFormatter.string(from: contract.maturityDate))")
                                 .font(.system(size: 10, weight: .semibold))
                                 .foregroundStyle(Constants.Colors.grey02)
                         }
                     }
-                    .padding(EdgeInsets(top: 11, leading: 7, bottom: 0, trailing: 7))
+                    .padding(EdgeInsets(top: 9, leading: 9, bottom: 0, trailing: 9))
 
                     Spacer()
-                    
+
                     // Player Image
                     Image("Player\(player.number)")
                         .resizable()
                         .frame(width: 133, height: 164)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                
-                    
+
                     // Buttons for purchase and info
-                    HStack (alignment: .center) {
+                    HStack(alignment: .center) {
                         // Purchase Button
                         Button {} label: {
                             ZStack {
                                 Rectangle()
-                                    .frame(width: 120, height: 29)
+                                    .frame(width: 152, height: 29)
                                     .cornerRadius(7)
                                     .foregroundColor(Constants.Colors.red)
                                 HStack {
@@ -74,7 +79,7 @@ struct ContractCard: View {
                                         .font(.system(size: 12, weight: .bold))
                                         .foregroundColor(Constants.Colors.white)
                                     Spacer()
-                                    HStack (spacing: -3) {
+                                    HStack(spacing: -3) {
                                         Text("\(contract.contractPrice)")
                                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 7))
                                             .font(.system(size: 12, weight: .semibold))
@@ -84,36 +89,18 @@ struct ContractCard: View {
                                             .foregroundStyle(Constants.Colors.white)
                                     }
                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 7))
-                                }.frame(width: 120, height: 29)
+                                }.frame(width: 152, height: 29)
                             }
-                        }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -4))
-                        
-                        // Info Button
-                        Button {} label: {
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 29, height: 29)
-                                    .cornerRadius(7)
-                                    .foregroundColor(Constants.Colors.grey01)
-                                Image("IconInfo")
-                                    .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
-                                    .foregroundStyle(Constants.Colors.black)
-                            }
-                        }
+                        }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     }
-                    .padding(EdgeInsets(top: -2, leading: 0, bottom: 7, trailing: 0))
-                    
+                    .padding(EdgeInsets(top: -2, leading: 0, bottom: 9, trailing: 0))
                 }
-                
-                // Image
-                
-                // 
             }
             .frame(width: 170, height: 254)
             .cornerRadius(10)
-            
+
         }
-        
+
     }
 
 }

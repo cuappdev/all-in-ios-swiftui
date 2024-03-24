@@ -78,6 +78,6 @@ func getPlayer(_ contract: Contract) -> Player {
 
 // TODO: Complete this function
 func convertMoney(_ money: Int) {
-//        let moneyStr = String(money)
-    
+    //        let moneyStr = String(money)
+
 }

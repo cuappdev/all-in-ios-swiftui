@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
 
-
     var body: some View {
         ZStack {
             TabView {
@@ -18,7 +17,7 @@ struct ContentView: View {
                         EmptyView()
                     }
 
-                Text("POOP")
+                MarketplaceView()
                     .tabItem {
                         EmptyView()
                     }

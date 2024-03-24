@@ -40,4 +40,3 @@ struct TabBar: View {
 #Preview {
     TabBar(page: "home")
 }
-

@@ -25,8 +25,6 @@ struct PackCard: View {
 
 }
 
-
-
 #Preview {
     PackCard()
 }
