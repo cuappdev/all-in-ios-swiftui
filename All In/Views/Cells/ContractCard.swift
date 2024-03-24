@@ -28,27 +28,32 @@ struct ContractCard: View {
                     // Header
                     HStack {
                         VStack (alignment: .leading) {
+                            Text("\(contract.threshold) \(contract.metric)")
+                                .font(.system(size: 14, weight: .bold))
                             Text(convertName(getPlayer(contract).name))
-                                .font(.system(size: 16, weight: .bold))
-                            Text("\(contract.threshold) \(contract.metric)" )
                                 .font(.system(size: 10, weight: .semibold))
-                                .foregroundStyle(Constants.Colors.grey02)
+                                .foregroundStyle(Constants.Colors.grey02)                    .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
                         }
                         
-                        VStack (alignment: .trailing) {
-                            HStack (spacing: 2) {
-                                Text("+\(contract.payoff)")
+                        Spacer()
+                        
+                        VStack (alignment: .trailing, spacing: 0) {
+                            HStack (spacing: 4) {
+                                Text("\(contract.payoff)")
                                     .font(.system(size: 14, weight: .semibold))
                                 Image("IconCash")
-                                    .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .aspectRatio(contentMode: .fit)
                                     .foregroundStyle(Constants.Colors.red)
+                                    .frame(height: 13)
                             }
                             Text("exp. \(dateFormatter.string(from: contract.maturityDate))")
                                 .font(.system(size: 10, weight: .semibold))
                                 .foregroundStyle(Constants.Colors.grey02)
                         }
                     }
-                    .padding(EdgeInsets(top: 11, leading: 7, bottom: 0, trailing: 7))
+                    .padding(EdgeInsets(top: 11, leading: 9, bottom: 0, trailing: 9))
 
                     Spacer()
                     
@@ -65,7 +70,7 @@ struct ContractCard: View {
                         Button {} label: {
                             ZStack {
                                 Rectangle()
-                                    .frame(width: 120, height: 29)
+                                    .frame(width: 152, height: 29)
                                     .cornerRadius(7)
                                     .foregroundColor(Constants.Colors.red)
                                 HStack {
@@ -84,22 +89,9 @@ struct ContractCard: View {
                                             .foregroundStyle(Constants.Colors.white)
                                     }
                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 7))
-                                }.frame(width: 120, height: 29)
+                                }.frame(width: 152, height: 29)
                             }
-                        }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -4))
-                        
-                        // Info Button
-                        Button {} label: {
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 29, height: 29)
-                                    .cornerRadius(7)
-                                    .foregroundColor(Constants.Colors.grey01)
-                                Image("IconInfo")
-                                    .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
-                                    .foregroundStyle(Constants.Colors.black)
-                            }
-                        }
+                        }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     }
                     .padding(EdgeInsets(top: -2, leading: 0, bottom: 7, trailing: 0))
                     
