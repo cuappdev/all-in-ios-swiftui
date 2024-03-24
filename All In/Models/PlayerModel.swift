@@ -9,8 +9,8 @@
 // TODO: Add the rest of the data
 
 struct Player {
-    var name : String
-    var position : [String]
+    var name: String
+    var position: [String]
     var number: Int
     var height: Int
     var weight: Int
@@ -108,8 +108,8 @@ extension Player {
 
 // Converts the name to [First Initial. Last Name]
 func convertName(_ name: String) -> String {
-    let split_name = name.split(separator: " ", maxSplits: 1)
-    let first_name = split_name[0]
-    let last_name = split_name[1]
-    return "\(first_name[first_name.startIndex]). \(last_name)"
+    let splitName = name.split(separator: " ", maxSplits: 1)
+    let firstName = splitName[0]
+    let lastName = splitName[1]
+    return "\(firstName[firstName.startIndex]). \(lastName)"
 }

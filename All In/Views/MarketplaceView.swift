@@ -10,9 +10,9 @@ import SwiftUI
 struct MarketplaceView: View {
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
-    
+
     var body: some View {
-        
+
         // Header
         VStack(spacing: 0) {
             ZStack(alignment: .bottomLeading) {
@@ -37,7 +37,7 @@ struct MarketplaceView: View {
             ScrollView {
                 ZStack {
                     Constants.Colors.greybg
-                    
+
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(Contract.dummyData) { contract in
                             ContractCard(contract: contract)
@@ -45,7 +45,7 @@ struct MarketplaceView: View {
                     }.padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
                 }
             }
-            
+
             // Tab logic
             TabBar(page: "market")
                 .frame(height: 108)
