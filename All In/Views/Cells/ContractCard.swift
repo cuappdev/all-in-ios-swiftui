@@ -89,7 +89,7 @@ struct ContractCard: View {
                     .stroke(Constants.Colors.grey01, lineWidth: 1)
             )
             .frame(width: 181, height: 254)
-            .cornerRadius(10)
+            .cornerRadius(16)
 
         }
 
