@@ -11,7 +11,7 @@ import SwiftUI
 struct TabBar: View {
 
     let page: String
-    let tabItemSize: CGFloat = 38
+    let tabItemSize: CGFloat = 24
 
     var body: some View {
         ZStack {
@@ -40,9 +40,9 @@ struct TabBar: View {
                 }
                 Spacer()
                 VStack {
-                    Image("Profile")
+                    Image("Person")
                         .resizable()
-                        .frame(width: tabItemSize * 0.90, height: tabItemSize)
+                        .frame(width: tabItemSize, height: tabItemSize)
                         .foregroundStyle(page == "profile" ? Constants.Colors.red: Constants.Colors.grey02)
                     Text("Profile")
                         .font(.system(size: 12, weight: .regular))
@@ -50,7 +50,7 @@ struct TabBar: View {
                     
                 }
             }
-            .padding(EdgeInsets(top: 0, leading: 58, bottom: 0, trailing: 58))
+            .padding(EdgeInsets(top: 0, leading: 58, bottom: 16, trailing: 58))
         }
     }
 }
