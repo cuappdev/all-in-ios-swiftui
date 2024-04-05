@@ -16,18 +16,18 @@ struct MarketplaceView: View {
         // Header
         VStack(spacing: 0) {
             ZStack(alignment: .bottomLeading) {
-                Constants.Colors.red
+                Constants.Colors.white
                     .frame(height: 129)
                 HStack(alignment: .center) {
                     Text("Marketplace")
-                        .font(.system(size: 34, weight: .heavy))
-                        .foregroundStyle(.white)
+                        .font(.system(size: 36, weight: .bold))
+                        .foregroundStyle(.black)
                     Spacer()
                     HStack {
                         Image("Money")
                         Text("1000")
-                            .font(.system(size: 18, weight: .heavy))
-                            .foregroundStyle(.white)
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundStyle(.black)
                     }
                 }
                 .padding()
@@ -36,7 +36,7 @@ struct MarketplaceView: View {
             // Main frontend
             ScrollView {
                 ZStack {
-                    Constants.Colors.greybg
+                    Constants.Colors.grey00
 
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(Contract.dummyData) { contract in

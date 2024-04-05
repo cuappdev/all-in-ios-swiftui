@@ -15,22 +15,40 @@ struct TabBar: View {
 
     var body: some View {
         ZStack {
-            Constants.Colors.grey01
+            Constants.Colors.white
             HStack {
-                Image("Home")
-                    .resizable()
-                    .frame(width: tabItemSize, height: tabItemSize)
-                    .foregroundStyle(page == "home" ? Constants.Colors.red: Constants.Colors.grey02)
+                VStack {
+                    Image("Home")
+                        .resizable()
+                        .frame(width: tabItemSize, height: tabItemSize)
+                        .foregroundStyle(page == "home" ? Constants.Colors.red: Constants.Colors.grey02)
+                    Text("Home")
+                        .font(.system(size: 12, weight: .regular))
+                        .foregroundStyle(.brown)
+                    
+                }
                 Spacer()
-                Image("Market")
-                    .resizable()
-                    .frame(width: tabItemSize, height: tabItemSize)
-                    .foregroundStyle(page == "market" ? Constants.Colors.red: Constants.Colors.grey02)
+                VStack {
+                    Image("Market")
+                        .resizable()
+                        .frame(width: tabItemSize, height: tabItemSize)
+                        .foregroundStyle(page == "Marketplace" ? Constants.Colors.red: Constants.Colors.grey02)
+                    Text("Home")
+                        .font(.system(size: 12, weight: .regular))
+                        .foregroundStyle(.brown)
+                    
+                }
                 Spacer()
-                Image("Profile")
-                    .resizable()
-                    .frame(width: tabItemSize * 0.90, height: tabItemSize)
-                    .foregroundStyle(page == "profile" ? Constants.Colors.red: Constants.Colors.grey02)
+                VStack {
+                    Image("Profile")
+                        .resizable()
+                        .frame(width: tabItemSize * 0.90, height: tabItemSize)
+                        .foregroundStyle(page == "profile" ? Constants.Colors.red: Constants.Colors.grey02)
+                    Text("Profile")
+                        .font(.system(size: 12, weight: .regular))
+                        .foregroundStyle(.brown)
+                    
+                }
             }
             .padding(EdgeInsets(top: 0, leading: 58, bottom: 0, trailing: 58))
         }
