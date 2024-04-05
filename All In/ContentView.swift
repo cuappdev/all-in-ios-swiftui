@@ -22,7 +22,7 @@ struct ContentView: View {
                         EmptyView()
                     }
 
-                Text("poop2")
+                ProfileView()
                     .tabItem {
                         EmptyView()
                     }

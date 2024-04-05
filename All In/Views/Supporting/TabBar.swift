@@ -33,7 +33,7 @@ struct TabBar: View {
                         .resizable()
                         .frame(width: tabItemSize, height: tabItemSize)
                         .foregroundStyle(page == "Marketplace" ? Constants.Colors.red: Constants.Colors.grey02)
-                    Text("Home")
+                    Text("Marketplace")
                         .font(.system(size: 12, weight: .regular))
                         .foregroundStyle(.brown)
                     
@@ -50,7 +50,7 @@ struct TabBar: View {
                     
                 }
             }
-            .padding(EdgeInsets(top: 0, leading: 58, bottom: 16, trailing: 58))
+            .padding(EdgeInsets(top: 0, leading: 58, bottom: 38, trailing: 58))
         }
     }
 }
