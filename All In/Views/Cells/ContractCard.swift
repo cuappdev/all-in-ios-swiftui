@@ -65,14 +65,14 @@ struct ContractCard: View {
                                     .foregroundColor(Constants.Colors.red)
                                 HStack {
                                     Text("BUY")
-                                        .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 0))
+                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                         .font(.system(size: 14, weight: .bold))
                                         .foregroundColor(Constants.Colors.white)
                                     Image("WhiteMoney")
                                         .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
                                         .foregroundStyle(Constants.Colors.white)
                                     Text("+\(contract.payoff) | -\(contract.contractPrice)")
-                                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 12))
+                                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                                         .font(.system(size: 12, weight: .semibold))
                                         .foregroundColor(Constants.Colors.white)
                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 7))
@@ -85,7 +85,7 @@ struct ContractCard: View {
             }
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
-                    .inset(by: 1) // inset value should be same as lineWidth in .stroke
+                    .inset(by: 1)
                     .stroke(Constants.Colors.grey01, lineWidth: 1)
             )
             .frame(width: 181, height: 254)

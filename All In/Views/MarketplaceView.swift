@@ -32,6 +32,7 @@ struct MarketplaceView: View {
                 }
                 .padding()
             }
+            Divider()
 
             // Main frontend
             ScrollView {
