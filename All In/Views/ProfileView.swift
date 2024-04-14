@@ -1,13 +1,13 @@
 //
-//  Marketplace.swift
+//  ProfileView.swift
 //  All In
 //
-//  Created by Daniel Chuang on 3/17/24.
+//  Created by Antoinette Marie Torres on 4/5/24.
 //
 
 import SwiftUI
 
-struct MarketplaceView: View {
+struct ProfileView: View {
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
@@ -19,7 +19,7 @@ struct MarketplaceView: View {
                 Constants.Colors.white
                     .frame(height: 129)
                 HStack(alignment: .center) {
-                    Text("Marketplace")
+                    Text("Profile")
                         .font(.system(size: 36, weight: .bold))
                         .foregroundStyle(.black)
                     Spacer()
@@ -36,6 +36,7 @@ struct MarketplaceView: View {
 
             // Main frontend
             ScrollView {
+                Divider()
                 ZStack {
                     Constants.Colors.grey00
 
@@ -48,7 +49,7 @@ struct MarketplaceView: View {
             }
 
             // Tab logic
-            TabBar(page: "market")
+            TabBar(page: "profile")
                 .frame(height: 108)
         }
         .ignoresSafeArea(edges: .all)
@@ -57,5 +58,6 @@ struct MarketplaceView: View {
 }
 
 #Preview {
-    MarketplaceView()
+    ProfileView()
 }
+
