@@ -12,26 +12,27 @@ struct HomeView: View {
     var body: some View {
         VStack(spacing: 0) {
             ZStack(alignment: .bottomLeading) {
-                Constants.Colors.red
+                Constants.Colors.white
                     .frame(height: 129)
                 HStack(alignment: .center) {
-                    Text("Packs")
-                        .font(.system(size: 34, weight: .heavy))
-                        .foregroundStyle(.white)
+                    Text("All In")
+                        .font(.system(size: 36, weight: .bold))
+                        .foregroundStyle(.black)
                     Spacer()
                     HStack {
                         Image("Money")
                         Text("1000")
-                            .font(.system(size: 18, weight: .heavy))
-                            .foregroundStyle(.white)
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundStyle(.black)
                     }
                 }
                 .padding()
             }
+            Divider()
 
             ZStack {
                 Constants.Colors.greybg
-                Text("HELlo WORLD").foregroundStyle(.white)
+                Text("HELlo WORLD").foregroundStyle(.black)
             }
 
             TabBar(page: "home")

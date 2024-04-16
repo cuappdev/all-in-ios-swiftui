@@ -23,4 +23,12 @@ struct Constants {
         static let brown = Color(hex: 0xCE9D9D)
     }
 
+    enum Fonts {
+        static let title = Font.system(size: 36, weight: .bold, design: .default)
+        static let header = Font.system(size: 24, weight: .bold, design: .default)
+        static let subheader = Font.system(size: 18, weight: .bold, design: .default)
+        static let body = Font.system(size: 16, weight: .regular, design: .default)
+        static let caption = Font.system(size: 12, weight: .regular, design: .default)
+    }
+
 }
