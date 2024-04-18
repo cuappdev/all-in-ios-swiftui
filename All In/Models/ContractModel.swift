@@ -70,14 +70,3 @@ extension Contract {
 
     ]
 }
-
-// Getting the playername
-func getPlayer(_ contract: Contract) -> Player {
-    Player.dummyData[contract.playerNum]!
-}
-
-// TODO: Complete this function
-func convertMoney(_ money: Int) {
-    //        let moneyStr = String(money)
-
-}

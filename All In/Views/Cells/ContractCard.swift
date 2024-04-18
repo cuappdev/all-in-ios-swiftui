@@ -35,7 +35,7 @@ struct ContractCard: View {
                         VStack(alignment: .leading) {
                             Text(convertName(getPlayer(contract).name))
                                 .font(.system(size: 10, weight: .regular))
-                                .foregroundStyle(Constants.Colors.grey02)
+                                .foregroundStyle(Constants.Colors.grey03)
                                 .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
                             Text("\(contract.threshold) \(contract.metric)")
                                 .font(.system(size: 16, weight: .bold))
@@ -46,7 +46,7 @@ struct ContractCard: View {
                         VStack(alignment: .trailing, spacing: 0) {
                             Text("exp. \(dateFormatter.string(from: contract.maturityDate))")
                                 .font(.system(size: 10, weight: .regular))
-                                .foregroundStyle(Constants.Colors.grey02)
+                                .foregroundStyle(Constants.Colors.grey03)
                             Spacer()
                         }
                     }
@@ -86,7 +86,7 @@ struct ContractCard: View {
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .inset(by: 1)
-                    .stroke(Constants.Colors.grey01, lineWidth: 1)
+                    .stroke(Constants.Colors.grey02, lineWidth: 1)
             )
             .frame(width: 181, height: 254)
             .cornerRadius(16)

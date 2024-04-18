@@ -14,16 +14,18 @@ struct HomeView: View {
             ZStack(alignment: .bottomLeading) {
                 Constants.Colors.white
                     .frame(height: 129)
-                HStack(alignment: .center) {
+                HStack(alignment: .bottom) {
                     Text("All In")
-                        .font(.system(size: 36, weight: .bold))
-                        .foregroundStyle(.black)
+                        .font(Constants.Fonts.title)
+                        .foregroundStyle(Constants.Colors.black)
                     Spacer()
                     HStack {
                         Image("Money")
-                        Text("1000")
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundStyle(.black)
+                            .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
+                            .foregroundStyle(Constants.Colors.red)
+                        Text("1,000")
+                            .font(Constants.Fonts.subheader)
+                            .foregroundStyle(Constants.Colors.black)
                     }
                 }
                 .padding()
@@ -32,7 +34,26 @@ struct HomeView: View {
 
             ZStack {
                 Constants.Colors.greybg
-                Text("HELlo WORLD").foregroundStyle(.black)
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Popular Right now")
+                        .font(Constants.Fonts.header)
+                        .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 0))
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 16) {
+                            ChestView(chestImage: Image("PlayerChest"), chestPlayer: Image("Player1"), chestType: "Player Chest", title: "C. Manon", price: 1720)
+                            ChestView(chestImage: Image("EpicChest"), chestType: "Rarity Chest", title: "Rare", price: 1720)
+                            ChestView(chestImage: Image("PlayerChest"), chestPlayer: Image("Player3"), chestType: "Player Chest", title: "C. Manon", price: 1720)
+                            ChestView(chestImage: Image("PlayerChest"), chestPlayer: Image("Player5"), chestType: "Player Chest", title: "C. Manon", price: 1720)
+                            ChestView(chestImage: Image("PlayerChest"), chestPlayer: Image("Player30"), chestType: "Player Chest", title: "C. Manon", price: 1720)
+                            ChestView(chestImage: Image("PlayerChest"), chestPlayer: Image("Player30"), chestType: "Player Chest", title: "C. Manon", price: 1720)
+                            ChestView(chestImage: Image("PlayerChest"), chestPlayer: Image("Player1"), chestType: "Rarity Chest", title: "P. Bidoshi", price: 1720)
+
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
+                    }
+
+                    Spacer()
+                }
             }
 
             TabBar(page: "home")

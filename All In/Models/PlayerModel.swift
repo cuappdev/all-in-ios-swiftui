@@ -9,100 +9,207 @@
 // TODO: Add the rest of the data
 
 struct Player {
-    var name: String
-    var position: [String]
+
+    var id: Int
+    var firstName: String
+    var lastName: String
+    var position: String
     var number: Int
     var height: Int
     var weight: Int
-    var year: String
+    var year: Int
     var hometown: String
-    var highschool: String
+    var highSchool: String;
+    var image: String;
+    var bio: String;
+
 }
 
 extension Player {
-    static let dummyData = [
-        0: Player(
-            name: "Evan Williams",
-            position: ["Forward"],
+
+    static let dummyData: [Player] = [
+        Player(
+            id: 0,
+            firstName: "Evan",
+            lastName: "Williams",
+            position: "Forward",
             number: 0,
             height: 79,
             weight: 220,
-            year: "Senior",
+            year: 2024,
             hometown: "Murphy, Texas",
-            highschool: "Plano East Senior HS"
+            highSchool: "Plano East Senior HS",
+            image: [],
+            bio: ""
         ),
-        1: Player(
-            name: "Nazir Williams",
-            position: ["Guard"],
+        Player(
+            id: 1,
+            firstName: "Nazir",
+            lastName: "Williams",
+            position: "Guard",
             number: 1,
             height: 75,
             weight: 180,
-            year: "Senior",
+            year: 2024,
             hometown: "Nyack, New York",
-            highschool: "Blair Academy"
+            highSchool: "Blair Academy",
+            image: [],
+            bio: ""
         ),
-        2: Player(
-            name: "Ian Imegwu",
-            position: ["Forward"],
+        Player(
+            id: 2,
+            firstName: "Ian",
+            lastName: "Imegwu",
+            position: "Forward",
             number: 2,
             height: 81,
             weight: 226,
-            year: "Freshman",
+            year: 2027,
             hometown: "Short Hills, New Jersey",
-            highschool: "Blair Academy"
+            highSchool: "Blair Academy",
+            image: [],
+            bio: ""
         ),
-        3: Player(
-            name: "Ryan Kiachian",
-            position: ["Forward", "Center"],
+        Player(
+            id: 3,
+            firstName: "Ryan",
+            lastName: "Kiachian",
+            position: "Forward, Center",
             number: 3,
             height: 82,
             weight: 228,
-            year: "Junior",
+            year: 2024,
             hometown: "Los Altos Hills, California",
-            highschool: "Bellarmine College Preparatory"
+            highSchool: "Bellarmine College Preparatory",
+            image: [],
+            bio: ""
         ),
-        5: Player(
-            name: "Jacob Beccles",
-            position: ["Guard"],
+        Player(
+            id: 4,
+            firstName: "Dylan",
+            lastName: "Wang",
+            position: "Guard",
+            number: 4,
+            height: 72,
+            weight: 170,
+            year: 2024,
+            hometown: "Los Altos Hills, California",
+            highSchool: "Bellarmine College Preparatory",
+            image: [],
+            bio: ""
+        ),
+        Player(
+            id: 5,
+            firstName: "Dylan",
+            lastName: "Wang",
+            position: "Guard",
             number: 5,
-            height: 75,
-            weight: 178,
-            year: "Freshman",
-            hometown: "Philadelphia, Pennsylvania",
-            highschool: "Constitution HS"
+            height: 72,
+            weight: 170,
+            year: 2024,
+            hometown: "Los Altos Hills, California",
+            highSchool: "Bellarmine College Preparatory",
+            image: [],
+            bio: ""
         ),
-        10: Player(
-            name: "Hayden Franson",
-            position: ["Forward"],
+        Player(
+            id: 6,
+            firstName: "Dylan",
+            lastName: "Wang",
+            position: "Guard",
+            number: 6,
+            height: 72,
+            weight: 170,
+            year: 2024,
+            hometown: "Los Altos Hills, California",
+            highSchool: "Bellarmine College Preparatory",
+            image: [],
+            bio: ""
+        ),
+        Player(
+            id: 7,
+            firstName: "Dylan",
+            lastName: "Wang",
+            position: "Guard",
+            number: 7,
+            height: 72,
+            weight: 170,
+            year: 2024,
+            hometown: "Los Altos Hills, California",
+            highSchool: "Bellarmine College Preparatory",
+            image: [],
+            bio: ""
+        ),
+        Player(
+            id: 8,
+            firstName: "Dylan",
+            lastName: "Wang",
+            position: "Guard",
+            number: 8,
+            height: 72,
+            weight: 170,
+            year: 2024,
+            hometown: "Los Altos Hills, California",
+            highSchool: "Bellarmine College Preparatory",
+            image: [],
+            bio: ""
+        ),
+        Player(
+            id: 9,
+            firstName: "Dylan",
+            lastName: "Wang",
+            position: "Guard",
+            number: 9,
+            height: 72,
+            weight: 170,
+            year: 2024,
+            hometown: "Los Altos Hills, California",
+            highSchool: "Bellarmine College Preparatory",
+            image: [],
+            bio: ""
+        ),
+        Player(
+            id: 10,
+            firstName: "Dylan",
+            lastName: "Wang",
+            position: "Guard",
             number: 10,
-            height: 80,
-            weight: 218,
-            year: "Junior",
-            hometown: "American Fork, Utah",
-            highschool: "American Fork HS"
+            height: 72,
+            weight: 170,
+            year: 2024,
+            hometown: "Los Altos Hills, California",
+            highSchool: "Bellarmine College Preparatory",
+            image: [],
+            bio: ""
         ),
-        11: Player(
-            name: "Adam Tsang Hinton",
-            position: ["Guard"],
+        Player(
+            id: 11,
+            firstName: "Dylan",
+            lastName: "Wang",
+            position: "Guard",
             number: 11,
-            height: 77,
-            weight: 213,
-            year: "Sophomore",
-            hometown: "Studio City, California",
-            highschool: "Harvard-Westlake School"
+            height: 72,
+            weight: 170,
+            year: 2024,
+            hometown: "Los Altos Hills, California",
+            highSchool: "Bellarmine College Preparatory",
+            image: [],
+            bio: ""
         ),
-        // TODO: Insert the rest of the players from the website linked above
-        30: Player(
-            name: "Chris Manon",
-            position: ["Guard"],
-            number: 30,
-            height: 77,
-            weight: 209,
-            year: "Senior",
-            hometown: "New Milford, New Jersey",
-            highschool: "Saint Joseph Regional HS"
+        Player(
+            id: 12,
+            firstName: "Dylan",
+            lastName: "Wang",
+            position: "Guard",
+            number: 12,
+            height: 72,
+            weight: 170,
+            year: 2024,
+            hometown: "Los Altos Hills, California",
+            highSchool: "Bellarmine College Preparatory",
+            image: [],
+            bio: ""
         )
-
     ]
 }
 
