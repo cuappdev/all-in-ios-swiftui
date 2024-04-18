@@ -19,6 +19,7 @@ struct Player {
     var hometown: String
     var highschool: String
     var averages: PlayerAverages
+    var games: PlayerData
 }
 
 extension Player {
@@ -33,7 +34,8 @@ extension Player {
             year: "Senior",
             hometown: "Murphy, Texas",
             highschool: "Plano East Senior HS",
-            averages: PlayerAverages.dummyData[0]
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
             
         ),
         1: Player(
@@ -46,7 +48,8 @@ extension Player {
             year: "Senior",
             hometown: "Nyack, New York",
             highschool: "Blair Academy",
-            averages: PlayerAverages.dummyData[0]
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         ),
         2: Player(
             id: 2,
@@ -58,7 +61,8 @@ extension Player {
             year: "Freshman",
             hometown: "Short Hills, New Jersey",
             highschool: "Blair Academy",
-            averages: PlayerAverages.dummyData[0]
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         ),
         3: Player(
             id: 3,
@@ -70,7 +74,8 @@ extension Player {
             year: "Junior",
             hometown: "Los Altos Hills, California",
             highschool: "Bellarmine College Preparatory",
-            averages: PlayerAverages.dummyData[0]
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         ),
         5: Player(
             id: 4,
@@ -82,7 +87,8 @@ extension Player {
             year: "Freshman",
             hometown: "Philadelphia, Pennsylvania",
             highschool: "Constitution HS",
-            averages: PlayerAverages.dummyData[0]
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         ),
         10: Player(
             id: 5,
@@ -94,7 +100,8 @@ extension Player {
             year: "Junior",
             hometown: "American Fork, Utah",
             highschool: "American Fork HS",
-            averages: PlayerAverages.dummyData[0]
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         ),
         11: Player(
             id: 6,
@@ -106,7 +113,8 @@ extension Player {
             year: "Sophomore",
             hometown: "Studio City, California",
             highschool: "Harvard-Westlake School",
-            averages: PlayerAverages.dummyData[0]
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         ),
         // TODO: Insert the rest of the players from the website linked above
         30: Player(
@@ -119,7 +127,8 @@ extension Player {
             year: "Senior",
             hometown: "New Milford, New Jersey",
             highschool: "Saint Joseph Regional HS",
-            averages: PlayerAverages.dummyData[0]
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         )
 
     ]
