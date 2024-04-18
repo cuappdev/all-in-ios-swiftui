@@ -69,4 +69,9 @@ extension Contract {
         )
 
     ]
+
+    // Getting the playername
+    func getPlayer(_ contract: Contract) -> Player {
+        Player.dummyData[contract.playerNum]
+    }
 }
