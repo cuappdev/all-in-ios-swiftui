@@ -56,9 +56,9 @@ extension RarityChest {
 extension PlayerChest {
 
     static let dummyData = [
-        PlayerChest(price: 1720, player: Player.dummyData[0]!),
-        PlayerChest(price: 2470, player: Player.dummyData[1]!),
-        PlayerChest(price: 1230, player: Player.dummyData[2]!),
-        PlayerChest(price: 3200, player: Player.dummyData[3]!)
+        PlayerChest(price: 1720, player: Player.dummyData[0]),
+        PlayerChest(price: 2470, player: Player.dummyData[1]),
+        PlayerChest(price: 1230, player: Player.dummyData[2]),
+        PlayerChest(price: 3200, player: Player.dummyData[3])
     ]
 }

@@ -71,7 +71,8 @@ extension Contract {
     ]
 
     // Getting the playername
-    func getPlayer(_ contract: Contract) -> Player {
-        Player.dummyData[contract.playerNum]
+    static func getPlayer(_ contract: Contract) -> Player {
+        // TODO: BACKEND CALL
+        Player.dummyData[0]
     }
 }
