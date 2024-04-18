@@ -9,7 +9,6 @@
 // TODO: Add the rest of the data
 
 struct Player {
-
     var id: Int
     var firstName: String
     var lastName: String
@@ -19,9 +18,11 @@ struct Player {
     var weight: Int
     var year: Int
     var hometown: String
-    var highSchool: String;
-    var image: String;
-    var bio: String;
+    var highschool: String
+    var image: String
+    var bio: String
+    var averages: PlayerAverages
+    var games: PlayerData
 
 }
 
@@ -38,25 +39,35 @@ extension Player {
             weight: 220,
             year: 2024,
             hometown: "Murphy, Texas",
+            highschool: "Plano East Senior HS",            
             highSchool: "Plano East Senior HS",
             image: dummyImage,
-            bio: ""
+            bio: "",
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         ),
         Player(
             id: 1,
             firstName: "Nazir",
             lastName: "Williams",
             position: "Guard",
+        1: Player(
+            id: 1,
+            name: "Nazir Williams",
+            position: ["Guard"],
             number: 1,
             height: 75,
             weight: 180,
             year: 2024,
             hometown: "Nyack, New York",
             highSchool: "Blair Academy",
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0],
             image: dummyImage,
             bio: ""
         ),
         Player(
+            id: 2,
             id: 2,
             firstName: "Ian",
             lastName: "Imegwu",
@@ -67,10 +78,13 @@ extension Player {
             year: 2027,
             hometown: "Short Hills, New Jersey",
             highSchool: "Blair Academy",
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0],
             image: dummyImage,
             bio: ""
         ),
         Player(
+            id: 3,
             id: 3,
             firstName: "Ryan",
             lastName: "Kiachian",
@@ -95,10 +109,13 @@ extension Player {
             year: 2024,
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0],
             image: dummyImage,
             bio: ""
         ),
         Player(
+            id: 4,
             id: 5,
             firstName: "Dylan",
             lastName: "Wang",
@@ -173,16 +190,31 @@ extension Player {
             firstName: "Dylan",
             lastName: "Wang",
             position: "Guard",
+            height: 75,
+            weight: 178,
+            year: "Freshman",
+            hometown: "Philadelphia, Pennsylvania",
+            highschool: "Constitution HS",
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
+        ),
+        10: Player(
+            id: 5,
+            name: "Hayden Franson",
+            position: ["Forward"],
             number: 10,
             height: 72,
             weight: 170,
             year: 2024,
             hometown: "Los Altos Hills, California",
-            highSchool: "Bellarmine College Preparatory",
+            highSchool: "Bellarmine College Preparatory",,
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
             image: dummyImage,
             bio: ""
         ),
         Player(
+            id: 6,
             id: 11,
             firstName: "Dylan",
             lastName: "Wang",
@@ -209,6 +241,27 @@ extension Player {
             highSchool: "Bellarmine College Preparatory",
             image: dummyImage,
             bio: ""
+            height: 77,
+            weight: 213,
+            year: "Sophomore",
+            hometown: "Studio City, California",
+            highschool: "Harvard-Westlake School",
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
+        ),
+        // TODO: Insert the rest of the players from the website linked above
+        30: Player(
+            id: 7,
+            name: "Chris Manon",
+            position: ["Guard"],
+            number: 30,
+            height: 77,
+            weight: 209,
+            year: "Senior",
+            hometown: "New Milford, New Jersey",
+            highschool: "Saint Joseph Regional HS",
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         )
     ]
 
