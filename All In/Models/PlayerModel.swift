@@ -39,7 +39,7 @@ extension Player {
             year: 2024,
             hometown: "Murphy, Texas",
             highSchool: "Plano East Senior HS",
-            image: [],
+            image: "",
             bio: ""
         ),
         Player(
@@ -53,7 +53,7 @@ extension Player {
             year: 2024,
             hometown: "Nyack, New York",
             highSchool: "Blair Academy",
-            image: [],
+            image: "",
             bio: ""
         ),
         Player(
@@ -67,7 +67,7 @@ extension Player {
             year: 2027,
             hometown: "Short Hills, New Jersey",
             highSchool: "Blair Academy",
-            image: [],
+            image: "",
             bio: ""
         ),
         Player(
@@ -81,7 +81,7 @@ extension Player {
             year: 2024,
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
-            image: [],
+            image: "",
             bio: ""
         ),
         Player(
@@ -95,7 +95,7 @@ extension Player {
             year: 2024,
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
-            image: [],
+            image: "",
             bio: ""
         ),
         Player(
@@ -109,7 +109,7 @@ extension Player {
             year: 2024,
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
-            image: [],
+            image: "",
             bio: ""
         ),
         Player(
@@ -123,7 +123,7 @@ extension Player {
             year: 2024,
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
-            image: [],
+            image: "",
             bio: ""
         ),
         Player(
@@ -137,7 +137,7 @@ extension Player {
             year: 2024,
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
-            image: [],
+            image: "",
             bio: ""
         ),
         Player(
@@ -151,7 +151,7 @@ extension Player {
             year: 2024,
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
-            image: [],
+            image: "",
             bio: ""
         ),
         Player(
@@ -165,7 +165,7 @@ extension Player {
             year: 2024,
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
-            image: [],
+            image: "",
             bio: ""
         ),
         Player(
@@ -179,7 +179,7 @@ extension Player {
             year: 2024,
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
-            image: [],
+            image: "",
             bio: ""
         ),
         Player(
@@ -193,7 +193,7 @@ extension Player {
             year: 2024,
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
-            image: [],
+            image: "",
             bio: ""
         ),
         Player(
@@ -207,7 +207,7 @@ extension Player {
             year: 2024,
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
-            image: [],
+            image: "",
             bio: ""
         )
     ]
