@@ -19,9 +19,11 @@ struct Player: Identifiable, Codable {
     var weight: Int
     var year: Int
     var hometown: String
-    var highSchool: String;
-    var image: String;
-    var bio: String;
+    var highschool: String
+    var image: String
+    var bio: String
+    var averages: PlayerAverages
+    var games: PlayerData
 
 }
 
@@ -38,9 +40,11 @@ extension Player {
             weight: 220,
             year: 2024,
             hometown: "Murphy, Texas",
-            highSchool: "Plano East Senior HS",
+            highschool: "Plano East Senior HS",            
             image: dummyImage,
-            bio: ""
+            bio: "",
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         ),
         Player(
             id: 1,
@@ -54,7 +58,9 @@ extension Player {
             hometown: "Nyack, New York",
             highSchool: "Blair Academy",
             image: dummyImage,
-            bio: ""
+            bio: "",
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         ),
         Player(
             id: 2,
@@ -68,7 +74,9 @@ extension Player {
             hometown: "Short Hills, New Jersey",
             highSchool: "Blair Academy",
             image: dummyImage,
-            bio: ""
+            bio: "",
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         ),
         Player(
             id: 3,
@@ -82,7 +90,9 @@ extension Player {
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
             image: dummyImage,
-            bio: ""
+            bio: "",
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         ),
         Player(
             id: 4,
@@ -96,119 +106,9 @@ extension Player {
             hometown: "Los Altos Hills, California",
             highSchool: "Bellarmine College Preparatory",
             image: dummyImage,
-            bio: ""
-        ),
-        Player(
-            id: 5,
-            firstName: "Dylan",
-            lastName: "Wang",
-            position: "Guard",
-            number: 5,
-            height: 72,
-            weight: 170,
-            year: 2024,
-            hometown: "Los Altos Hills, California",
-            highSchool: "Bellarmine College Preparatory",
-            image: dummyImage,
-            bio: ""
-        ),
-        Player(
-            id: 6,
-            firstName: "Dylan",
-            lastName: "Wang",
-            position: "Guard",
-            number: 6,
-            height: 72,
-            weight: 170,
-            year: 2024,
-            hometown: "Los Altos Hills, California",
-            highSchool: "Bellarmine College Preparatory",
-            image: dummyImage,
-            bio: ""
-        ),
-        Player(
-            id: 7,
-            firstName: "Dylan",
-            lastName: "Wang",
-            position: "Guard",
-            number: 7,
-            height: 72,
-            weight: 170,
-            year: 2024,
-            hometown: "Los Altos Hills, California",
-            highSchool: "Bellarmine College Preparatory",
-            image: dummyImage,
-            bio: ""
-        ),
-        Player(
-            id: 8,
-            firstName: "Dylan",
-            lastName: "Wang",
-            position: "Guard",
-            number: 8,
-            height: 72,
-            weight: 170,
-            year: 2024,
-            hometown: "Los Altos Hills, California",
-            highSchool: "Bellarmine College Preparatory",
-            image: dummyImage,
-            bio: ""
-        ),
-        Player(
-            id: 9,
-            firstName: "Dylan",
-            lastName: "Wang",
-            position: "Guard",
-            number: 9,
-            height: 72,
-            weight: 170,
-            year: 2024,
-            hometown: "Los Altos Hills, California",
-            highSchool: "Bellarmine College Preparatory",
-            image: dummyImage,
-            bio: ""
-        ),
-        Player(
-            id: 10,
-            firstName: "Dylan",
-            lastName: "Wang",
-            position: "Guard",
-            number: 10,
-            height: 72,
-            weight: 170,
-            year: 2024,
-            hometown: "Los Altos Hills, California",
-            highSchool: "Bellarmine College Preparatory",
-            image: dummyImage,
-            bio: ""
-        ),
-        Player(
-            id: 11,
-            firstName: "Dylan",
-            lastName: "Wang",
-            position: "Guard",
-            number: 11,
-            height: 72,
-            weight: 170,
-            year: 2024,
-            hometown: "Los Altos Hills, California",
-            highSchool: "Bellarmine College Preparatory",
-            image: dummyImage,
-            bio: ""
-        ),
-        Player(
-            id: 12,
-            firstName: "Dylan",
-            lastName: "Wang",
-            position: "Guard",
-            number: 12,
-            height: 72,
-            weight: 170,
-            year: 2024,
-            hometown: "Los Altos Hills, California",
-            highSchool: "Bellarmine College Preparatory",
-            image: dummyImage,
-            bio: ""
+            bio: "",
+            averages: PlayerAverages.dummyData[0],
+            games: PlayerData.dummyData[0]
         )
     ]
 
