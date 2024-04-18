@@ -17,6 +17,14 @@ struct ChestView: View {
 
     @State var showSheet = false
 
+    init(fromPlayer player: Player, chestPrice: Double) {
+        chestImage = Image("PlayerChest")
+        chestPlayer = Image(uiImage: UIImage(data: Data(base64Encoded: player.image) ?? Data())!)
+        chestType = "Player Chest"
+        title = "\(player.firstName[player.firstName.startIndex]). \(player.lastName)"
+        price = chestPrice
+    }
+
     var body: some View {
         Button {
             showSheet = true
@@ -25,7 +33,7 @@ struct ChestView: View {
                 RoundedRectangle(cornerRadius: 16)
                     .inset(by: 0.5)
                     .stroke(Constants.Colors.grey02, lineWidth: 1)
-                    .frame(width: 150, height: 155)
+                    .frame(width: 150, height: 150)
                     .background(.white)
                     .cornerRadius(16)
                     .shadow(color: Constants.Colors.grey00, radius: 5, x: 0, y: 4)
@@ -57,7 +65,7 @@ struct ChestView: View {
                             .font(Constants.Fonts.subheader)
 
                         Text(chestType)
-                            .foregroundStyle(Constants.Colors.grey01)
+                            .foregroundStyle(Constants.Colors.grey03)
                             .font(Constants.Fonts.bodyBold)
 
                         HStack {
@@ -105,5 +113,5 @@ struct ChestView: View {
 }
 
 #Preview {
-    ChestView(chestImage: Image("PlayerChest"), chestType: "Player Chest", title: "C. Manon", price: 1720, showSheet: true)
+    ChestView(fromPlayer: Player.dummyData[0], chestPrice: 1720)
 }

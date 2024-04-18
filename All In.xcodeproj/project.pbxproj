@@ -210,11 +210,19 @@
 		D057FD832BA76F7B00EF552D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D0BFBA7F2BD0B7FA006CFCDA /* Extensions */,
 				D057FD842BA76F8600EF552D /* Constants.swift */,
 				CE101CDA2BA7747900218E40 /* ColorHex.swift */,
 				CE101CE42BA7CE3800218E40 /* Dates.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		D0BFBA7F2BD0B7FA006CFCDA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
