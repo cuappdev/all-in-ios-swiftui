@@ -33,7 +33,7 @@ struct ContractCard: View {
                     // Player Info
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(convertName(Contract.getPlayer(contract).firstName))
+                            Text(Contract.getPlayer(contract).firstName)
                                 .font(.system(size: 10, weight: .regular))
                                 .foregroundStyle(Constants.Colors.grey03)
                                 .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
