@@ -8,7 +8,7 @@
 // https://cornellbigred.com/sports/mens-basketball/roster
 // TODO: Add the rest of the data
 
-struct Player: Identifiable, Codable {
+struct Player {
 
     var id: Int
     var firstName: String
@@ -56,7 +56,7 @@ extension Player {
             weight: 180,
             year: 2024,
             hometown: "Nyack, New York",
-            highSchool: "Blair Academy",
+            highschool: "Blair Academy",
             image: dummyImage,
             bio: "",
             averages: PlayerAverages.dummyData[0],
@@ -72,7 +72,7 @@ extension Player {
             weight: 226,
             year: 2027,
             hometown: "Short Hills, New Jersey",
-            highSchool: "Blair Academy",
+            highschool: "Blair Academy",
             image: dummyImage,
             bio: "",
             averages: PlayerAverages.dummyData[0],
@@ -88,7 +88,7 @@ extension Player {
             weight: 228,
             year: 2024,
             hometown: "Los Altos Hills, California",
-            highSchool: "Bellarmine College Preparatory",
+            highschool: "Bellarmine College Preparatory",
             image: dummyImage,
             bio: "",
             averages: PlayerAverages.dummyData[0],
@@ -104,7 +104,7 @@ extension Player {
             weight: 170,
             year: 2024,
             hometown: "Los Altos Hills, California",
-            highSchool: "Bellarmine College Preparatory",
+            highschool: "Bellarmine College Preparatory",
             image: dummyImage,
             bio: "",
             averages: PlayerAverages.dummyData[0],
