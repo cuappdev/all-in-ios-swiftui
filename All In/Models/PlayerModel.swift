@@ -8,7 +8,7 @@
 // https://cornellbigred.com/sports/mens-basketball/roster
 // TODO: Add the rest of the data
 
-struct Player {
+struct Player: Identifiable {
 
     var id: Int
     var firstName: String
@@ -23,7 +23,7 @@ struct Player {
     var image: String
     var bio: String
     var averages: PlayerAverages
-    var games: PlayerData
+    var games: [PlayerData]
 
 }
 
@@ -44,7 +44,7 @@ extension Player {
             image: dummyImage,
             bio: "",
             averages: PlayerAverages.dummyData[0],
-            games: PlayerData.dummyData[0]
+            games: PlayerData.dummyData
         ),
         Player(
             id: 1,
@@ -60,7 +60,7 @@ extension Player {
             image: dummyImage,
             bio: "",
             averages: PlayerAverages.dummyData[0],
-            games: PlayerData.dummyData[0]
+            games: PlayerData.dummyData
         ),
         Player(
             id: 2,
@@ -76,7 +76,7 @@ extension Player {
             image: dummyImage,
             bio: "",
             averages: PlayerAverages.dummyData[0],
-            games: PlayerData.dummyData[0]
+            games: PlayerData.dummyData
         ),
         Player(
             id: 3,
@@ -92,7 +92,7 @@ extension Player {
             image: dummyImage,
             bio: "",
             averages: PlayerAverages.dummyData[0],
-            games: PlayerData.dummyData[0]
+            games: PlayerData.dummyData
         ),
         Player(
             id: 4,
@@ -108,7 +108,7 @@ extension Player {
             image: dummyImage,
             bio: "",
             averages: PlayerAverages.dummyData[0],
-            games: PlayerData.dummyData[0]
+            games: PlayerData.dummyData
         )
     ]
 

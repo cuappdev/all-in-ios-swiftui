@@ -7,7 +7,26 @@
 
 import Foundation
 
-struct PlayerData {
+enum Stat {
+
+    case fieldGoalsMade
+    case fieldGoalsAttempted
+    case threePointersMade
+    case threePointersAttempted
+    case freeThrowsMade
+    case freeThrowsAttempted
+    case rebounds
+    case assists
+    case steals
+    case blocks
+    case turnovers
+    case personalFouls
+    case points
+
+}
+
+struct PlayerData: Identifiable, Codable {
+
     var id: Int
     var playerId: Int
     var gameDate: Date
@@ -27,10 +46,42 @@ struct PlayerData {
     var turnovers: Int
     var personalFouls: Int
     var points: Int
+
+    func getNumberFromStat(_ stat: Stat) -> Int {
+        switch stat {
+        case .fieldGoalsMade:
+            return fieldGoalsMade
+        case .fieldGoalsAttempted:
+            return fieldGoalsAttempted
+        case .threePointersMade:
+            return threePointersMade
+        case .threePointersAttempted:
+            return threePointersAttempted
+        case .freeThrowsMade:
+            return freeThrowsMade
+        case .freeThrowsAttempted:
+            return freeThrowsAttempted
+        case .rebounds:
+            return rebounds
+        case .assists:
+            return assists
+        case .steals:
+            return steals
+        case .blocks:
+            return blocks
+        case .turnovers:
+            return turnovers
+        case .personalFouls:
+            return personalFouls
+        case .points:
+            return points
+        }
+    }
+
 }
 
-
 extension PlayerData {
+
     static let dummyData = [
         PlayerData(
             id: 0,
@@ -56,7 +107,7 @@ extension PlayerData {
         PlayerData(
             id: 1,
             playerId: 0,
-            gameDate: Date(),
+            gameDate: Date().addingTimeInterval(-86400),
             opponent: "Princeton",
             played: true,
             minutes: 20,
@@ -77,7 +128,7 @@ extension PlayerData {
         PlayerData(
             id: 2,
             playerId: 0,
-            gameDate: Date(),
+            gameDate: Date().addingTimeInterval(-172800),
             opponent: "Harvard",
             played: true,
             minutes: 25,
@@ -98,7 +149,7 @@ extension PlayerData {
         PlayerData(
             id: 3,
             playerId: 0,
-            gameDate: Date(),
+            gameDate: Date().addingTimeInterval(-259200),
             opponent: "Harvard",
             played: false,
             minutes: 25,
@@ -117,4 +168,5 @@ extension PlayerData {
             points: 90
         )
     ]
+    
 }

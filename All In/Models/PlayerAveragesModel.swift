@@ -7,6 +7,7 @@
 
 
 struct PlayerAverages {
+
     var id: Int
     var playerId: Int
     var opponent: String
@@ -25,9 +26,11 @@ struct PlayerAverages {
     var turnovers: Int
     var personalFouls: Int
     var points: Int
+
 }
 
 extension PlayerAverages {
+
     static let dummyData = [
         PlayerAverages(
             id: 0,
@@ -48,6 +51,87 @@ extension PlayerAverages {
             turnovers: 1,
             personalFouls: 50,
             points: 40
+        ),
+        PlayerAverages(
+            id: 0,
+            playerId: 0,
+            opponent: "Harvard",
+            played: true,
+            minutes: 50,
+            fieldGoalsMade: 4,
+            fieldGoalsAttempted: 12,
+            threePointersMade: 18,
+            threePointersAttempted: 20,
+            freeThrowsMade: 2,
+            freeThrowsAttempted: 10,
+            rebounds: 4,
+            assists: 5,
+            steals: 50,
+            blocks: 20,
+            turnovers: 1,
+            personalFouls: 50,
+            points: 40
+        ),
+        PlayerAverages(
+            id: 0,
+            playerId: 0,
+            opponent: "Princeton",
+            played: true,
+            minutes: 50,
+            fieldGoalsMade: 3,
+            fieldGoalsAttempted: 12,
+            threePointersMade: 18,
+            threePointersAttempted: 20,
+            freeThrowsMade: 2,
+            freeThrowsAttempted: 10,
+            rebounds: 4,
+            assists: 5,
+            steals: 50,
+            blocks: 20,
+            turnovers: 1,
+            personalFouls: 50,
+            points: 40
+        ),
+        PlayerAverages(
+            id: 0,
+            playerId: 0,
+            opponent: "Yale",
+            played: true,
+            minutes: 50,
+            fieldGoalsMade: 2,
+            fieldGoalsAttempted: 12,
+            threePointersMade: 18,
+            threePointersAttempted: 20,
+            freeThrowsMade: 2,
+            freeThrowsAttempted: 10,
+            rebounds: 4,
+            assists: 5,
+            steals: 50,
+            blocks: 20,
+            turnovers: 1,
+            personalFouls: 50,
+            points: 40
+        ),
+        PlayerAverages(
+            id: 0,
+            playerId: 0,
+            opponent: "Cornell",
+            played: true,
+            minutes: 50,
+            fieldGoalsMade: 2,
+            fieldGoalsAttempted: 12,
+            threePointersMade: 18,
+            threePointersAttempted: 20,
+            freeThrowsMade: 2,
+            freeThrowsAttempted: 10,
+            rebounds: 4,
+            assists: 5,
+            steals: 50,
+            blocks: 20,
+            turnovers: 1,
+            personalFouls: 50,
+            points: 40
         )
     ]
+    
 }

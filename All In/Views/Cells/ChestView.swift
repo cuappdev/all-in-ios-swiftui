@@ -1,10 +1,11 @@
 //
-//  Chest.swift
+//  ChestView.swift
 //  All In
 //
 //  Created by Peter Bidoshi on 4/15/24.
 //
 
+import Charts
 import SwiftUI
 
 struct ChestView: View {
@@ -82,32 +83,25 @@ struct ChestView: View {
             .frame(width: 150, height: 195)
         }
         .sheet(isPresented: $showSheet) {
-            VStack() {
-                HStack {
-                    Text(title)
-                    Text("#14 | PG")
-                        .foregroundStyle(Constants.Colors.grey02)
-                    Spacer()
-                    Button {
-                        showSheet = false
-                    } label: {
-                        Circle()
-                            .foregroundStyle(Constants.Colors.grey01)
-                            .frame(width: 40, height: 40)
-                            .overlay {
-                                Image("X")
-                            }
-                    }
-                }
-                .font(Constants.Fonts.header)
+            SheetView(title: "P. Bidoshi", subTitle: "#10 | PG", description: "The best player ever blah hee hee nvm lol ok yes this is a test I love typing a lot of text", buttonText: "Close", showSheet: $showSheet)
 
-                Spacer()
-            }
-            .padding(24)
-            .presentationDetents([.fraction(0.9)])
-            .presentationDragIndicator(.visible)
-            .presentationCornerRadius(16)
+                .presentationDetents([.fraction(0.9)])
         }
+    }
+
+    func graph(playerData: [PlayerData], metric: Stat) -> some View {
+        return (
+            Chart {
+                ForEach(playerData) { data in
+                    BarMark(
+                        x: .value("Date", data.gameDate, unit: .weekday),
+                        y: .value("Value", data.getNumberFromStat(metric))
+                    )
+                }
+            }
+            .aspectRatio(1.0, contentMode: .fit)
+        )
+
     }
 
 }
