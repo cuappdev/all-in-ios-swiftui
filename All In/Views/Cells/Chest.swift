@@ -101,7 +101,6 @@ struct ChestView: View {
             .presentationCornerRadius(16)
         }
     }
-
 }
 
 #Preview {

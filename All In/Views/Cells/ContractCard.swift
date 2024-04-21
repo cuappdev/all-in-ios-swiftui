@@ -16,85 +16,67 @@ struct ContractCard: View {
         _contract = State(initialValue: contract)
         _player = State(initialValue: Contract.getPlayer(contract))
     }
+    
+    @State var showSheet = false
 
     var body: some View {
         VStack {
             ZStack {
                 Constants.Colors.white.ignoresSafeArea()
-
-                // Card Content VStack
-                VStack {
-                    // Player Image
+                
+                VStack { // Card Content VStack
                     Image("Player\(player.number)")
                         .resizable()
-                        .frame(width: 128, height: 160)
+                        .frame(width: 82, height: 82)
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
-
-                    // Player Info
+                    
+                    Text("\(Contract.getPlayer(contract).firstName) \(Contract.getPlayer(contract).lastName)")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundStyle(Constants.Colors.grey03)
+                        .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
+                    
+                    Text("VS \(dateFormatter.string(from: contract.maturityDate))")
+                        .font(.system(size: 12, weight: .regular))
+                        .foregroundStyle(Constants.Colors.grey03)
+                    
                     HStack {
-                        VStack(alignment: .leading) {
-                            Text(Contract.getPlayer(contract).firstName)
-                                .font(.system(size: 10, weight: .regular))
-                                .foregroundStyle(Constants.Colors.grey03)
-                                .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
-                            Text("\(contract.threshold) \(contract.metric)")
-                                .font(.system(size: 16, weight: .bold))
+                        VStack {
+                            Text("\(contract.threshold)")
+                                .font(.system(size: 14, weight: .bold))
+                            Text("\(contract.metric)")
+                                .font(.system(size: 8, weight: .bold))
                         }
-
-                        Spacer()
-
-                        VStack(alignment: .trailing, spacing: 0) {
-                            Text("exp. \(dateFormatter.string(from: contract.maturityDate))")
-                                .font(.system(size: 10, weight: .regular))
-                                .foregroundStyle(Constants.Colors.grey03)
-                            Spacer()
+                        .frame(width: 60, height: 30, alignment: .center)
+                        
+                        // Dashed line
+                        Path { path in
+                            path.move(to: CGPoint(x: 0, y: 0))
+                            path.addLine(to: CGPoint(x: 0, y: 28))
                         }
+                        .stroke(Constants.Colors.red, style: StrokeStyle(lineWidth: 1, dash: [2]))
+                        .frame(width: 1, height: 28)
+                        
+                        Text("Cost: \(contract.contractPrice)\nGain: \(contract.payoff)")
+                            .font(.system(size: 10, weight: .regular))
+                            .multilineTextAlignment(.trailing)
+                            .frame(width: 60, height: 30, alignment: .leading)
                     }
-                    .padding(EdgeInsets(top: 1, leading: 9, bottom: 0, trailing: 9))
-
-                    Spacer()
-
-                    // Buy Button
-                    HStack(alignment: .center) {
-                        // Purchase Button
-                        Button {} label: {
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 167, height: 29)
-                                    .cornerRadius(8)
-                                    .foregroundColor(Constants.Colors.red)
-                                HStack {
-                                    Text("BUY")
-                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                        .font(.system(size: 14, weight: .bold))
-                                        .foregroundColor(Constants.Colors.white)
-                                    Image("WhiteMoney")
-                                        .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
-                                        .foregroundStyle(Constants.Colors.white)
-                                    Text("+\(contract.payoff) | -\(contract.contractPrice)")
-                                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
-                                        .font(.system(size: 12, weight: .semibold))
-                                        .foregroundColor(Constants.Colors.white)
-                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 7))
-                                }.frame(width: 152, height: 29)
-                            }
-                        }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    }
-                    .padding(EdgeInsets(top: -2, leading: 0, bottom: 8, trailing: 0))
+                    .frame(width: 146, height: 55)
+                    .background(Constants.Colors.grey00)
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    
                 }
+                .frame(width: 181, height: 222)
+                .cornerRadius(16)
+                // Card border
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .inset(by: 1)
+                        .stroke(Constants.Colors.grey02, lineWidth: 1)
+                )
             }
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .inset(by: 1)
-                    .stroke(Constants.Colors.grey02, lineWidth: 1)
-            )
-            .frame(width: 181, height: 254)
-            .cornerRadius(16)
-
         }
-
     }
-
 }
 
 #Preview {
