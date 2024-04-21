@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MarketplaceView: View {
+    
+    @State var searchText = ""
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
@@ -38,14 +40,23 @@ struct MarketplaceView: View {
             ScrollView {
                 ZStack {
                     Constants.Colors.grey00
-
+                    
+                    VStack {
+                        TextField("Search", text: $searchText)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 10)
+                            .frame(width: 343, alignment: .leading)
+                            .background(Constants.Colors.grey00)
+                            .cornerRadius(8)
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(Contract.dummyData) { contract in
                             ContractCard(contract: contract)
                         }
-                    }.padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
+                    }
+                    .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
                 }
             }
+        }
 
             // Tab logic
             TabBar(page: "market")
