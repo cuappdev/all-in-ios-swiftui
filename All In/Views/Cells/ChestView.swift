@@ -15,6 +15,7 @@ struct ChestView: View {
     var chestType: String
     var title: String
     var price: Double
+    var player: Player
 
     @State var showSheet = false
 
@@ -24,6 +25,7 @@ struct ChestView: View {
         chestType = "Player Chest"
         title = "\(player.firstName[player.firstName.startIndex]). \(player.lastName)"
         price = chestPrice
+        self.player = player
     }
 
     var body: some View {
@@ -83,28 +85,14 @@ struct ChestView: View {
             .frame(width: 150, height: 195)
         }
         .sheet(isPresented: $showSheet) {
-            SheetView(title: "P. Bidoshi", subTitle: "#10 | PG", description: "The best player ever blah hee hee nvm lol ok yes this is a test I love typing a lot of text", buttonText: "Close", showSheet: $showSheet)
-
+            PlayerChestSheetView(fromPlayer: player, showSheet: $showSheet)
                 .presentationDetents([.fraction(0.9)])
         }
-    }
-
-    func graph(playerData: [PlayerData], metric: Stat) -> some View {
-        return (
-            Chart {
-                ForEach(playerData) { data in
-                    BarMark(
-                        x: .value("Date", data.gameDate, unit: .weekday),
-                        y: .value("Value", data.getNumberFromStat(metric))
-                    )
-                }
-            }
-            .aspectRatio(1.0, contentMode: .fit)
-        )
 
     }
 
 }
+
 
 #Preview {
     ChestView(fromPlayer: Player.dummyData[0], chestPrice: 1720)

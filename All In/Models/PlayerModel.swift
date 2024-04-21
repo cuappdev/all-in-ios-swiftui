@@ -5,6 +5,9 @@
 //  Created by Daniel Chuang on 3/17/24.
 //
 
+import SwiftUI
+import Charts
+
 // https://cornellbigred.com/sports/mens-basketball/roster
 // TODO: Add the rest of the data
 
@@ -24,6 +27,62 @@ struct Player: Identifiable {
     var bio: String
     var averages: PlayerAverages
     var games: [PlayerData]
+
+    func graph(stat: Stat, selectedDate: Date, completion: @escaping (Int) -> Void) -> some View {
+
+        // find the closest date in the playerdata to the selected date by subtracting the difference
+        var dateDifference: Double = .infinity
+        var activeIndex = 0
+
+        for game in games {
+            let diff = game.gameDate.timeIntervalSince1970 - selectedDate.timeIntervalSince1970
+            let absDiff = abs(diff)
+
+            if absDiff < dateDifference {
+                dateDifference = absDiff
+                activeIndex = games.firstIndex(of: game) ?? 0
+            }
+        }
+
+        return (
+            Chart {
+                ForEach(Array(zip(games.indices, games)), id: \.1) { idx, data in
+                    BarMark(
+                        x: .value("Date", data.gameDate, unit: .weekday),
+                        y: .value("Value", data.getNumberFromStat(stat))
+                    )
+                    .foregroundStyle(idx != activeIndex ? Constants.Colors.grey02 : Constants.Colors.red)
+                    .cornerRadius(5)
+                    .annotation {
+                        VStack {
+                            Text("\(data.getNumberFromStat(stat))")
+                                .foregroundStyle(idx != activeIndex ? Constants.Colors.grey02 : Constants.Colors.red)
+                                .opacity(idx != activeIndex ? 0 : 1)
+                                .font(Constants.Fonts.bodyBold)
+
+                        }
+                    }
+                }
+            }
+                .aspectRatio(1.0, contentMode: .fit)
+                .chartOverlay{ pr in
+                    GeometryReader { geoProxy in
+                        Rectangle()
+                            .foregroundStyle(.black.opacity(0.0001))
+                            .gesture(DragGesture().onChanged { value in
+                                let origin = geoProxy[pr.plotAreaFrame].origin
+                                let location = CGPoint(
+                                    x: value.location.x - origin.x,
+                                    y: value.location.y - origin.y
+                                )
+
+                                let (day, value) = pr.value(at: location, as: (Int, Double).self)!
+                                completion(day)
+                            })
+                    }
+                }
+            )
+    }
 
 }
 

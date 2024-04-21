@@ -25,7 +25,7 @@ enum Stat {
 
 }
 
-struct PlayerData: Identifiable, Codable {
+struct PlayerData: Identifiable, Codable, Hashable {
 
     var id: Int
     var playerId: Int
@@ -123,7 +123,7 @@ extension PlayerData {
             blocks: 40,
             turnovers: 2,
             personalFouls: 55,
-            points: 90
+            points: 24
         ),
         PlayerData(
             id: 2,
@@ -144,7 +144,7 @@ extension PlayerData {
             blocks: 40,
             turnovers: 2,
             personalFouls: 55,
-            points: 90
+            points: 50
         ),
         PlayerData(
             id: 3,
@@ -165,8 +165,50 @@ extension PlayerData {
             blocks: 40,
             turnovers: 2,
             personalFouls: 55,
-            points: 90
+            points: 35
+        ),
+        PlayerData(
+            id: 4,
+            playerId: 0,
+            gameDate: Date().addingTimeInterval(-259200 - 86400),
+            opponent: "Harvard",
+            played: false,
+            minutes: 25,
+            fieldGoalsMade: 2,
+            fieldGoalsAttempted: 22,
+            threePointersMade: 225,
+            threePointersAttempted: 215,
+            freeThrowsMade: 42,
+            freeThrowsAttempted: 132,
+            rebounds: 10,
+            assists: 22,
+            steals: 58,
+            blocks: 40,
+            turnovers: 2,
+            personalFouls: 55,
+            points: 30
+        ),
+        PlayerData(
+            id: 5,
+            playerId: 0,
+            gameDate: Date().addingTimeInterval(-259200 - 172800),
+            opponent: "Harvard",
+            played: false,
+            minutes: 25,
+            fieldGoalsMade: 2,
+            fieldGoalsAttempted: 22,
+            threePointersMade: 225,
+            threePointersAttempted: 215,
+            freeThrowsMade: 42,
+            freeThrowsAttempted: 132,
+            rebounds: 10,
+            assists: 22,
+            steals: 58,
+            blocks: 40,
+            turnovers: 2,
+            personalFouls: 55,
+            points: 20
         )
     ]
-    
+
 }

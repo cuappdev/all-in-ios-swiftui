@@ -7,17 +7,18 @@
 
 import SwiftUI
 
-struct SheetView: View {
+struct SheetView<Extras>: View where Extras: View {
 
     let title: String
     let subTitle: String
     let description: String
     let buttonText: String
     var buttonCallback: (() -> Void)?
-
-    var extras: AnyView = AnyView(EmptyView())
-
+    
     @Binding var showSheet: Bool
+
+    @ViewBuilder var extras: () -> Extras
+
 
     var body: some View {
         VStack() {
@@ -38,7 +39,7 @@ struct SheetView: View {
                 }
             }
             .font(Constants.Fonts.header)
-            extras
+            extras()
             Spacer()
             Text(description)
                 .font(Constants.Fonts.bodyBold)
@@ -60,5 +61,11 @@ struct SheetView: View {
 }
 
 #Preview {
-    SheetView(title: "P. Bidoshi", subTitle: "#10 | PG", description: "The best player on this planet lmao", buttonText: "Buy Now!", showSheet: .constant(true))
+    SheetView(title: "P. Bidoshi", subTitle: "#10 | PG", description: "The best player on this planet lmao", buttonText: "Buy Now!", showSheet: .constant(true)) {
+        VStack {
+            Image("Chest")
+                .resizable()
+                .frame(width: 300, height: 300)
+        }
+    }
 }
