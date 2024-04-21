@@ -23,6 +23,76 @@ enum Stat {
     case personalFouls
     case points
 
+    func getName() -> String {
+        switch self {
+        case .fieldGoalsMade:
+            return "Field Goals Made"
+        case .fieldGoalsAttempted:
+            return "Field Goals Attempted"
+        case .threePointersMade:
+            return "Three Pointers Made"
+        case .threePointersAttempted:
+            return "Three Pointers Attempted"
+        case .freeThrowsMade:
+            return "Free Throws Made"
+        case .freeThrowsAttempted:
+            return "Free Throws Attempted"
+        case .rebounds:
+            return "Rebounds"
+        case .assists:
+            return "Assists"
+        case .steals:
+            return "Steals"
+        case .blocks:
+            return "Blocks"
+        case .turnovers:
+            return "Turnovers"
+        case .personalFouls:
+            return "Personal Fouls"
+        case .points:
+            return "Points"
+        }
+    }
+
+    func getAbv() -> String {
+        switch self {
+        case .fieldGoalsMade:
+            return "FGM"
+        case .fieldGoalsAttempted:
+            return "FGA"
+        case .threePointersMade:
+            return "3PM"
+        case .threePointersAttempted:
+            return "3PA"
+        case .freeThrowsMade:
+            return "FTM"
+        case .freeThrowsAttempted:
+            return "FTA"
+        case .rebounds:
+            return "Reb"
+        case .assists:
+            return "Ast"
+        case .steals:
+            return "Stl"
+        case .blocks:
+            return "Blk"
+        case .turnovers:
+            return "TO"
+        case .personalFouls:
+            return "PF"
+        case .points:
+            return "Pts"
+        }
+    }
+
+    static func getAll() -> [Stat] {
+        return [.fieldGoalsMade, .fieldGoalsAttempted, .threePointersMade, .threePointersAttempted, .freeThrowsMade, .freeThrowsAttempted, .rebounds, .assists, .steals, .blocks, .turnovers, .personalFouls, .points]
+    }
+
+    static func getAllAbv() -> [String] {
+        return ["FGM", "FGA", "3PM", "3PA", "FTM", "FTA", "Reb", "Ast", "Stl", "Blk", "TO", "PF", "Pts"]
+    }
+
 }
 
 struct PlayerData: Identifiable, Codable, Hashable {

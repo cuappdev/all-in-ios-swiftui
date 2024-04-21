@@ -19,6 +19,15 @@ struct SheetView<Extras>: View where Extras: View {
 
     @ViewBuilder var extras: () -> Extras
 
+    init(title: String, subTitle: String, description: String, buttonText: String, showSheet: Binding<Bool>, extras: @escaping () -> Extras, buttonCallback: (() -> Void)? = nil) {
+        self.title = title
+        self.subTitle = subTitle
+        self.description = description
+        self.buttonText = buttonText
+        _showSheet = showSheet
+        self.extras = extras
+        self.buttonCallback = buttonCallback
+    }
 
     var body: some View {
         VStack() {

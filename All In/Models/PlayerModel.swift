@@ -29,8 +29,6 @@ struct Player: Identifiable {
     var games: [PlayerData]
 
     func graph(stat: Stat, selectedDate: Date, completion: @escaping (Int) -> Void) -> some View {
-
-        // find the closest date in the playerdata to the selected date by subtracting the difference
         var dateDifference: Double = .infinity
         var activeIndex = 0
 
@@ -64,6 +62,7 @@ struct Player: Identifiable {
                     }
                 }
             }
+                .animation(.easeInOut(duration: 0.2))
                 .aspectRatio(1.0, contentMode: .fit)
                 .chartOverlay{ pr in
                     GeometryReader { geoProxy in
@@ -79,6 +78,17 @@ struct Player: Identifiable {
                                 let (day, value) = pr.value(at: location, as: (Int, Double).self)!
                                 completion(day)
                             })
+                            .onTapGesture(count: 1, coordinateSpace: .local, perform: { value in
+                                let origin = geoProxy[pr.plotAreaFrame].origin
+                                let location = CGPoint(
+                                    x: value.x - origin.x,
+                                    y: value.y - origin.y
+                                )
+
+                                let (day, value) = pr.value(at: location, as: (Int, Double).self)!
+                                completion(day)
+                            })
+
                     }
                 }
             )

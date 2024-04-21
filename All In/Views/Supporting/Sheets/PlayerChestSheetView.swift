@@ -32,16 +32,36 @@ struct PlayerChestSheetView: View {
     var body: some View {
         SheetView(title: name, subTitle: "#\(number) | \(position)", description: "Contains a contract tied to this player", buttonText: "Buy Now", showSheet: $showSheet) {
             VStack {
-                
+
+                PillSelectView(Stat.getAll()) { newStat in
+                    selectedStat = newStat
+                }
+
                 player.graph(stat: selectedStat, selectedDate: activeDate) { strDate in
                     // ON DRAG COMPLETION HANDLER
                     activeDate = Date(timeIntervalSinceReferenceDate: TimeInterval(strDate))
                 }
 
-                Image("PlayerChest")
-                    .resizable()
-                    .frame(width: 112, height: 96)
+                ZStack(alignment: .topTrailing) {
+                    Image("PlayerChest")
+                        .resizable()
+                        .frame(width: 112, height: 96)
+
+                    Image(uiImage: UIImage(data: Data(base64Encoded: player.image) ?? Data())!)
+                        .resizable()
+                        .frame(width: 48, height: 64)
+                        .background()
+                        .clipShape(Circle())
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 100)
+                                .inset(by: 0.5)
+                                .stroke(Constants.Colors.grey02)
+                                .frame(width: 48, height: 48)
+                        )
+                }
             }
+        } buttonCallback: {
+            print("WEEEEWOOOO")
         }
     }
     

@@ -32,6 +32,7 @@
 		D057FD872BA77DE500EF552D /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D057FD862BA77DE500EF552D /* TabBar.swift */; };
 		D073637A2BD32AE400F4CCA5 /* PlayerChestSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07363792BD32AE400F4CCA5 /* PlayerChestSheetView.swift */; };
 		D073637D2BD4363C00F4CCA5 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073637C2BD4363B00F4CCA5 /* SheetView.swift */; };
+		D0CD317F2BD5964F00E7136C /* PillSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD317E2BD5964F00E7136C /* PillSelectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		D057FD862BA77DE500EF552D /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		D07363792BD32AE400F4CCA5 /* PlayerChestSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChestSheetView.swift; sourceTree = "<group>"; };
 		D073637C2BD4363B00F4CCA5 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		D0CD317E2BD5964F00E7136C /* PillSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillSelectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				D073637B2BD4362F00F4CCA5 /* Sheets */,
 				D057FD862BA77DE500EF552D /* TabBar.swift */,
+				D0CD317E2BD5964F00E7136C /* PillSelectView.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				D073637A2BD32AE400F4CCA5 /* PlayerChestSheetView.swift in Sources */,
 				CE101CD92BA771B800218E40 /* PackCard.swift in Sources */,
 				D057FD872BA77DE500EF552D /* TabBar.swift in Sources */,
+				D0CD317F2BD5964F00E7136C /* PillSelectView.swift in Sources */,
 				CE101CE72BA7DB5E00218E40 /* PlayerModel.swift in Sources */,
 				992821A02BC0931200B592F7 /* AllInApp.swift in Sources */,
 				CE101CD72BA771AE00218E40 /* ContractCard.swift in Sources */,
