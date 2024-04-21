@@ -1,14 +1,13 @@
 //
-//  PlayerChestSheetView.swift
+//  PlayerContractSheetView.swift
 //  All In
 //
-//  Created by Peter Bidoshi on 4/19/24.
+//  Created by Antoinette Marie Torres on 4/21/24.
 //
 
-import Charts
 import SwiftUI
 
-struct PlayerChestSheetView: View {
+struct PlayerContractSheetView: View {
 
     let name: String
     let position: String
@@ -38,12 +37,9 @@ struct PlayerChestSheetView: View {
                     // ON DRAG COMPLETION HANDLER
                     activeDate = Date(timeIntervalSinceReferenceDate: TimeInterval(strDate))
                 }
-
-                Image("PlayerChest")
-                    .resizable()
-                    .frame(width: 112, height: 96)
             }
         }
     }
     
 }
+
