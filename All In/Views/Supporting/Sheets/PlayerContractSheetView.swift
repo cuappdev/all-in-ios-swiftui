@@ -1,14 +1,13 @@
 //
-//  PlayerChestSheetView.swift
+//  PlayerContractSheetView.swift
 //  All In
 //
-//  Created by Peter Bidoshi on 4/19/24.
+//  Created by Antoinette Marie Torres on 4/21/24.
 //
 
-import Charts
 import SwiftUI
 
-struct PlayerChestSheetView: View {
+struct PlayerContractSheetView: View {
 
     let name: String
     let position: String
@@ -33,37 +32,14 @@ struct PlayerChestSheetView: View {
         SheetView(title: name, subTitle: "#\(number) | \(position)", description: "Contains a contract tied to this player", buttonText: "Buy Now", showSheet: $showSheet) {
             // The middle of the half sheet
             VStack {
-
-                PillSelectView(Stat.getAll()) { newStat in
-                    selectedStat = newStat
-                }
-
+                
                 player.graph(stat: selectedStat, selectedDate: activeDate) { strDate in
                     // ON DRAG COMPLETION HANDLER
                     activeDate = Date(timeIntervalSinceReferenceDate: TimeInterval(strDate))
                 }
-
-                ZStack(alignment: .topTrailing) {
-                    Image("PlayerChest")
-                        .resizable()
-                        .frame(width: 112, height: 96)
-
-                    Image(uiImage: UIImage(data: Data(base64Encoded: player.image) ?? Data())!)
-                        .resizable()
-                        .frame(width: 48, height: 64)
-                        .background()
-                        .clipShape(Circle())
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 100)
-                                .inset(by: 0.5)
-                                .stroke(Constants.Colors.grey02)
-                                .frame(width: 48, height: 48)
-                        )
-                }
             }
-        } buttonCallback: {
-            print("WEEEEWOOOO")
         }
     }
     
 }
+
