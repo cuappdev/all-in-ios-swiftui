@@ -40,14 +40,9 @@ struct HomeView: View {
                         .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 0))
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
-                            ChestView(chestImage: Image("PlayerChest"), chestPlayer: Image("Player1"), chestType: "Player Chest", title: "C. Manon", price: 1720)
-                            ChestView(chestImage: Image("EpicChest"), chestType: "Rarity Chest", title: "Rare", price: 1720)
-                            ChestView(chestImage: Image("PlayerChest"), chestPlayer: Image("Player3"), chestType: "Player Chest", title: "C. Manon", price: 1720)
-                            ChestView(chestImage: Image("PlayerChest"), chestPlayer: Image("Player5"), chestType: "Player Chest", title: "C. Manon", price: 1720)
-                            ChestView(chestImage: Image("PlayerChest"), chestPlayer: Image("Player30"), chestType: "Player Chest", title: "C. Manon", price: 1720)
-                            ChestView(chestImage: Image("PlayerChest"), chestPlayer: Image("Player30"), chestType: "Player Chest", title: "C. Manon", price: 1720)
-                            ChestView(chestImage: Image("PlayerChest"), chestPlayer: Image("Player1"), chestType: "Rarity Chest", title: "P. Bidoshi", price: 1720)
-
+                            ForEach(Player.dummyData) { player in
+                                ChestView(fromPlayer: player, chestPrice: 1370)
+                            }
                         }
                         .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
                     }
