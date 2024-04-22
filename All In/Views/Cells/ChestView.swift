@@ -21,7 +21,7 @@ struct ChestView: View {
 
     init(fromPlayer player: Player, chestPrice: Double) {
         chestImage = Image("PlayerChest")
-        chestPlayer = Image(uiImage: UIImage(data: Data(base64Encoded: player.image) ?? Data())!)
+        chestPlayer = Image(uiImage: UIImage(data: Data(base64Encoded: "blahlba") ?? Data())!)
         chestType = "Player Chest"
         title = "\(player.firstName[player.firstName.startIndex]). \(player.lastName)"
         price = chestPrice

@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct Contract: Identifiable, Decodable {
+struct Contract: Identifiable, Codable {
 
     var id: Int
     var buyPrice: Int
-    var rarity: String
+    var rarity: Rarity
     var opposingTeam: String
     var event: String
     var eventThreshold: Int
@@ -25,63 +25,95 @@ struct Contract: Identifiable, Decodable {
 
 }
 
+enum Rarity: String, Codable {
+
+    case common
+    case rare
+    case epic
+    case legendary
+
+}
+
 extension Contract {
     static let dummyData = [
         Contract(
             id: 0,
-            playerNum: 30,
-            metric: "rebounds",
-            threshold: 4,
-            payoff: 3200,
-            maturityDate: dateFormatter.date(from: "03/26")!,
-            contractPrice: 1720
+            buyPrice: 1000,
+            rarity: Rarity.common,
+            opposingTeam: "Harvard",
+            event: "FGA",
+            eventThreshold: 4,
+            creationTime: Date().addingTimeInterval(-100000),
+            value: 2400,
+            forSale: true,
+            playerId: 0,
+            ownerId: 0
         ),
         Contract(
             id: 1,
-            playerNum: 1,
-            metric: "points",
-            threshold: 15,
-            payoff: 5400,
-            maturityDate: dateFormatter.date(from: "03/26")!,
-            contractPrice: 2470
+            buyPrice: 1000,
+            rarity: Rarity.common,
+            opposingTeam: "Harvard",
+            event: "FGA",
+            eventThreshold: 4,
+            creationTime: Date().addingTimeInterval(-100000),
+            value: 2400,
+            forSale: true,
+            playerId: 0,
+            ownerId: 0
         ),
         Contract(
             id: 2,
-            playerNum: 2,
-            metric: "assists",
-            threshold: 4,
-            payoff: 2900,
-            maturityDate: dateFormatter.date(from: "03/26")!,
-            contractPrice: 1230
+            buyPrice: 1000,
+            rarity: Rarity.common,
+            opposingTeam: "Harvard",
+            event: "FGA",
+            eventThreshold: 4,
+            creationTime: Date().addingTimeInterval(-100000),
+            value: 2400,
+            forSale: true,
+            playerId: 0,
+            ownerId: 0
         ),
         Contract(
             id: 3,
-            playerNum: 3,
-            metric: "blocks",
-            threshold: 2,
-            payoff: 8000,
-            maturityDate: dateFormatter.date(from: "03/26")!,
-            contractPrice: 4030
+            buyPrice: 1000,
+            rarity: Rarity.common,
+            opposingTeam: "Harvard",
+            event: "FGA",
+            eventThreshold: 4,
+            creationTime: Date().addingTimeInterval(-100000),
+            value: 2400,
+            forSale: true,
+            playerId: 0,
+            ownerId: 0
         ),
         Contract(
             id: 4,
-            playerNum: 5,
-            metric: "steals",
-            threshold: 2,
-            payoff: 6700,
-            maturityDate: dateFormatter.date(from: "03/26")!,
-            contractPrice: 3890
+            buyPrice: 1000,
+            rarity: Rarity.common,
+            opposingTeam: "Harvard",
+            event: "FGA",
+            eventThreshold: 4,
+            creationTime: Date().addingTimeInterval(-100000),
+            value: 2400,
+            forSale: true,
+            playerId: 0,
+            ownerId: 0
         ),
         Contract(
             id: 5,
-            playerNum: 10,
-            metric: "rebounds",
-            threshold: 3,
-            payoff: 1000,
-            maturityDate: dateFormatter.date(from: "03/26")!,
-            contractPrice: 2000
+            buyPrice: 1000,
+            rarity: Rarity.common,
+            opposingTeam: "Harvard",
+            event: "FGA",
+            eventThreshold: 4,
+            creationTime: Date().addingTimeInterval(-100000),
+            value: 2400,
+            forSale: true,
+            playerId: 0,
+            ownerId: 0
         )
-
     ]
 
     // Getting the playername

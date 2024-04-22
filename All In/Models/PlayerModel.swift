@@ -11,20 +11,17 @@ import Charts
 // https://cornellbigred.com/sports/mens-basketball/roster
 // TODO: Add the rest of the data
 
-struct Player: Identifiable {
+struct Player: Identifiable, Codable {
 
     var id: Int
     var firstName: String
     var lastName: String
-    var position: String
+    var position: [String]
     var number: Int
     var height: Int
     var weight: Int
-    var year: Int
     var hometown: String
     var highschool: String
-    var image: String
-    var bio: String
     var contracts: [Contract]
     var playerData: [PlayerData]
 
@@ -32,19 +29,19 @@ struct Player: Identifiable {
         var dateDifference: Double = .infinity
         var activeIndex = 0
 
-        for game in games {
+        for game in playerData {
             let diff = game.gameDate.timeIntervalSince1970 - selectedDate.timeIntervalSince1970
             let absDiff = abs(diff)
 
             if absDiff < dateDifference {
                 dateDifference = absDiff
-                activeIndex = games.firstIndex(of: game) ?? 0
+                activeIndex = playerData.firstIndex(of: game) ?? 0
             }
         }
 
         return (
             Chart {
-                ForEach(Array(zip(games.indices, games)), id: \.1) { idx, data in
+                ForEach(Array(zip(playerData.indices, playerData)), id: \.1) { idx, data in
                     BarMark(
                         x: .value("Date", data.gameDate, unit: .weekday),
                         y: .value("Value", data.getNumberFromStat(stat))
@@ -103,81 +100,66 @@ extension Player {
             id: 0,
             firstName: "Evan",
             lastName: "Williams",
-            position: "Forward",
+            position: ["Forward"],
             number: 0,
             height: 79,
             weight: 220,
-            year: 2024,
             hometown: "Murphy, Texas",
             highschool: "Plano East Senior HS",            
-            image: dummyImage,
-            bio: "",
-            averages: PlayerAverages.dummyData[0],
-            games: PlayerData.dummyData
+            contracts: Contract.dummyData,
+            playerData: PlayerData.dummyData
         ),
         Player(
             id: 1,
             firstName: "Nazir",
             lastName: "Williams",
-            position: "Guard",
+            position: ["Guard"],
             number: 1,
             height: 75,
             weight: 180,
-            year: 2024,
             hometown: "Nyack, New York",
             highschool: "Blair Academy",
-            image: dummyImage,
-            bio: "",
-            averages: PlayerAverages.dummyData[0],
-            games: PlayerData.dummyData
+            contracts: Contract.dummyData,
+            playerData: PlayerData.dummyData
         ),
         Player(
             id: 2,
             firstName: "Ian",
             lastName: "Imegwu",
-            position: "Forward",
+            position: ["Forward"],
             number: 2,
             height: 81,
             weight: 226,
-            year: 2027,
             hometown: "Short Hills, New Jersey",
             highschool: "Blair Academy",
-            image: dummyImage,
-            bio: "",
-            averages: PlayerAverages.dummyData[0],
-            games: PlayerData.dummyData
+            contracts: Contract.dummyData,
+            playerData: PlayerData.dummyData
         ),
         Player(
             id: 3,
             firstName: "Ryan",
             lastName: "Kiachian",
-            position: "Forward, Center",
+            position: ["Forward", "Center"],
             number: 3,
             height: 82,
             weight: 228,
-            year: 2024,
             hometown: "Los Altos Hills, California",
             highschool: "Bellarmine College Preparatory",
-            image: dummyImage,
-            bio: "",
-            averages: PlayerAverages.dummyData[0],
-            games: PlayerData.dummyData
+            contracts: Contract.dummyData,
+            playerData: PlayerData.dummyData
         ),
         Player(
             id: 4,
             firstName: "Dylan",
             lastName: "Wang",
-            position: "Guard",
+            position: ["Guard"],
             number: 4,
             height: 72,
             weight: 170,
-            year: 2024,
             hometown: "Los Altos Hills, California",
             highschool: "Bellarmine College Preparatory",
-            image: dummyImage,
-            bio: "",
-            averages: PlayerAverages.dummyData[0],
-            games: PlayerData.dummyData
+            contracts: Contract.dummyData,
+            playerData: PlayerData.dummyData
         )
     ]
 

@@ -49,16 +49,16 @@ struct ContractCard: View {
                                     .foregroundStyle(Constants.Colors.grey03)
                                     .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
                                 
-                                Text("VS \(dateFormatter.string(from: contract.maturityDate))")
+                                Text("VS \(dateFormatter.string(from: Date() /*contract.maturityDate*/))")
                                     .font(.system(size: 12, weight: .regular))
                                     .foregroundStyle(Constants.Colors.grey03)
                                 
                                 HStack {
                                     VStack {
-                                        Text("\(contract.threshold)")
+                                        Text("\(contract.eventThreshold)")
                                             .font(.system(size: 14, weight: .bold))
                                             .foregroundStyle(Constants.Colors.black)
-                                        Text("\(contract.metric)")
+                                        Text("\(contract.event)")
                                             .font(.system(size: 8, weight: .bold))
                                             .foregroundStyle(Constants.Colors.black)
                                     }
@@ -72,7 +72,7 @@ struct ContractCard: View {
                                     .stroke(Constants.Colors.red, style: StrokeStyle(lineWidth: 1, dash: [2]))
                                     .frame(width: 1, height: 28)
                                     
-                                    Text("Cost: \(contract.contractPrice)\nGain: \(contract.payoff)")
+                                    Text("Cost: \(contract.buyPrice)\nGain: \(contract.value)")
                                         .font(.system(size: 10, weight: .regular))
                                         .foregroundStyle(Constants.Colors.black)
                                         .multilineTextAlignment(.trailing)

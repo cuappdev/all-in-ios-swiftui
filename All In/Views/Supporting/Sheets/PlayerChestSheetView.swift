@@ -23,7 +23,7 @@ struct PlayerChestSheetView: View {
 
     init(fromPlayer player: Player, showSheet: Binding<Bool>) {
         name = "\(player.firstName[player.firstName.startIndex]). \(player.lastName)"
-        position = player.position
+        position = player.position[0]
         number = player.number
         self.player = player
         _showSheet = showSheet
@@ -48,7 +48,7 @@ struct PlayerChestSheetView: View {
                         .resizable()
                         .frame(width: 112, height: 96)
 
-                    Image(uiImage: UIImage(data: Data(base64Encoded: player.image) ?? Data())!)
+                    Image(uiImage: UIImage(data: Data(base64Encoded: "BLAHHHBLAAHHHH") ?? Data())!)
                         .resizable()
                         .frame(width: 48, height: 64)
                         .background()
