@@ -25,8 +25,8 @@ struct Player: Identifiable {
     var highschool: String
     var image: String
     var bio: String
-    var averages: PlayerAverages
-    var games: [PlayerData]
+    var contracts: [Contract]
+    var playerData: [PlayerData]
 
     func graph(stat: Stat, selectedDate: Date, completion: @escaping (Int) -> Void) -> some View {
         var dateDifference: Double = .infinity

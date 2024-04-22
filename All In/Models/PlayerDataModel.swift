@@ -98,10 +98,10 @@ enum Stat {
 struct PlayerData: Identifiable, Codable, Hashable {
 
     var id: Int
-    var playerId: Int
     var gameDate: Date
     var opponent: String
     var played: Bool
+    var points: Int
     var minutes: Int
     var fieldGoalsMade: Int
     var fieldGoalsAttempted: Int
@@ -115,7 +115,7 @@ struct PlayerData: Identifiable, Codable, Hashable {
     var blocks: Int
     var turnovers: Int
     var personalFouls: Int
-    var points: Int
+    var playerId: Int
 
     func getNumberFromStat(_ stat: Stat) -> Int {
         switch stat {

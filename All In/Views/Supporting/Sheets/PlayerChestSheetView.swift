@@ -62,7 +62,7 @@ struct PlayerChestSheetView: View {
                 }
             }
         } buttonCallback: {
-            print("WEEEEWOOOO")
+            print("BUY CHEST NETWORKING CALL HERE")
         }
     }
     

@@ -7,14 +7,25 @@
 
 import SwiftUI
 
-struct Contract: Identifiable {
+struct Contract: Identifiable, Decodable {
     var id: Int
-    var playerNum: Int
-    var metric: String
-    var threshold: Int
-    var payoff: Int
-    var maturityDate: Date
-    var contractPrice: Int
+    var rarity: String
+    var opposingTeam: String
+    var event: String
+    var eventThreshold: Int
+    var creationTime: Date
+    var value: Int
+    var expired: Bool?
+    var forSale: Bool
+    var sellPrice: Int?
+    var playerId: Int
+    var ownerId: Int
+//    var playerNum: Int
+//    var metric: String
+//    var threshold: Int
+//    var payoff: Int
+//    var maturityDate: Date
+//    var contractPrice: Int
 }
 
 extension Contract {
