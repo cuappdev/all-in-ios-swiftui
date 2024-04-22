@@ -41,27 +41,22 @@ struct MarketplaceView: View {
                 ZStack {
                     Constants.Colors.grey00
                     
-                    VStack {
-                        TextField("Search", text: $searchText)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 10)
-                            .frame(width: 343, alignment: .leading)
-                            .background(Constants.Colors.grey00)
-                            .cornerRadius(8)
                     LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(Contract.dummyData) { contract in
+                        ForEach(Contract.dummyData.filter { contract in
+                            searchText.isEmpty || contract.title.localizedCaseInsensitiveContains(searchText)
+                        }) { contract in
                             ContractCard(contract: contract)
                         }
                     }
                     .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
                 }
             }
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         }
 
-            // Tab logic
-            TabBar(page: "market")
-                .frame(height: 108)
-        }
+        // Tab logic
+        TabBar(page: "market")
+            .frame(height: 108)
         .ignoresSafeArea(edges: .all)
     }
 
