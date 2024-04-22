@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct Contract: Identifiable, Decodable {
+
     var id: Int
+    var buyPrice: Int
     var rarity: String
     var opposingTeam: String
     var event: String
@@ -20,12 +22,7 @@ struct Contract: Identifiable, Decodable {
     var sellPrice: Int?
     var playerId: Int
     var ownerId: Int
-//    var playerNum: Int
-//    var metric: String
-//    var threshold: Int
-//    var payoff: Int
-//    var maturityDate: Date
-//    var contractPrice: Int
+
 }
 
 extension Contract {
