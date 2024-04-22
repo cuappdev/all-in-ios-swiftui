@@ -48,7 +48,7 @@ struct PlayerChestSheetView: View {
                         .resizable()
                         .frame(width: 112, height: 96)
 
-                    Image(uiImage: UIImage(data: Data(base64Encoded: "BLAHHHBLAAHHHH") ?? Data())!)
+                    Image("INSERT-PLAYER")
                         .resizable()
                         .frame(width: 48, height: 64)
                         .background()

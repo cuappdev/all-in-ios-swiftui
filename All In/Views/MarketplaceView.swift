@@ -43,7 +43,7 @@ struct MarketplaceView: View {
                     
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(Contract.dummyData.filter { contract in
-                            searchText.isEmpty || contract.title.localizedCaseInsensitiveContains(searchText)
+                            searchText.isEmpty || contract.event.localizedCaseInsensitiveContains(searchText)
                         }) { contract in
                             ContractCard(contract: contract)
                         }
