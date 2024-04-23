@@ -21,7 +21,7 @@ struct HomeView: View {
                     Spacer()
                     HStack {
                         Image("Money")
-                            .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
+                            .renderingMode(.template)
                             .foregroundStyle(Constants.Colors.red)
                         Text("1,000")
                             .font(Constants.Fonts.subheader)
@@ -41,7 +41,7 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
                             ForEach(Player.dummyData) { player in
-                                ChestView(fromPlayer: player, chestPrice: 1370)
+                                PlayerChestView(fromPlayer: player, chestPrice: 1370)
                             }
                         }
                         .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))

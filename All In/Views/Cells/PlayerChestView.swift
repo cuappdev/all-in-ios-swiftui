@@ -1,5 +1,5 @@
 //
-//  ChestView.swift
+//  PlayerChestView.swift
 //  All In
 //
 //  Created by Peter Bidoshi on 4/15/24.
@@ -8,25 +8,19 @@
 import Charts
 import SwiftUI
 
-struct ChestView: View {
+struct PlayerChestView: View {
 
-    var chestImage: Image
-    var chestPlayer: Image?
-    var chestType: String
     var title: String
     var price: Double
     var player: Player
 
+    private var chestImage = Image("PlayerChest")
+
     @State var showSheet = false
+    @State var chestPlayer = Image("")
 
     init(fromPlayer player: Player, chestPrice: Double) {
         chestImage = Image("PlayerChest")
-        chestPlayer = Image("")
-        NetworkManager.shared.getUserImage(completion: { image in
-            chestPlayer = Image(
-        }))
-        chestPlayer = Image()
-        chestType = "Player Chest"
         title = "\(player.firstName[player.firstName.startIndex]). \(player.lastName)"
         price = chestPrice
         self.player = player
@@ -52,7 +46,7 @@ struct ChestView: View {
                             chestImage
                                 .resizable()
 
-                            chestPlayer?
+                            chestPlayer
                                 .resizable()
                                 .frame(width: 48, height: 64)
                                 .background()
@@ -71,7 +65,7 @@ struct ChestView: View {
                             .foregroundStyle(Constants.Colors.red)
                             .font(Constants.Fonts.subheader)
 
-                        Text(chestType)
+                        Text("Player Chest")
                             .foregroundStyle(Constants.Colors.grey03)
                             .font(Constants.Fonts.bodyBold)
 
@@ -92,11 +86,11 @@ struct ChestView: View {
             PlayerChestSheetView(fromPlayer: player, showSheet: $showSheet)
                 .presentationDetents([.fraction(0.9)])
         }
-
+        .onAppear {
+            NetworkManager.shared.getUserImage(completion: { image in
+                chestPlayer = Image(uiImage: image)
+            })
+        }
     }
-}
 
-
-#Preview {
-    ChestView(fromPlayer: Player.dummyData[0], chestPrice: 1720)
 }
