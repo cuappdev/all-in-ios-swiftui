@@ -9,8 +9,14 @@ import SwiftUI
 
 struct ProfileView: View {
 
-    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    @State private var user: User
 
+    init(user: User) {
+        _user = State(initialValue: user)
+    }
+    
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
         GeometryReader { geometry in
             
@@ -26,7 +32,7 @@ struct ProfileView: View {
                         Spacer()
                         HStack {
                             Image("RedMoney")
-                            Text("1,000")
+                            Text(String(user.balance))
                                 .font(.system(size: 18, weight: .bold))
                                 .foregroundStyle(.black)
                         }
@@ -48,7 +54,7 @@ struct ProfileView: View {
                                     .cornerRadius(100)
                                     .shadow(color: .black.opacity(0.25), radius: 2)
                                 VStack(alignment: .leading) {
-                                    Text("@antonmatchev")
+                                    Text(user.username)
                                         .font(.system(size: 24, weight: .semibold))
                                     Text("Active Contracts: 5 \nPast Contracts: 10")
                                         .font(.system(size: 13, weight: .regular))
@@ -59,7 +65,7 @@ struct ProfileView: View {
                             Divider()
                                 .frame(width: geometry.size.width / 1.17)
                             LazyVGrid(columns: columns, spacing: 16) {
-                                ForEach(Contract.dummyData) { contract in
+                                ForEach(user.contracts) { contract in
                                     ContractCard(contract: contract)
                                 }
                                 .cornerRadius(16)
@@ -80,6 +86,6 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(user: User.dummyData[0])
 }
 

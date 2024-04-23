@@ -51,15 +51,15 @@ extension Contract {
         ),
         Contract(
             id: 1,
-            buyPrice: 1000,
+            buyPrice: 1400,
             rarity: Rarity.Common,
             opposingTeam: "Harvard",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
-            value: 2400,
+            value: 1600,
             forSale: true,
-            playerId: 0,
+            playerId: 1,
             ownerId: 0
         ),
         Contract(

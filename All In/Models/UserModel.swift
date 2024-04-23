@@ -24,8 +24,11 @@ extension User {
             id: 0,
             username: "antoinztte",
             email: "act238@cornell.edu",
-            balance: 1000.0,
-            contracts: [],
+            balance: 1500.0,
+            contracts: [
+                Contract.dummyData[0],
+                Contract.dummyData[1]
+            ],
             sellerTransations: [],
             buyerTransactions: []
         ),

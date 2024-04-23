@@ -22,7 +22,7 @@ struct ContentView: View {
                         EmptyView()
                     }
 
-                ProfileView()
+                ProfileView(user: User.dummyData[0])
                     .tabItem {
                         EmptyView()
                     }
