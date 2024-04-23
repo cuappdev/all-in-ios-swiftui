@@ -27,10 +27,10 @@ struct Contract: Identifiable, Codable {
 
 enum Rarity: String, Codable {
 
-    case common
-    case rare
-    case epic
-    case legendary
+    case Common
+    case Rare
+    case Epic
+    case Legendary
 
 }
 
