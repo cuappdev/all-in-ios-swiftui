@@ -32,6 +32,32 @@ enum Rarity: String, Codable {
     case Epic
     case Legendary
 
+    func getChestImage() -> Image {
+        switch self {
+            case .Common:
+                return Image("CommonChest")
+            case .Rare:
+                return Image("RareChest")
+            case .Epic:
+                return Image("EpicChest")
+            case .Legendary:
+                return Image("LegendaryChest")
+        }
+    }
+
+    func getColor() -> Color {
+        switch self {
+            case .Common:
+                return Constants.Colors.blue
+            case .Rare:
+                return Constants.Colors.green
+            case .Epic:
+                return Constants.Colors.purple
+            case .Legendary:
+                return Constants.Colors.yellow
+        }
+    }
+
 }
 
 extension Contract {

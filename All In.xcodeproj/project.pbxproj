@@ -38,6 +38,7 @@
 		D073637A2BD32AE400F4CCA5 /* PlayerChestSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07363792BD32AE400F4CCA5 /* PlayerChestSheetView.swift */; };
 		D073637D2BD4363C00F4CCA5 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073637C2BD4363B00F4CCA5 /* SheetView.swift */; };
 		D0C8580F2BD766BA008AE190 /* RarityChestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8580E2BD766BA008AE190 /* RarityChestView.swift */; };
+		D0C858112BD76C4F008AE190 /* RarityChestSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C858102BD76C4F008AE190 /* RarityChestSheetView.swift */; };
 		D0CD317F2BD5964F00E7136C /* PillSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD317E2BD5964F00E7136C /* PillSelectView.swift */; };
 		D0CD31822BD5A2F500E7136C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD31812BD5A2F500E7136C /* NetworkManager.swift */; };
 		D0CD31852BD5A3EC00E7136C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D0CD31842BD5A3EC00E7136C /* Alamofire */; };
@@ -95,6 +96,7 @@
 		D07363792BD32AE400F4CCA5 /* PlayerChestSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChestSheetView.swift; sourceTree = "<group>"; };
 		D073637C2BD4363B00F4CCA5 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		D0C8580E2BD766BA008AE190 /* RarityChestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityChestView.swift; sourceTree = "<group>"; };
+		D0C858102BD76C4F008AE190 /* RarityChestSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityChestSheetView.swift; sourceTree = "<group>"; };
 		D0CD317E2BD5964F00E7136C /* PillSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillSelectView.swift; sourceTree = "<group>"; };
 		D0CD31812BD5A2F500E7136C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				D07363792BD32AE400F4CCA5 /* PlayerChestSheetView.swift */,
+				D0C858102BD76C4F008AE190 /* RarityChestSheetView.swift */,
 				D073637C2BD4363B00F4CCA5 /* SheetView.swift */,
 				99DDFF412BD595F600B64BA5 /* PlayerContractSheetView.swift */,
 			);
@@ -422,6 +425,7 @@
 				D0CD31822BD5A2F500E7136C /* NetworkManager.swift in Sources */,
 				D0155AAC2B9526A8003FE6BC /* HomeView.swift in Sources */,
 				D04FB8742BCE07F20058F732 /* PlayerChestView.swift in Sources */,
+				D0C858112BD76C4F008AE190 /* RarityChestSheetView.swift in Sources */,
 				D0155A832B950FF6003FE6BC /* ContentView.swift in Sources */,
 				D04FB8762BCECBEE0058F732 /* ChestModel.swift in Sources */,
 				CE101CE52BA7CE3800218E40 /* Dates.swift in Sources */,

@@ -87,7 +87,7 @@ struct MarketplaceView: View {
                         PillSelectView(Stat.getAll()) { newStat in
                             selectedStat = newStat
                         }
-                        .padding(EdgeInsets(top: -8, leading: 16, bottom: -8, trailing: 0))
+                        .padding(EdgeInsets(top: -8, leading: -8, bottom: -8, trailing: -8))
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(filteredContracts, id: \.id) { contract in ContractCard(contract: contract)
                             }

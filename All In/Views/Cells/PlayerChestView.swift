@@ -5,7 +5,6 @@
 //  Created by Peter Bidoshi on 4/15/24.
 //
 
-import Charts
 import SwiftUI
 
 struct PlayerChestView: View {
@@ -93,4 +92,9 @@ struct PlayerChestView: View {
         }
     }
 
+}
+
+
+#Preview {
+    PlayerChestView(fromPlayer: Player.dummyData[0], chestPrice: 1720)
 }

@@ -5,7 +5,6 @@
 //  Created by Peter Bidoshi on 4/19/24.
 //
 
-import Charts
 import SwiftUI
 
 struct PlayerChestSheetView: View {
@@ -36,7 +35,7 @@ struct PlayerChestSheetView: View {
 
                 PillSelectView(Stat.getAll()) { newStat in
                     selectedStat = newStat
-                }
+                }.padding(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: -24))
 
                 player.graph(stat: selectedStat, selectedDate: activeDate) { strDate in
                     // ON DRAG COMPLETION HANDLER
