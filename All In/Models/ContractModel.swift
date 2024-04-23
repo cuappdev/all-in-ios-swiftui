@@ -39,7 +39,7 @@ extension Contract {
         Contract(
             id: 0,
             buyPrice: 1000,
-            rarity: Rarity.common,
+            rarity: Rarity.Common,
             opposingTeam: "Columbia",
             event: "FGA",
             eventThreshold: 4,
@@ -52,7 +52,7 @@ extension Contract {
         Contract(
             id: 1,
             buyPrice: 1000,
-            rarity: Rarity.common,
+            rarity: Rarity.Common,
             opposingTeam: "Harvard",
             event: "FGA",
             eventThreshold: 4,
@@ -65,7 +65,7 @@ extension Contract {
         Contract(
             id: 2,
             buyPrice: 1000,
-            rarity: Rarity.common,
+            rarity: Rarity.Common,
             opposingTeam: "Princeton",
             event: "FGA",
             eventThreshold: 4,
@@ -78,7 +78,7 @@ extension Contract {
         Contract(
             id: 3,
             buyPrice: 1000,
-            rarity: Rarity.common,
+            rarity: Rarity.Common,
             opposingTeam: "Dartmouth",
             event: "FGA",
             eventThreshold: 4,
@@ -91,7 +91,7 @@ extension Contract {
         Contract(
             id: 4,
             buyPrice: 1000,
-            rarity: Rarity.common,
+            rarity: Rarity.Common,
             opposingTeam: "Harvard",
             event: "FGA",
             eventThreshold: 4,
@@ -104,7 +104,7 @@ extension Contract {
         Contract(
             id: 5,
             buyPrice: 1000,
-            rarity: Rarity.common,
+            rarity: Rarity.Common,
             opposingTeam: "Harvard",
             event: "FGA",
             eventThreshold: 4,

@@ -29,6 +29,7 @@ struct ContentView: View {
             }
             .onAppear {
                 UITabBar.appearance().unselectedItemTintColor = .white
+
             }
         }
     }

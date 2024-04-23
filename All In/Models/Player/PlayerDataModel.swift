@@ -90,7 +90,7 @@ enum Stat {
     }
 
     static func getAllAbv() -> [String] {
-        return ["FGM", "FGA", "3PM", "3PA", "FTM", "FTA", "Reb", "Ast", "Stl", "Blk", "TO", "PF", "Pts"]
+        return [Stat.fieldGoalsMade.getAbv(), Stat.fieldGoalsAttempted.getAbv(), Stat.threePointersMade.getAbv(), Stat.threePointersAttempted.getAbv(), Stat.freeThrowsMade.getAbv(), Stat.freeThrowsAttempted.getAbv(), Stat.rebounds.getAbv(), Stat.assists.getAbv(), Stat.steals.getAbv(), Stat.blocks.getAbv(), Stat.turnovers.getAbv(), Stat.personalFouls.getAbv(), Stat.points.getAbv()]
     }
 
 }

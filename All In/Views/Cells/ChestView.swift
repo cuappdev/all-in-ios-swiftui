@@ -21,7 +21,11 @@ struct ChestView: View {
 
     init(fromPlayer player: Player, chestPrice: Double) {
         chestImage = Image("PlayerChest")
-        chestPlayer = Image("INSERT-PLAYER")
+        chestPlayer = Image("")
+        NetworkManager.shared.getUserImage(completion: { image in
+            chestPlayer = Image(
+        }))
+        chestPlayer = Image()
         chestType = "Player Chest"
         title = "\(player.firstName[player.firstName.startIndex]). \(player.lastName)"
         price = chestPrice
