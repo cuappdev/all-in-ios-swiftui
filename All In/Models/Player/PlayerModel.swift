@@ -50,11 +50,16 @@ struct Player: Identifiable, Codable {
                     .cornerRadius(5)
                     .annotation {
                         VStack {
+                            Image("fordham")
+                                .resizable()
+                                .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                                .frame(width: 20)
+                                .foregroundStyle(idx != activeIndex ? Constants.Colors.grey02 : Constants.Colors.red)
+                                .opacity(idx != activeIndex ? 0 : 1)
                             Text("\(data.getNumberFromStat(stat))")
                                 .foregroundStyle(idx != activeIndex ? Constants.Colors.grey02 : Constants.Colors.red)
                                 .opacity(idx != activeIndex ? 0 : 1)
                                 .font(Constants.Fonts.bodyBold)
-
                         }
                     }
                 }

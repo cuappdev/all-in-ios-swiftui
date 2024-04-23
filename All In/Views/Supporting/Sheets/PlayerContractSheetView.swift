@@ -12,6 +12,7 @@ struct PlayerContractSheetView: View {
     let name: String
     let position: String
     let number: Int
+    let stat: Stat
 
     let player: Player
 
@@ -20,12 +21,13 @@ struct PlayerContractSheetView: View {
     @State var selectedStat: Stat = .points
     @State var activeDate: Date = Date()
 
-    init(fromPlayer player: Player, showSheet: Binding<Bool>) {
+    init(fromPlayer player: Player, fromStat stat: Stat, showSheet: Binding<Bool>) {
         name = "\(player.firstName[player.firstName.startIndex]). \(player.lastName)"
         position = player.position[0]
         number = player.number
         self.player = player
         _showSheet = showSheet
+        self.stat = stat
     }
 
     var body: some View {
@@ -33,7 +35,7 @@ struct PlayerContractSheetView: View {
             // The middle of the half sheet
             VStack {
                 HStack {
-                    Text("Game Information")
+                    Text(stat.getName())
                         .foregroundColor(Constants.Colors.grey03)
                         .font(.system(size: 24, weight: .bold))
                         .frame(width: 365, height: 50, alignment: .leading)
