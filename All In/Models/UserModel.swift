@@ -16,3 +16,31 @@ struct User: Codable {
     let buyerTransactions: [Transaction]
 
 }
+
+extension User {
+
+    static let dummyData: [User] = [
+        User(
+            id: 0,
+            username: "antoinztte",
+            email: "act238@cornell.edu",
+            balance: 1500.0,
+            contracts: [
+                Contract.dummyData[0],
+                Contract.dummyData[1]
+            ],
+            sellerTransations: [],
+            buyerTransactions: []
+        ),
+        User(
+            id: 1,
+            username: "antoinztte",
+            email: "act238@cornell.edu",
+            balance: 1000.0,
+            contracts: [],
+            sellerTransations: [],
+            buyerTransactions: []
+        )
+    ]
+}
+
