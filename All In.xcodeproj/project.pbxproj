@@ -243,19 +243,11 @@
 		D073637B2BD4362F00F4CCA5 /* Sheets */ = {
 			isa = PBXGroup;
 			children = (
-				D073637F2BD4554A00F4CCA5 /* Chest */,
 				D07363792BD32AE400F4CCA5 /* PlayerChestSheetView.swift */,
 				D073637C2BD4363B00F4CCA5 /* SheetView.swift */,
 				99DDFF412BD595F600B64BA5 /* PlayerContractSheetView.swift */,
 			);
 			path = Sheets;
-			sourceTree = "<group>";
-		};
-		D073637F2BD4554A00F4CCA5 /* Chest */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Chest;
 			sourceTree = "<group>";
 		};
 		D0CD31802BD5A2EB00E7136C /* Networking */ = {

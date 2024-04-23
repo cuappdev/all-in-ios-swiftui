@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MarketplaceView: View {
     
-    @State var searchText = ""
+    @State var searchText: String = ""
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
@@ -41,22 +41,43 @@ struct MarketplaceView: View {
                 ZStack {
                     Constants.Colors.grey00
                     
-                    LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(Contract.dummyData.filter { contract in
-                            searchText.isEmpty || contract.event.localizedCaseInsensitiveContains(searchText)
-                        }) { contract in
-                            ContractCard(contract: contract)
+                    VStack {
+                        // Search bar
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(searchText.isEmpty ? Constants.Colors.grey03 : Constants.Colors.red)
+                            TextField("Search", text: $searchText)
+                                .foregroundColor(Constants.Colors.grey03)
+                                .overlay(Image(systemName: "x.circle.fill")
+                                    .offset(x: 8)
+                                    .opacity(searchText.isEmpty ? 0.0 : 1.0)
+                                    .onTapGesture {
+                                        searchText = ""
+                                    }
+                                         ,alignment: .trailing
+                                )
                         }
-                    }
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Constants.Colors.white)
+                                .stroke(Constants.Colors.grey02, lineWidth: 1)
+                        )
+                        .padding()
+                        LazyVGrid(columns: columns, spacing: 16) {
+                            ForEach(Contract.dummyData) { contract in
+                                ContractCard(contract: contract)
+                            }
+                        }
                     .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
                 }
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         }
 
-        // Tab logic
-        TabBar(page: "market")
-            .frame(height: 108)
+            // Tab logic
+            TabBar(page: "market")
+                .frame(height: 108)
+        }
         .ignoresSafeArea(edges: .all)
     }
 
