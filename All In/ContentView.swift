@@ -9,20 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
 
+    @State var tabSelection = 0
+
     var body: some View {
         ZStack {
-            TabView {
-                HomeView()
+            TabView(selection: $tabSelection) {
+                HomeView(tabSelection: $tabSelection)
+                    .tag(0)
                     .tabItem {
                         EmptyView()
                     }
 
-                MarketplaceView()
+                MarketplaceView(tabSelection: $tabSelection)
+                    .tag(1)
                     .tabItem {
                         EmptyView()
                     }
 
-                ProfileView(user: User.dummyData[0])
+                ProfileView(tabSelection: $tabSelection, user: User.dummyData[0])
+                    .tag(2)
                     .tabItem {
                         EmptyView()
                     }

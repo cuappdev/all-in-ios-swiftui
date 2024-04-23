@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
 
+    // change this to change the tab programatically
+    @Binding var tabSelection: Int
+
     var body: some View {
         VStack(spacing: 0) {
             ZStack(alignment: .bottomLeading) {
@@ -86,34 +89,38 @@ struct HomeView: View {
 
     func moreMarketplaceContracts() -> some View {
         return (
-            ZStack {
-                RoundedRectangle(cornerRadius: 16)
-                    .inset(by: 0.5)
-                    .stroke(Constants.Colors.grey02, lineWidth: 1)
-                    .frame(width: 181, height: 222)
-                    .background(.white)
-                    .cornerRadius(16)
-                    .shadow(color: Constants.Colors.grey00, radius: 5, x: 0, y: 4)
-                VStack {
-                    Text("View More")
-                        .foregroundStyle(Constants.Colors.grey03)
-                    Image(systemName: "arrowshape.forward.circle.fill")
-                        .resizable()
-                        .foregroundStyle(Constants.Colors.grey03)
-                        .frame(width: 42, height: 42)
+            Button {
+                tabSelection = 1
+            } label: {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .inset(by: 0.5)
+                        .stroke(Constants.Colors.grey02, lineWidth: 1)
+                        .frame(width: 181, height: 222)
+                        .background(.white)
+                        .cornerRadius(16)
+                        .shadow(color: Constants.Colors.grey00, radius: 5, x: 0, y: 4)
+                    VStack {
+                        Text("View More")
+                            .foregroundStyle(Constants.Colors.grey03)
+                        Image(systemName: "arrowshape.forward.circle.fill")
+                            .resizable()
+                            .foregroundStyle(Constants.Colors.grey03)
+                            .frame(width: 42, height: 42)
+                    }
                 }
-            }
                 .font(Constants.Fonts.subheader)
                 .frame(width: 181, height: 222)
                 .background {
                     RoundedRectangle(cornerRadius: 16)
                         .foregroundStyle(Constants.Colors.white)
                 }
+            }
         )
     }
 
 }
 
 #Preview {
-    HomeView()
+    HomeView(tabSelection: .constant(0))
 }

@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct MarketplaceView: View {
-    
+
+    // change this to change the tab programatically
+    @Binding var tabSelection: Int
+
     @State var searchText: String = ""
     @State var selectedStat: Stat = .points
     @State private var selectedRarity: Rarity?
@@ -109,5 +112,5 @@ struct MarketplaceView: View {
 }
 
 #Preview {
-    MarketplaceView()
+    MarketplaceView(tabSelection: .constant(0))
 }
