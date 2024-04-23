@@ -11,8 +11,27 @@ struct MarketplaceView: View {
     
     @State var searchText: String = ""
     @State var selectedStat: Stat = .points
+    @State private var selectedRarity: Rarity?
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    
+    var filteredContracts: [Contract] {
+            let query = searchText.lowercased()
+            return Contract.dummyData.filter { contract in
+                guard let player = Player.dummyData.first(where: { $0.id == contract.playerId }) else {
+                    return false
+                }
+                let playerName = "\(player.firstName) \(player.lastName)".lowercased()
+
+                return (searchText.isEmpty ||
+                    playerName.contains(query) ||
+                    player.hometown.lowercased().contains(query) ||
+                    contract.opposingTeam.lowercased().contains(query) ||
+                    contract.event.lowercased().contains(query) ||
+                    "\(contract.eventThreshold)".contains(searchText)) &&
+                    (selectedRarity == nil || contract.rarity == selectedRarity)
+            }
+        }
 
     var body: some View {
 
@@ -70,9 +89,9 @@ struct MarketplaceView: View {
                         }
                         .padding(EdgeInsets(top: -8, leading: 16, bottom: -8, trailing: 0))
                         LazyVGrid(columns: columns, spacing: 16) {
-                            ForEach(Contract.dummyData) { contract in
-                                ContractCard(contract: contract)
+                            ForEach(filteredContracts, id: \.id) { contract in ContractCard(contract: contract)
                             }
+                            .cornerRadius(16)
                         }
                     .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
                 }

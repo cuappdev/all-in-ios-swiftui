@@ -25,8 +25,8 @@ struct ProfileView: View {
                             .foregroundStyle(.black)
                         Spacer()
                         HStack {
-                            Image("Money")
-                            Text("1000")
+                            Image("RedMoney")
+                            Text("1,000")
                                 .font(.system(size: 18, weight: .bold))
                                 .foregroundStyle(.black)
                         }
