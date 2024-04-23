@@ -10,6 +10,7 @@ import SwiftUI
 struct MarketplaceView: View {
     
     @State var searchText: String = ""
+    @State var selectedStat: Stat = .points
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
@@ -63,7 +64,11 @@ struct MarketplaceView: View {
                                 .fill(Constants.Colors.white)
                                 .stroke(Constants.Colors.grey02, lineWidth: 1)
                         )
-                        .padding()
+                        .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
+                        PillSelectView(Stat.getAll()) { newStat in
+                            selectedStat = newStat
+                        }
+                        .padding(EdgeInsets(top: -8, leading: 16, bottom: -8, trailing: 0))
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(Contract.dummyData) { contract in
                                 ContractCard(contract: contract)
