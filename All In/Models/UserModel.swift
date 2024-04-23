@@ -10,7 +10,7 @@ struct User: Codable {
     let id: Int
     let username: String
     let email: String
-    let balance: Double
+    let balance: Int
     let contracts: [Contract]
     let sellerTransations: [Transaction]
     let buyerTransactions: [Transaction]
@@ -24,7 +24,7 @@ extension User {
             id: 0,
             username: "antoinztte",
             email: "act238@cornell.edu",
-            balance: 1500.0,
+            balance: 1500,
             contracts: [
                 Contract.dummyData[0],
                 Contract.dummyData[1]
@@ -36,7 +36,7 @@ extension User {
             id: 1,
             username: "antoinztte",
             email: "act238@cornell.edu",
-            balance: 1000.0,
+            balance: 1000,
             contracts: [],
             sellerTransations: [],
             buyerTransactions: []

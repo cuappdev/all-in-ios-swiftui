@@ -8,7 +8,7 @@
 protocol Chest {
 
     var type: ChestType { get }
-    var price: Double { get }
+    var price: Int { get }
 
 }
 
@@ -22,7 +22,7 @@ enum ChestType {
 struct RarityChest: Chest {
 
     var type: ChestType = ChestType.rarity
-    var price: Double
+    var price: Int
     var rarity: Rarity
 
     enum Rarity: String {
@@ -37,7 +37,7 @@ struct RarityChest: Chest {
 struct PlayerChest: Chest {
 
     var type: ChestType = ChestType.player
-    var price: Double
+    var price: Int
     var player: Player
 
 }

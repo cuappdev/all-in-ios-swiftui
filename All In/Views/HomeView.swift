@@ -14,18 +14,16 @@ struct HomeView: View {
             ZStack(alignment: .bottomLeading) {
                 Constants.Colors.white
                     .frame(height: 129)
-                HStack(alignment: .bottom) {
+                HStack {
                     Text("All In")
                         .font(Constants.Fonts.title)
                         .foregroundStyle(Constants.Colors.black)
                     Spacer()
                     HStack {
-                        Image("Money")
-                            .renderingMode(.template)
-                            .foregroundStyle(Constants.Colors.red)
-                        Text("1,000")
-                            .font(Constants.Fonts.subheader)
-                            .foregroundStyle(Constants.Colors.black)
+                        Image("RedMoney")
+                        Text(1000.withCommas())
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundStyle(.black)
                     }
                 }
                 .padding()

@@ -32,7 +32,7 @@ struct ProfileView: View {
                         Spacer()
                         HStack {
                             Image("RedMoney")
-                            Text(String(user.balance))
+                            Text(user.balance.withCommas())
                                 .font(.system(size: 18, weight: .bold))
                                 .foregroundStyle(.black)
                         }

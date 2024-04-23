@@ -47,7 +47,7 @@ struct MarketplaceView: View {
                     Spacer()
                     HStack {
                         Image("RedMoney")
-                        Text("1,000")
+                        Text(1000.withCommas())
                             .font(.system(size: 18, weight: .bold))
                             .foregroundStyle(.black)
                     }
