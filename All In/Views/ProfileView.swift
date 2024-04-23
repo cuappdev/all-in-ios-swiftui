@@ -48,12 +48,9 @@ struct ProfileView: View {
                                     .cornerRadius(100)
                                     .shadow(color: .black.opacity(0.25), radius: 2)
                                 VStack(alignment: .leading) {
-                                    Text("Anton Matchev")
+                                    Text("@antonmatchev")
                                         .font(.system(size: 24, weight: .semibold))
-                                    Text("Active Contracts: 5")
-                                        .font(.system(size: 13, weight: .regular))
-                                        .foregroundStyle(.black)
-                                    Text("Past Contracts: 10")
+                                    Text("Active Contracts: 5 \nPast Contracts: 10")
                                         .font(.system(size: 13, weight: .regular))
                                         .foregroundStyle(.black)
                                 }
@@ -65,7 +62,9 @@ struct ProfileView: View {
                                 ForEach(Contract.dummyData) { contract in
                                     ContractCard(contract: contract)
                                 }
-                            }.padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
+                                .cornerRadius(16)
+                            }
+                            .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
                         }
                     }
                 }
