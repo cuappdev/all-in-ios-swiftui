@@ -103,6 +103,7 @@ struct MarketplaceView: View {
                 .frame(height: 108)
         }
         .ignoresSafeArea(edges: .all)
+        .background(Constants.Colors.grey00)
     }
 
 }
