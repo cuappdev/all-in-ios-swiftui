@@ -156,7 +156,7 @@ extension PlayerData {
         PlayerData(
             id: 0,
             gameDate: Date(),
-            opponent: "Columbia",
+            opponent: "columbia",
             played: true,
             points: 40,
             minutes: 50,
@@ -177,7 +177,7 @@ extension PlayerData {
         PlayerData(
             id: 1,
             gameDate: Date().addingTimeInterval(-86400),
-            opponent: "Harvard",
+            opponent: "harvard",
             played: true,
             points: 46,
             minutes: 50,
@@ -198,7 +198,7 @@ extension PlayerData {
         PlayerData(
             id: 2,
             gameDate: Date().addingTimeInterval(-172800),
-            opponent: "Princeton",
+            opponent: "princeton",
             played: false,
             points: 15,
             minutes: 0,
@@ -219,7 +219,7 @@ extension PlayerData {
         PlayerData(
             id: 3,
             gameDate: Date().addingTimeInterval(-172800 - 86400),
-            opponent: "Princeton",
+            opponent: "princeton",
             played: false,
             points: 10,
             minutes: 0,
@@ -240,7 +240,7 @@ extension PlayerData {
         PlayerData(
             id: 4,
             gameDate: Date().addingTimeInterval(-172800 - 172800),
-            opponent: "Princeton",
+            opponent: "princeton",
             played: false,
             points: 13,
             minutes: 0,
@@ -261,7 +261,7 @@ extension PlayerData {
         PlayerData(
             id: 5,
             gameDate: Date().addingTimeInterval(-172800 - 172800 - 86400),
-            opponent: "Princeton",
+            opponent: "dartmouth",
             played: false,
             points: 23,
             minutes: 0,
@@ -282,7 +282,7 @@ extension PlayerData {
         PlayerData(
             id: 6,
             gameDate: Date().addingTimeInterval(-172800 - 172800 - 172800),
-            opponent: "Princeton",
+            opponent: "lehigh",
             played: false,
             points: 34,
             minutes: 0,
