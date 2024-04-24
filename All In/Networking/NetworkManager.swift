@@ -95,9 +95,26 @@ class NetworkManager {
         }
     }
 
+    // MARK: - GET player image
+
+    func getPlayerImage(id: Int, completion: @escaping (UIImage) -> Void) {
+
+        AF.request("\(base)/players/\(id)", method: .get).responseImage { response in
+            switch response.result {
+            case .success(let image):
+                completion(image)
+            case .failure(let error):
+                print("ERROR in NetworkManager.getPlayerImage: \(error)")
+            }
+        }
+    }
+
     // MARK: - POST buy rarity contract from chest
 
-    func getRarity(buyPrice: Double, rarity: Rarity, completion: @escaping (Contract) -> Void) {
+    func getRarityContract(buyPrice: Double, rarity: Rarity, completion: @escaping (Contract) -> Void) {
+
+        completion(Contract.dummyData[0])
+
         let id = UserDefaults.standard.integer(forKey: UserDefaultKeys.userID)
         
         let parameters = [
@@ -184,7 +201,30 @@ class NetworkManager {
         }
     }
 
-    // MARK: - GET all contract a user owns
+    // MARK: - GET all players:
 
+    func getAllPlayers(completion: @escaping ([Player]) -> Void) {
+        AF.request("\(base)/players", method: .get).responseDecodable(of: [Player].self) { response in
+            switch response.result {
+            case .success(let players):
+                completion(players)
+            case .failure(let error):
+                print("ERROR in NetworkManager.getAllPlayers: \(error)")
+            }
+        }
+    }
+
+}
+
+// MARK: - HELPER FUNCTIONS
+
+extension NetworkManager {
+    
+    func getRandomPlayer(completion: @escaping (Player) -> Void) {
+        self.getAllPlayers { players in
+            let randomPlayer = players.randomElement() ?? players[0]
+            completion(randomPlayer)
+        }
+    }
 
 }

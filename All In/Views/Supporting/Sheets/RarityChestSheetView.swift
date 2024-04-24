@@ -13,6 +13,9 @@ struct RarityChestSheetView: View {
 
     @Binding var showSheet: Bool
 
+    @State var showWheelSpin = false
+    @State var returnedContract: Contract? = nil
+
     var body: some View {
         SheetView(title: "\(rarity.rawValue) Chest", subTitle: "", description: "Contains a \(rarity.rawValue) contract", buttonText: "Buy Now", showSheet: $showSheet) {
             // The middle of the half sheet
@@ -20,8 +23,18 @@ struct RarityChestSheetView: View {
                 .resizable()
                 .frame(width: 112, height: 96)
         } buttonCallback: {
-            print("BUY CHEST NETWORKING CALL HERE")
+            NetworkManager.shared.getRarityContract(buyPrice: 1200, rarity: rarity) { contract in
+                returnedContract = contract
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                    showWheelSpin = true
+                }
+            }
         }
+        .sheet(isPresented: $showWheelSpin) {
+            WheelSpinSheet(winningContract: $returnedContract)
+                .presentationDetents([.fraction(0.45)])
+        }
+
     }
 
 }

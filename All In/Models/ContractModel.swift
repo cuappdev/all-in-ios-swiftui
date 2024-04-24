@@ -58,6 +58,21 @@ enum Rarity: String, Codable {
         }
     }
 
+    static func getRandom() -> Rarity {
+        let rand = Int.random(in: 0...3)
+        switch rand {
+            case 0:
+                return Rarity.Common
+            case 1:
+                return Rarity.Rare
+            case 2:
+                return Rarity.Epic
+            case 3:
+                return Rarity.Legendary
+        default:
+            return Rarity.Common
+        }
+    }
 }
 
 extension Contract {
