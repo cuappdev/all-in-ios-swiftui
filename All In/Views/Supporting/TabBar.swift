@@ -12,41 +12,46 @@ struct TabBar: View {
 
     let page: String
     let tabItemSize: CGFloat = 24
-
+    
     var body: some View {
         ZStack {
             Constants.Colors.white
             HStack {
                 VStack {
                     Image("Home")
+                        .renderingMode(.template)
                         .resizable()
                         .frame(width: tabItemSize, height: tabItemSize)
                         .foregroundStyle(page == "home" ? Constants.Colors.red: Constants.Colors.grey03)
                     Text("Home")
                         .font(.system(size: 12, weight: .regular))
-                        .foregroundStyle(.brown)
+//                        .foregroundStyle(.brown)
+                        .foregroundStyle(page == "home" ? Constants.Colors.red: Constants.Colors.grey03)
                     
                 }
                 Spacer()
                 VStack {
                     Image("Market")
+                        .renderingMode(.template)
                         .resizable()
                         .frame(width: tabItemSize, height: tabItemSize)
-                        .foregroundStyle(page == "Marketplace" ? Constants.Colors.red: Constants.Colors.grey03)
+                        .foregroundStyle(page == "market" ? Constants.Colors.red: Constants.Colors.grey03)
                     Text("Marketplace")
                         .font(.system(size: 12, weight: .regular))
-                        .foregroundStyle(.brown)
+//                        .foregroundStyle(.brown)
+                        .foregroundStyle(page == "market" ? Constants.Colors.red: Constants.Colors.grey03)
                     
                 }
                 Spacer()
                 VStack {
                     Image("Person")
+                        .renderingMode(.template)
                         .resizable()
                         .frame(width: tabItemSize, height: tabItemSize)
                         .foregroundStyle(page == "profile" ? Constants.Colors.red: Constants.Colors.grey03)
                     Text("Profile")
                         .font(.system(size: 12, weight: .regular))
-                        .foregroundStyle(.brown)
+                        .foregroundStyle(page == "profile" ? Constants.Colors.red: Constants.Colors.grey03)
                     
                 }
             }
@@ -56,5 +61,5 @@ struct TabBar: View {
 }
 
 #Preview {
-    TabBar(page: "home")
+    TabBar(page: "market")
 }
