@@ -98,7 +98,7 @@ extension Contract {
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
             forSale: true,
-            playerId: 0,
+            playerId: 2,
             ownerId: 0
         ),
         Contract(
@@ -111,7 +111,7 @@ extension Contract {
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
             forSale: true,
-            playerId: 0,
+            playerId: 3,
             ownerId: 0
         ),
         Contract(
@@ -124,7 +124,7 @@ extension Contract {
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
             forSale: true,
-            playerId: 0,
+            playerId: 2,
             ownerId: 0
         ),
         Contract(
@@ -137,14 +137,14 @@ extension Contract {
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
             forSale: true,
-            playerId: 0,
+            playerId: 1,
             ownerId: 0
         )
     ]
 
     // Getting the playername
     static func getPlayer(_ contract: Contract) -> Player {
-        // TODO: BACKEND CALL
-        Player.dummyData[0]
+        Player.dummyData
+            .filter { $0.id == contract.playerId }[0]
     }
 }

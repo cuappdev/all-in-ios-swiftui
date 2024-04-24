@@ -104,5 +104,5 @@ struct ContractCard: View {
 }
 
 #Preview {
-    ContractCard(contract: Contract.dummyData[1])
+    ContractCard(contract: Contract.dummyData[0])
 }
