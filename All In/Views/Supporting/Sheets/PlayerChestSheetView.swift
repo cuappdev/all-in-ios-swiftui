@@ -37,6 +37,13 @@ struct PlayerChestSheetView: View {
                     selectedStat = newStat
                 }.padding(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: -24))
 
+                HStack {
+                    Text(selectedStat.getName())
+                        .foregroundColor(Constants.Colors.grey03)
+                        .font(.system(size: 24, weight: .bold))
+                        .frame(width: 365, height: 50, alignment: .leading)
+                }
+
                 player.graph(stat: selectedStat, selectedDate: activeDate) { strDate in
                     // ON DRAG COMPLETION HANDLER
                     activeDate = Date(timeIntervalSinceReferenceDate: TimeInterval(strDate))
