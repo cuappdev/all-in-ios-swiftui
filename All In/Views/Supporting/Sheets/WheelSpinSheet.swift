@@ -18,7 +18,7 @@ struct WheelSpinSheet: View {
                 .font(.system(size: 36, weight: .bold))
                 .foregroundStyle(.black)
             Text("You won a \(winningContract?.rarity.rawValue ?? "common") contract")
-            WheelViewController()
+            ViewController(UIWheelViewController())
         }
         .padding()
     }
