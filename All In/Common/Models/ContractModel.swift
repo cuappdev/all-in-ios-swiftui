@@ -32,6 +32,19 @@ enum Rarity: String, Codable {
     case epic
     case legendary
 
+    var string: String {
+        switch self {
+        case .common:
+            return "Common"
+        case .rare:
+            return "Rare"
+        case .epic:
+            return "Epic"
+        case .legendary:
+            return "Legendary"
+        }
+    }
+
     func getChestImage() -> Image {
         switch self {
         case .common:

@@ -34,7 +34,7 @@ struct RarityChestView: View {
                             .resizable()
                             .frame(width: 112, height: 96)
 
-                        Text("\(rarity.rawValue)")
+                        Text("\(rarity.string)")
                             .foregroundStyle(rarity.getColor())
                             .font(Constants.Fonts.subheader)
 
