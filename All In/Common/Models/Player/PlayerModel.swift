@@ -64,36 +64,36 @@ struct Player: Identifiable, Codable {
                     }
                 }
             }
-                .animation(.easeInOut(duration: 0.2))
-                .aspectRatio(1.0, contentMode: .fit)
-                .chartOverlay{ pr in
-                    GeometryReader { geoProxy in
-                        Rectangle()
-                            .foregroundStyle(.black.opacity(0.0001))
-                            .gesture(DragGesture().onChanged { value in
-                                let origin = geoProxy[pr.plotAreaFrame].origin
-                                let location = CGPoint(
-                                    x: value.location.x - origin.x,
-                                    y: value.location.y - origin.y
-                                )
+            .animation(.easeInOut(duration: 0.2))
+            .aspectRatio(1.0, contentMode: .fit)
+            .chartOverlay{ pr in
+                GeometryReader { geoProxy in
+                    Rectangle()
+                        .foregroundStyle(.black.opacity(0.0001))
+                        .gesture(DragGesture().onChanged { value in
+                            let origin = geoProxy[pr.plotAreaFrame].origin
+                            let location = CGPoint(
+                                x: value.location.x - origin.x,
+                                y: value.location.y - origin.y
+                            )
 
-                                let (day, value) = pr.value(at: location, as: (Int, Double).self)!
-                                completion(day)
-                            })
-                            .onTapGesture(count: 1, coordinateSpace: .local, perform: { value in
-                                let origin = geoProxy[pr.plotAreaFrame].origin
-                                let location = CGPoint(
-                                    x: value.x - origin.x,
-                                    y: value.y - origin.y
-                                )
+                            let (day, _) = pr.value(at: location, as: (Int, Double).self)!
+                            completion(day)
+                        })
+                        .onTapGesture(count: 1, coordinateSpace: .local, perform: { value in
+                            let origin = geoProxy[pr.plotAreaFrame].origin
+                            let location = CGPoint(
+                                x: value.x - origin.x,
+                                y: value.y - origin.y
+                            )
 
-                                let (day, value) = pr.value(at: location, as: (Int, Double).self)!
-                                completion(day)
-                            })
+                            let (day, _) = pr.value(at: location, as: (Int, Double).self)!
+                            completion(day)
+                        })
 
-                    }
                 }
-            )
+            }
+        )
     }
 
 }

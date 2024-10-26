@@ -37,4 +37,8 @@ struct Constants {
         static let caption = Font.system(size: 12, weight: .regular, design: .default)
     }
 
+    struct UserDefaultKeys {
+        static let userID = "UserID"
+    }
+
 }

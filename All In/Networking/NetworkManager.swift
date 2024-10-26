@@ -28,7 +28,7 @@ class NetworkManager {
         AF.request("\(base)/users/", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in
             switch response.result {
             case .success(let user):
-                UserDefaults.standard.setValue(user.id, forKey: UserDefaultKeys.userID)
+                UserDefaults.standard.setValue(user.id, forKey: Constants.UserDefaultKeys.userID)
             case .failure(let error):
                 print("ERROR in NetworkManager.createUser: \(error)")
             }
@@ -51,7 +51,7 @@ class NetworkManager {
     // MARK: - PATCH upload user image
 
     func uploadUserImage(image: UIImage, completion: @escaping (UIImage) -> Void) {
-        let id = UserDefaults.standard.integer(forKey: UserDefaultKeys.userID)
+        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
 
         AF.upload(multipartFormData: { multipartFormData in
             if let data = image.jpegData(compressionQuality: 0.5) {
@@ -70,8 +70,8 @@ class NetworkManager {
     // MARK: - GET user image
 
     func getUserImage(completion: @escaping (UIImage) -> Void) {
-        let id = UserDefaults.standard.integer(forKey: UserDefaultKeys.userID)
-        
+        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
+
         AF.request("\(base)/users/\(id)", method: .get).responseImage { response in
             switch response.result {
             case .success(let image):
@@ -115,8 +115,8 @@ class NetworkManager {
 
         completion(Contract.dummyData[0])
 
-        let id = UserDefaults.standard.integer(forKey: UserDefaultKeys.userID)
-        
+        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
+
         let parameters = [
             "buy_price": buyPrice,
             "rarity": rarity.rawValue
@@ -136,7 +136,7 @@ class NetworkManager {
     // MARK: - POST buy player contract from chest
 
     func getPlayerContract(buyPrice: Double, playerID: Int, completion: @escaping (Contract) -> Void) {
-        let id = UserDefaults.standard.integer(forKey: UserDefaultKeys.userID)
+        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
 
         let parameters = [
             "buy_price": buyPrice,
@@ -168,7 +168,7 @@ class NetworkManager {
     // MARK: - POST buy a contract
 
     func buyContract(contractID: Int, completion: @escaping (Contract) -> Void) {
-        let id = UserDefaults.standard.integer(forKey: UserDefaultKeys.userID)
+        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
 
         let parameters = [
             "buyer_id": id
