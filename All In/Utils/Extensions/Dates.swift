@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: Change into an extension
 let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateFormat = "MM/dd" // Customize the date format
