@@ -9,14 +9,14 @@ import SwiftUI
 
 struct PlayerChestView: View {
 
+    @StateObject var viewModel = ViewModel()
+
     var title: String
     var price: Double
     var player: Player
 
     private var chestImage = Image("PlayerChest")
-
     @State var showSheet = false
-    @State var chestPlayer = Image("")
 
     init(fromPlayer player: Player, chestPrice: Double) {
         chestImage = Image("PlayerChest")
@@ -45,7 +45,7 @@ struct PlayerChestView: View {
                             chestImage
                                 .resizable()
 
-                            chestPlayer
+                            viewModel.chestPlayer
                                 .resizable()
                                 .frame(width: 48, height: 64)
                                 .background()
@@ -85,9 +85,7 @@ struct PlayerChestView: View {
                 .presentationDetents([.fraction(0.9)])
         }
         .onAppear {
-            NetworkManager.shared.getUserImage(completion: { image in
-                chestPlayer = Image(uiImage: image)
-            })
+            viewModel.getUserImage()
         }
     }
 
