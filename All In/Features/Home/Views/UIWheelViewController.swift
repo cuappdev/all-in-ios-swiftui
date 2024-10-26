@@ -32,7 +32,7 @@ class UIWheelViewController: UIViewController {
     // MARK: - Setup
 
     private func addCard() {
-        let card = WheelItemView()
+        let card = WheelItemUIView()
         let background = UIView()
 
         background.addSubview(card)

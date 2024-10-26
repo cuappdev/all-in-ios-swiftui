@@ -1,5 +1,5 @@
 //
-//  WheelItemView.swift
+//  WheelItemUIView.swift
 //  All In
 //
 //  Created by Peter Bidoshi on 4/23/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 
-class WheelItemView: UIView {
+class WheelItemUIView: UIView {
 
     // MARK: - Properties (View)
 

@@ -56,7 +56,7 @@ struct RarityChestView: View {
             .frame(width: 150, height: 195)
         }
         .sheet(isPresented: $showSheet) {
-            RarityChestSheetView(rarity: rarity, showSheet: $showSheet)
+            RarityChestSheetView(showSheet: $showSheet, rarity: rarity)
                 .presentationDetents([.fraction(0.4)])
         }
     }
