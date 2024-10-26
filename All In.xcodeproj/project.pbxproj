@@ -140,13 +140,6 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		CE101CDF2BA7C40900218E40 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		CE101CE82BA7E7B600218E40 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +189,6 @@
 				FD3F02372CC596CE006B86A8 /* Home */,
 				CEEF82CD2BD77CCB00B9D793 /* Extensions */,
 				D0CD31802BD5A2EB00E7136C /* Networking */,
-				CE101CDF2BA7C40900218E40 /* Models */,
 				CE101CDC2BA776ED00218E40 /* Assets */,
 				D057FD832BA76F7B00EF552D /* Utils */,
 				D0155AAA2B952697003FE6BC /* Views */,
