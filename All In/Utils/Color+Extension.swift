@@ -1,5 +1,5 @@
 //
-//  ColorHex.swift
+//  Color+Extension.swift
 //  All In
 //
 //  Created by Daniel Chuang on 3/17/24.
