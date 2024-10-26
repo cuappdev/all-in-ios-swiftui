@@ -50,7 +50,7 @@ struct ContractCard: View {
                                     .foregroundStyle(Constants.Colors.grey03)
                                     .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
 
-                                Text("VS \(dateFormatter.string(from: Date() /*contract.maturityDate*/))")
+                                Text("VS \(Date().monthDayFormat /*contract.maturityDate*/)")
                                     .font(.system(size: 12, weight: .regular))
                                     .foregroundStyle(Constants.Colors.grey03)
 
