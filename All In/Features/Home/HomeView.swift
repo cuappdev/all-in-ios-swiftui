@@ -72,7 +72,7 @@ struct HomeView: View {
                                     ContractCard(contract: contract)
                                         .cornerRadius(16)
                                 }
-                                moreMarketplaceContracts()
+                                moreMarketplaceContracts
                             }
                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                         }
@@ -87,7 +87,7 @@ struct HomeView: View {
         .ignoresSafeArea(edges: .all)
     }
 
-    func moreMarketplaceContracts() -> some View {
+    private var moreMarketplaceContracts: some View {
         (
             Button {
                 tabSelection = 1

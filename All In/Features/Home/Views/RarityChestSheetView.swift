@@ -9,12 +9,10 @@ import SwiftUI
 
 struct RarityChestSheetView: View {
 
-    let rarity: Rarity
-
+    @StateObject private var viewModel = ViewModel()
     @Binding var showSheet: Bool
 
-    @State var showWheelSpin = false
-    @State var returnedContract: Contract?
+    let rarity: Rarity
 
     var body: some View {
         SheetView(
@@ -29,15 +27,10 @@ struct RarityChestSheetView: View {
                 .resizable()
                 .frame(width: 112, height: 96)
         } buttonCallback: {
-            NetworkManager.shared.getRarityContract(buyPrice: 1200, rarity: rarity) { contract in
-                returnedContract = contract
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                    showWheelSpin = true
-                }
-            }
+            viewModel.getRarityContract(rarity: rarity)
         }
-        .sheet(isPresented: $showWheelSpin) {
-            WheelSpinSheet(winningContract: $returnedContract)
+        .sheet(isPresented: $viewModel.showWheelSpin) {
+            WheelSpinSheet(winningContract: $viewModel.returnedContract)
                 .presentationDetents([.fraction(0.45)])
         }
 
