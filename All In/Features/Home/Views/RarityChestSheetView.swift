@@ -18,9 +18,9 @@ struct RarityChestSheetView: View {
 
     var body: some View {
         SheetView(
-            title: "\(rarity.rawValue) Chest",
+            title: "\(rarity.string) Chest",
             subTitle: "",
-            description: "Contains a \(rarity.rawValue) contract",
+            description: "Contains a \(rarity.string) contract",
             buttonText: "Buy Now",
             showSheet: $showSheet
         ) {

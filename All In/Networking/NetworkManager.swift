@@ -128,7 +128,7 @@ class NetworkManager {
 
         let parameters = [
             "buy_price": buyPrice,
-            "rarity": rarity.rawValue
+            "rarity": rarity.string
         ] as [String: Any]
 
         AF.request(
