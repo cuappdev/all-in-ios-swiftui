@@ -86,11 +86,39 @@ enum Stat {
     }
 
     static func getAll() -> [Stat] {
-        return [.fieldGoalsMade, .fieldGoalsAttempted, .threePointersMade, .threePointersAttempted, .freeThrowsMade, .freeThrowsAttempted, .rebounds, .assists, .steals, .blocks, .turnovers, .personalFouls, .points]
+        [
+            .fieldGoalsMade,
+            .fieldGoalsAttempted,
+            .threePointersMade,
+            .threePointersAttempted,
+            .freeThrowsMade,
+            .freeThrowsAttempted,
+            .rebounds,
+            .assists,
+            .steals,
+            .blocks,
+            .turnovers,
+            .personalFouls,
+            .points
+        ]
     }
 
     static func getAllAbv() -> [String] {
-        return [Stat.fieldGoalsMade.getAbv(), Stat.fieldGoalsAttempted.getAbv(), Stat.threePointersMade.getAbv(), Stat.threePointersAttempted.getAbv(), Stat.freeThrowsMade.getAbv(), Stat.freeThrowsAttempted.getAbv(), Stat.rebounds.getAbv(), Stat.assists.getAbv(), Stat.steals.getAbv(), Stat.blocks.getAbv(), Stat.turnovers.getAbv(), Stat.personalFouls.getAbv(), Stat.points.getAbv()]
+        [
+            Stat.fieldGoalsMade.getAbv(),
+            Stat.fieldGoalsAttempted.getAbv(),
+            Stat.threePointersMade.getAbv(),
+            Stat.threePointersAttempted.getAbv(),
+            Stat.freeThrowsMade.getAbv(),
+            Stat.freeThrowsAttempted.getAbv(),
+            Stat.rebounds.getAbv(),
+            Stat.assists.getAbv(),
+            Stat.steals.getAbv(),
+            Stat.blocks.getAbv(),
+            Stat.turnovers.getAbv(),
+            Stat.personalFouls.getAbv(),
+            Stat.points.getAbv()
+        ]
     }
 
 }

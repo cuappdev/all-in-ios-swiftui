@@ -14,10 +14,16 @@ struct RarityChestSheetView: View {
     @Binding var showSheet: Bool
 
     @State var showWheelSpin = false
-    @State var returnedContract: Contract? = nil
+    @State var returnedContract: Contract?
 
     var body: some View {
-        SheetView(title: "\(rarity.rawValue) Chest", subTitle: "", description: "Contains a \(rarity.rawValue) contract", buttonText: "Buy Now", showSheet: $showSheet) {
+        SheetView(
+            title: "\(rarity.rawValue) Chest",
+            subTitle: "",
+            description: "Contains a \(rarity.rawValue) contract",
+            buttonText: "Buy Now",
+            showSheet: $showSheet
+        ) {
             // The middle of the half sheet
             rarity.getChestImage()
                 .resizable()

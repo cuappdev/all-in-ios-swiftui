@@ -66,7 +66,7 @@ struct Player: Identifiable, Codable {
             }
             .animation(.easeInOut(duration: 0.2))
             .aspectRatio(1.0, contentMode: .fit)
-            .chartOverlay{ pr in
+            .chartOverlay { pr in
                 GeometryReader { geoProxy in
                     Rectangle()
                         .foregroundStyle(.black.opacity(0.0001))
@@ -110,7 +110,7 @@ extension Player {
             height: 79,
             weight: 220,
             hometown: "Murphy, Texas",
-            highschool: "Plano East Senior HS",            
+            highschool: "Plano East Senior HS",
             contracts: Contract.dummyData,
             playerData: PlayerData.dummyData
         ),

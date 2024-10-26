@@ -55,10 +55,10 @@ struct HomeView: View {
                             .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 0))
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 16) {
-                                RarityChestView(price: 1200, rarity: .Common)
-                                RarityChestView(price: 1500, rarity: .Rare)
-                                RarityChestView(price: 2100, rarity: .Epic)
-                                RarityChestView(price: 2500, rarity: .Legendary)
+                                RarityChestView(price: 1200, rarity: .common)
+                                RarityChestView(price: 1500, rarity: .rare)
+                                RarityChestView(price: 2100, rarity: .epic)
+                                RarityChestView(price: 2500, rarity: .legendary)
                             }
                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                         }
@@ -88,7 +88,7 @@ struct HomeView: View {
     }
 
     func moreMarketplaceContracts() -> some View {
-        return (
+        (
             Button {
                 tabSelection = 1
             } label: {

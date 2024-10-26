@@ -63,8 +63,6 @@ struct RarityChestView: View {
 
 }
 
-
 #Preview {
-    RarityChestView(price: 1000, rarity: .Legendary)
+    RarityChestView(price: 1000, rarity: .legendary)
 }
-

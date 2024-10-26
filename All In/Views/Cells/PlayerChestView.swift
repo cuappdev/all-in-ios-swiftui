@@ -59,7 +59,6 @@ struct PlayerChestView: View {
                         }
                         .frame(width: 112, height: 96)
 
-
                         Text(title)
                             .foregroundStyle(Constants.Colors.red)
                             .font(Constants.Fonts.subheader)
@@ -93,7 +92,6 @@ struct PlayerChestView: View {
     }
 
 }
-
 
 #Preview {
     PlayerChestView(fromPlayer: Player.dummyData[0], chestPrice: 1720)

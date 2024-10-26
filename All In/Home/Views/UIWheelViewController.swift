@@ -74,7 +74,10 @@ class UIWheelViewController: UIViewController {
         // run it in 0.5 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             UIView.animate(withDuration: 3) {
-                self.scrollView.contentOffset = CGPoint(x: self.scrollView.contentSize.width - self.scrollView.frame.width, y: 0)
+                self.scrollView.contentOffset = CGPoint(
+                    x: self.scrollView.contentSize.width - self.scrollView.frame.width,
+                    y: 0
+                )
             }
         }
     }

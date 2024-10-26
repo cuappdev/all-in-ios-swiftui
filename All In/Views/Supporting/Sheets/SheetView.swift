@@ -14,12 +14,20 @@ struct SheetView<Extras>: View where Extras: View {
     let description: String
     let buttonText: String
     var buttonCallback: (() -> Void)?
-    
+
     @Binding var showSheet: Bool
 
     @ViewBuilder var extras: () -> Extras
 
-    init(title: String, subTitle: String, description: String, buttonText: String, showSheet: Binding<Bool>, extras: @escaping () -> Extras, buttonCallback: (() -> Void)? = nil) {
+    init(
+        title: String,
+        subTitle: String,
+        description: String,
+        buttonText: String,
+        showSheet: Binding<Bool>,
+        extras: @escaping () -> Extras,
+        buttonCallback: (() -> Void)? = nil
+    ) {
         self.title = title
         self.subTitle = subTitle
         self.description = description
@@ -30,7 +38,7 @@ struct SheetView<Extras>: View where Extras: View {
     }
 
     var body: some View {
-        VStack() {
+        VStack {
             HStack {
                 Text(title)
                 Text(subTitle)
@@ -70,7 +78,13 @@ struct SheetView<Extras>: View where Extras: View {
 }
 
 #Preview {
-    SheetView(title: "P. Bidoshi", subTitle: "#10 | PG", description: "The best player on this planet lmao", buttonText: "Buy Now!", showSheet: .constant(true)) {
+    SheetView(
+        title: "P. Bidoshi",
+        subTitle: "#10 | PG",
+        description: "The best player on this planet lmao",
+        buttonText: "Buy Now!",
+        showSheet: .constant(true)
+    ) {
         VStack {
             Image("Chest")
                 .resizable()

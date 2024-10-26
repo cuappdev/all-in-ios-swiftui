@@ -29,7 +29,13 @@ struct PlayerChestSheetView: View {
     }
 
     var body: some View {
-        SheetView(title: name, subTitle: "#\(number) | \(position)", description: "Contains a contract tied to this player", buttonText: "Buy Now", showSheet: $showSheet) {
+        SheetView(
+            title: name,
+            subTitle: "#\(number) | \(position)",
+            description: "Contains a contract tied to this player",
+            buttonText: "Buy Now",
+            showSheet: $showSheet
+        ) {
             // The middle of the half sheet
             VStack {
 
@@ -67,9 +73,9 @@ struct PlayerChestSheetView: View {
                         )
                 }
             }
-        } buttonCallback: {
-            print("BUY CHEST NETWORKING CALL HERE")
+            } buttonCallback: {
+                print("BUY CHEST NETWORKING CALL HERE")
         }
     }
-    
+
 }

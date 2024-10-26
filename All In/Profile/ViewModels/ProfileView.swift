@@ -18,12 +18,12 @@ struct ProfileView: View {
         _user = State(initialValue: user)
         _tabSelection = tabSelection
     }
-    
+
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
-    
+
     var body: some View {
         GeometryReader { geometry in
-            
+
             // Header
             VStack(spacing: 0) {
                 ZStack(alignment: .bottomLeading) {
@@ -44,12 +44,12 @@ struct ProfileView: View {
                     .padding()
                 }
                 Divider()
-                
+
                 // Main frontend
                 ScrollView {
                     ZStack {
                         Constants.Colors.grey00
-                        
+
                         VStack {
                             HStack(alignment: .center, spacing: 28) {
                                 Image("profile-test")
@@ -78,7 +78,7 @@ struct ProfileView: View {
                         }
                     }
                 }
-                
+
                 // Tab logic
                 TabBar(page: "profile")
                     .frame(height: 108)
@@ -92,4 +92,3 @@ struct ProfileView: View {
 #Preview {
     ProfileView(tabSelection: .constant(0), user: User.dummyData[0])
 }
-

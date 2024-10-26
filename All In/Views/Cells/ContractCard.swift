@@ -16,7 +16,7 @@ struct ContractCard: View {
         _contract = State(initialValue: contract)
         _player = State(initialValue: Contract.getPlayer(contract))
     }
-    
+
     @State var showSheet = false
 
     var body: some View {
@@ -31,28 +31,29 @@ struct ContractCard: View {
                     .background(.white)
                     .cornerRadius(16)
                     .shadow(color: Constants.Colors.grey00, radius: 5, x: 0, y: 4)
-                
+
                 VStack(alignment: .center, spacing: 26) {
-                    
+
                     VStack {
                         ZStack {
                             Constants.Colors.white.ignoresSafeArea()
-                            
+
                             VStack { // Card Content VStack
                                 Image("Player\(player.number)")
                                     .resizable()
                                     .frame(width: 82, height: 82)
                                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
-                                
-                                Text("\(Contract.getPlayer(contract).firstName) \(Contract.getPlayer(contract).lastName)")
+
+                                Text("\(Contract.getPlayer(contract).firstName)"
+                                     + "\(Contract.getPlayer(contract).lastName)")
                                     .font(.system(size: 14, weight: .bold))
                                     .foregroundStyle(Constants.Colors.grey03)
                                     .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
-                                
+
                                 Text("VS \(dateFormatter.string(from: Date() /*contract.maturityDate*/))")
                                     .font(.system(size: 12, weight: .regular))
                                     .foregroundStyle(Constants.Colors.grey03)
-                                
+
                                 HStack {
                                     VStack {
                                         Text("\(contract.eventThreshold)")
@@ -63,7 +64,7 @@ struct ContractCard: View {
                                             .foregroundStyle(Constants.Colors.black)
                                     }
                                     .frame(width: 60, height: 30, alignment: .center)
-                                    
+
                                     // Dashed line
                                     Path { path in
                                         path.move(to: CGPoint(x: 0, y: 0))
@@ -71,7 +72,7 @@ struct ContractCard: View {
                                     }
                                     .stroke(Constants.Colors.red, style: StrokeStyle(lineWidth: 1, dash: [2]))
                                     .frame(width: 1, height: 28)
-                                    
+
                                     Text("Cost: \(contract.buyPrice)\nGain: \(contract.value)")
                                         .font(.system(size: 10, weight: .regular))
                                         .foregroundStyle(Constants.Colors.black)
@@ -81,7 +82,7 @@ struct ContractCard: View {
                                 .frame(width: 146, height: 55)
                                 .background(Constants.Colors.grey00)
                                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                                
+
                             }
                             .frame(width: 181, height: 222)
                             .cornerRadius(16)

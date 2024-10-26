@@ -25,7 +25,15 @@ class NetworkManager {
             "email": email
         ]
 
-        AF.request("\(base)/users/", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in
+        AF.request(
+            "\(base)/users/",
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default
+        )
+        .responseDecodable(
+            of: User.self
+        ) { response in
             switch response.result {
             case .success(let user):
                 UserDefaults.standard.setValue(user.id, forKey: Constants.UserDefaultKeys.userID)
@@ -57,7 +65,8 @@ class NetworkManager {
             if let data = image.jpegData(compressionQuality: 0.5) {
                 multipartFormData.append(data, withName: "image")
             }
-        }, to: "\(base)/users/\(id)/image").responseImage { response in
+        }, to: "\(base)/users/\(id)/image")
+        .responseImage { response in
             switch response.result {
             case .success(let image):
                 completion(image)
@@ -120,10 +129,15 @@ class NetworkManager {
         let parameters = [
             "buy_price": buyPrice,
             "rarity": rarity.rawValue
-        ] as [String : Any]
+        ] as [String: Any]
 
-
-        AF.request("\(base)/users/\(id)/contracts", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: Contract.self) { response in
+        AF.request(
+            "\(base)/users/\(id)/contracts",
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default
+        )
+        .responseDecodable(of: Contract.self) { response in
             switch response.result {
             case .success(let contract):
                 completion(contract)
@@ -139,10 +153,18 @@ class NetworkManager {
         let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
 
         let parameters = [
-            "buy_price": buyPrice,
+            "buy_price": buyPrice
         ]
 
-        AF.request("\(base)/users/\(id)/players/\(playerID)/contracts", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: Contract.self) { response in
+        AF.request(
+            "\(base)/users/\(id)/players/\(playerID)/contracts",
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default
+        )
+        .responseDecodable(
+            of: Contract.self
+        ) { response in
             switch response.result {
             case .success(let contract):
                 completion(contract)
@@ -174,7 +196,13 @@ class NetworkManager {
             "buyer_id": id
         ]
 
-        AF.request("\(base)/contracts/\(contractID)/buy", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: Contract.self) { response in
+        AF.request(
+            "\(base)/contracts/\(contractID)/buy",
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default
+        )
+        .responseDecodable(of: Contract.self) { response in
             switch response.result {
             case .success(let contract):
                 completion(contract)
@@ -191,7 +219,13 @@ class NetworkManager {
             "sell_price": sellPrice
         ]
 
-        AF.request("\(base)/contracts/\(contractID)/sell", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: Contract.self) { response in
+        AF.request(
+            "\(base)/contracts/\(contractID)/sell",
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default
+        )
+        .responseDecodable(of: Contract.self) { response in
             switch response.result {
             case .success(let contract):
                 completion(contract)
@@ -219,7 +253,7 @@ class NetworkManager {
 // MARK: - HELPER FUNCTIONS
 
 extension NetworkManager {
-    
+
     func getRandomPlayer(completion: @escaping (Player) -> Void) {
         self.getAllPlayers { players in
             let randomPlayer = players.randomElement() ?? players[0]

@@ -31,7 +31,13 @@ struct PlayerContractSheetView: View {
     }
 
     var body: some View {
-        SheetView(title: name, subTitle: "#\(number) | \(position)", description: "Contains a contract tied to this player", buttonText: "Buy Now", showSheet: $showSheet) {
+        SheetView(
+            title: name,
+            subTitle: "#\(number) | \(position)",
+            description: "Contains a contract tied to this player",
+            buttonText: "Buy Now",
+            showSheet: $showSheet
+        ) {
             // The middle of the half sheet
             VStack {
                 HStack {
@@ -47,6 +53,5 @@ struct PlayerContractSheetView: View {
             }
         }
     }
-    
-}
 
+}

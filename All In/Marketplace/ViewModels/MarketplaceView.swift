@@ -17,7 +17,7 @@ struct MarketplaceView: View {
     @State private var selectedRarity: Rarity?
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
-    
+
     var filteredContracts: [Contract] {
             let query = searchText.lowercased()
             return Contract.dummyData.filter { contract in
@@ -63,7 +63,7 @@ struct MarketplaceView: View {
             ScrollView {
                 ZStack {
                     Constants.Colors.grey00
-                    
+
                     VStack {
                         // Search bar
                         HStack {
@@ -71,13 +71,16 @@ struct MarketplaceView: View {
                                 .foregroundColor(searchText.isEmpty ? Constants.Colors.grey03 : Constants.Colors.red)
                             TextField("Search", text: $searchText)
                                 .foregroundColor(Constants.Colors.grey03)
-                                .overlay(Image(systemName: "x.circle.fill")
+                                .overlay(
+                                    Image(
+                                        systemName: "x.circle.fill"
+                                    )
                                     .offset(x: 8)
                                     .opacity(searchText.isEmpty ? 0.0 : 1.0)
                                     .onTapGesture {
                                         searchText = ""
-                                    }
-                                         ,alignment: .trailing
+                                    },
+                                    alignment: .trailing
                                 )
                         }
                         .padding()
@@ -97,9 +100,9 @@ struct MarketplaceView: View {
                             .cornerRadius(16)
                         }
                     .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
+                    }
                 }
             }
-        }
 
             // Tab logic
             TabBar(page: "market")

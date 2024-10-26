@@ -5,7 +5,6 @@
 //  Created by Daniel Chuang on 4/14/24.
 //
 
-
 struct PlayerAverages {
 
     var id: Int
@@ -39,7 +38,7 @@ extension PlayerAverages {
             played: true,
             minutes: 50,
             fieldGoalsMade: 2,
-            fieldGoalsAttempted: 12,    
+            fieldGoalsAttempted: 12,
             threePointersMade: 18,
             threePointersAttempted: 20,
             freeThrowsMade: 2,
@@ -133,5 +132,5 @@ extension PlayerAverages {
             points: 40
         )
     ]
-    
+
 }

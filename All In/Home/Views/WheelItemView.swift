@@ -35,7 +35,7 @@ class WheelItemView: UIView {
     }
 
     func configure(player: Player) {
-        
+
     }
 
     // MARK: - Setup
@@ -89,7 +89,6 @@ class WheelItemView: UIView {
         statLabel.text = "???"
         statLabel.font = .systemFont(ofSize: 14, weight: .bold)
     }
-
 
     private func setUpConstraints() {
         playerImageView.snp.makeConstraints { make in

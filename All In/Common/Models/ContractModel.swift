@@ -27,50 +27,50 @@ struct Contract: Identifiable, Codable {
 
 enum Rarity: String, Codable {
 
-    case Common
-    case Rare
-    case Epic
-    case Legendary
+    case common
+    case rare
+    case epic
+    case legendary
 
     func getChestImage() -> Image {
         switch self {
-            case .Common:
-                return Image("CommonChest")
-            case .Rare:
-                return Image("RareChest")
-            case .Epic:
-                return Image("EpicChest")
-            case .Legendary:
-                return Image("LegendaryChest")
+        case .common:
+            return Image("CommonChest")
+        case .rare:
+            return Image("RareChest")
+        case .epic:
+            return Image("EpicChest")
+        case .legendary:
+            return Image("LegendaryChest")
         }
     }
 
     func getColor() -> Color {
         switch self {
-            case .Common:
-                return Constants.Colors.blue
-            case .Rare:
-                return Constants.Colors.green
-            case .Epic:
-                return Constants.Colors.purple
-            case .Legendary:
-                return Constants.Colors.yellow
+        case .common:
+            return Constants.Colors.blue
+        case .rare:
+            return Constants.Colors.green
+        case .epic:
+            return Constants.Colors.purple
+        case .legendary:
+            return Constants.Colors.yellow
         }
     }
 
     static func getRandom() -> Rarity {
         let rand = Int.random(in: 0...3)
         switch rand {
-            case 0:
-                return Rarity.Common
-            case 1:
-                return Rarity.Rare
-            case 2:
-                return Rarity.Epic
-            case 3:
-                return Rarity.Legendary
+        case 0:
+            return Rarity.common
+        case 1:
+            return Rarity.rare
+        case 2:
+            return Rarity.epic
+        case 3:
+            return Rarity.legendary
         default:
-            return Rarity.Common
+            return Rarity.common
         }
     }
 }
@@ -80,7 +80,7 @@ extension Contract {
         Contract(
             id: 0,
             buyPrice: 1000,
-            rarity: Rarity.Common,
+            rarity: Rarity.common,
             opposingTeam: "columbia",
             event: "FGA",
             eventThreshold: 4,
@@ -93,7 +93,7 @@ extension Contract {
         Contract(
             id: 1,
             buyPrice: 1400,
-            rarity: Rarity.Common,
+            rarity: Rarity.common,
             opposingTeam: "harvard",
             event: "FGA",
             eventThreshold: 4,
@@ -106,7 +106,7 @@ extension Contract {
         Contract(
             id: 2,
             buyPrice: 1000,
-            rarity: Rarity.Common,
+            rarity: Rarity.common,
             opposingTeam: "princeton",
             event: "FGA",
             eventThreshold: 4,
@@ -119,7 +119,7 @@ extension Contract {
         Contract(
             id: 3,
             buyPrice: 1000,
-            rarity: Rarity.Common,
+            rarity: Rarity.common,
             opposingTeam: "dartmouth",
             event: "FGA",
             eventThreshold: 4,
@@ -132,7 +132,7 @@ extension Contract {
         Contract(
             id: 4,
             buyPrice: 1000,
-            rarity: Rarity.Common,
+            rarity: Rarity.common,
             opposingTeam: "harvard",
             event: "FGA",
             eventThreshold: 4,
@@ -145,7 +145,7 @@ extension Contract {
         Contract(
             id: 5,
             buyPrice: 1000,
-            rarity: Rarity.Common,
+            rarity: Rarity.common,
             opposingTeam: "harvard",
             event: "FGA",
             eventThreshold: 4,

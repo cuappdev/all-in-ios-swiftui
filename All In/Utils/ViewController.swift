@@ -22,9 +22,7 @@ struct ViewController: UIViewControllerRepresentable {
     }
 
     func makeUIViewController(context: Context) -> UIViewController {
-        return viewController
+        viewController
     }
 
 }
-
-
