@@ -74,7 +74,6 @@ class WheelItemUIView: UIView {
                 playerImageView.image = image
             }
         }
-        // herllo
     }
 
     private func setUpRarityLabel() {
