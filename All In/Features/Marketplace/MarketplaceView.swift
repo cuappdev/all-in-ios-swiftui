@@ -81,10 +81,10 @@ struct MarketplaceView: View {
                             )
                     }
                     .padding()
-                    .overlay {
+                    .overlay(
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(Constants.Colors.grey02, lineWidth: 1)
-                    }
+                    )
                     .background(
                         RoundedRectangle(cornerRadius: 16)
                             .fill(Constants.Colors.white)
