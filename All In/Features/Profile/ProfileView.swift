@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ProfileView: View {
 
@@ -13,6 +14,8 @@ struct ProfileView: View {
     @Binding var tabSelection: Int
 
     @State private var user: User
+    @State private var image: Image = Image("profile-test")
+    @State private var imageSelection: PhotosPickerItem?
 
     init(tabSelection: Binding<Int>, user: User) {
         _user = State(initialValue: user)
@@ -64,11 +67,17 @@ struct ProfileView: View {
 
                 VStack {
                     HStack(alignment: .center, spacing: 28) {
-                        Image("profile-test")
+//                        Image("profile-test")
+//                            .frame(width: 125, height: 125)
+//                            .background(.white)
+//                            .cornerRadius(100)
+//                            .shadow(color: .black.opacity(0.25), radius: 2)
+                        photoPicker
                             .frame(width: 125, height: 125)
                             .background(.white)
                             .cornerRadius(100)
                             .shadow(color: .black.opacity(0.25), radius: 2)
+
                         VStack(alignment: .leading) {
                             Text(user.username)
                                 .font(.system(size: 24, weight: .semibold))
@@ -87,6 +96,27 @@ struct ProfileView: View {
                         .cornerRadius(16)
                     }
                     .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
+                }
+            }
+        }
+    }
+
+    private var photoPicker: some View {
+        VStack {
+            PhotosPicker(
+                selection: $imageSelection,
+                matching: .images
+            ) {
+                Image("profile-test")
+            }
+            .labelsHidden()
+        }
+        .onChange(of: imageSelection) { newItem in
+            Task {
+                if let loaded = try? await newItem?.loadTransferable(type: Image.self) {
+                    image = loaded
+                } else {
+                    print("Failed")
                 }
             }
         }
