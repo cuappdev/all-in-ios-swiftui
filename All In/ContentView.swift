@@ -9,33 +9,38 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var tabSelection = 0
+    @State var selectedPage: TabBarPage = .home
 
     var body: some View {
         ZStack {
-            TabView(selection: $tabSelection) {
-                HomeView(tabSelection: $tabSelection)
-                    .tag(0)
+            TabView(selection: $selectedPage) {
+                HomeView()
+                    .tag(TabBarPage.home)
                     .tabItem {
                         EmptyView()
                     }
 
-                MarketplaceView(tabSelection: $tabSelection)
-                    .tag(1)
+                MarketplaceView()
+                    .tag(TabBarPage.market)
                     .tabItem {
                         EmptyView()
                     }
 
-                ProfileView(tabSelection: $tabSelection, user: User.dummyData[0])
-                    .tag(2)
+                ProfileView(user: User.dummyData[0])
+                    .tag(TabBarPage.profile)
                     .tabItem {
                         EmptyView()
                     }
             }
-            .onAppear {
-                UITabBar.appearance().unselectedItemTintColor = .white
 
+            VStack {
+                Spacer()
+
+                TabBar(selectedPage: $selectedPage)
+                    .frame(height: 82)
             }
+            .ignoresSafeArea()
+            .allowsHitTesting(false)
         }
     }
 

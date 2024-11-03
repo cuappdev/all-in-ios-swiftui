@@ -10,9 +10,6 @@ import SwiftUI
 struct MarketplaceView: View {
 
     @StateObject var viewModel = ViewModel()
-
-    // TODO: change this to change the tab programatically
-    @Binding var tabSelection: Int
     @State var selectedStat: Stat = .points
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -25,11 +22,8 @@ struct MarketplaceView: View {
             Divider()
 
             content
-
-            TabBar(page: "market")
-                .frame(height: 108)
         }
-        .ignoresSafeArea(edges: .all)
+        .ignoresSafeArea(edges: .top)
         .background(Constants.Colors.grey00)
     }
 
@@ -107,5 +101,5 @@ struct MarketplaceView: View {
 }
 
 #Preview {
-    MarketplaceView(tabSelection: .constant(0))
+    MarketplaceView()
 }

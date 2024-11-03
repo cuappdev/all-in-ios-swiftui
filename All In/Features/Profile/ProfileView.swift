@@ -9,14 +9,10 @@ import SwiftUI
 
 struct ProfileView: View {
 
-    // change this to change the tab programatically
-    @Binding var tabSelection: Int
-
     @State private var user: User
 
-    init(tabSelection: Binding<Int>, user: User) {
+    init(user: User) {
         _user = State(initialValue: user)
-        _tabSelection = tabSelection
     }
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -29,12 +25,9 @@ struct ProfileView: View {
                 Divider()
 
                 content(geometry)
-
-                TabBar(page: "profile")
-                    .frame(height: 108)
             }
-            .ignoresSafeArea(edges: .all)
         }
+        .ignoresSafeArea(edges: .top)
     }
 
     private var header: some View {
@@ -95,5 +88,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView(tabSelection: .constant(0), user: User.dummyData[0])
+    ProfileView(user: User.dummyData[0])
 }

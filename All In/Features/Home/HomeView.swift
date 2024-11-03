@@ -9,9 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
 
-    // change this to change the tab programatically
-    @Binding var tabSelection: Int
-
     var body: some View {
         VStack(spacing: 0) {
             ZStack(alignment: .bottomLeading) {
@@ -72,6 +69,7 @@ struct HomeView: View {
                                     ContractCard(contract: contract)
                                         .cornerRadius(16)
                                 }
+
                                 moreMarketplaceContracts
                             }
                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
@@ -80,17 +78,15 @@ struct HomeView: View {
                     Spacer()
                 }
             }
-
-            TabBar(page: "home")
-                .frame(height: 108)
         }
-        .ignoresSafeArea(edges: .all)
+        .ignoresSafeArea(edges: .top)
+
     }
 
     private var moreMarketplaceContracts: some View {
         (
             Button {
-                tabSelection = 1
+
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 16)
@@ -122,5 +118,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(tabSelection: .constant(0))
+    HomeView()
 }
