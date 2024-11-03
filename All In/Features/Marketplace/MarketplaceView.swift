@@ -10,6 +10,7 @@ import SwiftUI
 struct MarketplaceView: View {
 
     @StateObject var viewModel = ViewModel()
+    @EnvironmentObject var profileViewModel: ProfileViewViewModel
 
     // TODO: change this to change the tab programatically
     @Binding var tabSelection: Int
@@ -44,7 +45,7 @@ struct MarketplaceView: View {
                 Spacer()
                 HStack {
                     Image("RedMoney")
-                    Text(1000.withCommas())
+                    Text(profileViewModel.user.balance.withCommas())
                         .font(.system(size: 18, weight: .bold))
                         .foregroundStyle(.black)
                 }
@@ -80,10 +81,13 @@ struct MarketplaceView: View {
                             )
                     }
                     .padding()
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Constants.Colors.grey02, lineWidth: 1)
+                    }
                     .background(
                         RoundedRectangle(cornerRadius: 16)
                             .fill(Constants.Colors.white)
-                            .stroke(Constants.Colors.grey02, lineWidth: 1)
                     )
                     .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
                     PillSelectView(Stat.getAll()) { newStat in
