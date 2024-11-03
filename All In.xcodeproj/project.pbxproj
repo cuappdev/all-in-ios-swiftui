@@ -303,6 +303,7 @@
 		D0155A742B950FF6003FE6BC = {
 			isa = PBXGroup;
 			children = (
+				FDC7C3E02CD81F11007BE12F /* AllInSecrets */,
 				D0155A7F2B950FF6003FE6BC /* All In */,
 				D0155A902B950FF7003FE6BC /* All InTests */,
 				D0155A9A2B950FF7003FE6BC /* All InUITests */,
@@ -323,7 +324,6 @@
 		D0155A7F2B950FF6003FE6BC /* All In */ = {
 			isa = PBXGroup;
 			children = (
-				FDC7C3E02CD81F11007BE12F /* AllInSecrets */,
 				9928219F2BC0931200B592F7 /* AllInApp.swift */,
 				D0155A822B950FF6003FE6BC /* ContentView.swift */,
 				FDC7C3DE2CD81768007BE12F /* Info.plist */,
