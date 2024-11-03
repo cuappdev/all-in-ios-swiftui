@@ -80,10 +80,13 @@ struct MarketplaceView: View {
                             )
                     }
                     .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Constants.Colors.grey02, lineWidth: 1)
+                    )
                     .background(
                         RoundedRectangle(cornerRadius: 16)
                             .fill(Constants.Colors.white)
-                            .stroke(Constants.Colors.grey02, lineWidth: 1)
                     )
                     .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
                     PillSelectView(Stat.getAll()) { newStat in
