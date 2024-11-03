@@ -1,4 +1,5 @@
 *.DS_Store
 .build/
 xcuserdata/
-xcshareddata/swiftpm/
+xcshareddata/
+AllInSecrets/
