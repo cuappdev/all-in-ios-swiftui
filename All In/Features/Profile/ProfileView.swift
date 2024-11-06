@@ -13,10 +13,13 @@ struct ProfileView: View {
     @Binding var tabSelection: Int
 
     @State private var user: User
+    @State private var editingUsername = false
+    @State private var editedUsername: String
 
     init(tabSelection: Binding<Int>, user: User) {
         _user = State(initialValue: user)
         _tabSelection = tabSelection
+        _editedUsername = State(initialValue: user.username)
     }
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
