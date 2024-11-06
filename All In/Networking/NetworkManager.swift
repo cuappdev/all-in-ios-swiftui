@@ -25,10 +25,18 @@ class NetworkManager {
             "email": email
         ]
 
-        AF.request("\(base)/users/", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in
+        AF.request(
+            "\(base)/users/",
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default
+        )
+        .responseDecodable(
+            of: User.self
+        ) { response in
             switch response.result {
             case .success(let user):
-                UserDefaults.standard.setValue(user.id, forKey: UserDefaultKeys.userID)
+                UserDefaults.standard.setValue(user.id, forKey: Constants.UserDefaultKeys.userID)
             case .failure(let error):
                 print("ERROR in NetworkManager.createUser: \(error)")
             }
@@ -51,13 +59,14 @@ class NetworkManager {
     // MARK: - PATCH upload user image
 
     func uploadUserImage(image: UIImage, completion: @escaping (UIImage) -> Void) {
-        let id = UserDefaults.standard.integer(forKey: UserDefaultKeys.userID)
+        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
 
         AF.upload(multipartFormData: { multipartFormData in
             if let data = image.jpegData(compressionQuality: 0.5) {
                 multipartFormData.append(data, withName: "image")
             }
-        }, to: "\(base)/users/\(id)/image").responseImage { response in
+        }, to: "\(base)/users/\(id)/image")
+        .responseImage { response in
             switch response.result {
             case .success(let image):
                 completion(image)
@@ -70,8 +79,8 @@ class NetworkManager {
     // MARK: - GET user image
 
     func getUserImage(completion: @escaping (UIImage) -> Void) {
-        let id = UserDefaults.standard.integer(forKey: UserDefaultKeys.userID)
-        
+        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
+
         AF.request("\(base)/users/\(id)", method: .get).responseImage { response in
             switch response.result {
             case .success(let image):
@@ -115,15 +124,20 @@ class NetworkManager {
 
         completion(Contract.dummyData[0])
 
-        let id = UserDefaults.standard.integer(forKey: UserDefaultKeys.userID)
-        
+        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
+
         let parameters = [
             "buy_price": buyPrice,
-            "rarity": rarity.rawValue
-        ] as [String : Any]
+            "rarity": rarity.string
+        ] as [String: Any]
 
-
-        AF.request("\(base)/users/\(id)/contracts", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: Contract.self) { response in
+        AF.request(
+            "\(base)/users/\(id)/contracts",
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default
+        )
+        .responseDecodable(of: Contract.self) { response in
             switch response.result {
             case .success(let contract):
                 completion(contract)
@@ -136,13 +150,21 @@ class NetworkManager {
     // MARK: - POST buy player contract from chest
 
     func getPlayerContract(buyPrice: Double, playerID: Int, completion: @escaping (Contract) -> Void) {
-        let id = UserDefaults.standard.integer(forKey: UserDefaultKeys.userID)
+        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
 
         let parameters = [
-            "buy_price": buyPrice,
+            "buy_price": buyPrice
         ]
 
-        AF.request("\(base)/users/\(id)/players/\(playerID)/contracts", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: Contract.self) { response in
+        AF.request(
+            "\(base)/users/\(id)/players/\(playerID)/contracts",
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default
+        )
+        .responseDecodable(
+            of: Contract.self
+        ) { response in
             switch response.result {
             case .success(let contract):
                 completion(contract)
@@ -168,13 +190,19 @@ class NetworkManager {
     // MARK: - POST buy a contract
 
     func buyContract(contractID: Int, completion: @escaping (Contract) -> Void) {
-        let id = UserDefaults.standard.integer(forKey: UserDefaultKeys.userID)
+        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
 
         let parameters = [
             "buyer_id": id
         ]
 
-        AF.request("\(base)/contracts/\(contractID)/buy", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: Contract.self) { response in
+        AF.request(
+            "\(base)/contracts/\(contractID)/buy",
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default
+        )
+        .responseDecodable(of: Contract.self) { response in
             switch response.result {
             case .success(let contract):
                 completion(contract)
@@ -191,7 +219,13 @@ class NetworkManager {
             "sell_price": sellPrice
         ]
 
-        AF.request("\(base)/contracts/\(contractID)/sell", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: Contract.self) { response in
+        AF.request(
+            "\(base)/contracts/\(contractID)/sell",
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default
+        )
+        .responseDecodable(of: Contract.self) { response in
             switch response.result {
             case .success(let contract):
                 completion(contract)
@@ -219,7 +253,7 @@ class NetworkManager {
 // MARK: - HELPER FUNCTIONS
 
 extension NetworkManager {
-    
+
     func getRandomPlayer(completion: @escaping (Player) -> Void) {
         self.getAllPlayers { players in
             let randomPlayer = players.randomElement() ?? players[0]
