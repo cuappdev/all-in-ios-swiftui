@@ -73,22 +73,21 @@ struct ProfileView: View {
 //                            .cornerRadius(100)
 //                            .shadow(color: .black.opacity(0.25), radius: 2)
                         photoPicker
-                            .frame(width: 125, height: 125)
-                            .background(.white)
-                            .cornerRadius(100)
-                            .shadow(color: .black.opacity(0.25), radius: 2)
 
                         VStack(alignment: .leading) {
                             Text(user.username)
                                 .font(.system(size: 24, weight: .semibold))
+
                             Text("Active Contracts: 5 \nPast Contracts: 10")
                                 .font(.system(size: 13, weight: .regular))
                                 .foregroundStyle(.black)
                         }
                     }
                     .padding(EdgeInsets(top: 14, leading: 26, bottom: 8, trailing: 26))
+
                     Divider()
                         .frame(width: geometry.size.width / 1.17)
+
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(user.contracts) { contract in
                             ContractCard(contract: contract)
@@ -107,16 +106,24 @@ struct ProfileView: View {
                 selection: $imageSelection,
                 matching: .images
             ) {
-                Image("profile-test")
+                image
+                    .resizable()
+                    .frame(width: 125, height: 125)
+                    .background(.white)
+                    .cornerRadius(100)
+                    .shadow(color: .black.opacity(0.25), radius: 2)
             }
             .labelsHidden()
         }
         .onChange(of: imageSelection) { newItem in
+            guard let newItem = newItem else { return }
+
             Task {
-                if let loaded = try? await newItem?.loadTransferable(type: Image.self) {
-                    image = loaded
+                if let loaded = try? await newItem.loadTransferable(type: Image.self) {
+                    self.image = loaded
+                    print(loaded)
                 } else {
-                    print("Failed")
+                    print("Failed to edit profile image")
                 }
             }
         }
