@@ -13,10 +13,13 @@ struct ProfileView: View {
     @Binding var tabSelection: Int
 
     @State private var user: User
+    @State private var editingUsername = false
+    @State private var editedUsername: String
 
     init(tabSelection: Binding<Int>, user: User) {
         _user = State(initialValue: user)
         _tabSelection = tabSelection
+        _editedUsername = State(initialValue: user.username)
     }
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -58,8 +61,38 @@ struct ProfileView: View {
                                     .cornerRadius(100)
                                     .shadow(color: .black.opacity(0.25), radius: 2)
                                 VStack(alignment: .leading) {
-                                    Text(user.username)
-                                        .font(.system(size: 24, weight: .semibold))
+                                    HStack {
+                                        if editingUsername {
+                                            TextField("Username", text: $editedUsername)
+                                                .font(.system(size: 20, weight: .semibold))
+                                                .foregroundStyle(.gray)
+                                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                                .frame(maxWidth: UIScreen.main.bounds.width / 3)
+                                        } else {
+                                            Text(user.username)
+                                                .font(.system(size: 22, weight: .semibold))
+                                                .padding(.bottom, 2)
+                                        }
+                                        Button ( action: {
+                                            // If editing username, saves the edited name by creating a new User
+                                            if editingUsername {
+                                                user = User (
+                                                    id: user.id,
+                                                    username: editedUsername,
+                                                    email: user.email,
+                                                    balance: user.balance,
+                                                    contracts: user.contracts,
+                                                    sellerTransations: user.sellerTransations,
+                                                    buyerTransactions: user.buyerTransactions
+                                                )
+                                            }
+                                            editingUsername.toggle()
+                                        }) {
+                                            Image(systemName: editingUsername ? "checkmark" : "pencil")
+                                                .foregroundColor(.red)
+                                                .padding(.bottom, 2)
+                                        }
+                                    }
                                     Text("Active Contracts: 5 \nPast Contracts: 10")
                                         .font(.system(size: 13, weight: .regular))
                                         .foregroundStyle(.black)
