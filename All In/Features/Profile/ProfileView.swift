@@ -122,7 +122,6 @@ struct ProfileView: View {
             Task {
                 if let loaded = try? await newItem.loadTransferable(type: Image.self) {
                     self.image = loaded
-                    print(loaded)
                 } else {
                     print("Failed to edit profile image")
                 }
