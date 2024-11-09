@@ -67,11 +67,6 @@ struct ProfileView: View {
 
                 VStack {
                     HStack(alignment: .center, spacing: 28) {
-//                        Image("profile-test")
-//                            .frame(width: 125, height: 125)
-//                            .background(.white)
-//                            .cornerRadius(100)
-//                            .shadow(color: .black.opacity(0.25), radius: 2)
                         photoPicker
 
                         VStack(alignment: .leading) {
