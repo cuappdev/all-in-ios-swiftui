@@ -108,6 +108,7 @@ struct ProfileView: View {
             ) {
                 image
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 125, height: 125)
                     .background(.white)
                     .cornerRadius(100)
