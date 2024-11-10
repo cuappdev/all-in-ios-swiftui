@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E656DA62CE1504600E7E6D1 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E656DA52CE1504600E7E6D1 /* BalanceView.swift */; };
+		2E656DA82CE1506000E7E6D1 /* BalanceSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E656DA72CE1506000E7E6D1 /* BalanceSheetView.swift */; };
 		897DFBDE2CCED80600246B0D /* PlayerChestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */; };
 		897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */; };
 		897DFBE02CCED80600246B0D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB92CCED80600246B0D /* SheetView.swift */; };
@@ -69,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E656DA52CE1504600E7E6D1 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
+		2E656DA72CE1506000E7E6D1 /* BalanceSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceSheetView.swift; sourceTree = "<group>"; };
 		897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChestViewModel.swift; sourceTree = "<group>"; };
 		897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityChestSheetViewModel.swift; sourceTree = "<group>"; };
 		897DFBB92CCED80600246B0D /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				897DFBBA2CCED80600246B0D /* Supporting */,
+				2E656DA72CE1506000E7E6D1 /* BalanceSheetView.swift */,
+				2E656DA52CE1504600E7E6D1 /* BalanceView.swift */,
 				897DFBBB2CCED80600246B0D /* PlayerChestSheetView.swift */,
 				897DFBBC2CCED80600246B0D /* PlayerChestView.swift */,
 				897DFBBD2CCED80600246B0D /* RarityChestSheetView.swift */,
@@ -544,6 +550,7 @@
 				897DFBDE2CCED80600246B0D /* PlayerChestViewModel.swift in Sources */,
 				897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */,
 				897DFBE02CCED80600246B0D /* SheetView.swift in Sources */,
+				2E656DA62CE1504600E7E6D1 /* BalanceView.swift in Sources */,
 				897DFBE12CCED80600246B0D /* PlayerChestSheetView.swift in Sources */,
 				897DFBE22CCED80600246B0D /* PlayerChestView.swift in Sources */,
 				897DFBE32CCED80600246B0D /* RarityChestSheetView.swift in Sources */,
@@ -560,6 +567,7 @@
 				897DFBEB2CCED80600246B0D /* ProfileView.swift in Sources */,
 				897DFBEC2CCED80600246B0D /* PlayerAveragesModel.swift in Sources */,
 				897DFBED2CCED80600246B0D /* PlayerDataModel.swift in Sources */,
+				2E656DA82CE1506000E7E6D1 /* BalanceSheetView.swift in Sources */,
 				897DFBEE2CCED80600246B0D /* PlayerModel.swift in Sources */,
 				897DFBEF2CCED80600246B0D /* ChestModel.swift in Sources */,
 				897DFBF02CCED80600246B0D /* ContractModel.swift in Sources */,
