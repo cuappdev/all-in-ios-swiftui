@@ -11,11 +11,9 @@ struct ProfileView: View {
 
     // change this to change the tab programatically
     @Binding var tabSelection: Int
+    @EnvironmentObject var viewModel: ProfileViewViewModel
 
-    @State private var user: User
-
-    init(tabSelection: Binding<Int>, user: User) {
-        _user = State(initialValue: user)
+    init(tabSelection: Binding<Int>) {
         _tabSelection = tabSelection
     }
 
@@ -48,7 +46,7 @@ struct ProfileView: View {
                 Spacer()
                 HStack {
                     Image("RedMoney")
-                    Text(user.balance.withCommas())
+                    Text(viewModel.user.balance.withCommas())
                         .font(.system(size: 18, weight: .bold))
                         .foregroundStyle(.black)
                 }
@@ -70,7 +68,7 @@ struct ProfileView: View {
                             .cornerRadius(100)
                             .shadow(color: .black.opacity(0.25), radius: 2)
                         VStack(alignment: .leading) {
-                            Text(user.username)
+                            Text(viewModel.user.username)
                                 .font(.system(size: 24, weight: .semibold))
                             Text("Active Contracts: 5 \nPast Contracts: 10")
                                 .font(.system(size: 13, weight: .regular))
@@ -81,7 +79,7 @@ struct ProfileView: View {
                     Divider()
                         .frame(width: geometry.size.width / 1.17)
                     LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(user.contracts) { contract in
+                        ForEach(viewModel.user.contracts) { contract in
                             ContractCard(contract: contract)
                         }
                         .cornerRadius(16)
@@ -95,5 +93,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView(tabSelection: .constant(0), user: User.dummyData[0])
+    ProfileView(tabSelection: .constant(0))
 }

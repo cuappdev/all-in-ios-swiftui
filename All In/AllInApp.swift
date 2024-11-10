@@ -12,6 +12,7 @@ struct AllInApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(ProfileViewViewModel())
         }
     }
 }
