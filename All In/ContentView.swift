@@ -26,7 +26,7 @@ struct ContentView: View {
                         EmptyView()
                     }
 
-                ProfileView(tabSelection: $tabSelection)
+                ProfileView(tabSelection: $tabSelection, user: User.dummyData[0])
                     .tag(2)
                     .tabItem {
                         EmptyView()
