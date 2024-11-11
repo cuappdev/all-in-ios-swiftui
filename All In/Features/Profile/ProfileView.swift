@@ -13,7 +13,7 @@ struct ProfileView: View {
     @Binding var tabSelection: Int
 
     @State private var user: User
-    @State private var editingUsername = false
+    @State private var isEditingUsername = false
     @State private var editedUsername: String
 
     init(tabSelection: Binding<Int>, user: User) {
@@ -62,7 +62,7 @@ struct ProfileView: View {
                                     .shadow(color: .black.opacity(0.25), radius: 2)
                                 VStack(alignment: .leading) {
                                     HStack {
-                                        if editingUsername {
+                                        if isEditingUsername {
                                             TextField("Username", text: $editedUsername)
                                                 .font(.system(size: 20, weight: .semibold))
                                                 .foregroundStyle(.gray)
@@ -75,7 +75,7 @@ struct ProfileView: View {
                                         }
                                         Button( action: {
                                             // If editing username, saves the edited name by creating a new User
-                                            if editingUsername {
+                                            if isEditingUsername {
                                                 user = User(
                                                     id: user.id,
                                                     username: editedUsername,
@@ -86,9 +86,9 @@ struct ProfileView: View {
                                                     buyerTransactions: user.buyerTransactions
                                                 )
                                             }
-                                            editingUsername.toggle()
+                                            isEditingUsername.toggle()
                                         }) {
-                                            Image(systemName: editingUsername ? "checkmark" : "pencil")
+                                            Image(systemName: isEditingUsername ? "checkmark" : "pencil")
                                                 .foregroundColor(.red)
                                                 .padding(.bottom, 2)
                                         }
