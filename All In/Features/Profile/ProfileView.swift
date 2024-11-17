@@ -7,7 +7,7 @@
 
 import SwiftUI
 import PhotosUI
-import Logger
+import OSLog
 
 struct ProfileView: View {
 
