@@ -1,9 +1,0 @@
-//
-//  Keys.xcconfig
-//  All In
-//
-//  Created by Jayson Hahn on 10/27/24.
-//
-
-// SERVER URL
-ALLIN_PROD_URL = http://157.245.116.197:8080/
