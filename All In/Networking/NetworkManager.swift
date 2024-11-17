@@ -13,7 +13,7 @@ import SwiftUI
 class NetworkManager {
     static let shared = NetworkManager()
 
-    private let base = "LINK GOES HERE"
+    private let base = AllInEnvironment.baseURL
 
     private init() { }
 
