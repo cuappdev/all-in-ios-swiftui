@@ -11,6 +11,7 @@ struct HomeView: View {
 
     // change this to change the tab programatically
     @Binding var tabSelection: Int
+    @EnvironmentObject var viewModel: ProfileViewViewModel
 
     var body: some View {
         VStack(spacing: 0) {
@@ -24,7 +25,7 @@ struct HomeView: View {
                     Spacer()
                     HStack {
                         Image("RedMoney")
-                        Text(1000.withCommas())
+                        Text(viewModel.user.balance.withCommas())
                             .font(.system(size: 18, weight: .bold))
                             .foregroundStyle(.black)
                     }

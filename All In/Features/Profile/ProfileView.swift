@@ -17,10 +17,13 @@ struct ProfileView: View {
     @State private var user: User
     @State private var image: Image = Image("profile-test")
     @State private var imageSelection: PhotosPickerItem?
+    @State private var isEditingUsername = false
+    @State private var editedUsername: String
 
     init(tabSelection: Binding<Int>, user: User) {
         _user = State(initialValue: user)
         _tabSelection = tabSelection
+        _editedUsername = State(initialValue: user.username)
     }
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -71,8 +74,7 @@ struct ProfileView: View {
                         photoPicker
 
                         VStack(alignment: .leading) {
-                            Text(user.username)
-                                .font(.system(size: 24, weight: .semibold))
+                            username
 
                             Text("Active Contracts: 5 \nPast Contracts: 10")
                                 .font(.system(size: 13, weight: .regular))
@@ -121,6 +123,41 @@ struct ProfileView: View {
                 } else {
                     Logger.views.error("Failed to edit profile image")
                 }
+            }
+        }
+    }
+
+    private var username: some View {
+        HStack {
+            if isEditingUsername {
+                TextField("Username", text: $editedUsername)
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundStyle(.gray)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(maxWidth: UIScreen.main.bounds.width / 3)
+            } else {
+                Text(user.username)
+                    .font(.system(size: 22, weight: .semibold))
+                    .padding(.bottom, 2)
+            }
+            Button( action: {
+                // If editing username, saves the edited name by creating a new User
+                if isEditingUsername {
+                    user = User(
+                        id: user.id,
+                        username: editedUsername,
+                        email: user.email,
+                        balance: user.balance,
+                        contracts: user.contracts,
+                        sellerTransations: user.sellerTransations,
+                        buyerTransactions: user.buyerTransactions
+                    )
+                }
+                isEditingUsername.toggle()
+            }) {
+                Image(systemName: isEditingUsername ? "checkmark" : "pencil")
+                    .foregroundColor(.red)
+                    .padding(.bottom, 2)
             }
         }
     }
