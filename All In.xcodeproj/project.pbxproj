@@ -36,6 +36,7 @@
 		897DFBFC2CCED80C00246B0D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBF82CCED80C00246B0D /* Color+Extension.swift */; };
 		897DFBFD2CCED80C00246B0D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBF92CCED80C00246B0D /* Date+Extension.swift */; };
 		897DFBFE2CCED80C00246B0D /* NSNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBFA2CCED80C00246B0D /* NSNumberFormatter.swift */; };
+		89E4FAA82CEA8F9600A952B1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E4FAA72CEA8F9600A952B1 /* Logger.swift */; };
 		992821A02BC0931200B592F7 /* AllInApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928219F2BC0931200B592F7 /* AllInApp.swift */; };
 		992821A22BC0932300B592F7 /* AllInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992821A12BC0932300B592F7 /* AllInTests.swift */; };
 		992821A52BC0932800B592F7 /* AllInUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992821A32BC0932800B592F7 /* AllInUITestsLaunchTests.swift */; };
@@ -97,6 +98,7 @@
 		897DFBF82CCED80C00246B0D /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		897DFBF92CCED80C00246B0D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		897DFBFA2CCED80C00246B0D /* NSNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNumberFormatter.swift; sourceTree = "<group>"; };
+		89E4FAA72CEA8F9600A952B1 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		9928219F2BC0931200B592F7 /* AllInApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AllInApp.swift; path = "All In/AllInApp.swift"; sourceTree = SOURCE_ROOT; };
 		992821A12BC0932300B592F7 /* AllInTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllInTests.swift; sourceTree = "<group>"; };
 		992821A32BC0932800B592F7 /* AllInUITestsLaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllInUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 			children = (
 				D057FD842BA76F8600EF552D /* Constants.swift */,
 				897DFBFB2CCED80C00246B0D /* Extensions */,
+				89E4FAA72CEA8F9600A952B1 /* Logger.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				897DFBEE2CCED80600246B0D /* PlayerModel.swift in Sources */,
 				897DFBEF2CCED80600246B0D /* ChestModel.swift in Sources */,
 				897DFBF02CCED80600246B0D /* ContractModel.swift in Sources */,
+				89E4FAA82CEA8F9600A952B1 /* Logger.swift in Sources */,
 				897DFBF12CCED80600246B0D /* TransactionModel.swift in Sources */,
 				897DFBF22CCED80600246B0D /* UserModel.swift in Sources */,
 				897DFBF32CCED80600246B0D /* PillSelectView.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import Logger
 
 struct ProfileView: View {
 
@@ -118,7 +119,7 @@ struct ProfileView: View {
                 if let loaded = try? await newItem.loadTransferable(type: Image.self) {
                     self.image = loaded
                 } else {
-                    print("Failed to edit profile image")
+                    Logger.views.error("Failed to edit profile image")
                 }
             }
         }
