@@ -48,13 +48,17 @@ struct ProfileView: View {
         ZStack(alignment: .bottomLeading) {
             Constants.Colors.white
                 .frame(height: 129)
+
             HStack(alignment: .center) {
                 Text("Profile")
                     .font(.system(size: 36, weight: .bold))
                     .foregroundStyle(.black)
+
                 Spacer()
+
                 HStack {
                     Image("RedMoney")
+
                     Text(user.balance.withCommas())
                         .font(.system(size: 18, weight: .bold))
                         .foregroundStyle(.black)
