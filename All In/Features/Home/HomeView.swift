@@ -23,12 +23,9 @@ struct HomeView: View {
                         .font(Constants.Fonts.title)
                         .foregroundStyle(Constants.Colors.black)
                     Spacer()
-                    HStack {
-                        Image("RedMoney")
-                        Text(viewModel.user.balance.withCommas())
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundStyle(.black)
-                    }
+
+                    BalanceView(balance: viewModel.user.balance.withCommas())
+
                 }
                 .padding()
             }
