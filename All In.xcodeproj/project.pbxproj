@@ -44,12 +44,12 @@
 		D0155A832B950FF6003FE6BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0155A822B950FF6003FE6BC /* ContentView.swift */; };
 		D0155A852B950FF7003FE6BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0155A842B950FF7003FE6BC /* Assets.xcassets */; };
 		D0155A882B950FF7003FE6BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0155A872B950FF7003FE6BC /* Preview Assets.xcassets */; };
+		D01FBED92D74F76D00D365EF /* ProfileViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01FBED82D74F76D00D365EF /* ProfileViewViewModel.swift */; };
 		D047C6312BD6E9DA007F6103 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = D047C6302BD6E9DA007F6103 /* AlamofireImage */; };
 		D057FD852BA76F8600EF552D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D057FD842BA76F8600EF552D /* Constants.swift */; };
 		D0CD31822BD5A2F500E7136C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD31812BD5A2F500E7136C /* NetworkManager.swift */; };
 		D0CD31852BD5A3EC00E7136C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D0CD31842BD5A3EC00E7136C /* Alamofire */; };
 		D0F6A9F62BD887F100D75BAD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0F6A9F52BD887F100D75BAD /* SnapKit */; };
-		D8B1C9D72CD805280095E563 /* ProfileViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B1C9D62CD805280095E563 /* ProfileViewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,9 +110,9 @@
 		D0155A872B950FF7003FE6BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D0155A8D2B950FF7003FE6BC /* All InTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "All InTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0155A972B950FF7003FE6BC /* All InUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "All InUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D01FBED82D74F76D00D365EF /* ProfileViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewViewModel.swift; sourceTree = "<group>"; };
 		D057FD842BA76F8600EF552D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D0CD31812BD5A2F500E7136C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		D8B1C9D62CD805280095E563 /* ProfileViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,19 +202,11 @@
 			path = Marketplace;
 			sourceTree = "<group>";
 		};
-		897DFBC92CCED80600246B0D /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		897DFBCB2CCED80600246B0D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				897DFBC92CCED80600246B0D /* ViewModels */,
+				D01FBEDA2D74F77C00D365EF /* ViewModels */,
 				897DFBCA2CCED80600246B0D /* ProfileView.swift */,
-				D8B1C9D62CD805280095E563 /* ProfileViewViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -356,6 +348,14 @@
 				992821A32BC0932800B592F7 /* AllInUITestsLaunchTests.swift */,
 			);
 			path = "All InUITests";
+			sourceTree = "<group>";
+		};
+		D01FBEDA2D74F77C00D365EF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D01FBED82D74F76D00D365EF /* ProfileViewViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		D057FD832BA76F7B00EF552D /* Utils */ = {
@@ -571,9 +571,9 @@
 				897DFBF22CCED80600246B0D /* UserModel.swift in Sources */,
 				897DFBF32CCED80600246B0D /* PillSelectView.swift in Sources */,
 				897DFBF42CCED80600246B0D /* ViewController.swift in Sources */,
+				D01FBED92D74F76D00D365EF /* ProfileViewViewModel.swift in Sources */,
 				897DFBF52CCED80600246B0D /* ContractCard.swift in Sources */,
 				897DFBF62CCED80600246B0D /* PlayerContractSheetView.swift in Sources */,
-				D8B1C9D72CD805280095E563 /* ProfileViewViewModel.swift in Sources */,
 				897DFBF72CCED80600246B0D /* TabBar.swift in Sources */,
 				D057FD852BA76F8600EF552D /* Constants.swift in Sources */,
 			);
