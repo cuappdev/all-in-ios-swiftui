@@ -59,8 +59,8 @@ struct MarketplaceView: View {
             ZStack {
                 Constants.Colors.grey00
 
-                VStack {
-                    // Search bar
+                VStack(alignment: .leading) {
+                    // (1) Search bar implementation.
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(
@@ -90,23 +90,57 @@ struct MarketplaceView: View {
                             .fill(Constants.Colors.white)
                     )
                     .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
+                    // (2) Upcoming games carousel implementation.
+                    Text("Upcoming Games")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.leading)
+                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 8, trailing: 0))
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 16) {
+                            ForEach(Contract.dummyData[0..<5]) { contract in
+                                ContractCard(contract: contract)
+                                    .cornerRadius(16)
+                            }
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
+                    }
+                    // (3) Game filter implementation.
                     PillSelectView(Stat.getAll()) { newStat in
                         selectedStat = newStat
                     }
                     .padding(EdgeInsets(top: -8, leading: -8, bottom: -8, trailing: -8))
+                    // (4) Popular contracts implementation.
+                    Text("Popular Contracts")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.leading)
+                        .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 0))
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack {
+                            ForEach(viewModel.filteredContracts, id: \.id) { contract in ContractCard(contract: contract)
+                            }
+                        }
+                    }
+                    // (5) All players implementation.
+                    Text("All Players")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.leading)
+                        .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 0))
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(viewModel.filteredContracts, id: \.id) { contract in ContractCard(contract: contract)
                         }
                         .cornerRadius(16)
                     }
-                .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }
             }
         }
     }
-
 }
 
+// Ignore this for now. Needed to fix preview. (Ant)
 #Preview {
-    MarketplaceView(tabSelection: .constant(0))
+    MarketplaceView(tabSelection: .constant(0)).environmentObject(ProfileViewViewModel())
 }

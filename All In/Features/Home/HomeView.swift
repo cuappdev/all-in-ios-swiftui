@@ -119,9 +119,9 @@ struct HomeView: View {
             }
         )
     }
-
 }
 
+// Ignore this for now. Needed to fix preview. (Ant)
 #Preview {
-    HomeView(tabSelection: .constant(0))
+    HomeView(tabSelection: .constant(0)).environmentObject(ProfileViewViewModel())
 }
