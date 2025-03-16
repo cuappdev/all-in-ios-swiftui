@@ -49,6 +49,7 @@
 		D0CD31822BD5A2F500E7136C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD31812BD5A2F500E7136C /* NetworkManager.swift */; };
 		D0CD31852BD5A3EC00E7136C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D0CD31842BD5A3EC00E7136C /* Alamofire */; };
 		D0F6A9F62BD887F100D75BAD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0F6A9F52BD887F100D75BAD /* SnapKit */; };
+		D8584F642D7E23A400FE3467 /* ToggleCheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8584F632D7E23A400FE3467 /* ToggleCheckboxStyle.swift */; };
 		D8A648C42D74F6AC00B49975 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A648C32D74F6A800B49975 /* CartView.swift */; };
 		D8A648C62D74FA1600B49975 /* ContractTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A648C52D74FA0A00B49975 /* ContractTile.swift */; };
 		D8B1C9D72CD805280095E563 /* ProfileViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B1C9D62CD805280095E563 /* ProfileViewViewModel.swift */; };
@@ -114,6 +115,7 @@
 		D0155A972B950FF7003FE6BC /* All InUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "All InUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D057FD842BA76F8600EF552D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D0CD31812BD5A2F500E7136C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D8584F632D7E23A400FE3467 /* ToggleCheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCheckboxStyle.swift; sourceTree = "<group>"; };
 		D8A648C32D74F6A800B49975 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		D8A648C52D74FA0A00B49975 /* ContractTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTile.swift; sourceTree = "<group>"; };
 		D8B1C9D62CD805280095E563 /* ProfileViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewViewModel.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			children = (
 				D8A648C52D74FA0A00B49975 /* ContractTile.swift */,
 				D8A648C32D74F6A800B49975 /* CartView.swift */,
+				D8584F632D7E23A400FE3467 /* ToggleCheckboxStyle.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				897DFBF62CCED80600246B0D /* PlayerContractSheetView.swift in Sources */,
 				D8B1C9D72CD805280095E563 /* ProfileViewViewModel.swift in Sources */,
 				897DFBF72CCED80600246B0D /* TabBar.swift in Sources */,
+				D8584F642D7E23A400FE3467 /* ToggleCheckboxStyle.swift in Sources */,
 				D057FD852BA76F8600EF552D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

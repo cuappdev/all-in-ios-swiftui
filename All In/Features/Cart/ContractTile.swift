@@ -9,6 +9,7 @@ import SwiftUI
 struct ContractTile: View {
 
     @State var contract: Contract
+    @State var isSelected: Bool = false
 
     var body: some View {
         VStack {
@@ -16,11 +17,14 @@ struct ContractTile: View {
                 // school logo?
 
                 Text("Cornell v. " + contract.opposingTeam)
-                    .font(Constants.Fonts.bodyBold)
+                    .font(Constants.Fonts.cartTitle)
 
                 Spacer()
 
                 // checkbox
+                Toggle("", isOn: $isSelected)
+                    .labelsHidden()
+                    .toggleStyle(ToggleCheckboxStyle())
             }
 
             HStack {
@@ -41,10 +45,8 @@ struct ContractTile: View {
                 }
             }
             .padding(.top, 18)
-
         }
-        .padding(.leading, 19)
-        .padding(.trailing, 19)
+        .padding(.horizontal, 19)
     }
 
 }

@@ -35,6 +35,7 @@ struct Constants {
         static let bodyBold = Font.system(size: 16, weight: .semibold, design: .default)
         static let body = Font.system(size: 16, weight: .regular, design: .default)
         static let cartEvent = Font.system(size: 14, weight: .regular, design: .default)
+        static let cartTitle = Font.system(size: 16, weight: .medium, design: .default)
         static let cartPrice = Font.system(size: 14, weight: .regular, design: .default)
         static let caption = Font.system(size: 12, weight: .regular, design: .default)
         static let cartNote = Font.system(size: 10, weight: .regular, design: .default)
