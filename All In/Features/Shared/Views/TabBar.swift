@@ -18,45 +18,46 @@ struct TabBar: View {
             Constants.Colors.white
             HStack {
                 VStack {
-                    Image("Home")
+                    Image("home")
                         .renderingMode(.template)
                         .resizable()
                         .frame(width: tabItemSize, height: tabItemSize)
-                        .foregroundStyle(page == "home" ? Constants.Colors.red: Constants.Colors.grey03)
+                        .foregroundStyle(page == "home" ? Constants.Colors.red: Constants.Colors.white)
                     Text("Home")
                         .font(.system(size: 12, weight: .regular))
 //                        .foregroundStyle(.brown)
-                        .foregroundStyle(page == "home" ? Constants.Colors.red: Constants.Colors.grey03)
+                        .foregroundStyle(page == "home" ? Constants.Colors.red: Constants.Colors.white)
 
                 }
                 Spacer()
                 VStack {
-                    Image("Market")
+                    Image("marketplace")
                         .renderingMode(.template)
                         .resizable()
                         .frame(width: tabItemSize, height: tabItemSize)
-                        .foregroundStyle(page == "market" ? Constants.Colors.red: Constants.Colors.grey03)
+                        .foregroundStyle(page == "market" ? Constants.Colors.red: Constants.Colors.white)
                     Text("Marketplace")
                         .font(.system(size: 12, weight: .regular))
 //                        .foregroundStyle(.brown)
-                        .foregroundStyle(page == "market" ? Constants.Colors.red: Constants.Colors.grey03)
+                        .foregroundStyle(page == "market" ? Constants.Colors.red: Constants.Colors.white)
 
                 }
                 Spacer()
                 VStack {
-                    Image("Person")
+                    Image("bet-tracker")
                         .renderingMode(.template)
                         .resizable()
                         .frame(width: tabItemSize, height: tabItemSize)
-                        .foregroundStyle(page == "profile" ? Constants.Colors.red: Constants.Colors.grey03)
-                    Text("Profile")
+                        .foregroundStyle(page == "profile" ? Constants.Colors.red: Constants.Colors.white)
+                    Text("Bet Tracker")
                         .font(.system(size: 12, weight: .regular))
-                        .foregroundStyle(page == "profile" ? Constants.Colors.red: Constants.Colors.grey03)
+                        .foregroundStyle(page == "profile" ? Constants.Colors.red: Constants.Colors.white)
 
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 58, bottom: 38, trailing: 58))
         }
+        .toolbarBackground(Constants.Colors.background, for: .tabBar)
     }
 }
 
