@@ -5,29 +5,26 @@
 //  Created by Peter Bidoshi  on 3/17/24.
 //
 
-import Foundation
 import SwiftUI
 
 struct TabBar: View {
-
     let page: String
     let tabItemSize: CGFloat = 24
 
     var body: some View {
         ZStack {
-            Constants.Colors.white
+            Constants.Colors.background
+                .ignoresSafeArea(edges: .bottom)
             HStack {
                 VStack {
                     Image("home")
                         .renderingMode(.template)
                         .resizable()
                         .frame(width: tabItemSize, height: tabItemSize)
-                        .foregroundStyle(page == "home" ? Constants.Colors.red: Constants.Colors.white)
+                        .foregroundStyle(page == "home" ? Constants.Colors.red : Constants.Colors.white)
                     Text("Home")
                         .font(.system(size: 12, weight: .regular))
-//                        .foregroundStyle(.brown)
-                        .foregroundStyle(page == "home" ? Constants.Colors.red: Constants.Colors.white)
-
+                        .foregroundStyle(page == "home" ? Constants.Colors.red : Constants.Colors.white)
                 }
                 Spacer()
                 VStack {
@@ -35,12 +32,10 @@ struct TabBar: View {
                         .renderingMode(.template)
                         .resizable()
                         .frame(width: tabItemSize, height: tabItemSize)
-                        .foregroundStyle(page == "market" ? Constants.Colors.red: Constants.Colors.white)
+                        .foregroundStyle(page == "market" ? Constants.Colors.red : Constants.Colors.white)
                     Text("Marketplace")
                         .font(.system(size: 12, weight: .regular))
-//                        .foregroundStyle(.brown)
-                        .foregroundStyle(page == "market" ? Constants.Colors.red: Constants.Colors.white)
-
+                        .foregroundStyle(page == "market" ? Constants.Colors.red : Constants.Colors.white)
                 }
                 Spacer()
                 VStack {
@@ -48,14 +43,13 @@ struct TabBar: View {
                         .renderingMode(.template)
                         .resizable()
                         .frame(width: tabItemSize, height: tabItemSize)
-                        .foregroundStyle(page == "profile" ? Constants.Colors.red: Constants.Colors.white)
+                        .foregroundStyle(page == "profile" ? Constants.Colors.red : Constants.Colors.white)
                     Text("Bet Tracker")
                         .font(.system(size: 12, weight: .regular))
-                        .foregroundStyle(page == "profile" ? Constants.Colors.red: Constants.Colors.white)
-
+                        .foregroundStyle(page == "profile" ? Constants.Colors.red : Constants.Colors.white)
                 }
             }
-            .padding(EdgeInsets(top: 0, leading: 58, bottom: 38, trailing: 58))
+            .padding(EdgeInsets(top: 0, leading: 32, bottom: 24, trailing: 32))
         }
         .toolbarBackground(Constants.Colors.background, for: .tabBar)
     }
