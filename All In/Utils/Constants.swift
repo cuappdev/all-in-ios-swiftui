@@ -26,6 +26,9 @@ struct Constants {
         static let green = Color(hex: 0x378C27)
         static let purple = Color(hex: 0x8643CB)
         static let yellow = Color(hex: 0xE9B140)
+
+        // System
+        static let background = Color(hex: 0x15141B)
     }
 
     enum Fonts {
