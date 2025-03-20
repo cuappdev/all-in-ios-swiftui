@@ -77,16 +77,19 @@ struct FrequentAskedQuestion: View {
 
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 20) {
-                header
-                questionsList
-
-                Spacer()
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    header
+                    questionsList
+                    
+                    Spacer(minLength: 20)
+                }
+                .padding(.horizontal)
+                .padding(.top, 40)
+                .frame(maxWidth: .infinity)
             }
-            .padding(.horizontal)
-            .padding(.top, 40)
-            .frame(maxWidth: .infinity)
             .background(Constants.Colors.black)
+            .scrollIndicators(.hidden)
         }
     }
 
