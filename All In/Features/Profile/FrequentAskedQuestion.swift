@@ -19,12 +19,12 @@ struct FrequentAskedQuestion: View {
 
     var myGradient = Gradient(
         colors: [
-          Constants.Colors.gradientBlue,
-          Constants.Colors.gradientLightBlue,
-          Constants.Colors.gradientPurple,
-          Constants.Colors.gradientLavender
+            Constants.Colors.gradientBlue,
+            Constants.Colors.gradientLightBlue,
+            Constants.Colors.gradientPurple,
+            Constants.Colors.gradientLavender
         ]
-      )
+    )
 
     var body: some View {
         NavigationStack {

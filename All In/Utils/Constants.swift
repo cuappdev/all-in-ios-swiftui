@@ -31,6 +31,11 @@ struct Constants {
         static let gradientPurple = Color(hex: 0x887DFE)
         static let gradientLavender = Color(hex: 0x7D97FE)
         static let blackBlue = Color(hex: 0x201E2D)
+
+        // Charts
+        static let greenChart = Color(hex: 0x47CD89)
+        static let redChart = Color(hex: 0xF97066)
+
         // System
         static let background = Color(hex: 0x15141B)
     }
@@ -43,6 +48,10 @@ struct Constants {
         static let subheader = Font.system(size: 18, weight: .bold, design: .default)
         static let bodyBold = Font.system(size: 16, weight: .semibold, design: .default)
         static let body = Font.system(size: 16, weight: .regular, design: .default)
+        static let pillButton = Font.system(size: 12, weight: .semibold, design: .default)
+        static let cardHeader = Font.system(size: 12, weight: .semibold, design: .default)
+        static let cardContent = Font.system(size: 22, weight: .none, design: .default)
+        static let profileCard = Font.system(size: 20, weight: .semibold, design: .default)
         static let caption = Font.system(size: 12, weight: .regular, design: .default)
     }
 
