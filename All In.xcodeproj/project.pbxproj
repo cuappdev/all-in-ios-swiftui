@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2951F2692D8CCD7C0056F078 /* DailyGainLoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2951F2682D8CCD760056F078 /* DailyGainLoss.swift */; };
+		2951F26B2D8CD2130056F078 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2951F26A2D8CD2110056F078 /* Pill.swift */; };
 		2973B0652D875F13003C9CF5 /* FrequentAskedQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */; };
 		29BD641A2D8C7DF5008A2CC6 /* BetTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BD64192D8C7DF2008A2CC6 /* BetTrackerView.swift */; };
-		29BD641C2D8C7E1A008A2CC6 /* BetTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BD641B2D8C7E11008A2CC6 /* BetTrackerViewModel.swift */; };
+		29C66D082D8CDC4F00166BD7 /* LexendDeca-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29C66D052D8CDC4F00166BD7 /* LexendDeca-Medium.ttf */; };
+		29C66D092D8CDC4F00166BD7 /* LexendDeca-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29C66D042D8CDC4F00166BD7 /* LexendDeca-Light.ttf */; };
+		29C66D0A2D8CDC4F00166BD7 /* LexendDeca-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29C66D062D8CDC4F00166BD7 /* LexendDeca-Regular.ttf */; };
+		29C66D0B2D8CDC4F00166BD7 /* LexendDeca-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29C66D072D8CDC4F00166BD7 /* LexendDeca-SemiBold.ttf */; };
 		897DFBDE2CCED80600246B0D /* PlayerChestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */; };
 		897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */; };
 		897DFBE02CCED80600246B0D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB92CCED80600246B0D /* SheetView.swift */; };
@@ -23,7 +28,6 @@
 		897DFBE82CCED80600246B0D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBC32CCED80600246B0D /* HomeView.swift */; };
 		897DFBE92CCED80600246B0D /* MarketplaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBC52CCED80600246B0D /* MarketplaceViewModel.swift */; };
 		897DFBEA2CCED80600246B0D /* MarketplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBC72CCED80600246B0D /* MarketplaceView.swift */; };
-		897DFBEB2CCED80600246B0D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBCA2CCED80600246B0D /* ProfileView.swift */; };
 		897DFBEC2CCED80600246B0D /* PlayerAveragesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBCC2CCED80600246B0D /* PlayerAveragesModel.swift */; };
 		897DFBED2CCED80600246B0D /* PlayerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBCD2CCED80600246B0D /* PlayerDataModel.swift */; };
 		897DFBEE2CCED80600246B0D /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBCE2CCED80600246B0D /* PlayerModel.swift */; };
@@ -73,9 +77,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2951F2682D8CCD760056F078 /* DailyGainLoss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGainLoss.swift; sourceTree = "<group>"; };
+		2951F26A2D8CD2110056F078 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentAskedQuestion.swift; sourceTree = "<group>"; };
 		29BD64192D8C7DF2008A2CC6 /* BetTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetTrackerView.swift; sourceTree = "<group>"; };
-		29BD641B2D8C7E11008A2CC6 /* BetTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetTrackerViewModel.swift; sourceTree = "<group>"; };
+		29C66D042D8CDC4F00166BD7 /* LexendDeca-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-Light.ttf"; sourceTree = "<group>"; };
+		29C66D052D8CDC4F00166BD7 /* LexendDeca-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-Medium.ttf"; sourceTree = "<group>"; };
+		29C66D062D8CDC4F00166BD7 /* LexendDeca-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-Regular.ttf"; sourceTree = "<group>"; };
+		29C66D072D8CDC4F00166BD7 /* LexendDeca-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-SemiBold.ttf"; sourceTree = "<group>"; };
+		29DB4FC32D8CDEAC00E489DB /* All-In-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "All-In-Info.plist"; sourceTree = SOURCE_ROOT; };
 		897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChestViewModel.swift; sourceTree = "<group>"; };
 		897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityChestSheetViewModel.swift; sourceTree = "<group>"; };
 		897DFBB92CCED80600246B0D /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
@@ -89,7 +99,6 @@
 		897DFBC32CCED80600246B0D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		897DFBC52CCED80600246B0D /* MarketplaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceViewModel.swift; sourceTree = "<group>"; };
 		897DFBC72CCED80600246B0D /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
-		897DFBCA2CCED80600246B0D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		897DFBCC2CCED80600246B0D /* PlayerAveragesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAveragesModel.swift; sourceTree = "<group>"; };
 		897DFBCD2CCED80600246B0D /* PlayerDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDataModel.swift; sourceTree = "<group>"; };
 		897DFBCE2CCED80600246B0D /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
@@ -149,6 +158,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29C66D032D8CDC4400166BD7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				29C66D042D8CDC4F00166BD7 /* LexendDeca-Light.ttf */,
+				29C66D052D8CDC4F00166BD7 /* LexendDeca-Medium.ttf */,
+				29C66D062D8CDC4F00166BD7 /* LexendDeca-Regular.ttf */,
+				29C66D072D8CDC4F00166BD7 /* LexendDeca-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		897DFBB82CCED80600246B0D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,10 +231,10 @@
 		897DFBCB2CCED80600246B0D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				2951F26A2D8CD2110056F078 /* Pill.swift */,
 				29BD64192D8C7DF2008A2CC6 /* BetTrackerView.swift */,
 				2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */,
 				D01FBEDA2D74F77C00D365EF /* ViewModels */,
-				897DFBCA2CCED80600246B0D /* ProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -232,6 +252,7 @@
 		897DFBD42CCED80600246B0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2951F2682D8CCD760056F078 /* DailyGainLoss.swift */,
 				897DFBCF2CCED80600246B0D /* Player */,
 				897DFBD02CCED80600246B0D /* ChestModel.swift */,
 				897DFBD12CCED80600246B0D /* ContractModel.swift */,
@@ -294,6 +315,7 @@
 		CE101CDC2BA776ED00218E40 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				29C66D032D8CDC4400166BD7 /* Fonts */,
 				D0155A842B950FF7003FE6BC /* Assets.xcassets */,
 				D0155A862B950FF7003FE6BC /* Preview Content */,
 			);
@@ -323,6 +345,7 @@
 		D0155A7F2B950FF6003FE6BC /* All In */ = {
 			isa = PBXGroup;
 			children = (
+				29DB4FC32D8CDEAC00E489DB /* All-In-Info.plist */,
 				9928219F2BC0931200B592F7 /* AllInApp.swift */,
 				D0155A822B950FF6003FE6BC /* ContentView.swift */,
 				CE101CDC2BA776ED00218E40 /* Resources */,
@@ -361,7 +384,6 @@
 		D01FBEDA2D74F77C00D365EF /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				29BD641B2D8C7E11008A2CC6 /* BetTrackerViewModel.swift */,
 				D01FBED82D74F76D00D365EF /* ProfileViewViewModel.swift */,
 			);
 			path = ViewModels;
@@ -503,6 +525,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0155A882B950FF7003FE6BC /* Preview Assets.xcassets in Resources */,
+				29C66D082D8CDC4F00166BD7 /* LexendDeca-Medium.ttf in Resources */,
+				29C66D092D8CDC4F00166BD7 /* LexendDeca-Light.ttf in Resources */,
+				29C66D0A2D8CDC4F00166BD7 /* LexendDeca-Regular.ttf in Resources */,
+				29C66D0B2D8CDC4F00166BD7 /* LexendDeca-SemiBold.ttf in Resources */,
 				D0155A852B950FF7003FE6BC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,6 +584,7 @@
 				897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */,
 				897DFBE02CCED80600246B0D /* SheetView.swift in Sources */,
 				897DFBE12CCED80600246B0D /* PlayerChestSheetView.swift in Sources */,
+				2951F26B2D8CD2130056F078 /* Pill.swift in Sources */,
 				897DFBE22CCED80600246B0D /* PlayerChestView.swift in Sources */,
 				897DFBE32CCED80600246B0D /* RarityChestSheetView.swift in Sources */,
 				897DFBE42CCED80600246B0D /* RarityChestView.swift in Sources */,
@@ -571,7 +598,6 @@
 				897DFBE82CCED80600246B0D /* HomeView.swift in Sources */,
 				897DFBE92CCED80600246B0D /* MarketplaceViewModel.swift in Sources */,
 				897DFBEA2CCED80600246B0D /* MarketplaceView.swift in Sources */,
-				897DFBEB2CCED80600246B0D /* ProfileView.swift in Sources */,
 				897DFBEC2CCED80600246B0D /* PlayerAveragesModel.swift in Sources */,
 				897DFBED2CCED80600246B0D /* PlayerDataModel.swift in Sources */,
 				897DFBEE2CCED80600246B0D /* PlayerModel.swift in Sources */,
@@ -585,9 +611,9 @@
 				D01FBED92D74F76D00D365EF /* ProfileViewViewModel.swift in Sources */,
 				897DFBF52CCED80600246B0D /* ContractCard.swift in Sources */,
 				897DFBF62CCED80600246B0D /* PlayerContractSheetView.swift in Sources */,
+				2951F2692D8CCD7C0056F078 /* DailyGainLoss.swift in Sources */,
 				897DFBF72CCED80600246B0D /* TabBar.swift in Sources */,
 				D057FD852BA76F8600EF552D /* Constants.swift in Sources */,
-				29BD641C2D8C7E1A008A2CC6 /* BetTrackerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +784,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "All-In-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -788,6 +815,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "All-In-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

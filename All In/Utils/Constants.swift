@@ -35,6 +35,7 @@ struct Constants {
         // Charts
         static let greenChart = Color(hex: 0x47CD89)
         static let redChart = Color(hex: 0xF97066)
+        static let moneyGreen = Color(hex: 0x47CD89)
 
         // System
         static let background = Color(hex: 0x15141B)
@@ -49,10 +50,14 @@ struct Constants {
         static let bodyBold = Font.system(size: 16, weight: .semibold, design: .default)
         static let body = Font.system(size: 16, weight: .regular, design: .default)
         static let pillButton = Font.system(size: 12, weight: .semibold, design: .default)
-        static let cardHeader = Font.system(size: 12, weight: .semibold, design: .default)
-        static let cardContent = Font.system(size: 22, weight: .none, design: .default)
-        static let profileCard = Font.system(size: 20, weight: .semibold, design: .default)
-        static let caption = Font.system(size: 12, weight: .regular, design: .default)
+
+        // Profile
+        static let headerProfile = Font.custom("LexendDeca-SemiBold", size: 24)
+        static let subheaderProfile = Font.custom("LexendDeca-SemiBold", size: 18)
+        static let cardHeader = Font.custom("LexendDeca-SemiBold", size: 12)
+        static let cardContent = Font.custom("LexendDeca-Medium", size: 22)
+        static let profileCard = Font.custom("LexendDeca-SemiBold", size: 20)
+        static let caption = Font.custom("LexendDeca-Medium", size: 12)
     }
 
     struct UserDefaultKeys {

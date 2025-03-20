@@ -10,25 +10,71 @@ import Charts
 
 struct BetTrackerView: View {
 
-    @StateObject var viewModel = ViewModel()
-    @EnvironmentObject var profileViewModel: ProfileViewViewModel
+    // MARK: - Properties
 
     @Binding var tabSelection: Int
     @State private var timeFilter: TimeFilter = .weekly
-
     @State private var showingFAQ = false
+
+    let user: User
+
+    var myGradient = Gradient(
+        colors: [
+            Constants.Colors.gradientBlue,
+            Constants.Colors.gradientLightBlue,
+            Constants.Colors.gradientPurple,
+            Constants.Colors.gradientLavender
+        ]
+    )
 
     enum TimeFilter {
         case weekly
         case monthly
     }
 
+    /// Calculates the Total Gain/Losses for the Selected User
+    private func calculateTotalGainLoss() -> Int {
+        let data = timeFilter == .weekly ? user.weeklyGainLoss : user.monthlyGainLoss
+        return data.reduce(0) { $0 + $1.value }
+    }
+
+    /// Calculates the user's current week gain/Loss
+    private func calculateCurrentWeekGainLoss() -> String {
+        let currentWeekTotal = user.weeklyGainLoss.reduce(0) { $0 + $1.value }
+        return String(format: "%.2f", Double(currentWeekTotal) / 100.0)
+    }
+
+    /// Calculates the user's last week gain/loss
+    private func calculateLastWeekGainLoss() -> Int {
+        // TODO: need to make network requests for this
+        400
+    }
+
+    /// Calculates the day's since user's account creation
+    private func daysSinceAccountCreation() -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: user.createdAt, to: Date())
+        return components.day ?? 0
+    }
+
+    /// Calculating the scaling so that it is easily viewable
+    private func calculateMaxScaleValue() -> Int {
+        let data = timeFilter == .weekly ? user.weeklyGainLoss : user.monthlyGainLoss
+        let maxAbsValue = data.map { abs($0.value) }.max() ?? 5000
+
+        // Round up to nearest 1000 for cleaner scale intervals
+        let roundedUp = Int(ceil(Double(maxAbsValue) / 1000.0) * 1000)
+        return max(1000, roundedUp)
+    }
+
+    // MARK: - UI
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
                 content
 
-                TabBar(page: "bet-tracker")
+                TabBar(page: "profile")
                     .frame(height: 108)
             }
             .ignoresSafeArea(edges: .bottom)
@@ -86,8 +132,8 @@ struct BetTrackerView: View {
                         .foregroundStyle(Constants.Colors.white)
                         .font(.system(size: 24))
 
-                    Text("1000")
-                        .font(Constants.Fonts.subheader)
+                    Text("\(user.balance)")
+                        .font(Constants.Fonts.subheaderProfile)
                         .foregroundStyle(Constants.Colors.white)
                 }
             }
@@ -121,8 +167,8 @@ struct BetTrackerView: View {
 
                 Spacer()
 
-                Text("+$20")
-                    .font(Constants.Fonts.subheader)
+                Text("+$\(calculateTotalGainLoss())")
+                    .font(Constants.Fonts.subheaderProfile)
                     .foregroundStyle(Constants.Colors.white)
             }
 
@@ -131,29 +177,29 @@ struct BetTrackerView: View {
 
                 VStack(alignment: .trailing, spacing: 2) {
                     HStack(spacing: 0) {
-                        Text("+0.00")
-                            .font(Constants.Fonts.body)
-                            .foregroundStyle(Constants.Colors.green)
+                        Text("+\(calculateCurrentWeekGainLoss())")
+                            .font(Constants.Fonts.cardHeader)
+                            .foregroundStyle(Constants.Colors.moneyGreen)
 
                         Text(" This week")
-                            .font(Constants.Fonts.body)
+                            .font(Constants.Fonts.cardHeader)
                             .foregroundStyle(Constants.Colors.white)
                     }
 
                     HStack(spacing: 0) {
-                        Text("+$50.00")
-                            .font(Constants.Fonts.body)
-                            .foregroundStyle(Constants.Colors.green)
+                        Text("+$\(calculateLastWeekGainLoss())")
+                            .font(Constants.Fonts.cardHeader)
+                            .foregroundStyle(Constants.Colors.moneyGreen)
 
                         Text(" Last week")
-                            .font(Constants.Fonts.body)
+                            .font(Constants.Fonts.cardHeader)
                             .foregroundStyle(Constants.Colors.white)
                     }
                 }
             }
 
             Chart {
-                ForEach(viewModel.weeklyData, id: \.day) { item in
+                ForEach(timeFilter == .weekly ? user.weeklyGainLoss : user.monthlyGainLoss, id: \.day) { item in
                     BarMark(
                         x: .value("Day", item.day),
                         y: .value("Value", item.value)
@@ -166,14 +212,18 @@ struct BetTrackerView: View {
                     .lineStyle(StrokeStyle(lineWidth: 1, dash: [2, 2]))
                     .foregroundStyle(Constants.Colors.white)
 
-                RuleMark(y: .value("Upper Line", -5000))
+                RuleMark(y: .value("Upper Line", -calculateMaxScaleValue()))
                     .lineStyle(StrokeStyle(lineWidth: 1))
                     .foregroundStyle(Constants.Colors.white)
 
             }
-            .chartYScale(domain: -5000...5000)
+            .chartYScale(domain: -calculateMaxScaleValue()...calculateMaxScaleValue())
             .chartYAxis {
-                AxisMarks(position: .leading, values: [-5000, -2500, 0, 2500, 5000]) { value in
+                let maxValue = calculateMaxScaleValue()
+
+                AxisMarks(position: .leading, values: [-maxValue, -maxValue/2, 0, maxValue/2, maxValue]) { value in
+                    AxisGridLine()
+                    AxisTick()
                     AxisValueLabel {
                         if let intValue = value.as(Int.self) {
                             Text("\(intValue)")
@@ -184,7 +234,7 @@ struct BetTrackerView: View {
                 }
             }
             .chartXAxis {
-                AxisMarks(values: ["M", "T", "W", "TH", "F", "S", "SU"]) { value in
+                AxisMarks(values: timeFilter == .weekly ? ["M", "T", "W", "TH", "F", "S", "SU"] : Array(1...30).map { "\($0)" }) { value in
                     AxisValueLabel {
                         if let day = value.as(String.self) {
                             Text(day)
@@ -201,6 +251,10 @@ struct BetTrackerView: View {
         .background(Constants.Colors.blackBlue)
         .cornerRadius(16)
         .frame(height: 269)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(LinearGradient(gradient: myGradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+        )
     }
 
     private var totalProfitCard: some View {
@@ -209,7 +263,7 @@ struct BetTrackerView: View {
                 .font(Constants.Fonts.cardHeader)
                 .foregroundStyle(Constants.Colors.white)
 
-            Text("$64")
+            Text("$\(user.totalProfit)")
                 .font(Constants.Fonts.cardContent)
                 .foregroundStyle(Constants.Colors.white)
                 .padding(.top, 8)
@@ -218,6 +272,10 @@ struct BetTrackerView: View {
         .padding(16)
         .background(Constants.Colors.blackBlue)
         .cornerRadius(16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(LinearGradient(gradient: myGradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+        )
     }
 
     private var rankingCard: some View {
@@ -226,7 +284,7 @@ struct BetTrackerView: View {
                 .font(Constants.Fonts.cardHeader)
                 .foregroundStyle(Constants.Colors.white)
 
-            Text("52")
+            Text("\(user.ranking)")
                 .font(Constants.Fonts.cardContent)
                 .foregroundStyle(Constants.Colors.white)
                 .padding(.top, 8)
@@ -235,6 +293,10 @@ struct BetTrackerView: View {
         .padding(16)
         .background(Constants.Colors.blackBlue)
         .cornerRadius(16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(LinearGradient(gradient: myGradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+        )
     }
 
     private var contractsSoldCard: some View {
@@ -243,7 +305,7 @@ struct BetTrackerView: View {
                 .font(Constants.Fonts.cardHeader)
                 .foregroundStyle(Constants.Colors.white)
 
-            Text("7")
+            Text("\(user.sellerTransactions.count)")
                 .font(Constants.Fonts.cardContent)
                 .foregroundStyle(Constants.Colors.white)
                 .padding(.top, 8)
@@ -252,6 +314,10 @@ struct BetTrackerView: View {
         .padding(16)
         .background(Constants.Colors.blackBlue)
         .cornerRadius(16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(LinearGradient(gradient: myGradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+        )
     }
 
     private var accountAgeCard: some View {
@@ -260,7 +326,7 @@ struct BetTrackerView: View {
                 .font(Constants.Fonts.cardHeader)
                 .foregroundStyle(Constants.Colors.white)
 
-            Text("17 days")
+            Text("\(daysSinceAccountCreation()) days")
                 .font(Constants.Fonts.cardContent)
                 .foregroundStyle(Constants.Colors.white)
                 .padding(.top, 8)
@@ -269,30 +335,14 @@ struct BetTrackerView: View {
         .padding(16)
         .background(Constants.Colors.blackBlue)
         .cornerRadius(16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(LinearGradient(gradient: myGradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+        )
     }
-}
 
-// Custom pill button component
-struct Pill: View {
-    let title: String
-    let isSelected: Bool
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            Text(title)
-                .font(Constants.Fonts.pillButton)
-                .foregroundStyle(Constants.Colors.white)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 8)
-                .frame(height: 39)
-                .background(isSelected ? Constants.Colors.background : Color.clear)
-                .cornerRadius(20)
-        }
-    }
 }
 
 #Preview {
-    BetTrackerView(tabSelection: .constant(2))
-        .environmentObject(ProfileViewViewModel())
+    BetTrackerView(tabSelection: .constant(2), user: User.dummyData[0])
 }

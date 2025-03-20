@@ -26,7 +26,7 @@ struct ContentView: View {
                         EmptyView()
                     }
 
-                BetTrackerView(tabSelection: $tabSelection)
+                BetTrackerView(tabSelection: $tabSelection, user: User.dummyData[1])
                     .tag(2)
                     .tabItem {
                         EmptyView()
