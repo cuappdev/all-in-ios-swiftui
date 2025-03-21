@@ -66,6 +66,10 @@ struct TabBar: View {
     }
 }
 
+class TabNavigationManager: ObservableObject {
+    @Published var selectedTab: TabBarPage = .home
+}
+
 enum TabBarPage: Int {
     case home = 0
     case market = 1
