@@ -80,6 +80,7 @@ struct FrequentAskedQuestion: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     header
+                    
                     questionsList
                     
                     Spacer(minLength: 20)
