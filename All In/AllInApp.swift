@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct AllInApp: App {
+
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(ProfileViewViewModel())
+                .environmentObject(TabNavigationManager())
         }
     }
 }

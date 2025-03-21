@@ -12,7 +12,6 @@ struct BetTrackerView: View {
 
     // MARK: - Properties
 
-    @Binding var tabSelection: Int
     @State private var timeFilter: TimeFilter = .weekly
     @State private var showingFAQ = false
 
@@ -71,36 +70,27 @@ struct BetTrackerView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                content
+            ScrollView {
+                VStack(spacing: 16) {
+                    trackerCard
 
-                TabBar(page: "profile")
-                    .frame(height: 108)
+                    HStack(spacing: 17) {
+                        totalProfitCard
+                        rankingCard
+                    }
+
+                    HStack(spacing: 17) {
+                        contractsSoldCard
+                        accountAgeCard
+                    }
+                }
+                .padding(24)
             }
             .ignoresSafeArea(edges: .bottom)
             .background(Constants.Colors.background)
             .navigationDestination(isPresented: $showingFAQ) {
                 FrequentAskedQuestion()
             }
-        }
-    }
-
-    private var content: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                trackerCard
-
-                HStack(spacing: 17) {
-                    totalProfitCard
-                    rankingCard
-                }
-
-                HStack(spacing: 17) {
-                    contractsSoldCard
-                    accountAgeCard
-                }
-            }
-            .padding(24)
         }
     }
 
@@ -344,5 +334,5 @@ struct BetTrackerView: View {
 }
 
 #Preview {
-    BetTrackerView(tabSelection: .constant(2), user: User.dummyData[0])
+    BetTrackerView(user: User.dummyData[0])
 }

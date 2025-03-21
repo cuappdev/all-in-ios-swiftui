@@ -25,7 +25,7 @@ struct MarketplaceView: View {
             content
         }
         .ignoresSafeArea(edges: .top)
-        .background(Constants.Colors.grey00)
+        .background(Constants.Colors.background)
     }
 
     private var header: some View {

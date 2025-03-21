@@ -11,37 +11,28 @@ struct ContentView: View {
 
     @EnvironmentObject var tabNavigationManager: TabNavigationManager
 
+    private let transitionModifier = AnyTransition.opacity.animation(.easeInOut(duration: 0.15))
+
     var body: some View {
-        ZStack {
-            TabView(selection: $tabNavigationManager.selectedTab) {
-                HomeView()
-                    .tag(TabBarPage.home)
-                    .tabItem {
-                        EmptyView()
-                    }
-
-                MarketplaceView()
-                    .tag(TabBarPage.market)
-                    .tabItem {
-                        EmptyView()
-                    }
-
-                BetTrackerView(user: User.dummyData[0])
-                    .tag(TabBarPage.profile)
-                    .tabItem {
-                        EmptyView()
-                    }
+        VStack {
+            Group {
+                if tabNavigationManager.selectedTab == .home {
+                    HomeView()
+                        .transition(transitionModifier)
+                } else if tabNavigationManager.selectedTab == .market {
+                    MarketplaceView()
+                        .transition(transitionModifier)
+                } else if tabNavigationManager.selectedTab == .betTracker {
+                    BetTrackerView(user: User.dummyData[0])
+                        .transition(transitionModifier)
+                }
             }
 
-            VStack {
-                Spacer()
-
-                TabBar(selectedPage: $tabNavigationManager.selectedTab)
-                    .frame(height: 82)
-            }
-            .ignoresSafeArea()
-            .allowsHitTesting(false)
+            TabBar(selectedPage: $tabNavigationManager.selectedTab)
+                .frame(height: 96)
         }
+        .ignoresSafeArea()
+        .background(Constants.Colors.background)
     }
 
 }

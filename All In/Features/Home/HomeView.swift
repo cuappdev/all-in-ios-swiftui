@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
 
+    @EnvironmentObject var viewModel: ProfileViewViewModel
+
     var body: some View {
         VStack(spacing: 0) {
             ZStack(alignment: .bottomLeading) {
@@ -116,6 +118,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(tabSelection: .constant(0))
+    HomeView()
         .environmentObject(ProfileViewViewModel())
 }
