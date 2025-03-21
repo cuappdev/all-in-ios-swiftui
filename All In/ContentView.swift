@@ -9,34 +9,30 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var tabSelection = 0
+    @EnvironmentObject var tabNavigationManager: TabNavigationManager
+
+    private let transitionModifier = AnyTransition.opacity.animation(.easeInOut(duration: 0.15))
 
     var body: some View {
-        ZStack {
-            TabView(selection: $tabSelection) {
-                HomeView(tabSelection: $tabSelection)
-                    .tag(0)
-                    .tabItem {
-                        EmptyView()
-                    }
-
-                MarketplaceView(tabSelection: $tabSelection)
-                    .tag(1)
-                    .tabItem {
-                        EmptyView()
-                    }
-
-                BetTrackerView(tabSelection: $tabSelection, user: User.dummyData[1])
-                    .tag(2)
-                    .tabItem {
-                        EmptyView()
-                    }
+        VStack {
+            Group {
+                if tabNavigationManager.selectedTab == .home {
+                    HomeView()
+                        .transition(transitionModifier)
+                } else if tabNavigationManager.selectedTab == .market {
+                    MarketplaceView()
+                        .transition(transitionModifier)
+                } else if tabNavigationManager.selectedTab == .betTracker {
+                    BetTrackerView(user: User.dummyData[0])
+                        .transition(transitionModifier)
+                }
             }
-            .onAppear {
-                UITabBar.appearance().unselectedItemTintColor = .white
 
-            }
+            TabBar(selectedPage: $tabNavigationManager.selectedTab)
+                .frame(height: 96)
         }
+        .ignoresSafeArea()
+        .background(Constants.Colors.background)
     }
 
 }
