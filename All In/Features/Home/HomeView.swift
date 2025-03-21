@@ -21,7 +21,7 @@ struct HomeView: View {
                     Spacer()
                     HStack {
                         Image("RedMoney")
-                        Text(1000.withCommas())
+                        Text(viewModel.user.balance.withCommas())
                             .font(.system(size: 18, weight: .bold))
                             .foregroundStyle(.black)
                     }
@@ -31,8 +31,7 @@ struct HomeView: View {
             Divider()
 
             ZStack {
-
-                Constants.Colors.greybg
+                Constants.Colors.background
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 0) {
                         Text("Player Chests")
@@ -114,9 +113,9 @@ struct HomeView: View {
             }
         )
     }
-
 }
 
 #Preview {
-    HomeView()
+    HomeView(tabSelection: .constant(0))
+        .environmentObject(ProfileViewViewModel())
 }

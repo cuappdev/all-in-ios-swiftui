@@ -26,7 +26,7 @@ struct ContentView: View {
                         EmptyView()
                     }
 
-                ProfileView(user: User.dummyData[0])
+                BetTrackerView(user: User.dummyData[0])
                     .tag(TabBarPage.profile)
                     .tabItem {
                         EmptyView()

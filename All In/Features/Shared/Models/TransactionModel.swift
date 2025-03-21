@@ -14,5 +14,6 @@ struct Transaction: Codable {
     let price: Int
     let sellerId: Int
     let buyerId: Int
+    let contractId: Int
 
 }
