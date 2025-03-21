@@ -22,6 +22,7 @@ struct Constants {
         static let white = Color(hex: 0xFFFFFF)
         static let red = Color(hex: 0xFF4F4F)
         static let brown = Color(hex: 0xCE9D9D)
+        static let lightBlue = Color(hex: 0x99C5F4)
         static let blue = Color(hex: 0x4387CB)
         static let green = Color(hex: 0x378C27)
         static let purple = Color(hex: 0x8643CB)

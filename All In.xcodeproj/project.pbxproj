@@ -15,6 +15,7 @@
 		29C66D092D8CDC4F00166BD7 /* LexendDeca-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29C66D042D8CDC4F00166BD7 /* LexendDeca-Light.ttf */; };
 		29C66D0A2D8CDC4F00166BD7 /* LexendDeca-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29C66D062D8CDC4F00166BD7 /* LexendDeca-Regular.ttf */; };
 		29C66D0B2D8CDC4F00166BD7 /* LexendDeca-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29C66D072D8CDC4F00166BD7 /* LexendDeca-SemiBold.ttf */; };
+		29AB851E2D8E10550052E0A6 /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB851D2D8E10530052E0A6 /* FAQ.swift */; };
 		897DFBDE2CCED80600246B0D /* PlayerChestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */; };
 		897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */; };
 		897DFBE02CCED80600246B0D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB92CCED80600246B0D /* SheetView.swift */; };
@@ -86,6 +87,7 @@
 		29C66D062D8CDC4F00166BD7 /* LexendDeca-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-Regular.ttf"; sourceTree = "<group>"; };
 		29C66D072D8CDC4F00166BD7 /* LexendDeca-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-SemiBold.ttf"; sourceTree = "<group>"; };
 		29DB4FC32D8CDEAC00E489DB /* All-In-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "All-In-Info.plist"; sourceTree = SOURCE_ROOT; };
+		29AB851D2D8E10530052E0A6 /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
 		897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChestViewModel.swift; sourceTree = "<group>"; };
 		897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityChestSheetViewModel.swift; sourceTree = "<group>"; };
 		897DFBB92CCED80600246B0D /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
@@ -167,6 +169,12 @@
 				29C66D072D8CDC4F00166BD7 /* LexendDeca-SemiBold.ttf */,
 			);
 			path = Fonts;
+		29AB851C2D8E10490052E0A6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				29AB851D2D8E10530052E0A6 /* FAQ.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		897DFBB82CCED80600246B0D /* ViewModels */ = {
@@ -234,6 +242,7 @@
 				2951F26A2D8CD2110056F078 /* Pill.swift */,
 				29BD64192D8C7DF2008A2CC6 /* BetTrackerView.swift */,
 				2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */,
+				29AB851C2D8E10490052E0A6 /* Models */,
 				D01FBEDA2D74F77C00D365EF /* ViewModels */,
 			);
 			path = Profile;
@@ -605,6 +614,7 @@
 				897DFBF02CCED80600246B0D /* ContractModel.swift in Sources */,
 				89E4FAA82CEA8F9600A952B1 /* Logger.swift in Sources */,
 				897DFBF12CCED80600246B0D /* TransactionModel.swift in Sources */,
+				29AB851E2D8E10550052E0A6 /* FAQ.swift in Sources */,
 				897DFBF22CCED80600246B0D /* UserModel.swift in Sources */,
 				897DFBF32CCED80600246B0D /* PillSelectView.swift in Sources */,
 				897DFBF42CCED80600246B0D /* ViewController.swift in Sources */,
