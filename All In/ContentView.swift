@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var selectedPage: TabBarPage = .home
+    @EnvironmentObject var tabNavigationManager: TabNavigationManager
 
     var body: some View {
         ZStack {
-            TabView(selection: $selectedPage) {
+            TabView(selection: $tabNavigationManager.selectedTab) {
                 HomeView()
                     .tag(TabBarPage.home)
                     .tabItem {
@@ -36,7 +36,7 @@ struct ContentView: View {
             VStack {
                 Spacer()
 
-                TabBar(selectedPage: $selectedPage)
+                TabBar(selectedPage: $tabNavigationManager.selectedTab)
                     .frame(height: 82)
             }
             .ignoresSafeArea()
