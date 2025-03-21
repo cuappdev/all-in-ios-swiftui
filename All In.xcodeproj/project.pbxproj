@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2973B0652D875F13003C9CF5 /* FrequentAskedQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */; };
+		29AB851E2D8E10550052E0A6 /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AB851D2D8E10530052E0A6 /* FAQ.swift */; };
 		897DFBDE2CCED80600246B0D /* PlayerChestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */; };
 		897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */; };
 		897DFBE02CCED80600246B0D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB92CCED80600246B0D /* SheetView.swift */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentAskedQuestion.swift; sourceTree = "<group>"; };
+		29AB851D2D8E10530052E0A6 /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
 		897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChestViewModel.swift; sourceTree = "<group>"; };
 		897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityChestSheetViewModel.swift; sourceTree = "<group>"; };
 		897DFBB92CCED80600246B0D /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29AB851C2D8E10490052E0A6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				29AB851D2D8E10530052E0A6 /* FAQ.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		897DFBB82CCED80600246B0D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +218,7 @@
 		897DFBCB2CCED80600246B0D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				29AB851C2D8E10490052E0A6 /* Models */,
 				D01FBEDA2D74F77C00D365EF /* ViewModels */,
 				897DFBCA2CCED80600246B0D /* ProfileView.swift */,
 			);
@@ -572,6 +583,7 @@
 				897DFBF02CCED80600246B0D /* ContractModel.swift in Sources */,
 				89E4FAA82CEA8F9600A952B1 /* Logger.swift in Sources */,
 				897DFBF12CCED80600246B0D /* TransactionModel.swift in Sources */,
+				29AB851E2D8E10550052E0A6 /* FAQ.swift in Sources */,
 				897DFBF22CCED80600246B0D /* UserModel.swift in Sources */,
 				897DFBF32CCED80600246B0D /* PillSelectView.swift in Sources */,
 				897DFBF42CCED80600246B0D /* ViewController.swift in Sources */,
