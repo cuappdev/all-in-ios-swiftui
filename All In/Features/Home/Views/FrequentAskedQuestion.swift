@@ -88,7 +88,7 @@ struct FrequentAskedQuestion: View {
                 .padding(.top, 40)
                 .frame(maxWidth: .infinity)
             }
-            .background(Constants.Colors.black)
+            .background(Constants.Colors.background)
             .scrollIndicators(.hidden)
         }
     }
@@ -102,7 +102,6 @@ struct FrequentAskedQuestion: View {
             Text("Frequently Asked Questions")
                 .font(Constants.Fonts.faq2)
                 .foregroundStyle(Constants.Colors.white)
-                .italic()
                 .padding(.bottom, 24)
         }
     }
@@ -155,6 +154,8 @@ struct FrequentAskedQuestion: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
+        .background(Constants.Colors.blackBlue)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
         .overlay(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(LinearGradient(gradient: myGradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
