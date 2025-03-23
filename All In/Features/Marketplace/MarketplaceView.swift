@@ -12,7 +12,6 @@ struct MarketplaceView: View {
     @StateObject var viewModel = ViewModel()
     @EnvironmentObject var profileViewModel: ProfileViewViewModel
 
-    // TODO: change this to change the tab programatically
     @Binding var tabSelection: Int
     @State var selectedStat: Stat = .points
 
@@ -57,7 +56,7 @@ struct MarketplaceView: View {
     private var content: some View {
         ScrollView {
             ZStack {
-                Constants.Colors.grey00
+                Constants.Colors.background
 
                 VStack {
                     // Search bar
@@ -109,4 +108,5 @@ struct MarketplaceView: View {
 
 #Preview {
     MarketplaceView(tabSelection: .constant(0))
+        .environmentObject(ProfileViewViewModel())
 }
