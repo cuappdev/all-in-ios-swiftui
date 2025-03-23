@@ -68,17 +68,33 @@ extension FrequentAskedQuestion {
 
     private var questionsList: some View {
         VStack(spacing: 16) {
-            ForEach(questions, id: \.self) { question in
-                questionButton(question)
+            ForEach(FAQ.sampleData) { faq in
+                questionItem(faq)
             }
         }
     }
+}
 
-    private func questionButton(_ question: String) -> some View {
-        HStack {
-            Circle()
-                .fill(Constants.Colors.blue)
-                .frame(width: 24, height: 24)
+// MARK: - Functions
+extension FrequentAskedQuestion {
+    private func questionItem(_ faq: FAQ) -> some View {
+        let isExpanded = expandedQuestionIds.contains(faq.id)
+
+        return VStack(alignment: .leading, spacing: 0) {
+            // Question button
+            Button(action: {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    if isExpanded {
+                        expandedQuestionIds.remove(faq.id)
+                    } else {
+                        expandedQuestionIds.insert(faq.id)
+                    }
+                }
+            }) {
+                HStack {
+                    Circle()
+                        .fill(isExpanded ? Constants.Colors.lightBlue : Constants.Colors.blue)
+                        .frame(width: 24, height: 24)
 
                     Text(faq.question)
                         .font(Constants.Fonts.faqDetail)
@@ -95,7 +111,7 @@ extension FrequentAskedQuestion {
             // Answer section (only visible when expanded)
             if isExpanded {
                 Text(faq.answer)
-                    .font(Constants.Fonts.body)
+                    .font(Constants.Fonts.faqDetail2)
                     .foregroundStyle(Constants.Colors.white.opacity(0.8))
                     .padding([.horizontal, .bottom])
                     .padding(.top, 4)
