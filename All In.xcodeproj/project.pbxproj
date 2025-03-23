@@ -258,6 +258,16 @@
 			path = Marketplace;
 			sourceTree = "<group>";
 		};
+		897DFBCB2CCED80600246B0D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				29AB851C2D8E10490052E0A6 /* Models */,
+				D01FBEDA2D74F77C00D365EF /* ViewModels */,
+				897DFBCA2CCED80600246B0D /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		897DFBCF2CCED80600246B0D /* Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -614,6 +624,7 @@
 				897DFBF02CCED80600246B0D /* ContractModel.swift in Sources */,
 				89E4FAA82CEA8F9600A952B1 /* Logger.swift in Sources */,
 				897DFBF12CCED80600246B0D /* TransactionModel.swift in Sources */,
+				29AB851E2D8E10550052E0A6 /* FAQ.swift in Sources */,
 				897DFBF22CCED80600246B0D /* UserModel.swift in Sources */,
 				897DFBF32CCED80600246B0D /* PillSelectView.swift in Sources */,
 				897DFBF42CCED80600246B0D /* ViewController.swift in Sources */,
