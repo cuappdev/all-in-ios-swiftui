@@ -124,4 +124,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView(tabSelection: .constant(0))
+        .environmentObject(ProfileViewViewModel())
 }

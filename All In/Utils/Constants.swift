@@ -26,6 +26,14 @@ struct Constants {
         static let green = Color(hex: 0x378C27)
         static let purple = Color(hex: 0x8643CB)
         static let yellow = Color(hex: 0xE9B140)
+        static let orange = Color(hex: 0xF97066)
+        static let lightGreen = Color(hex: 0x47CD89)
+        static let gradientBlue = Color(hex: 0x1F70C7)
+        static let gradientLightBlue = Color(hex: 0x7DF3FE)
+        static let gradientPurple = Color(hex: 0x887DFE)
+        static let gradientLavender = Color(hex: 0x7D97FE)
+        static let blackBlue = Color(hex: 0x201E2D)
+        static let backgroundBlack = Color(hex: 0x15141B)
     }
 
     enum Fonts {
