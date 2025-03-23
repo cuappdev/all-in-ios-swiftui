@@ -99,6 +99,8 @@ extension FrequentAskedQuestion {
                     Text(faq.question)
                         .font(Constants.Fonts.faqDetail)
                         .foregroundStyle(Constants.Colors.white)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                          .multilineTextAlignment(.leading)
 
                     Spacer()
                 }
