@@ -59,6 +59,9 @@ struct Constants {
         static let cardContent = Font.custom("LexendDeca-Medium", size: 22)
         static let profileCard = Font.custom("LexendDeca-SemiBold", size: 20)
         static let caption = Font.custom("LexendDeca-Medium", size: 12)
+        static let subFAQ = Font.custom("LexendDeca-Light", size: 15)
+        static let faqDetail = Font.custom("LexendDeca-Medium", size: 16)
+        static let faqDetail2 = Font.custom("LexendDeca-Light", size: 14)
     }
 
     struct UserDefaultKeys {

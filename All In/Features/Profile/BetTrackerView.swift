@@ -76,11 +76,13 @@ struct BetTrackerView: View {
 
                     HStack(spacing: 17) {
                         totalProfitCard
+
                         rankingCard
                     }
 
                     HStack(spacing: 17) {
                         contractsSoldCard
+
                         accountAgeCard
                     }
                 }
@@ -224,7 +226,7 @@ struct BetTrackerView: View {
                 }
             }
             .chartXAxis {
-                AxisMarks(values: timeFilter == .weekly ? ["M", "T", "W", "TH", "F", "S", "SU"] : Array(1...30).map { "\($0)" }) { value in
+                AxisMarks(values: timeFilter == .weekly ? ["M", "T", "W", "TH", "F", "S", "SU"] : Array(1...12).map { "\($0)" }) { value in
                     AxisValueLabel {
                         if let day = value.as(String.self) {
                             Text(day)
@@ -240,7 +242,6 @@ struct BetTrackerView: View {
         .padding(16)
         .background(Constants.Colors.blackBlue)
         .cornerRadius(16)
-        .frame(height: 269)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(LinearGradient(gradient: myGradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
