@@ -22,6 +22,7 @@ struct Constants {
         static let white = Color(hex: 0xFFFFFF)
         static let red = Color(hex: 0xFF4F4F)
         static let brown = Color(hex: 0xCE9D9D)
+        static let lightBlue = Color(hex: 0x99C5F4)
         static let blue = Color(hex: 0x4387CB)
         static let green = Color(hex: 0x378C27)
         static let purple = Color(hex: 0x8643CB)
@@ -34,10 +35,14 @@ struct Constants {
         static let gradientLavender = Color(hex: 0x7D97FE)
         static let blackBlue = Color(hex: 0x201E2D)
         static let backgroundBlack = Color(hex: 0x15141B)
+        // System
+        static let background = Color(hex: 0x15141B)
     }
 
     enum Fonts {
         static let title = Font.system(size: 36, weight: .bold, design: .default)
+        static let faq = Font.system(size: 32, weight: .bold, design: .default)
+        static let faq2 = Font.system(size: 15, weight: .regular, design: .default)
         static let header = Font.system(size: 24, weight: .bold, design: .default)
         static let subheader = Font.system(size: 18, weight: .bold, design: .default)
         static let bodyBold = Font.system(size: 16, weight: .semibold, design: .default)
