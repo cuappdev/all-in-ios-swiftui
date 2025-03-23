@@ -17,4 +17,5 @@ struct AllInApp: App {
                 .environmentObject(TabNavigationManager())
         }
     }
+
 }

@@ -11,15 +11,6 @@ struct FrequentAskedQuestion: View {
     @State private var expandedQuestionIds = Set<UUID>()
     @Environment(\.dismiss) private var dismiss
 
-    var myGradient = Gradient(
-        colors: [
-            Constants.Colors.gradientBlue,
-            Constants.Colors.gradientLightBlue,
-            Constants.Colors.gradientPurple,
-            Constants.Colors.gradientLavender
-        ]
-    )
-
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -125,7 +116,7 @@ extension FrequentAskedQuestion {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(
                     LinearGradient(
-                        gradient: myGradient,
+                        gradient: Constants.Colors.gradient,
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     ),

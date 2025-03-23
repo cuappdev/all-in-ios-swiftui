@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
 
     @EnvironmentObject var viewModel: ProfileViewViewModel
+    @EnvironmentObject var tabNavigationManager: TabNavigationManager
 
     var body: some View {
         VStack(spacing: 0) {
@@ -85,9 +86,8 @@ struct HomeView: View {
     }
 
     private var moreMarketplaceContracts: some View {
-        (
             Button {
-
+                tabNavigationManager.selectedTab = .market
             } label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 16)
@@ -97,6 +97,7 @@ struct HomeView: View {
                         .background(.white)
                         .cornerRadius(16)
                         .shadow(color: Constants.Colors.grey00, radius: 5, x: 0, y: 4)
+
                     VStack {
                         Text("View More")
                             .foregroundStyle(Constants.Colors.grey03)
@@ -113,11 +114,11 @@ struct HomeView: View {
                         .foregroundStyle(Constants.Colors.white)
                 }
             }
-        )
     }
 }
 
 #Preview {
     HomeView()
         .environmentObject(ProfileViewViewModel())
+        .environmentObject(TabNavigationManager())
 }

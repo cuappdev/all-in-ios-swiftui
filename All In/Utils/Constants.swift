@@ -40,6 +40,17 @@ struct Constants {
 
         // System
         static let background = Color(hex: 0x15141B)
+
+        // Gradient
+        static let gradient = Gradient(
+            colors: [
+                Constants.Colors.gradientBlue,
+                Constants.Colors.gradientLightBlue,
+                Constants.Colors.gradientPurple,
+                Constants.Colors.gradientLavender
+            ]
+        )
+
     }
 
     enum Fonts {
