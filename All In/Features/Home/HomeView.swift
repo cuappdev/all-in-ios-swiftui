@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @Binding var tabSelection: Int
     @EnvironmentObject var viewModel: ProfileViewViewModel
+    @EnvironmentObject var tabNavigationManager: TabNavigationManager
 
     var body: some View {
         VStack(spacing: 0) {
@@ -71,6 +71,7 @@ struct HomeView: View {
                                     ContractCard(contract: contract)
                                         .cornerRadius(16)
                                 }
+
                                 moreMarketplaceContracts
                             }
                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
@@ -79,44 +80,45 @@ struct HomeView: View {
                     Spacer()
                 }
             }
-            TabBar(page: "home")
-                .frame(height: 108)
         }
-        .ignoresSafeArea(edges: .all)
+        .ignoresSafeArea(edges: .top)
+
     }
 
     private var moreMarketplaceContracts: some View {
-        Button {
-            tabSelection = 1
-        } label: {
-            ZStack {
-                RoundedRectangle(cornerRadius: 16)
-                    .inset(by: 0.5)
-                    .stroke(Constants.Colors.grey02, lineWidth: 1)
-                    .frame(width: 181, height: 222)
-                    .background(.white)
-                    .cornerRadius(16)
-                    .shadow(color: Constants.Colors.grey00, radius: 5, x: 0, y: 4)
-                VStack {
-                    Text("View More")
-                        .foregroundStyle(Constants.Colors.grey03)
-                    Image(systemName: "arrowshape.forward.circle.fill")
-                        .resizable()
-                        .foregroundStyle(Constants.Colors.grey03)
-                        .frame(width: 42, height: 42)
+            Button {
+                tabNavigationManager.selectedTab = .market
+            } label: {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .inset(by: 0.5)
+                        .stroke(Constants.Colors.grey02, lineWidth: 1)
+                        .frame(width: 181, height: 222)
+                        .background(.white)
+                        .cornerRadius(16)
+                        .shadow(color: Constants.Colors.grey00, radius: 5, x: 0, y: 4)
+
+                    VStack {
+                        Text("View More")
+                            .foregroundStyle(Constants.Colors.grey03)
+                        Image(systemName: "arrowshape.forward.circle.fill")
+                            .resizable()
+                            .foregroundStyle(Constants.Colors.grey03)
+                            .frame(width: 42, height: 42)
+                    }
+                }
+                .font(Constants.Fonts.subheader)
+                .frame(width: 181, height: 222)
+                .background {
+                    RoundedRectangle(cornerRadius: 16)
+                        .foregroundStyle(Constants.Colors.white)
                 }
             }
-            .font(Constants.Fonts.subheader)
-            .frame(width: 181, height: 222)
-            .background {
-                RoundedRectangle(cornerRadius: 16)
-                    .foregroundStyle(Constants.Colors.white)
-            }
-        }
     }
 }
 
 #Preview {
-    HomeView(tabSelection: .constant(0))
+    HomeView()
         .environmentObject(ProfileViewViewModel())
+        .environmentObject(TabNavigationManager())
 }

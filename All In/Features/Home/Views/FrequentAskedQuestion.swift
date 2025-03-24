@@ -9,20 +9,22 @@ import SwiftUI
 
 struct FrequentAskedQuestion: View {
     @State private var expandedQuestionIds = Set<UUID>()
-
-    var myGradient = Gradient(
-        colors: [
-            Constants.Colors.gradientBlue,
-            Constants.Colors.gradientLightBlue,
-            Constants.Colors.gradientPurple,
-            Constants.Colors.gradientLavender
-        ]
-    )
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
+                    // Custom back button
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image(systemName: "arrow.left")
+                            .font(.system(size: 24))
+                            .foregroundStyle(Constants.Colors.white)
+                            .padding(.top, 20)
+                    }
+
                     header
 
                     questionsList
@@ -30,11 +32,12 @@ struct FrequentAskedQuestion: View {
                     Spacer(minLength: 20)
                 }
                 .padding(.horizontal)
-                .padding(.top, 40)
                 .frame(maxWidth: .infinity)
             }
             .background(Constants.Colors.background)
             .scrollIndicators(.hidden)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
         }
     }
 }
@@ -44,11 +47,11 @@ extension FrequentAskedQuestion {
     private var header: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("How can we help?")
-                .font(Constants.Fonts.faq)
+                .font(Constants.Fonts.headerProfile)
                 .foregroundStyle(Constants.Colors.white)
 
             Text("Frequently Asked Questions")
-                .font(Constants.Fonts.faq2)
+                .font(Constants.Fonts.subFAQ)
                 .foregroundStyle(Constants.Colors.white)
                 .padding(.bottom, 24)
         }
@@ -85,8 +88,10 @@ extension FrequentAskedQuestion {
                         .frame(width: 24, height: 24)
 
                     Text(faq.question)
-                        .font(Constants.Fonts.body)
+                        .font(Constants.Fonts.faqDetail)
                         .foregroundStyle(Constants.Colors.white)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                          .multilineTextAlignment(.leading)
 
                     Spacer()
                 }
@@ -97,7 +102,7 @@ extension FrequentAskedQuestion {
             // Answer section (only visible when expanded)
             if isExpanded {
                 Text(faq.answer)
-                    .font(Constants.Fonts.body)
+                    .font(Constants.Fonts.faqDetail2)
                     .foregroundStyle(Constants.Colors.white.opacity(0.8))
                     .padding([.horizontal, .bottom])
                     .padding(.top, 4)
@@ -111,7 +116,7 @@ extension FrequentAskedQuestion {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(
                     LinearGradient(
-                        gradient: myGradient,
+                        gradient: Constants.Colors.gradient,
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     ),

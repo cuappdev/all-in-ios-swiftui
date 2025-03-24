@@ -11,8 +11,6 @@ struct MarketplaceView: View {
 
     @StateObject var viewModel = ViewModel()
     @EnvironmentObject var profileViewModel: ProfileViewViewModel
-
-    @Binding var tabSelection: Int
     @State var selectedStat: Stat = .points
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -25,12 +23,9 @@ struct MarketplaceView: View {
             Divider()
 
             content
-
-            TabBar(page: "market")
-                .frame(height: 108)
         }
-        .ignoresSafeArea(edges: .all)
-        .background(Constants.Colors.grey00)
+        .ignoresSafeArea(edges: .top)
+        .background(Constants.Colors.background)
     }
 
     private var header: some View {
@@ -107,6 +102,6 @@ struct MarketplaceView: View {
 }
 
 #Preview {
-    MarketplaceView(tabSelection: .constant(0))
+    MarketplaceView()
         .environmentObject(ProfileViewViewModel())
 }

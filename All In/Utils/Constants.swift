@@ -33,8 +33,24 @@ struct Constants {
         static let gradientLavender = Color(hex: 0x7D97FE)
         static let blackBlue = Color(hex: 0x201E2D)
 
+        // Charts
+        static let greenChart = Color(hex: 0x47CD89)
+        static let redChart = Color(hex: 0xF97066)
+        static let moneyGreen = Color(hex: 0x47CD89)
+
         // System
         static let background = Color(hex: 0x15141B)
+
+        // Gradient
+        static let gradient = Gradient(
+            colors: [
+                Constants.Colors.gradientBlue,
+                Constants.Colors.gradientLightBlue,
+                Constants.Colors.gradientPurple,
+                Constants.Colors.gradientLavender
+            ]
+        )
+
     }
 
     enum Fonts {
@@ -45,7 +61,18 @@ struct Constants {
         static let subheader = Font.system(size: 18, weight: .bold, design: .default)
         static let bodyBold = Font.system(size: 16, weight: .semibold, design: .default)
         static let body = Font.system(size: 16, weight: .regular, design: .default)
-        static let caption = Font.system(size: 12, weight: .regular, design: .default)
+        static let pillButton = Font.system(size: 12, weight: .semibold, design: .default)
+
+        // Profile
+        static let headerProfile = Font.custom("LexendDeca-SemiBold", size: 24)
+        static let subheaderProfile = Font.custom("LexendDeca-SemiBold", size: 18)
+        static let cardHeader = Font.custom("LexendDeca-SemiBold", size: 12)
+        static let cardContent = Font.custom("LexendDeca-Medium", size: 22)
+        static let profileCard = Font.custom("LexendDeca-SemiBold", size: 20)
+        static let caption = Font.custom("LexendDeca-Medium", size: 12)
+        static let subFAQ = Font.custom("LexendDeca-Light", size: 15)
+        static let faqDetail = Font.custom("LexendDeca-Medium", size: 16)
+        static let faqDetail2 = Font.custom("LexendDeca-Light", size: 14)
     }
 
     struct UserDefaultKeys {
