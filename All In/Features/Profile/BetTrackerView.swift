@@ -65,17 +65,19 @@ struct BetTrackerView: View {
                 VStack(spacing: 16) {
                     trackerCard
 
-                    HStack(spacing: 17) {
+                    HStack(spacing: 20) {
                         totalProfitCard
 
                         rankingCard
                     }
 
-                    HStack(spacing: 17) {
+                    HStack(spacing: 20) {
                         contractsSoldCard
 
                         accountAgeCard
                     }
+
+                    marketplaceContracts
                 }
                 .padding(24)
             }
@@ -91,7 +93,7 @@ struct BetTrackerView: View {
         VStack(alignment: .leading, spacing: 24) {
             HStack {
                 Text("Your Bet Tracker")
-                    .font(Constants.Fonts.header)
+                    .font(Constants.Fonts.headerProfile)
                     .foregroundStyle(Constants.Colors.white)
 
                 Spacer()
@@ -123,7 +125,6 @@ struct BetTrackerView: View {
 
             gainLossChart
         }
-        .cornerRadius(16)
     }
 
     private var timeFilterPills: some View {
@@ -321,6 +322,30 @@ struct BetTrackerView: View {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
         )
+    }
+
+    private var marketplaceContracts: some View {
+        VStack(alignment: .leading, spacing: 24) {
+            HStack(spacing: 4) {
+                Text("Recommended Marketplace Contracts")
+                    .font(Constants.Fonts.marketPlaceTitle)
+                    .foregroundStyle(Constants.Colors.white)
+
+                Image(systemName: "chevron.right")
+                    .foregroundStyle(Constants.Colors.white)
+                    .frame(width: 16, height: 16)
+            }
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(Contract.dummyData.prefix(5), id: \.id) { contract in
+                        ContractCard(contract: contract)
+                            .frame(width: 180)
+                    }
+                }
+            }
+        }
+        .padding(.top, 16)
     }
 
 }

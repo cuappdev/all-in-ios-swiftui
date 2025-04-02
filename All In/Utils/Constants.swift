@@ -76,6 +76,12 @@ struct Constants {
         static let subFAQ = Font.custom("LexendDeca-Light", size: 15)
         static let faqDetail = Font.custom("LexendDeca-Medium", size: 16)
         static let faqDetail2 = Font.custom("LexendDeca-Light", size: 14)
+        static let marketPlaceTitle = Font.custom("LexendDeca-SemiBold", size: 15)
+
+        // Main
+        static let mainHeader = Font.custom("LexendDeca-Medium", size: 16)
+        static let mainPack = Font.custom("LexendDeca-Medium", size: 12)
+        static let pillButtonMain = Font.custom("LexendDeca-Light", size: 14)
     }
 
     struct UserDefaultKeys {

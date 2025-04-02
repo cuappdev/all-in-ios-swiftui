@@ -44,11 +44,11 @@ struct ContractCard: View {
                 VStack(alignment: .center, spacing: 26) {
                     VStack {
                         ZStack {
-                            Constants.Colors.white.ignoresSafeArea()
+                            Constants.Colors.backgroundBlack.ignoresSafeArea()
 
                             VStack { // Card Content VStack
                                 playerInfo
-                                
+
                                 // event and cost/gain info
                                 contractInfo
 
@@ -104,7 +104,7 @@ extension ContractCard {
             }
         }
     }
-    
+
     private var contractInfo: some View {
         VStack(spacing: 0) {
             Text("\(contract.eventThreshold) \(contract.event)")
@@ -137,7 +137,6 @@ extension ContractCard {
         )
         .padding(.top, 16)
         // Card border
-        
 
     }
 
