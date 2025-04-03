@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		291A4C232D9E56AC00C0B445 /* RankingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A4C222D9E56A900C0B445 /* RankingsView.swift */; };
+		291A4C272D9F0D8400C0B445 /* PlayerSeeAllScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A4C262D9F0D7E00C0B445 /* PlayerSeeAllScreen.swift */; };
 		294B422A2D9C7244008A0CC3 /* RarityPackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294B42292D9C723C008A0CC3 /* RarityPackView.swift */; };
 		294B42302D9C75C2008A0CC3 /* MainProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294B422F2D9C75C0008A0CC3 /* MainProfileView.swift */; };
 		2951F2692D8CCD7C0056F078 /* DailyGainLoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2951F2682D8CCD760056F078 /* DailyGainLoss.swift */; };
@@ -86,6 +87,7 @@
 
 /* Begin PBXFileReference section */
 		291A4C222D9E56A900C0B445 /* RankingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsView.swift; sourceTree = "<group>"; };
+		291A4C262D9F0D7E00C0B445 /* PlayerSeeAllScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSeeAllScreen.swift; sourceTree = "<group>"; };
 		294B42292D9C723C008A0CC3 /* RarityPackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityPackView.swift; sourceTree = "<group>"; };
 		294B422F2D9C75C0008A0CC3 /* MainProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileView.swift; sourceTree = "<group>"; };
 		2951F2682D8CCD760056F078 /* DailyGainLoss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGainLoss.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		897DFBC42CCED80600246B0D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				291A4C262D9F0D7E00C0B445 /* PlayerSeeAllScreen.swift */,
 				29C9CBDF2D9DCB2D00E38F7A /* SportPill.swift */,
 				291A4C222D9E56A900C0B445 /* RankingsView.swift */,
 				29C9CBDA2D9DCA7000E38F7A /* Models */,
@@ -640,6 +643,7 @@
 				89E4FAA82CEA8F9600A952B1 /* Logger.swift in Sources */,
 				897DFBF12CCED80600246B0D /* TransactionModel.swift in Sources */,
 				29C9CBDC2D9DCA7700E38F7A /* Sport.swift in Sources */,
+				291A4C272D9F0D8400C0B445 /* PlayerSeeAllScreen.swift in Sources */,
 				897DFBF22CCED80600246B0D /* UserModel.swift in Sources */,
 				294B422A2D9C7244008A0CC3 /* RarityPackView.swift in Sources */,
 				897DFBF32CCED80600246B0D /* PillSelectView.swift in Sources */,

@@ -18,6 +18,17 @@ struct MainProfileView: View {
 
     let user: User
 
+    private func getVisibleUsers(currentUser: User) -> [User] {
+        let allUsersSorted = User.dummyData.sorted(by: { $0.ranking < $1.ranking })
+
+        guard let currentUserIndex = allUsersSorted.firstIndex(where: { $0.id == currentUser.id }) else {
+            return Array(allUsersSorted.prefix(5))
+        }
+
+        let endIndex = min(currentUserIndex + 5, allUsersSorted.count)
+        return Array(allUsersSorted[currentUserIndex..<endIndex])
+    }
+
     // MARK: - UI
 
     var body: some View {
@@ -184,35 +195,36 @@ struct MainProfileView: View {
     }
 
     private var playersSection: some View {
-        VStack(alignment: .leading, spacing: 24) {
-            HStack {
-                Text("Player")
-                    .font(Constants.Fonts.mainHeader)
-                    .foregroundStyle(Constants.Colors.white)
-
-                Button(action: {
-                    showPlayerInfo = true
-                }) {
-                    Image(systemName: "chevron.right")
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 24) {
+                HStack {
+                    Text("Player")
+                        .font(Constants.Fonts.mainHeader)
                         .foregroundStyle(Constants.Colors.white)
-                        .font(.system(size: 12))
-                }
-                .sheet(isPresented: $showPlayerInfo) {
-                    Text("Player Info")
-                        .presentationDetents([.fraction(0.7)])
-                }
-            }
 
-            // Player cards
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 16) {
-                    ForEach(Player.dummyData.prefix(5), id: \.id) { player in
-                        PlayerCard(player: player)
+                    Button(action: {
+                        showPlayerInfo = true
+                    }) {
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(Constants.Colors.white)
+                            .font(.system(size: 12))
                     }
                 }
-                .padding(.leading, 0.5)
-                .padding(.top, 0.5)
-                .padding(.bottom, 0.5)
+
+                // Player cards
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 16) {
+                        ForEach(Player.dummyData.prefix(5), id: \.id) { player in
+                            PlayerCard(player: player)
+                        }
+                    }
+                    .padding(.leading, 0.5)
+                    .padding(.top, 0.5)
+                    .padding(.bottom, 0.5)
+                }
+            }
+            .navigationDestination(isPresented: $showPlayerInfo) {
+                PlayerSeeAllScreen(sport: selectedSport)
             }
         }
     }
@@ -225,18 +237,20 @@ struct MainProfileView: View {
                         .font(Constants.Fonts.mainHeader)
                         .foregroundStyle(Constants.Colors.white)
 
-                    Button(action: {
-                        showRankingInfo = true
-                    }) {
+                    NavigationLink {
+                        RankingsView()
+                    } label: {
                         Image(systemName: "chevron.right")
                             .foregroundStyle(Constants.Colors.white)
                             .font(.system(size: 12))
                     }
                 }
 
-                // Ranking cards
+                // Ranking cards container
                 VStack(spacing: 12) {
-                    ForEach(User.dummyData.sorted(by: { $0.ranking < $1.ranking })) { user in
+                    let usersToShow = getVisibleUsers(currentUser: user)
+
+                    ForEach(usersToShow) { user in
                         rankingCard(user: user)
                     }
                 }
@@ -251,9 +265,6 @@ struct MainProfileView: View {
                             endPoint: .bottomTrailing
                         ), lineWidth: 1)
                 )
-            }
-            .navigationDestination(isPresented: $showRankingInfo) {
-                RankingsView()
             }
         }
     }
@@ -297,5 +308,5 @@ struct MainProfileView: View {
 }
 
 #Preview {
-    MainProfileView(user: User.dummyData[0])
+    MainProfileView(user: User.dummyData[1])
 }

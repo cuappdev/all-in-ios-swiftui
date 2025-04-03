@@ -36,7 +36,6 @@ struct RankingsView: View {
 
                     Spacer()
                 }
-                .padding(.top)
                 .padding(24)
             }
             .background(Constants.Colors.background)

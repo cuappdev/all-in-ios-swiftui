@@ -222,7 +222,15 @@ struct BetTrackerView: View {
                 }
             }
             .chartXAxis {
-                AxisMarks(values: timeFilter == .weekly ? ["M", "T", "W", "TH", "F", "S", "SU"] : Array(1...12).map { "\($0)" }) { value in
+                AxisMarks(values: timeFilter == .weekly ? [
+                    "M",
+                    "T",
+                    "W",
+                    "TH",
+                    "F",
+                    "S",
+                    "SU"
+                ] : Array(1...12).map { "\($0)" }) { value in
                     AxisValueLabel {
                         if let day = value.as(String.self) {
                             Text(day)
