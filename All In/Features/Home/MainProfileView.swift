@@ -107,7 +107,7 @@ struct MainProfileView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("Jake Shane v. Harvard")
-                    .font(Constants.Fonts.cardHeader)
+                    .font(Constants.Fonts.mainHeader)
                     .foregroundStyle(Constants.Colors.white)
 
                 Text("01/24 | Men's Ice Hockey")
@@ -140,22 +140,19 @@ struct MainProfileView: View {
         )
     }
 
-    private var sportFilterPills: some View {
-        VStack(alignment: .leading) {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
-                    ForEach(Sport.all) { sport in
-                        SportPill(
-                            sport: sport,
-                            isSelected: selectedSport == sport
-                        ) {
-                            selectedSport = sport
-                        }
-                    }
+    private var sportFilterPills: some View {            ScrollView(.horizontal, showsIndicators: false) {
+        HStack(spacing: 12) {
+            ForEach(Sport.all) { sport in
+                SportPill(
+                    sport: sport,
+                    isSelected: selectedSport == sport
+                ) {
+                    selectedSport = sport
                 }
-                .padding(.vertical, 4)
             }
         }
+    }
+
     }
 
     private var raritySection: some View {
@@ -178,23 +175,19 @@ struct MainProfileView: View {
         }
     }
 
-    // MARK: - Players Section
-
     private var playersSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 24) {
             HStack {
                 Text("Player")
-                    .font(Constants.Fonts.header)
+                    .font(Constants.Fonts.mainHeader)
                     .foregroundStyle(Constants.Colors.white)
-
-                Spacer()
 
                 Button(action: {
                     showPlayerInfo = true
                 }) {
                     Image(systemName: "chevron.right")
                         .foregroundStyle(Constants.Colors.white)
-                        .font(.system(size: 16))
+                        .font(.system(size: 12))
                 }
                 .sheet(isPresented: $showPlayerInfo) {
                     Text("Player Info") // Replace with actual info view
@@ -205,92 +198,75 @@ struct MainProfileView: View {
             // Player cards
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
-                    ForEach(1...3, id: \.self) { _ in
-                        playerCard
+                    ForEach(Player.dummyData.prefix(5), id: \.id) { player in
+                        PlayerCard(player: player)
                     }
                 }
+                .padding(.leading, 0.5)
+                .padding(.top, 0.5)
+                .padding(.bottom, 0.5)
             }
         }
     }
-
-    private var playerCard: some View {
-        VStack(alignment: .center, spacing: 8) {
-            Image("Player1") // Replace with actual player image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 70, height: 70)
-                .clipShape(Circle())
-                .padding(.top, 16)
-
-            Text("C. Manon")
-                .font(Constants.Fonts.cardHeader)
-                .foregroundStyle(Constants.Colors.white)
-
-            Text("#14 | PG")
-                .font(Constants.Fonts.caption)
-                .foregroundStyle(Constants.Colors.white)
-                .padding(.bottom, 16)
-        }
-        .frame(width: 100, height: 140)
-        .background(Constants.Colors.blackBlue)
-        .cornerRadius(16)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
-        )
-    }
-
-    // MARK: - Rankings Section
 
     private var rankingsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Text("Your Ranking")
-                    .font(Constants.Fonts.header)
+                    .font(Constants.Fonts.mainHeader)
                     .foregroundStyle(Constants.Colors.white)
-
-                Spacer()
 
                 Button(action: {
                     showRankingInfo = true
                 }) {
                     Image(systemName: "chevron.right")
                         .foregroundStyle(Constants.Colors.white)
-                        .font(.system(size: 16))
+                        .font(.system(size: 12))
                 }
                 .sheet(isPresented: $showRankingInfo) {
-                    Text("Ranking Info") // Replace with actual info view
+                    Text("Ranking Info")
                         .presentationDetents([.fraction(0.7)])
                 }
             }
 
             // Ranking cards
             VStack(spacing: 12) {
-                ForEach(1...5, id: \.self) { index in
-                    rankingCard(rank: index + 3)
+                ForEach(User.dummyData.sorted(by: { $0.ranking < $1.ranking })) { user in
+                    rankingCard(user: user)
                 }
             }
+            .padding(16)
+            .background(Constants.Colors.blackBlue)
+            .cornerRadius(16)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+            )
         }
     }
 
-    private func rankingCard(rank: Int) -> some View {
+    private func rankingCard(user: User) -> some View {
         HStack {
-            Text("@username")
-                .font(Constants.Fonts.cardHeader)
-                .foregroundStyle(Constants.Colors.white)
-
-            Text("T3")
-                .font(Constants.Fonts.caption)
-                .foregroundStyle(Constants.Colors.white)
-
-            Text("@1000")
-                .font(Constants.Fonts.caption)
-                .foregroundStyle(Constants.Colors.white)
+            VStack(alignment: .leading, spacing: 4){
+                Text("@\(user.username)")
+                    .font(Constants.Fonts.cardHeader)
+                    .foregroundStyle(Constants.Colors.white)
+                
+                HStack(alignment: .center, spacing: 1) {
+                    Image(systemName: "dollarsign.circle")
+                        .foregroundStyle(Constants.Colors.white)
+                        .font(.system(size: 12))
+                    
+                    Text("\(user.balance)")
+                        .font(Constants.Fonts.caption)
+                        .foregroundStyle(Constants.Colors.white)
+                }
+            }
 
             Spacer()
 
-            Text("#\(rank)")
-                .font(.system(size: 16, weight: .bold))
+            Text("#\(user.ranking)")
+                .font(Constants.Fonts.cardHeader)
                 .foregroundStyle(Constants.Colors.white)
         }
         .padding(16)

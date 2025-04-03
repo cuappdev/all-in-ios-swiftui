@@ -22,7 +22,7 @@ struct RarityPackView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(Constants.Colors.blackBlue, lineWidth: 1)
-                            .frame(width: 136, height: 136)
+                            .frame(width: 124, height: 124)
                             .background(Color.clear)
 
                         // Hexagon image
@@ -30,7 +30,7 @@ struct RarityPackView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
-                    .frame(width: 136, height: 136)
+                    .frame(width: 124, height: 124)
                     .padding(20)
                     .background(Constants.Colors.blackBlue)
                     .cornerRadius(16)
@@ -47,12 +47,13 @@ struct RarityPackView: View {
         }
         .buttonStyle(PlainButtonStyle())
         .sheet(isPresented: $showSheet) {
-            RarityChestSheetView(showSheet: $showSheet, rarity: rarity)
-                .presentationDetents([.fraction(0.4)])
+            RarityPackSheetView(showSheet: $showSheet, rarity: rarity)
+                .presentationDetents([.height(400)])
         }
     }
 }
 
 #Preview {
     RarityPackView(price: 1000, rarity: .common)
+        .background(Constants.Colors.background)
 }
