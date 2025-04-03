@@ -11,6 +11,20 @@ struct FrequentAskedQuestion: View {
     @State private var expandedQuestionIds = Set<UUID>()
     @Environment(\.dismiss) private var dismiss
 
+    let faqs: [FAQ]
+    let headerTitle: String
+    let subheaderTitle: String
+
+    init(
+        faqs: [FAQ],
+        headerTitle: String,
+        subheaderTitle: String
+    ) {
+        self.faqs = faqs
+        self.headerTitle = headerTitle
+        self.subheaderTitle = subheaderTitle
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -46,11 +60,11 @@ struct FrequentAskedQuestion: View {
 extension FrequentAskedQuestion {
     private var header: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("How can we help?")
+            Text(headerTitle)
                 .font(Constants.Fonts.headerProfile)
                 .foregroundStyle(Constants.Colors.white)
 
-            Text("Frequently Asked Questions")
+            Text(subheaderTitle)
                 .font(Constants.Fonts.subFAQ)
                 .foregroundStyle(Constants.Colors.white)
                 .padding(.bottom, 24)
@@ -59,7 +73,7 @@ extension FrequentAskedQuestion {
 
     private var questionsList: some View {
         VStack(spacing: 16) {
-            ForEach(FAQ.sampleData) { faq in
+            ForEach(faqs) { faq in
                 questionItem(faq)
             }
         }
@@ -91,7 +105,7 @@ extension FrequentAskedQuestion {
                         .font(Constants.Fonts.faqDetail)
                         .foregroundStyle(Constants.Colors.white)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                          .multilineTextAlignment(.leading)
+                        .multilineTextAlignment(.leading)
 
                     Spacer()
                 }
@@ -127,5 +141,9 @@ extension FrequentAskedQuestion {
 }
 
 #Preview {
-    FrequentAskedQuestion()
+    FrequentAskedQuestion(
+        faqs: FAQ.sampleData,
+        headerTitle: "How can we help?",
+        subheaderTitle: "Frequently Asked Questions"
+    )
 }

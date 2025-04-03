@@ -60,7 +60,11 @@ struct ContractCard: View {
                             .overlay(
                                 RoundedRectangle(cornerRadius: 16)
                                     .inset(by: 1)
-                                    .stroke(LinearGradient(gradient: myGradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2)
+                                    .stroke(LinearGradient(
+                                        gradient: myGradient,
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    ), lineWidth: 2)
                             )
                         }
                     }

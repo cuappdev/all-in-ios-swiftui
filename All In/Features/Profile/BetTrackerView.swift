@@ -84,7 +84,11 @@ struct BetTrackerView: View {
             .ignoresSafeArea(edges: .bottom)
             .background(Constants.Colors.background)
             .navigationDestination(isPresented: $showingFAQ) {
-                FrequentAskedQuestion()
+                FrequentAskedQuestion(
+                    faqs: FAQ.sampleData,
+                    headerTitle: "How can we help?",
+                    subheaderTitle: "Frequently Asked Questions"
+                )
             }
         }
     }
@@ -236,7 +240,11 @@ struct BetTrackerView: View {
         .cornerRadius(16)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
     }
 
@@ -257,7 +265,11 @@ struct BetTrackerView: View {
         .cornerRadius(16)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
     }
 
@@ -278,7 +290,11 @@ struct BetTrackerView: View {
         .cornerRadius(16)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
     }
 
@@ -299,7 +315,11 @@ struct BetTrackerView: View {
         .cornerRadius(16)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
     }
 
@@ -320,7 +340,11 @@ struct BetTrackerView: View {
         .cornerRadius(16)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
     }
 

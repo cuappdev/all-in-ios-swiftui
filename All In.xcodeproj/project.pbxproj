@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291A4C232D9E56AC00C0B445 /* RankingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A4C222D9E56A900C0B445 /* RankingsView.swift */; };
 		294B422A2D9C7244008A0CC3 /* RarityPackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294B42292D9C723C008A0CC3 /* RarityPackView.swift */; };
 		294B42302D9C75C2008A0CC3 /* MainProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294B422F2D9C75C0008A0CC3 /* MainProfileView.swift */; };
 		2951F2692D8CCD7C0056F078 /* DailyGainLoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2951F2682D8CCD760056F078 /* DailyGainLoss.swift */; };
@@ -84,6 +85,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		291A4C222D9E56A900C0B445 /* RankingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsView.swift; sourceTree = "<group>"; };
 		294B42292D9C723C008A0CC3 /* RarityPackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityPackView.swift; sourceTree = "<group>"; };
 		294B422F2D9C75C0008A0CC3 /* MainProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileView.swift; sourceTree = "<group>"; };
 		2951F2682D8CCD760056F078 /* DailyGainLoss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGainLoss.swift; sourceTree = "<group>"; };
@@ -183,14 +185,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		29C8A0072D8F8E8000F9B3F5 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				29C8A0102D8F8E9B00F9B3F5 /* FAQ.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		29C8A0092D8F8E8000F9B3F5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,7 +196,6 @@
 		29C8A00C2D8F8E8000F9B3F5 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				29C8A0072D8F8E8000F9B3F5 /* Models */,
 				29C8A0092D8F8E8000F9B3F5 /* ViewModels */,
 				29C8A00A2D8F8E8000F9B3F5 /* BetTrackerView.swift */,
 				29C8A00B2D8F8E8000F9B3F5 /* Pill.swift */,
@@ -239,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				29C9CBE12D9DDE5500E38F7A /* RarityPackSheetView.swift */,
-				2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */,
 				897DFBBA2CCED80600246B0D /* Supporting */,
 				897DFBBB2CCED80600246B0D /* PlayerChestSheetView.swift */,
 				897DFBBC2CCED80600246B0D /* PlayerChestView.swift */,
@@ -257,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				29C9CBDF2D9DCB2D00E38F7A /* SportPill.swift */,
+				291A4C222D9E56A900C0B445 /* RankingsView.swift */,
 				29C9CBDA2D9DCA7000E38F7A /* Models */,
 				294B422F2D9C75C0008A0CC3 /* MainProfileView.swift */,
 				897DFBB82CCED80600246B0D /* ViewModels */,
@@ -296,6 +289,7 @@
 		897DFBD42CCED80600246B0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				29C8A0102D8F8E9B00F9B3F5 /* FAQ.swift */,
 				2951F2682D8CCD760056F078 /* DailyGainLoss.swift */,
 				897DFBCF2CCED80600246B0D /* Player */,
 				897DFBD02CCED80600246B0D /* ChestModel.swift */,
@@ -318,6 +312,7 @@
 		897DFBDB2CCED80600246B0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */,
 				29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */,
 				897DFBD72CCED80600246B0D /* Supporting */,
 				897DFBD82CCED80600246B0D /* ContractCard.swift */,
@@ -658,6 +653,7 @@
 				2951F2692D8CCD7C0056F078 /* DailyGainLoss.swift in Sources */,
 				897DFBF72CCED80600246B0D /* TabBar.swift in Sources */,
 				D057FD852BA76F8600EF552D /* Constants.swift in Sources */,
+				291A4C232D9E56AC00C0B445 /* RankingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

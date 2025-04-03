@@ -41,7 +41,11 @@ struct MainProfileView: View {
             .background(Constants.Colors.background)
             .ignoresSafeArea(edges: .bottom)
             .navigationDestination(isPresented: $showingFAQ) {
-                FrequentAskedQuestion()
+                FrequentAskedQuestion(
+                    faqs: FAQ.homeFAQs,
+                    headerTitle: "FAQs About Home",
+                    subheaderTitle: "Frequently Asked Questions"
+                )
             }
         }
     }
@@ -99,7 +103,7 @@ struct MainProfileView: View {
     private var activeBetCard: some View {
         HStack(spacing: 12) {
             // Player image
-            Image("Player1") // Replace with actual player image
+            Image("Player1")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 50, height: 50)
@@ -136,7 +140,11 @@ struct MainProfileView: View {
         .cornerRadius(16)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
     }
 
@@ -190,7 +198,7 @@ struct MainProfileView: View {
                         .font(.system(size: 12))
                 }
                 .sheet(isPresented: $showPlayerInfo) {
-                    Text("Player Info") // Replace with actual info view
+                    Text("Player Info")
                         .presentationDetents([.fraction(0.7)])
                 }
             }
@@ -210,53 +218,58 @@ struct MainProfileView: View {
     }
 
     private var rankingsSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Text("Your Ranking")
-                    .font(Constants.Fonts.mainHeader)
-                    .foregroundStyle(Constants.Colors.white)
-
-                Button(action: {
-                    showRankingInfo = true
-                }) {
-                    Image(systemName: "chevron.right")
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Text("Your Ranking")
+                        .font(Constants.Fonts.mainHeader)
                         .foregroundStyle(Constants.Colors.white)
-                        .font(.system(size: 12))
-                }
-                .sheet(isPresented: $showRankingInfo) {
-                    Text("Ranking Info")
-                        .presentationDetents([.fraction(0.7)])
-                }
-            }
 
-            // Ranking cards
-            VStack(spacing: 12) {
-                ForEach(User.dummyData.sorted(by: { $0.ranking < $1.ranking })) { user in
-                    rankingCard(user: user)
+                    Button(action: {
+                        showRankingInfo = true
+                    }) {
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(Constants.Colors.white)
+                            .font(.system(size: 12))
+                    }
                 }
+
+                // Ranking cards
+                VStack(spacing: 12) {
+                    ForEach(User.dummyData.sorted(by: { $0.ranking < $1.ranking })) { user in
+                        rankingCard(user: user)
+                    }
+                }
+                .padding(16)
+                .background(Constants.Colors.blackBlue)
+                .cornerRadius(16)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(LinearGradient(
+                            gradient: Constants.Colors.gradient,
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ), lineWidth: 1)
+                )
             }
-            .padding(16)
-            .background(Constants.Colors.blackBlue)
-            .cornerRadius(16)
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
-            )
+            .navigationDestination(isPresented: $showRankingInfo) {
+                RankingsView()
+            }
         }
     }
 
     private func rankingCard(user: User) -> some View {
         HStack {
-            VStack(alignment: .leading, spacing: 4){
+            VStack(alignment: .leading, spacing: 4) {
                 Text("@\(user.username)")
                     .font(Constants.Fonts.cardHeader)
                     .foregroundStyle(Constants.Colors.white)
-                
+
                 HStack(alignment: .center, spacing: 1) {
                     Image(systemName: "dollarsign.circle")
                         .foregroundStyle(Constants.Colors.white)
                         .font(.system(size: 12))
-                    
+
                     Text("\(user.balance)")
                         .font(Constants.Fonts.caption)
                         .foregroundStyle(Constants.Colors.white)
@@ -274,7 +287,11 @@ struct MainProfileView: View {
         .cornerRadius(16)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
     }
 }
