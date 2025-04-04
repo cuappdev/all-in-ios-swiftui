@@ -57,6 +57,7 @@ struct TabBar: View {
 
 class TabNavigationManager: ObservableObject {
     @Published var selectedTab: TabBarPage = .home
+    @Published var hideTabBar: Bool = false
 }
 
 struct TabBarPage: Equatable {
@@ -73,4 +74,5 @@ struct TabBarPage: Equatable {
 
 #Preview {
     TabBar(selectedPage: .constant(.home))
+        .background(Constants.Colors.backgroundBlack)
 }

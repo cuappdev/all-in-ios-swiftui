@@ -58,6 +58,19 @@ enum Rarity: String, Codable {
         }
     }
 
+    func getPackImage() -> Image {
+        switch self {
+        case .common:
+            return Image("common")
+        case .rare:
+            return Image("rare")
+        case .epic:
+            return Image("epic")
+        case .legendary:
+            return Image("legendary")
+        }
+    }
+
     func getColor() -> Color {
         switch self {
         case .common:

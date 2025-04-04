@@ -17,7 +17,7 @@ struct ContentView: View {
         VStack {
             Group {
                 if tabNavigationManager.selectedTab == .home {
-                    HomeView()
+                    MainProfileView(user: User.dummyData[0])
                         .transition(transitionModifier)
                 } else if tabNavigationManager.selectedTab == .market {
                     MarketplaceView()
@@ -28,15 +28,19 @@ struct ContentView: View {
                 }
             }
 
-            TabBar(selectedPage: $tabNavigationManager.selectedTab)
-                .frame(height: 96)
+            if !tabNavigationManager.hideTabBar {
+                TabBar(selectedPage: $tabNavigationManager.selectedTab)
+                    .frame(height: 96)
+                    .transition(.opacity)
+            }
         }
         .ignoresSafeArea()
         .background(Constants.Colors.background)
     }
-
 }
 
 #Preview {
     ContentView()
+        .environmentObject(TabNavigationManager())
+        .environmentObject(ProfileViewViewModel())
 }

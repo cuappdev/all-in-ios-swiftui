@@ -60,4 +60,40 @@ struct FAQ: Identifiable {
             """
         )
     ]
+
+    static let homeFAQs: [FAQ] = [
+        FAQ(
+            question: "What does Home include?",
+            answer: """
+            In Home, you have access to rarity packs and player packs. \
+            Each type of pack allows for you to get a contract under each type of pack. \
+            If you choose to buy a legendary pack, you will get an event in the legendary category. \
+            If you decide to buy a player pack under a player named “John Doe”,  \
+            you will get an event correlated with “John Doe”.
+            """
+        ),
+        FAQ(
+            question: "What can I buy in Home?",
+            answer: """
+            In Home, you have access to rarity packs and player packs. \
+            Each type of pack allows for you to get a contract under each type of pack. \
+            Rarity packs are associated with the probability of each contract happening. \
+            A common pack means a common  \
+            event will be behind that pack. Because the event is more common, the payout will be lower.  \
+            Player packs are associated with the player, and you will be able to buy a  \
+            player pack for any of the players in the Cornell team under that sport.
+            If you choose to buy a legendary pack, you will get \
+            an event in the legendary category. \
+            If you decide to buy a player pack under a player named “John Doe”, \
+            you will get an event correlated with “John Doe”.
+            """
+        ),
+        FAQ(
+            question: "What is the ranking based on?",
+            answer: """
+            The rankings are all based on the \
+            total profit the user currently has.
+            """
+        )
+    ]
 }
