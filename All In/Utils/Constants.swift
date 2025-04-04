@@ -88,6 +88,7 @@ struct Constants {
         static let sheetBuy = Font.custom("LexendDeca-Light", size: 16)
         static let rankingTitle = Font.custom("LexendDeca-SemiBold", size: 32)
         static let rankingPill = Font.custom("LexendDeca-Medium", size: 16)
+        static let betsSubtitle = Font.custom("LexendDeca-Light", size: 12)
     }
 
     struct UserDefaultKeys {

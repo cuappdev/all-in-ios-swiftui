@@ -87,7 +87,6 @@ struct RarityPackSheetView: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 24)
         }
-        .frame(maxWidth: .infinity)
         .background(Constants.Colors.backgroundBlack)
         .sheet(isPresented: $viewModel.showWheelSpin) {
             WheelSpinSheet(winningContract: $viewModel.returnedContract)

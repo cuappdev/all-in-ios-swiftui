@@ -42,4 +42,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environmentObject(TabNavigationManager())
+        .environmentObject(ProfileViewViewModel())
 }

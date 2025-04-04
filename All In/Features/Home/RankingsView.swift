@@ -26,7 +26,7 @@ struct RankingsView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 24) {
+                VStack(spacing: 20) {
                     headerView
 
                     timeFilterView

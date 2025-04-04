@@ -78,6 +78,8 @@ struct BetTrackerView: View {
                     }
 
                     marketplaceContracts
+
+                    betsSection
                 }
                 .padding(24)
             }
@@ -363,9 +365,9 @@ struct BetTrackerView: View {
                     .font(Constants.Fonts.marketPlaceTitle)
                     .foregroundStyle(Constants.Colors.white)
 
-                    Image(systemName: "chevron.right")
-                        .foregroundStyle(Constants.Colors.white)
-                        .font(.system(size: 12))
+                Image(systemName: "chevron.right")
+                    .foregroundStyle(Constants.Colors.white)
+                    .font(.system(size: 12))
             }
 
             ScrollView(.horizontal, showsIndicators: false) {
@@ -380,8 +382,39 @@ struct BetTrackerView: View {
         .padding(.top, 16)
     }
 
+    private var betsSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Text("Active Bets")
+                    .font(Constants.Fonts.marketPlaceTitle)
+                    .foregroundStyle(Constants.Colors.white)
+
+                Image(systemName: "chevron.right")
+                    .foregroundStyle(Constants.Colors.white)
+                    .font(.system(size: 12))
+            }
+
+            if user.contracts.isEmpty {
+                Text("You don't have any active bets")
+                    .font(Constants.Fonts.caption)
+                    .foregroundStyle(Constants.Colors.grey00)
+                    .padding()
+            } else {
+                ScrollView {
+                    VStack(spacing: 12) {
+                        ForEach(user.contracts) { contract in
+                            ActiveBetCard(contract: contract)
+                        }
+                    }
+                }
+            }
+        }
+        .padding(.top, 16)
+    }
+
 }
 
 #Preview {
     BetTrackerView(user: User.dummyData[0])
+        .environmentObject(TabNavigationManager())
 }

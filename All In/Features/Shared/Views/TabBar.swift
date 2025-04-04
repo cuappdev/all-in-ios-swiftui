@@ -74,4 +74,5 @@ struct TabBarPage: Equatable {
 
 #Preview {
     TabBar(selectedPage: .constant(.home))
+        .background(Constants.Colors.backgroundBlack)
 }

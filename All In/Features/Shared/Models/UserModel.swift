@@ -46,7 +46,11 @@ extension User {
             username: "monicajlee",
             email: "ml123@cornell.edu",
             balance: 5000,
-            contracts: [],
+            contracts: [
+                Contract.dummyData[2],
+                Contract.dummyData[3],
+                Contract.dummyData[4]
+            ],
             sellerTransactions: [],
             buyerTransactions: [],
             createdAt: Calendar.current.date(byAdding: .day, value: -45, to: Date())!,
@@ -96,7 +100,11 @@ extension User {
             username: "audreywuu",
             email: "aw123@cornell.edu",
             balance: 4000,
-            contracts: [],
+            contracts: [
+                Contract.dummyData[3],
+                Contract.dummyData[4],
+                Contract.dummyData[5]
+            ],
             sellerTransactions: [],
             buyerTransactions: [],
             createdAt: Calendar.current.date(byAdding: .day, value: -38, to: Date())!,

@@ -107,57 +107,22 @@ struct MainProfileView: View {
                     .font(.system(size: 12))
             }
 
-            // Sample active bet card
-            activeBetCard
-        }
-    }
-
-    private var activeBetCard: some View {
-        HStack(spacing: 12) {
-            // Player image
-            Image("Player1")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
-
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Jake Shane v. Harvard")
-                    .font(Constants.Fonts.mainHeader)
-                    .foregroundStyle(Constants.Colors.white)
-
-                Text("01/24 | Men's Ice Hockey")
+            if user.contracts.isEmpty {
+                Text("You don't have any active bets")
                     .font(Constants.Fonts.caption)
-                    .foregroundStyle(Constants.Colors.white)
-
-                Text("Scores first goal of game")
-                    .font(Constants.Fonts.caption)
-                    .foregroundStyle(Constants.Colors.white)
-            }
-
-            Spacer()
-
-            VStack(alignment: .trailing, spacing: 4) {
-                Text("Cost: 20.00")
-                    .font(Constants.Fonts.caption)
-                    .foregroundStyle(Constants.Colors.redChart)
-
-                Text("Gain: 40.00")
-                    .font(Constants.Fonts.caption)
-                    .foregroundStyle(Constants.Colors.moneyGreen)
+                    .foregroundStyle(Constants.Colors.grey00)
+                    .padding()
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(user.contracts) { contract in
+                            ActiveBetCard(contract: contract)
+                                .frame(width: 345)
+                        }
+                    }
+                }
             }
         }
-        .padding(16)
-        .background(Constants.Colors.blackBlue)
-        .cornerRadius(16)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(
-                    gradient: Constants.Colors.gradient,
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                ), lineWidth: 1)
-        )
     }
 
     private var sportFilterPills: some View {            ScrollView(.horizontal, showsIndicators: false) {
@@ -298,6 +263,7 @@ struct MainProfileView: View {
                 ), lineWidth: 1)
         )
     }
+
 }
 
 #Preview {
