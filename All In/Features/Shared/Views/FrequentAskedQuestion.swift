@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct FrequentAskedQuestion: View {
+
+    // MARK: - Properties
+
     @State private var expandedQuestionIds = Set<UUID>()
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var tabNavigationManager: TabNavigationManager
 
     let faqs: [FAQ]
     let headerTitle: String
@@ -24,6 +28,8 @@ struct FrequentAskedQuestion: View {
         self.headerTitle = headerTitle
         self.subheaderTitle = subheaderTitle
     }
+
+    // MARK: - UI
 
     var body: some View {
         NavigationStack {
@@ -52,6 +58,12 @@ struct FrequentAskedQuestion: View {
             .scrollIndicators(.hidden)
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
+        }
+        .onAppear {
+            tabNavigationManager.hideTabBar = true
+        }
+        .onDisappear {
+            tabNavigationManager.hideTabBar = false
         }
     }
 }
@@ -146,4 +158,5 @@ extension FrequentAskedQuestion {
         headerTitle: "How can we help?",
         subheaderTitle: "Frequently Asked Questions"
     )
+    .environmentObject(TabNavigationManager())
 }

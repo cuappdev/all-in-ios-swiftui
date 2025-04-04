@@ -32,9 +32,8 @@ struct SportPill: View {
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(isSelected ? Constants.Colors.gradientBlue : Constants.Colors.grey03, lineWidth: 1)
+                    .strokeBorder(isSelected ? Constants.Colors.gradientBlue : Constants.Colors.grey03, lineWidth: 1)
             )
-            .padding(.horizontal, 0.5)
         }
         .buttonStyle(PlainButtonStyle())
     }

@@ -84,7 +84,10 @@ struct Constants {
         static let pillButtonMain = Font.custom("LexendDeca-Light", size: 14)
         static let mainCardHeader = Font.custom("LexendDeca-SemiBold", size: 24)
         static let sheetDescription = Font.custom("LexendDeca-Medium", size: 15)
+        static let packSubtitle = Font.custom("LexendDeca-Light", size: 15)
         static let sheetBuy = Font.custom("LexendDeca-Light", size: 16)
+        static let rankingTitle = Font.custom("LexendDeca-SemiBold", size: 32)
+        static let rankingPill = Font.custom("LexendDeca-Medium", size: 16)
     }
 
     struct UserDefaultKeys {

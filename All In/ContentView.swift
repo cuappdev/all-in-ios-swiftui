@@ -28,15 +28,18 @@ struct ContentView: View {
                 }
             }
 
-            TabBar(selectedPage: $tabNavigationManager.selectedTab)
-                .frame(height: 96)
+            if !tabNavigationManager.hideTabBar {
+                TabBar(selectedPage: $tabNavigationManager.selectedTab)
+                    .frame(height: 96)
+                    .transition(.opacity)
+            }
         }
         .ignoresSafeArea()
         .background(Constants.Colors.background)
     }
-
 }
 
 #Preview {
     ContentView()
+        .environmentObject(TabNavigationManager())
 }

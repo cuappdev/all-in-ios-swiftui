@@ -15,6 +15,7 @@ struct MainProfileView: View {
     @State private var showRankingInfo = false
     @State private var showingFAQ = false
     @State private var selectedSport: Sport = Sport.all.first(where: { $0.name == "Basketball" }) ?? Sport.all[0]
+    @EnvironmentObject var tabNavigationManager: TabNavigationManager
 
     let user: User
 
@@ -160,18 +161,17 @@ struct MainProfileView: View {
     }
 
     private var sportFilterPills: some View {            ScrollView(.horizontal, showsIndicators: false) {
-        HStack(spacing: 12) {
-            ForEach(Sport.all) { sport in
-                SportPill(
-                    sport: sport,
-                    isSelected: selectedSport == sport
-                ) {
-                    selectedSport = sport
+            HStack(spacing: 12) {
+                ForEach(Sport.all) { sport in
+                    SportPill(
+                        sport: sport,
+                        isSelected: selectedSport == sport
+                    ) {
+                        selectedSport = sport
+                    }
                 }
             }
-        }
     }
-
     }
 
     private var raritySection: some View {
@@ -195,78 +195,71 @@ struct MainProfileView: View {
     }
 
     private var playersSection: some View {
-        NavigationStack {
-            VStack(alignment: .leading, spacing: 24) {
-                HStack {
-                    Text("Player")
-                        .font(Constants.Fonts.mainHeader)
+        VStack(alignment: .leading, spacing: 24) {
+            HStack {
+                Text("Player")
+                    .font(Constants.Fonts.mainHeader)
+                    .foregroundStyle(Constants.Colors.white)
+
+                Button(action: {
+                    showPlayerInfo = true
+                }) {
+                    Image(systemName: "chevron.right")
                         .foregroundStyle(Constants.Colors.white)
-
-                    Button(action: {
-                        showPlayerInfo = true
-                    }) {
-                        Image(systemName: "chevron.right")
-                            .foregroundStyle(Constants.Colors.white)
-                            .font(.system(size: 12))
-                    }
-                }
-
-                // Player cards
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 16) {
-                        ForEach(Player.dummyData.prefix(5), id: \.id) { player in
-                            PlayerCard(player: player)
-                        }
-                    }
-                    .padding(.leading, 0.5)
-                    .padding(.top, 0.5)
-                    .padding(.bottom, 0.5)
+                        .font(.system(size: 12))
                 }
             }
-            .navigationDestination(isPresented: $showPlayerInfo) {
-                PlayerSeeAllScreen(sport: selectedSport)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(Player.dummyData.prefix(5), id: \.id) { player in
+                        PlayerCard(player: player)
+                    }
+                }
             }
+        }
+        .navigationDestination(isPresented: $showPlayerInfo) {
+            PlayerSeeAllScreen(sport: selectedSport)
         }
     }
 
     private var rankingsSection: some View {
-        NavigationStack {
-            VStack(alignment: .leading, spacing: 16) {
-                HStack {
-                    Text("Your Ranking")
-                        .font(Constants.Fonts.mainHeader)
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Text("Your Ranking")
+                    .font(Constants.Fonts.mainHeader)
+                    .foregroundStyle(Constants.Colors.white)
+
+                NavigationLink {
+                    RankingsView()
+                } label: {
+                    Image(systemName: "chevron.right")
                         .foregroundStyle(Constants.Colors.white)
-
-                    NavigationLink {
-                        RankingsView()
-                    } label: {
-                        Image(systemName: "chevron.right")
-                            .foregroundStyle(Constants.Colors.white)
-                            .font(.system(size: 12))
-                    }
+                        .font(.system(size: 12))
                 }
-
-                // Ranking cards container
-                VStack(spacing: 12) {
-                    let usersToShow = getVisibleUsers(currentUser: user)
-
-                    ForEach(usersToShow) { user in
-                        rankingCard(user: user)
-                    }
-                }
-                .padding(16)
-                .background(Constants.Colors.blackBlue)
-                .cornerRadius(16)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(LinearGradient(
-                            gradient: Constants.Colors.gradient,
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ), lineWidth: 1)
-                )
             }
+
+            // Ranking cards container
+            VStack(spacing: 12) {
+                let usersToShow = getVisibleUsers(currentUser: user)
+
+                ForEach(usersToShow) { user in
+                    rankingCard(user: user)
+                }
+            }
+            .padding(16)
+            .background(Constants.Colors.blackBlue)
+            .cornerRadius(16)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(LinearGradient(
+                        gradient: Constants.Colors.gradient,
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ), lineWidth: 1)
+            )
         }
+
     }
 
     private func rankingCard(user: User) -> some View {
@@ -309,4 +302,5 @@ struct MainProfileView: View {
 
 #Preview {
     MainProfileView(user: User.dummyData[1])
+        .environmentObject(TabNavigationManager())
 }

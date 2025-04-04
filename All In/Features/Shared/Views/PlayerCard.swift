@@ -42,11 +42,14 @@ struct PlayerCard: View {
             .cornerRadius(16)
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
-                    .stroke(LinearGradient(
-                        gradient: Constants.Colors.gradient,
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ), lineWidth: 1)
+                    .strokeBorder(
+                        LinearGradient(
+                            gradient: Constants.Colors.gradient,
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 1
+                    )
             )
         }
         .sheet(isPresented: $showSheet) {

@@ -37,11 +37,14 @@ struct RarityPackView: View {
                 }
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .stroke(LinearGradient(
-                            gradient: Constants.Colors.gradient,
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ), lineWidth: 1)
+                        .strokeBorder(
+                            LinearGradient(
+                                gradient: Constants.Colors.gradient,
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ),
+                            lineWidth: 1
+                        )
                 )
 
                 Text(rarity.rawValue.prefix(1).uppercased() + rarity.rawValue.dropFirst().lowercased())

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		291A4C232D9E56AC00C0B445 /* RankingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A4C222D9E56A900C0B445 /* RankingsView.swift */; };
 		291A4C272D9F0D8400C0B445 /* PlayerSeeAllScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A4C262D9F0D7E00C0B445 /* PlayerSeeAllScreen.swift */; };
+		291A4C292D9F6FF500C0B445 /* RarityPackSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A4C282D9F6FED00C0B445 /* RarityPackSheetViewModel.swift */; };
 		294B422A2D9C7244008A0CC3 /* RarityPackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294B42292D9C723C008A0CC3 /* RarityPackView.swift */; };
 		294B42302D9C75C2008A0CC3 /* MainProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294B422F2D9C75C0008A0CC3 /* MainProfileView.swift */; };
 		2951F2692D8CCD7C0056F078 /* DailyGainLoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2951F2682D8CCD760056F078 /* DailyGainLoss.swift */; };
@@ -88,6 +89,7 @@
 /* Begin PBXFileReference section */
 		291A4C222D9E56A900C0B445 /* RankingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsView.swift; sourceTree = "<group>"; };
 		291A4C262D9F0D7E00C0B445 /* PlayerSeeAllScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSeeAllScreen.swift; sourceTree = "<group>"; };
+		291A4C282D9F6FED00C0B445 /* RarityPackSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityPackSheetViewModel.swift; sourceTree = "<group>"; };
 		294B42292D9C723C008A0CC3 /* RarityPackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityPackView.swift; sourceTree = "<group>"; };
 		294B422F2D9C75C0008A0CC3 /* MainProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileView.swift; sourceTree = "<group>"; };
 		2951F2682D8CCD760056F078 /* DailyGainLoss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGainLoss.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		897DFBB82CCED80600246B0D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				291A4C282D9F6FED00C0B445 /* RarityPackSheetViewModel.swift */,
 				897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */,
 				897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */,
 			);
@@ -619,6 +622,7 @@
 				897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */,
 				897DFBE02CCED80600246B0D /* SheetView.swift in Sources */,
 				897DFBE12CCED80600246B0D /* PlayerChestSheetView.swift in Sources */,
+				291A4C292D9F6FF500C0B445 /* RarityPackSheetViewModel.swift in Sources */,
 				897DFBE22CCED80600246B0D /* PlayerChestView.swift in Sources */,
 				897DFBE32CCED80600246B0D /* RarityChestSheetView.swift in Sources */,
 				897DFBE42CCED80600246B0D /* RarityChestView.swift in Sources */,

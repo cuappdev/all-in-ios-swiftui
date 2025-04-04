@@ -13,6 +13,7 @@ struct RankingsView: View {
 
     @Environment(\.dismiss) private var dismiss
     @State private var timeFilter: TimeFilter = .today
+    @EnvironmentObject var tabNavigationManager: TabNavigationManager
 
     enum TimeFilter: String, CaseIterable {
         case today = "Today"
@@ -43,6 +44,12 @@ struct RankingsView: View {
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
         }
+        .onAppear {
+            tabNavigationManager.hideTabBar = true
+        }
+        .onDisappear {
+            tabNavigationManager.hideTabBar = false
+        }
     }
 
     private var headerView: some View {
@@ -58,7 +65,7 @@ struct RankingsView: View {
             Spacer()
 
             Text("Rankings")
-                .font(Constants.Fonts.headerProfile)
+                .font(Constants.Fonts.rankingTitle)
                 .foregroundStyle(Constants.Colors.white)
 
             Spacer()
@@ -78,7 +85,7 @@ struct RankingsView: View {
                     }
                 } label: {
                     Text(filter.rawValue)
-                        .font(Constants.Fonts.bodyBold)
+                        .font(Constants.Fonts.rankingPill)
                         .foregroundStyle(Constants.Colors.white)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 16)
@@ -91,11 +98,14 @@ struct RankingsView: View {
             }
         }
         .padding(4)
-        .background(
-            Capsule()
-                .stroke(Constants.Colors.gradient.stops.first?.color ?? .blue, lineWidth: 1)
+        .overlay(
+            RoundedRectangle(cornerRadius: 50)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
-        .padding(.horizontal)
     }
 
     private var podiumView: some View {
@@ -114,12 +124,18 @@ struct RankingsView: View {
                         .frame(width: 60, height: 60)
 
                     Text("@\(secondPlace.username)")
-                        .font(Constants.Fonts.bodyBold)
+                        .font(Constants.Fonts.mainHeader)
                         .foregroundStyle(Constants.Colors.white)
 
-                    Text("@\(secondPlace.balance)")
-                        .font(Constants.Fonts.caption)
-                        .foregroundStyle(Constants.Colors.white)
+                    HStack(alignment: .center, spacing: 1) {
+                        Image(systemName: "dollarsign.circle")
+                            .foregroundStyle(Constants.Colors.white)
+                            .font(.system(size: 12))
+
+                        Text("\(secondPlace.balance)")
+                            .font(Constants.Fonts.caption)
+                            .foregroundStyle(Constants.Colors.white)
+                    }
                 }
                 .offset(x: 100, y: 40)
             }
@@ -134,12 +150,18 @@ struct RankingsView: View {
                         .frame(width: 80, height: 80)
 
                     Text("@\(firstPlace.username)")
-                        .font(Constants.Fonts.bodyBold)
+                        .font(Constants.Fonts.mainHeader)
                         .foregroundStyle(Constants.Colors.white)
 
-                    Text("@\(firstPlace.balance)")
-                        .font(Constants.Fonts.caption)
-                        .foregroundStyle(Constants.Colors.white)
+                    HStack(alignment: .center, spacing: 1) {
+                        Image(systemName: "dollarsign.circle")
+                            .foregroundStyle(Constants.Colors.white)
+                            .font(.system(size: 12))
+
+                        Text("\(firstPlace.balance)")
+                            .font(Constants.Fonts.caption)
+                            .foregroundStyle(Constants.Colors.white)
+                    }
                 }
             }
 
@@ -153,12 +175,18 @@ struct RankingsView: View {
                         .frame(width: 60, height: 60)
 
                     Text("@\(thirdPlace.username)")
-                        .font(Constants.Fonts.bodyBold)
+                        .font(Constants.Fonts.mainHeader)
                         .foregroundStyle(Constants.Colors.white)
 
-                    Text("@\(thirdPlace.balance)")
-                        .font(Constants.Fonts.caption)
-                        .foregroundStyle(Constants.Colors.white)
+                    HStack(alignment: .center, spacing: 1) {
+                        Image(systemName: "dollarsign.circle")
+                            .foregroundStyle(Constants.Colors.white)
+                            .font(.system(size: 12))
+
+                        Text("\(thirdPlace.balance)")
+                            .font(Constants.Fonts.caption)
+                            .foregroundStyle(Constants.Colors.white)
+                    }
                 }
                 .offset(x: -100, y: 40)
             }
@@ -226,4 +254,5 @@ struct RankingsView: View {
 
 #Preview {
     RankingsView()
+        .environmentObject(TabNavigationManager())
 }

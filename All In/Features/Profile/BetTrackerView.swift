@@ -83,13 +83,6 @@ struct BetTrackerView: View {
             }
             .ignoresSafeArea(edges: .bottom)
             .background(Constants.Colors.background)
-            .navigationDestination(isPresented: $showingFAQ) {
-                FrequentAskedQuestion(
-                    faqs: FAQ.sampleData,
-                    headerTitle: "How can we help?",
-                    subheaderTitle: "Frequently Asked Questions"
-                )
-            }
         }
     }
 
@@ -128,6 +121,13 @@ struct BetTrackerView: View {
             }
 
             gainLossChart
+        }
+        .navigationDestination(isPresented: $showingFAQ) {
+            FrequentAskedQuestion(
+                faqs: FAQ.sampleData,
+                headerTitle: "How can we help?",
+                subheaderTitle: "Frequently Asked Questions"
+            )
         }
     }
 
@@ -363,9 +363,9 @@ struct BetTrackerView: View {
                     .font(Constants.Fonts.marketPlaceTitle)
                     .foregroundStyle(Constants.Colors.white)
 
-                Image(systemName: "chevron.right")
-                    .foregroundStyle(Constants.Colors.white)
-                    .frame(width: 16, height: 16)
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(Constants.Colors.white)
+                        .font(.system(size: 12))
             }
 
             ScrollView(.horizontal, showsIndicators: false) {

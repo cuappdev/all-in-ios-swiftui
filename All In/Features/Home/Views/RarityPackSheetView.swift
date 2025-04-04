@@ -96,22 +96,6 @@ struct RarityPackSheetView: View {
     }
 }
 
-// ViewModel for handling purchase logic
-extension RarityPackSheetView {
-    class ViewModel: ObservableObject {
-        @Published var showWheelSpin = false
-        @Published var returnedContract: Contract?
-
-        func getRarityContract(rarity: Rarity) {
-            // Simulate network call or contract generation
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                // For now, just trigger the wheel spin
-                self.showWheelSpin = true
-            }
-        }
-    }
-}
-
 #Preview{
     RarityPackSheetView(showSheet: .constant(true), rarity: .common)
 }
