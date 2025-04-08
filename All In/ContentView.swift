@@ -17,7 +17,6 @@ struct ContentView: View {
         VStack {
             Group {
                 if tabNavigationManager.selectedTab == .home {
-                    MainProfileView(user: User.dummyData[0])
                     HomeView(user: User.dummyData[0])
                         .transition(transitionModifier)
                 } else if tabNavigationManager.selectedTab == .market {
