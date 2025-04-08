@@ -11,8 +11,8 @@ import Foundation
 private func generateMonthlyGainLoss() -> [DailyGainLoss] {
     var result: [DailyGainLoss] = []
 
-    for i in 1...12 {
-        let date = Calendar.current.date(byAdding: .day, value: -(12-i), to: Date())!
+    for i in 1...4 {
+        let date = Calendar.current.date(byAdding: .day, value: -(4-i), to: Date())!
         let value = Int.random(in: -800...1200)
         result.append(DailyGainLoss(
             day: "\(i)",

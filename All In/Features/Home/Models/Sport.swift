@@ -13,8 +13,8 @@ struct Sport: Identifiable, Equatable {
     let icon: String
 
     static let all: [Sport] = [
-        Sport(name: "Hockey", icon: "hockey.puck.fill"),
         Sport(name: "Basketball", icon: "basketball.fill"),
+        Sport(name: "Hockey", icon: "hockey.puck.fill"),
         Sport(name: "Lacrosse", icon: "figure.lacrosse"),
         Sport(name: "Football", icon: "football.fill"),
         Sport(name: "Baseball", icon: "baseball.fill"),
