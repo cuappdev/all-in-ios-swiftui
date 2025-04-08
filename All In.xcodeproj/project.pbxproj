@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291A4C232D9E56AC00C0B445 /* RankingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A4C222D9E56A900C0B445 /* RankingsView.swift */; };
+		291A4C272D9F0D8400C0B445 /* PlayerSeeAllScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A4C262D9F0D7E00C0B445 /* PlayerSeeAllScreen.swift */; };
+		291A4C292D9F6FF500C0B445 /* RarityPackSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A4C282D9F6FED00C0B445 /* RarityPackSheetViewModel.swift */; };
+		294B422A2D9C7244008A0CC3 /* RarityPackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294B42292D9C723C008A0CC3 /* RarityPackView.swift */; };
 		2951F2692D8CCD7C0056F078 /* DailyGainLoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2951F2682D8CCD760056F078 /* DailyGainLoss.swift */; };
+		2971A8652D9F8706008DADC4 /* ActiveBetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971A8642D9F8701008DADC4 /* ActiveBetCard.swift */; };
 		2973B0652D875F13003C9CF5 /* FrequentAskedQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */; };
 		29C66D082D8CDC4F00166BD7 /* LexendDeca-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29C66D052D8CDC4F00166BD7 /* LexendDeca-Medium.ttf */; };
 		29C66D092D8CDC4F00166BD7 /* LexendDeca-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29C66D042D8CDC4F00166BD7 /* LexendDeca-Light.ttf */; };
@@ -17,6 +22,10 @@
 		29C8A00E2D8F8E8000F9B3F5 /* BetTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8A00A2D8F8E8000F9B3F5 /* BetTrackerView.swift */; };
 		29C8A00F2D8F8E8000F9B3F5 /* ProfileViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8A0082D8F8E8000F9B3F5 /* ProfileViewViewModel.swift */; };
 		29C8A0112D8F8E9D00F9B3F5 /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C8A0102D8F8E9B00F9B3F5 /* FAQ.swift */; };
+		29C9CBDC2D9DCA7700E38F7A /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBDB2D9DCA7400E38F7A /* Sport.swift */; };
+		29C9CBE02D9DCB2F00E38F7A /* SportPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBDF2D9DCB2D00E38F7A /* SportPill.swift */; };
+		29C9CBE22D9DDE5A00E38F7A /* RarityPackSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBE12D9DDE5500E38F7A /* RarityPackSheetView.swift */; };
+		29C9CBE42D9DE5CF00E38F7A /* PlayerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */; };
 		897DFBDE2CCED80600246B0D /* PlayerChestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */; };
 		897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */; };
 		897DFBE02CCED80600246B0D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB92CCED80600246B0D /* SheetView.swift */; };
@@ -78,7 +87,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		291A4C222D9E56A900C0B445 /* RankingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsView.swift; sourceTree = "<group>"; };
+		291A4C262D9F0D7E00C0B445 /* PlayerSeeAllScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSeeAllScreen.swift; sourceTree = "<group>"; };
+		291A4C282D9F6FED00C0B445 /* RarityPackSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityPackSheetViewModel.swift; sourceTree = "<group>"; };
+		294B42292D9C723C008A0CC3 /* RarityPackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityPackView.swift; sourceTree = "<group>"; };
 		2951F2682D8CCD760056F078 /* DailyGainLoss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGainLoss.swift; sourceTree = "<group>"; };
+		2971A8642D9F8701008DADC4 /* ActiveBetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveBetCard.swift; sourceTree = "<group>"; };
 		2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentAskedQuestion.swift; sourceTree = "<group>"; };
 		29C66D042D8CDC4F00166BD7 /* LexendDeca-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-Light.ttf"; sourceTree = "<group>"; };
 		29C66D052D8CDC4F00166BD7 /* LexendDeca-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LexendDeca-Medium.ttf"; sourceTree = "<group>"; };
@@ -88,6 +102,10 @@
 		29C8A00A2D8F8E8000F9B3F5 /* BetTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetTrackerView.swift; sourceTree = "<group>"; };
 		29C8A00B2D8F8E8000F9B3F5 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		29C8A0102D8F8E9B00F9B3F5 /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
+		29C9CBDB2D9DCA7400E38F7A /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
+		29C9CBDF2D9DCB2D00E38F7A /* SportPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportPill.swift; sourceTree = "<group>"; };
+		29C9CBE12D9DDE5500E38F7A /* RarityPackSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityPackSheetView.swift; sourceTree = "<group>"; };
+		29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCard.swift; sourceTree = "<group>"; };
 		29DB4FC32D8CDEAC00E489DB /* All-In-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "All-In-Info.plist"; sourceTree = SOURCE_ROOT; };
 		897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChestViewModel.swift; sourceTree = "<group>"; };
 		897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityChestSheetViewModel.swift; sourceTree = "<group>"; };
@@ -171,14 +189,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		29C8A0072D8F8E8000F9B3F5 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				29C8A0102D8F8E9B00F9B3F5 /* FAQ.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		29C8A0092D8F8E8000F9B3F5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +200,6 @@
 		29C8A00C2D8F8E8000F9B3F5 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				29C8A0072D8F8E8000F9B3F5 /* Models */,
 				29C8A0092D8F8E8000F9B3F5 /* ViewModels */,
 				29C8A00A2D8F8E8000F9B3F5 /* BetTrackerView.swift */,
 				29C8A00B2D8F8E8000F9B3F5 /* Pill.swift */,
@@ -198,9 +207,18 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		29C9CBDA2D9DCA7000E38F7A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				29C9CBDB2D9DCA7400E38F7A /* Sport.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		897DFBB82CCED80600246B0D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				291A4C282D9F6FED00C0B445 /* RarityPackSheetViewModel.swift */,
 				897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */,
 				897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */,
 			);
@@ -218,7 +236,7 @@
 		897DFBC22CCED80600246B0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */,
+				29C9CBE12D9DDE5500E38F7A /* RarityPackSheetView.swift */,
 				897DFBBA2CCED80600246B0D /* Supporting */,
 				897DFBBB2CCED80600246B0D /* PlayerChestSheetView.swift */,
 				897DFBBC2CCED80600246B0D /* PlayerChestView.swift */,
@@ -227,6 +245,7 @@
 				897DFBBF2CCED80600246B0D /* UIWheelViewController.swift */,
 				897DFBC02CCED80600246B0D /* WheelItemUIView.swift */,
 				897DFBC12CCED80600246B0D /* WheelSpinSheet.swift */,
+				294B42292D9C723C008A0CC3 /* RarityPackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,6 +253,10 @@
 		897DFBC42CCED80600246B0D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				291A4C262D9F0D7E00C0B445 /* PlayerSeeAllScreen.swift */,
+				29C9CBDF2D9DCB2D00E38F7A /* SportPill.swift */,
+				291A4C222D9E56A900C0B445 /* RankingsView.swift */,
+				29C9CBDA2D9DCA7000E38F7A /* Models */,
 				897DFBB82CCED80600246B0D /* ViewModels */,
 				897DFBC22CCED80600246B0D /* Views */,
 				897DFBC32CCED80600246B0D /* HomeView.swift */,
@@ -271,6 +294,7 @@
 		897DFBD42CCED80600246B0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				29C8A0102D8F8E9B00F9B3F5 /* FAQ.swift */,
 				2951F2682D8CCD760056F078 /* DailyGainLoss.swift */,
 				897DFBCF2CCED80600246B0D /* Player */,
 				897DFBD02CCED80600246B0D /* ChestModel.swift */,
@@ -293,6 +317,9 @@
 		897DFBDB2CCED80600246B0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2971A8642D9F8701008DADC4 /* ActiveBetCard.swift */,
+				2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */,
+				29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */,
 				897DFBD72CCED80600246B0D /* Supporting */,
 				897DFBD82CCED80600246B0D /* ContractCard.swift */,
 				897DFBD92CCED80600246B0D /* PlayerContractSheetView.swift */,
@@ -595,15 +622,19 @@
 				897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */,
 				897DFBE02CCED80600246B0D /* SheetView.swift in Sources */,
 				897DFBE12CCED80600246B0D /* PlayerChestSheetView.swift in Sources */,
+				291A4C292D9F6FF500C0B445 /* RarityPackSheetViewModel.swift in Sources */,
 				897DFBE22CCED80600246B0D /* PlayerChestView.swift in Sources */,
 				897DFBE32CCED80600246B0D /* RarityChestSheetView.swift in Sources */,
 				897DFBE42CCED80600246B0D /* RarityChestView.swift in Sources */,
 				897DFBE52CCED80600246B0D /* UIWheelViewController.swift in Sources */,
+				29C9CBE02D9DCB2F00E38F7A /* SportPill.swift in Sources */,
 				897DFBFC2CCED80C00246B0D /* Color+Extension.swift in Sources */,
+				29C9CBE22D9DDE5A00E38F7A /* RarityPackSheetView.swift in Sources */,
 				897DFBFD2CCED80C00246B0D /* Date+Extension.swift in Sources */,
 				897DFBFE2CCED80C00246B0D /* NSNumberFormatter.swift in Sources */,
 				897DFBE62CCED80600246B0D /* WheelItemUIView.swift in Sources */,
 				897DFBE72CCED80600246B0D /* WheelSpinSheet.swift in Sources */,
+				29C9CBE42D9DE5CF00E38F7A /* PlayerCard.swift in Sources */,
 				897DFBE82CCED80600246B0D /* HomeView.swift in Sources */,
 				897DFBE92CCED80600246B0D /* MarketplaceViewModel.swift in Sources */,
 				897DFBEA2CCED80600246B0D /* MarketplaceView.swift in Sources */,
@@ -613,8 +644,12 @@
 				897DFBEF2CCED80600246B0D /* ChestModel.swift in Sources */,
 				897DFBF02CCED80600246B0D /* ContractModel.swift in Sources */,
 				89E4FAA82CEA8F9600A952B1 /* Logger.swift in Sources */,
+				2971A8652D9F8706008DADC4 /* ActiveBetCard.swift in Sources */,
 				897DFBF12CCED80600246B0D /* TransactionModel.swift in Sources */,
+				29C9CBDC2D9DCA7700E38F7A /* Sport.swift in Sources */,
+				291A4C272D9F0D8400C0B445 /* PlayerSeeAllScreen.swift in Sources */,
 				897DFBF22CCED80600246B0D /* UserModel.swift in Sources */,
+				294B422A2D9C7244008A0CC3 /* RarityPackView.swift in Sources */,
 				897DFBF32CCED80600246B0D /* PillSelectView.swift in Sources */,
 				897DFBF42CCED80600246B0D /* ViewController.swift in Sources */,
 				897DFBF52CCED80600246B0D /* ContractCard.swift in Sources */,
@@ -626,6 +661,7 @@
 				2951F2692D8CCD7C0056F078 /* DailyGainLoss.swift in Sources */,
 				897DFBF72CCED80600246B0D /* TabBar.swift in Sources */,
 				D057FD852BA76F8600EF552D /* Constants.swift in Sources */,
+				291A4C232D9E56AC00C0B445 /* RankingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

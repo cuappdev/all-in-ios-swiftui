@@ -65,25 +65,26 @@ struct BetTrackerView: View {
                 VStack(spacing: 16) {
                     trackerCard
 
-                    HStack(spacing: 17) {
+                    HStack(spacing: 20) {
                         totalProfitCard
 
                         rankingCard
                     }
 
-                    HStack(spacing: 17) {
+                    HStack(spacing: 20) {
                         contractsSoldCard
 
                         accountAgeCard
                     }
+
+                    marketplaceContracts
+
+                    betsSection
                 }
                 .padding(24)
             }
             .ignoresSafeArea(edges: .bottom)
             .background(Constants.Colors.background)
-            .navigationDestination(isPresented: $showingFAQ) {
-                FrequentAskedQuestion()
-            }
         }
     }
 
@@ -91,7 +92,7 @@ struct BetTrackerView: View {
         VStack(alignment: .leading, spacing: 24) {
             HStack {
                 Text("Your Bet Tracker")
-                    .font(Constants.Fonts.header)
+                    .font(Constants.Fonts.headerProfile)
                     .foregroundStyle(Constants.Colors.white)
 
                 Spacer()
@@ -123,7 +124,13 @@ struct BetTrackerView: View {
 
             gainLossChart
         }
-        .cornerRadius(16)
+        .navigationDestination(isPresented: $showingFAQ) {
+            FrequentAskedQuestion(
+                faqs: FAQ.sampleData,
+                headerTitle: "How can we help?",
+                subheaderTitle: "Frequently Asked Questions"
+            )
+        }
     }
 
     private var timeFilterPills: some View {
@@ -217,7 +224,15 @@ struct BetTrackerView: View {
                 }
             }
             .chartXAxis {
-                AxisMarks(values: timeFilter == .weekly ? ["M", "T", "W", "TH", "F", "S", "SU"] : Array(1...12).map { "\($0)" }) { value in
+                AxisMarks(values: timeFilter == .weekly ? [
+                    "M",
+                    "T",
+                    "W",
+                    "TH",
+                    "F",
+                    "S",
+                    "SU"
+                ] : Array(1...4).map { "\($0)" }) { value in
                     AxisValueLabel {
                         if let day = value.as(String.self) {
                             Text(day)
@@ -235,7 +250,11 @@ struct BetTrackerView: View {
         .cornerRadius(16)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
     }
 
@@ -256,7 +275,11 @@ struct BetTrackerView: View {
         .cornerRadius(16)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
     }
 
@@ -277,7 +300,11 @@ struct BetTrackerView: View {
         .cornerRadius(16)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
     }
 
@@ -298,7 +325,11 @@ struct BetTrackerView: View {
         .cornerRadius(16)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
     }
 
@@ -319,12 +350,71 @@ struct BetTrackerView: View {
         .cornerRadius(16)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(LinearGradient(gradient: Constants.Colors.gradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .stroke(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ), lineWidth: 1)
         )
+    }
+
+    private var marketplaceContracts: some View {
+        VStack(alignment: .leading, spacing: 24) {
+            HStack(spacing: 4) {
+                Text("Recommended Marketplace Contracts")
+                    .font(Constants.Fonts.marketPlaceTitle)
+                    .foregroundStyle(Constants.Colors.white)
+
+                Image(systemName: "chevron.right")
+                    .foregroundStyle(Constants.Colors.white)
+                    .font(.system(size: 12))
+            }
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(Contract.dummyData.prefix(5), id: \.id) { contract in
+                        ContractCard(contract: contract)
+                            .frame(width: 180)
+                    }
+                }
+            }
+        }
+        .padding(.top, 16)
+    }
+
+    private var betsSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Text("Active Bets")
+                    .font(Constants.Fonts.marketPlaceTitle)
+                    .foregroundStyle(Constants.Colors.white)
+
+                Image(systemName: "chevron.right")
+                    .foregroundStyle(Constants.Colors.white)
+                    .font(.system(size: 12))
+            }
+
+            if user.contracts.isEmpty {
+                Text("You don't have any active bets")
+                    .font(Constants.Fonts.caption)
+                    .foregroundStyle(Constants.Colors.grey00)
+                    .padding()
+            } else {
+                ScrollView {
+                    VStack(spacing: 12) {
+                        ForEach(user.contracts) { contract in
+                            ActiveBetCard(contract: contract)
+                        }
+                    }
+                }
+            }
+        }
+        .padding(.top, 16)
     }
 
 }
 
 #Preview {
     BetTrackerView(user: User.dummyData[0])
+        .environmentObject(TabNavigationManager())
 }
