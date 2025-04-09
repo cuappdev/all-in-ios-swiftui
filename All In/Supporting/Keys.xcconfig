@@ -1,0 +1,9 @@
+//
+//  Keys.xcconfig
+//  All In
+//
+//  Created by Peter Bidoshi on 4/9/25.
+//
+
+ALL_IN_API_URL = https:/$()/all-in-backend.cornellappdev.com/
+GOOGLE_URL_SCHEME = com.googleusercontent.apps.1090886205837-nfu5102p2b3afdqob8pmc1c2l4sk97rk
