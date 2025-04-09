@@ -2,7 +2,5 @@
 .build/
 xcuserdata/
 xcshareddata/
-AllInSecrets/**
-All In/GoogleService-Info.plist
 *.xcuserstate
 /All In/Supporting
