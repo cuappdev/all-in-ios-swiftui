@@ -44,4 +44,5 @@ struct ContentView: View {
     ContentView()
         .environmentObject(TabNavigationManager())
         .environmentObject(ProfileViewViewModel())
+//        .environmentObject(MarketplaceViewModel())
 }
