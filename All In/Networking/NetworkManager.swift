@@ -5,260 +5,164 @@
 //  Created by Peter Bidoshi on 4/21/24.
 //
 
-import Alamofire
-import AlamofireImage
-import CryptoKit
-import SwiftUI
+//
+//  NetworkManager.swift
+//  Resell
+//
+//  Created by Richie Sun on 11/2/24.
+//
 
-class NetworkManager {
+import Combine
+import Foundation
+import os
+
+class NetworkManager: APIClient {
+
+    // MARK: - Singleton Instance
+
     static let shared = NetworkManager()
 
-    private let base = "LINK GOES HERE"
+    // MARK: - Error Logger for Networking
+
+    let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.cornellappdev.Resell", category: #file)
+
+    // MARK: - Properties
+
+    private let hostURL: String = Keys.serverURL
+
+    // MARK: - Init
 
     private init() { }
 
-    // MARK: - POST create user
+    // MARK: - Template Helper Functions
 
-    func createUser(username: String, email: String) {
-        let parameters = [
-            "username": username,
-            "email": email
-        ]
+    /// Template function to FETCH data from URL and decodes it into a specified type `T`,
+    ///
+    /// The function fetches data from the network, verifies the
+    /// HTTP status code, caches the response, decodes the data, and then returns it as a decoded model.
+    ///
+    /// - Parameter url: The URL from which data should be fetched.
+    /// - Returns: A publisher that emits a decoded instance of type `T` or an error if the decoding or network request fails.
+    ///
+    func get<T: Decodable>(url: URL) async throws -> T {
+        let request = try createRequest(url: url, method: "GET")
 
-        AF.request(
-            "\(base)/users/",
-            method: .post,
-            parameters: parameters,
-            encoding: JSONEncoding.default
-        )
-        .responseDecodable(
-            of: User.self
-        ) { response in
-            switch response.result {
-            case .success(let user):
-                UserDefaults.standard.setValue(user.id, forKey: Constants.UserDefaultKeys.userID)
-            case .failure(let error):
-                print("ERROR in NetworkManager.createUser: \(error)")
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        try handleResponse(data: data, response: response)
+
+        return try JSONDecoder().decode(T.self, from: data)
+    }
+
+    /// Template function to POST data to a specified URL with an encodable body and decodes the response into a specified type `T`.
+    ///
+    /// This function takes a URL and a request body, encodes the body as JSON, and sends it as part of
+    /// a POST request to the given URL. It then receives the response, checks the HTTP status code, and
+    /// decodes the response data into a specified type. This function is useful for sending data to a server
+    /// and processing the server's JSON response.
+    ///
+    /// - Parameters:
+    ///   - url: The URL to which the POST request will be sent.
+    ///   - body: The data to be sent in the request body, which must conform to `Encodable`.
+    /// - Returns: A publisher that emits a decoded instance of type `T` or an error if the decoding or network request fails.
+    ///
+    func post<T: Decodable, U: Encodable>(url: URL, body: U) async throws -> T {
+        let requestData = try JSONEncoder().encode(body)
+        let request = try createRequest(url: url, method: "POST", body: requestData)
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        try handleResponse(data: data, response: response)
+
+        return try JSONDecoder().decode(T.self, from: data)
+    }
+
+    /// Overloaded post function for requests without a return
+    func post<U: Encodable>(url: URL, body: U) async throws {
+        let requestData = try JSONEncoder().encode(body)
+        let request = try createRequest(url: url, method: "POST", body: requestData)
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        try handleResponse(data: data, response: response)
+    }
+
+    /// Overloaded post function for requests without a body
+    func post<T: Decodable>(url: URL) async throws -> T {
+        let request = try createRequest(url: url, method: "POST")
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        try handleResponse(data: data, response: response)
+
+        return try JSONDecoder().decode(T.self, from: data)
+    }
+
+    /// Template function to DELETE data to a specified URL with an encodable body and decodes the response into a specified type `T`.
+    func delete(url: URL) async throws {
+        let request = try createRequest(url: url, method: "DELETE")
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        try handleResponse(data: data, response: response)
+    }
+
+    private func createRequest(url: URL, method: String, body: Data? = nil) throws -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = method
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        if let accessToken = GoogleAuthManager.shared.accessToken {
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        }
+
+        request.httpBody = body
+        return request
+    }
+
+    private func constructURL(endpoint: String) throws -> URL {
+        guard let url = URL(string: "\(hostURL)\(endpoint)") else {
+            logger.error("Failed to construct URL for endpoint: \(endpoint)")
+            throw URLError(.badURL)
+        }
+
+        return url
+    }
+
+    private func handleResponse(data: Data, response: URLResponse) throws {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw URLError(.badServerResponse)
+        }
+
+        if httpResponse.statusCode != 200 {
+            if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
+                throw errorResponse
+            } else {
+                throw URLError(.init(rawValue: httpResponse.statusCode))
             }
         }
     }
 
-    // MARK: - GET user
+    // MARK: - Auth Networking Functions
 
-    func getUser(id: Int, completion: @escaping (User) -> Void) {
-        AF.request("\(base)/users/\(id)", method: .get).responseDecodable(of: User.self) { response in
-            switch response.result {
-            case .success(let user):
-                completion(user)
-            case .failure(let error):
-                print("ERROR in NetworkManager.getUser: \(error)")
-            }
-        }
+    func authorize() async throws -> AuthorizeResponse? {
+        let url = try constructURL(endpoint: "/auth/")
+
+        return try await post(url: url)
     }
 
-    // MARK: - PATCH upload user image
+    // MARK: - User Networking Functions
 
-    func uploadUserImage(image: UIImage, completion: @escaping (UIImage) -> Void) {
-        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
+    // MARK: - Post Networking Functions
 
-        AF.upload(multipartFormData: { multipartFormData in
-            if let data = image.jpegData(compressionQuality: 0.5) {
-                multipartFormData.append(data, withName: "image")
-            }
-        }, to: "\(base)/users/\(id)/image")
-        .responseImage { response in
-            switch response.result {
-            case .success(let image):
-                completion(image)
-            case .failure(let error):
-                print("ERROR in NetworkManager.uploadUserImage: \(error)")
-            }
-        }
-    }
+    // MARK: - Request Networking Functions
 
-    // MARK: - GET user image
+    // MARK: - Feedback Networking Functions
 
-    func getUserImage(completion: @escaping (UIImage) -> Void) {
-        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
+    // MARK: - Reporting Networking Functions
 
-        AF.request("\(base)/users/\(id)", method: .get).responseImage { response in
-            switch response.result {
-            case .success(let image):
-                completion(image)
-            case .failure(let error):
-                print("ERROR in NetworkManager.getUserImage: \(error)")
-            }
-        }
-    }
+    // MARK: - Chat Networking Functions
 
-    // MARK: - GET player
-
-    func getPlayer(id: Int, completion: @escaping (Player) -> Void) {
-        AF.request("\(base)/players/\(id)", method: .get).responseDecodable(of: Player.self) { response in
-            switch response.result {
-            case .success(let player):
-                completion(player)
-            case .failure(let error):
-                print("ERROR in NetworkManager.getPlayer: \(error)")
-            }
-        }
-    }
-
-    // MARK: - GET player image
-
-    func getPlayerImage(id: Int, completion: @escaping (UIImage) -> Void) {
-
-        AF.request("\(base)/players/\(id)", method: .get).responseImage { response in
-            switch response.result {
-            case .success(let image):
-                completion(image)
-            case .failure(let error):
-                print("ERROR in NetworkManager.getPlayerImage: \(error)")
-            }
-        }
-    }
-
-    // MARK: - POST buy rarity contract from chest
-
-    func getRarityContract(buyPrice: Double, rarity: Rarity, completion: @escaping (Contract) -> Void) {
-
-        completion(Contract.dummyData[0])
-
-        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
-
-        let parameters = [
-            "buy_price": buyPrice,
-            "rarity": rarity.string
-        ] as [String: Any]
-
-        AF.request(
-            "\(base)/users/\(id)/contracts",
-            method: .post,
-            parameters: parameters,
-            encoding: JSONEncoding.default
-        )
-        .responseDecodable(of: Contract.self) { response in
-            switch response.result {
-            case .success(let contract):
-                completion(contract)
-            case .failure(let error):
-                print("ERROR in NetworkManager.getRarityChest: \(error)")
-            }
-        }
-    }
-
-    // MARK: - POST buy player contract from chest
-
-    func getPlayerContract(buyPrice: Double, playerID: Int, completion: @escaping (Contract) -> Void) {
-        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
-
-        let parameters = [
-            "buy_price": buyPrice
-        ]
-
-        AF.request(
-            "\(base)/users/\(id)/players/\(playerID)/contracts",
-            method: .post,
-            parameters: parameters,
-            encoding: JSONEncoding.default
-        )
-        .responseDecodable(
-            of: Contract.self
-        ) { response in
-            switch response.result {
-            case .success(let contract):
-                completion(contract)
-            case .failure(let error):
-                print("ERROR in NetworkManager.getRarityChest: \(error)")
-            }
-        }
-    }
-
-    // MARK: - GET all contracts on market
-
-    func getContracts(completion: @escaping ([Contract]) -> Void) {
-        AF.request("\(base)/contracts", method: .get).responseDecodable(of: [Contract].self) { response in
-            switch response.result {
-            case .success(let contracts):
-                completion(contracts)
-            case .failure(let error):
-                print("ERROR in NetworkManager.getContracts: \(error)")
-            }
-        }
-    }
-
-    // MARK: - POST buy a contract
-
-    func buyContract(contractID: Int, completion: @escaping (Contract) -> Void) {
-        let id = UserDefaults.standard.integer(forKey: Constants.UserDefaultKeys.userID)
-
-        let parameters = [
-            "buyer_id": id
-        ]
-
-        AF.request(
-            "\(base)/contracts/\(contractID)/buy",
-            method: .post,
-            parameters: parameters,
-            encoding: JSONEncoding.default
-        )
-        .responseDecodable(of: Contract.self) { response in
-            switch response.result {
-            case .success(let contract):
-                completion(contract)
-            case .failure(let error):
-                print("ERROR in NetworkManager.buyContract: \(error)")
-            }
-        }
-    }
-
-    // MARK: - POST sell a contract
-
-    func sellContract(contractID: Int, sellPrice: Double, completion: @escaping (Contract) -> Void) {
-        let parameters = [
-            "sell_price": sellPrice
-        ]
-
-        AF.request(
-            "\(base)/contracts/\(contractID)/sell",
-            method: .post,
-            parameters: parameters,
-            encoding: JSONEncoding.default
-        )
-        .responseDecodable(of: Contract.self) { response in
-            switch response.result {
-            case .success(let contract):
-                completion(contract)
-            case .failure(let error):
-                print("ERROR in NetworkManager.sellContract: \(error)")
-            }
-        }
-    }
-
-    // MARK: - GET all players:
-
-    func getAllPlayers(completion: @escaping ([Player]) -> Void) {
-        AF.request("\(base)/players", method: .get).responseDecodable(of: [Player].self) { response in
-            switch response.result {
-            case .success(let players):
-                completion(players)
-            case .failure(let error):
-                print("ERROR in NetworkManager.getAllPlayers: \(error)")
-            }
-        }
-    }
-
-}
-
-// MARK: - HELPER FUNCTIONS
-
-extension NetworkManager {
-
-    func getRandomPlayer(completion: @escaping (Player) -> Void) {
-        self.getAllPlayers { players in
-            let randomPlayer = players.randomElement() ?? players[0]
-            completion(randomPlayer)
-        }
-    }
+    // MARK: - Other Networking Functions
 
 }

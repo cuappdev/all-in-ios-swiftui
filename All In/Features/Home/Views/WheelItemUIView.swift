@@ -63,17 +63,17 @@ class WheelItemUIView: UIView {
     }
 
     private func setUpPlayerView() {
-        NetworkManager.shared.getRandomPlayer { [weak self] player in
-            guard let self else { return }
-
-            playerNameLabel.text = "\(player.firstName[player.firstName.startIndex]). \(player.lastName)"
-            playerNameLabel.font = .systemFont(ofSize: 14, weight: .bold)
-
-            NetworkManager.shared.getPlayerImage(id: player.id) { [weak self] image in
-                guard let self else { return }
-                playerImageView.image = image
-            }
-        }
+//        NetworkManager.shared.getRandomPlayer { [weak self] player in
+//            guard let self else { return }
+//
+//            playerNameLabel.text = "\(player.firstName[player.firstName.startIndex]). \(player.lastName)"
+//            playerNameLabel.font = .systemFont(ofSize: 14, weight: .bold)
+//
+//            NetworkManager.shared.getPlayerImage(id: player.id) { [weak self] image in
+//                guard let self else { return }
+//                playerImageView.image = image
+//            }
+//        }
     }
 
     private func setUpRarityLabel() {
