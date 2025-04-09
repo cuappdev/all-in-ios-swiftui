@@ -58,6 +58,10 @@ struct TabBar: View {
 class TabNavigationManager: ObservableObject {
     @Published var selectedTab: TabBarPage = .home
     @Published var hideTabBar: Bool = false
+
+    func signIn() {
+
+    }
 }
 
 struct TabBarPage: Equatable {
@@ -69,7 +73,6 @@ struct TabBarPage: Equatable {
     static let home = TabBarPage(id: 0, name: "Home", image: "home")
     static let market = TabBarPage(id: 1, name: "Marketplace", image: "marketplace")
     static let betTracker = TabBarPage(id: 2, name: "Bet Tracker", image: "bet-tracker")
-
 }
 
 #Preview {

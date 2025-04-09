@@ -3,3 +3,7 @@
 xcuserdata/
 xcshareddata/
 AllInSecrets/**
+All In/GoogleService-Info.plist
+*.xcuserstate
+All In/GoogleService-Info.plist
+All In/Keys.xcconfig
