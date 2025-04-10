@@ -24,14 +24,18 @@ struct BetTrackerView: View {
 
     /// Calculates the Total Gain/Losses for the Selected User
     private func calculateTotalGainLoss() -> Int {
-        let data = timeFilter == .weekly ? user.weeklyGainLoss : user.monthlyGainLoss
-        return data.reduce(0) { $0 + $1.value }
+        // TODO: fix
+//        let data = timeFilter == .weekly ? user.weeklyGainLoss : user.monthlyGainLoss
+//        return data.reduce(0) { $0 + $1.value }
+        100
     }
 
     /// Calculates the user's current week gain/Loss
     private func calculateCurrentWeekGainLoss() -> String {
-        let currentWeekTotal = user.weeklyGainLoss.reduce(0) { $0 + $1.value }
-        return String(format: "%.2f", Double(currentWeekTotal) / 100.0)
+        // TODO: fix
+//        let currentWeekTotal = user.weeklyGainLoss.reduce(0) { $0 + $1.value }
+//        return String(format: "%.2f", Double(currentWeekTotal) / 100.0)
+        String(format: "%.2f", Double(10000) / 100.0)
     }
 
     /// Calculates the user's last week gain/loss
@@ -42,19 +46,23 @@ struct BetTrackerView: View {
 
     /// Calculates the day's since user's account creation
     private func daysSinceAccountCreation() -> Int {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: user.createdAt, to: Date())
-        return components.day ?? 0
+        // TODO: Fix
+//        let calendar = Calendar.current
+//        let components = calendar.dateComponents([.day], from: user.createdAt, to: Date())
+//        return components.day ?? 0
+        0
     }
 
     /// Calculating the scaling so that it is easily viewable
     private func calculateMaxScaleValue() -> Int {
-        let data = timeFilter == .weekly ? user.weeklyGainLoss : user.monthlyGainLoss
-        let maxAbsValue = data.map { abs($0.value) }.max() ?? 5000
-
-        // Round up to nearest 1000 for cleaner scale intervals
-        let roundedUp = Int(ceil(Double(maxAbsValue) / 1000.0) * 1000)
-        return max(1000, roundedUp)
+        // TODO: Fix
+//        let data = timeFilter == .weekly ? user.weeklyGainLoss : user.monthlyGainLoss
+//        let maxAbsValue = data.map { abs($0.value) }.max() ?? 5000
+//
+//        // Round up to nearest 1000 for cleaner scale intervals
+//        let roundedUp = Int(ceil(Double(maxAbsValue) / 1000.0) * 1000)
+//        return max(1000, roundedUp)
+        1000
     }
 
     // MARK: - UI
@@ -188,62 +196,7 @@ struct BetTrackerView: View {
                 }
             }
 
-            Chart {
-                ForEach(timeFilter == .weekly ? user.weeklyGainLoss : user.monthlyGainLoss, id: \.day) { item in
-                    BarMark(
-                        x: .value("Day", item.day),
-                        y: .value("Value", item.value)
-                    )
-                    .foregroundStyle(item.value >= 0 ? Constants.Colors.greenChart : Constants.Colors.redChart)
-                    .cornerRadius(0)
-                }
-
-                RuleMark(y: .value("Zero", 0))
-                    .lineStyle(StrokeStyle(lineWidth: 1, dash: [2, 2]))
-                    .foregroundStyle(Constants.Colors.white)
-
-                RuleMark(y: .value("Upper Line", -calculateMaxScaleValue()))
-                    .lineStyle(StrokeStyle(lineWidth: 1))
-                    .foregroundStyle(Constants.Colors.white)
-
-            }
-            .chartYScale(domain: -calculateMaxScaleValue()...calculateMaxScaleValue())
-            .chartYAxis {
-                let maxValue = calculateMaxScaleValue()
-
-                AxisMarks(position: .leading, values: [-maxValue, -maxValue/2, 0, maxValue/2, maxValue]) { value in
-                    AxisGridLine()
-                    AxisTick()
-                    AxisValueLabel {
-                        if let intValue = value.as(Int.self) {
-                            Text("\(intValue)")
-                                .font(Constants.Fonts.caption)
-                                .foregroundStyle(Constants.Colors.white)
-                        }
-                    }
-                }
-            }
-            .chartXAxis {
-                AxisMarks(values: timeFilter == .weekly ? [
-                    "M",
-                    "T",
-                    "W",
-                    "TH",
-                    "F",
-                    "S",
-                    "SU"
-                ] : Array(1...4).map { "\($0)" }) { value in
-                    AxisValueLabel {
-                        if let day = value.as(String.self) {
-                            Text(day)
-                                .font(Constants.Fonts.caption)
-                                .foregroundStyle(Constants.Colors.white)
-                        }
-                    }
-                }
-            }
-            .frame(height: 165)
-            .padding(.top, 8)
+            chart
         }
         .padding(16)
         .background(Constants.Colors.blackBlue)
@@ -258,13 +211,108 @@ struct BetTrackerView: View {
         )
     }
 
+    private var chart: some View {
+        // Define data outside the chart
+        // TODO: Fix
+//        let data = timeFilter == .weekly ? user.weeklyGainLoss : user.monthlyGainLoss
+        let data: [DailyGainLoss] = []
+        let maxValue = calculateMaxScaleValue()
+        let negMaxValue = -maxValue
+
+        // Create chart base
+        let chartContent = Chart {
+            // Bar marks in a separate ForEach
+            ForEach(data, id: \.day) { item in
+                BarMark(
+                    x: .value("Day", item.day),
+                    y: .value("Value", item.value)
+                )
+                .foregroundStyle(item.value >= 0 ? Constants.Colors.greenChart : Constants.Colors.redChart)
+                .cornerRadius(0)
+            }
+
+            // Add reference marks separately
+            zeroMark
+            upperLine
+        }
+
+        // Apply chart customizations in steps
+        let chartWithScaling = chartContent
+            .chartYScale(domain: negMaxValue...maxValue)
+
+        let chartWithYAxis = chartWithScaling
+            .chartYAxis {
+                yAxis
+            }
+
+        let chartWithBothAxes = chartWithYAxis
+            .chartXAxis {
+                xAxis
+            }
+
+        // Final styling
+        return chartWithBothAxes
+            .frame(height: 165)
+            .padding(.top, 16)
+    }
+    private var zeroMark: some ChartContent {
+        RuleMark(y: .value("Zero", 0))
+            .lineStyle(StrokeStyle(lineWidth: 1, dash: [2, 2]))
+            .foregroundStyle(Constants.Colors.white)
+    }
+
+    private var upperLine: some ChartContent {
+        RuleMark(y: .value("Upper Line", -calculateMaxScaleValue()))
+            .lineStyle(StrokeStyle(lineWidth: 1))
+            .foregroundStyle(Constants.Colors.white)
+    }
+
+    private var yAxis: some AxisContent {
+        let maxValue = calculateMaxScaleValue()
+
+        return AxisMarks(position: .leading, values: [-maxValue, -maxValue/2, 0, maxValue/2, maxValue]) { value in
+            AxisGridLine()
+            AxisTick()
+            AxisValueLabel {
+                if let intValue = value.as(Int.self) {
+                    Text("\(intValue)")
+                        .font(Constants.Fonts.caption)
+                        .foregroundStyle(Constants.Colors.white)
+                }
+            }
+        }
+
+    }
+
+    private var xAxis: some AxisContent {
+        AxisMarks(values: timeFilter == .weekly ? [
+            "M",
+            "T",
+            "W",
+            "TH",
+            "F",
+            "S",
+            "SU"
+        ] : Array(1...4).map { "\($0)" }) { value in
+            AxisValueLabel {
+                if let day = value.as(String.self) {
+                    Text(day)
+                        .font(Constants.Fonts.caption)
+                        .foregroundStyle(Constants.Colors.white)
+                }
+            }
+        }
+    }
+
     private var totalProfitCard: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Total Profit")
                 .font(Constants.Fonts.cardHeader)
                 .foregroundStyle(Constants.Colors.white)
 
-            Text("$\(user.totalProfit)")
+            // TODO: Fix
+//            Text("$\(user.totalProfit)")
+            Text("$1000")
                 .font(Constants.Fonts.cardContent)
                 .foregroundStyle(Constants.Colors.white)
                 .padding(.top, 8)
@@ -289,7 +337,9 @@ struct BetTrackerView: View {
                 .font(Constants.Fonts.cardHeader)
                 .foregroundStyle(Constants.Colors.white)
 
-            Text("\(user.ranking)")
+            // TODO: Fix
+//            Text("\(user.ranking)")
+            Text("#1")
                 .font(Constants.Fonts.cardContent)
                 .foregroundStyle(Constants.Colors.white)
                 .padding(.top, 8)
@@ -410,6 +460,7 @@ struct BetTrackerView: View {
             }
         }
         .padding(.top, 16)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
 }

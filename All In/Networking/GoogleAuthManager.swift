@@ -11,7 +11,7 @@ import GoogleSignIn
 import os
 import UIKit
 
-class GoogleAuthManager {
+class GoogleAuthManager: ObservableObject {
 
     // MARK: - Singleton Instance
 
@@ -24,7 +24,8 @@ class GoogleAuthManager {
     // MARK: - Properties
 
     var accessToken: String?
-    var user: User?
+    @Published var user: User?
+    @Published var isSigningIn: Bool = false
 
     // MARK: - Init
 
@@ -34,16 +35,22 @@ class GoogleAuthManager {
 
     @MainActor
     func signIn() async throws {
+        self.isSigningIn = true
         guard let presentingViewController = await (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
 
         let gidSignInResult = try await GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController)
         try await getCredentialsFromGoogleUser(user: gidSignInResult.user)
-        self.user = try await NetworkManager.shared.authorize()?.user
+        let user = try await NetworkManager.shared.authorize()
+        return await MainActor.run {
+            self.user = user
+            self.isSigningIn = false
+        }
     }
 
     /// Try to refresh the access token of the current user if it exists, or the restored user.
     /// If this function throws a full logout is needed.
     func refreshSignInIfNeeded() async throws {
+        self.isSigningIn = true
         // Restore or verify sign-in
         if GIDSignIn.sharedInstance.currentUser == nil {
             try await GIDSignIn.sharedInstance.restorePreviousSignIn()
@@ -58,7 +65,13 @@ class GoogleAuthManager {
         try await currentUser.refreshTokensIfNeeded()
 
         try await getCredentialsFromGoogleUser(user: currentUser)
-        self.user = try await NetworkManager.shared.authorize()?.user
+
+        let user = try await NetworkManager.shared.authorize()
+
+        return await MainActor.run {
+            self.user = user
+            self.isSigningIn = false
+        }
     }
 
     func getCredentialsFromGoogleUser(user: GIDGoogleUser) async throws {
@@ -73,6 +86,7 @@ class GoogleAuthManager {
 
         // Update accessToken and authorize the user with backend
         self.accessToken = try await Auth.auth().currentUser?.getIDToken(forcingRefresh: true)
+        print(self.accessToken)
     }
 
     func signOut() {
