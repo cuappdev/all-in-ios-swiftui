@@ -11,7 +11,7 @@ extension MarketplaceView {
 
     /// The ViewModel for the Report page view.
     @MainActor
-    class ViewModel: ObservableObject {
+    class MarketplaceViewModel: ObservableObject {
 
         // MARK: - Properties
 

@@ -19,15 +19,7 @@ struct AllInApp: App {
             ContentView()
                 .environmentObject(ProfileViewViewModel())
                 .environmentObject(TabNavigationManager())
-                .onAppear {
-                    Task {
-                        do {
-                            try await GoogleAuthManager.shared.refreshSignInIfNeeded()
-                        } catch {
-                            try await GoogleAuthManager.shared.signIn()
-                        }
-                    }
-                }
+                .environmentObject(GoogleAuthManager.shared)
         }
     }
 

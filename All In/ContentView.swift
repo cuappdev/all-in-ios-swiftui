@@ -10,23 +10,25 @@ import SwiftUI
 struct ContentView: View {
 
     @EnvironmentObject var tabNavigationManager: TabNavigationManager
+    @EnvironmentObject var googleAuthManager: GoogleAuthManager
 
     private let transitionModifier = AnyTransition.opacity.animation(.easeInOut(duration: 0.15))
 
     var body: some View {
-        VStack(spacing: 0) {
-            Group {
-                if tabNavigationManager.selectedTab == .home {
-                    HomeView(user: User.dummyData[0])
-                        .transition(transitionModifier)
-                } else if tabNavigationManager.selectedTab == .market {
-                    MarketplaceView()
-                        .transition(transitionModifier)
-                } else if tabNavigationManager.selectedTab == .betTracker {
-                    BetTrackerView(user: User.dummyData[0])
-                        .transition(transitionModifier)
+        if let user = googleAuthManager.user {
+            VStack {
+                Group {
+                    if tabNavigationManager.selectedTab == .home {
+                        HomeView(user: User.dummyData[0])
+                            .transition(transitionModifier)
+                    } else if tabNavigationManager.selectedTab == .market {
+                        MarketplaceView()
+                            .transition(transitionModifier)
+                    } else if tabNavigationManager.selectedTab == .betTracker {
+                        BetTrackerView(user: User.dummyData[0])
+                            .transition(transitionModifier)
+                    }
                 }
-            }
 
             if !tabNavigationManager.hideTabBar {
                 TabBar(selectedPage: $tabNavigationManager.selectedTab)
@@ -44,4 +46,5 @@ struct ContentView: View {
     ContentView()
         .environmentObject(TabNavigationManager())
         .environmentObject(ProfileViewViewModel())
+//        .environmentObject(MarketplaceViewModel())
 }

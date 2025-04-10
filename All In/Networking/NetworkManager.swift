@@ -49,7 +49,7 @@ class NetworkManager: APIClient {
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
-        try handleResponse(data: data, response: response)
+        try await handleResponse(data: data, response: response)
 
         return try JSONDecoder().decode(T.self, from: data)
     }
@@ -72,7 +72,7 @@ class NetworkManager: APIClient {
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
-        try handleResponse(data: data, response: response)
+        try await handleResponse(data: data, response: response)
 
         return try JSONDecoder().decode(T.self, from: data)
     }
@@ -84,7 +84,7 @@ class NetworkManager: APIClient {
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
-        try handleResponse(data: data, response: response)
+        try await handleResponse(data: data, response: response)
     }
 
     /// Overloaded post function for requests without a body
@@ -93,7 +93,7 @@ class NetworkManager: APIClient {
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
-        try handleResponse(data: data, response: response)
+        try await handleResponse(data: data, response: response)
 
         return try JSONDecoder().decode(T.self, from: data)
     }
@@ -104,7 +104,7 @@ class NetworkManager: APIClient {
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
-        try handleResponse(data: data, response: response)
+        try await handleResponse(data: data, response: response)
     }
 
     private func createRequest(url: URL, method: String, body: Data? = nil) throws -> URLRequest {
@@ -129,9 +129,19 @@ class NetworkManager: APIClient {
         return url
     }
 
-    private func handleResponse(data: Data, response: URLResponse) throws {
+    private func handleResponse(data: Data, response: URLResponse) async throws {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw URLError(.badServerResponse)
+        }
+
+        // if 401, try to refresh token
+        if httpResponse.statusCode == 401 {
+            do {
+                try await GoogleAuthManager.shared.refreshSignInIfNeeded()
+            } catch {
+                GoogleAuthManager.shared.accessToken = nil
+                GoogleAuthManager.shared.user = nil
+            }
         }
 
         if httpResponse.statusCode != 200 {
@@ -145,24 +155,18 @@ class NetworkManager: APIClient {
 
     // MARK: - Auth Networking Functions
 
-    func authorize() async throws -> AuthorizeResponse? {
-        let url = try constructURL(endpoint: "/auth/")
+    func authorize() async throws -> User? {
+        let url = try constructURL(endpoint: "/users/me")
 
-        return try await post(url: url)
+        return try await get(url: url)
     }
 
-    // MARK: - User Networking Functions
+    // MARK: - Players Networking Functions
 
-    // MARK: - Post Networking Functions
+    func getPlayers() async throws -> [Player] {
+        let url = try constructURL(endpoint: "/players/")
 
-    // MARK: - Request Networking Functions
-
-    // MARK: - Feedback Networking Functions
-
-    // MARK: - Reporting Networking Functions
-
-    // MARK: - Chat Networking Functions
-
-    // MARK: - Other Networking Functions
+        return try await get(url: url)
+    }
 
 }

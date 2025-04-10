@@ -17,11 +17,12 @@ struct Contract: Identifiable, Codable {
     var eventThreshold: Int
     var creationTime: Date
     var value: Int
+    var expirationTime: Date
     var expired: Bool?
     var forSale: Bool
     var sellPrice: Int?
     var playerId: Int
-    var ownerId: Int
+    var ownerUid: Int
 
 }
 
@@ -31,6 +32,13 @@ enum Rarity: String, Codable {
     case rare
     case epic
     case legendary
+
+    enum CodingKeys: String, CodingKey {
+        case common = "COMMON"
+        case rare = "RARE"
+        case epic = "EPIC"
+        case legendary = "LEGENDARY"
+    }
 
     var string: String {
         switch self {
@@ -112,9 +120,10 @@ extension Contract {
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
+            expirationTime: Date(),
             forSale: true,
             playerId: 0,
-            ownerId: 0
+            ownerUid: 0
         ),
         Contract(
             id: 1,
@@ -125,9 +134,10 @@ extension Contract {
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
             value: 1600,
+            expirationTime: Date(),
             forSale: true,
             playerId: 1,
-            ownerId: 0
+            ownerUid: 0
         ),
         Contract(
             id: 2,
@@ -138,9 +148,10 @@ extension Contract {
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
+            expirationTime: Date(),
             forSale: true,
             playerId: 2,
-            ownerId: 0
+            ownerUid: 0
         ),
         Contract(
             id: 3,
@@ -151,9 +162,10 @@ extension Contract {
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
+            expirationTime: Date(),
             forSale: true,
             playerId: 3,
-            ownerId: 0
+            ownerUid: 0
         ),
         Contract(
             id: 4,
@@ -164,9 +176,10 @@ extension Contract {
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
+            expirationTime: Date().addingTimeInterval(-20000),
             forSale: true,
             playerId: 2,
-            ownerId: 0
+            ownerUid: 0
         ),
         Contract(
             id: 5,
@@ -177,9 +190,10 @@ extension Contract {
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
+            expirationTime: Date().addingTimeInterval(100000),
             forSale: true,
             playerId: 1,
-            ownerId: 0
+            ownerUid: 0
         )
     ]
 
