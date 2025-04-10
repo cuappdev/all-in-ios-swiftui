@@ -33,14 +33,6 @@ struct ContractCard: View {
             showSheet = true
         } label: {
             ZStack(alignment: .bottom) {
-                RoundedRectangle(cornerRadius: 16)
-                    .inset(by: 0.5)
-                    .stroke(Constants.Colors.grey00, lineWidth: 2)
-                    .frame(width: 150, height: 150)
-                    .background(.white)
-                    .cornerRadius(16)
-                    .shadow(color: Constants.Colors.grey00, radius: 5, x: 0, y: 4)
-
                 VStack(alignment: .center, spacing: 26) {
                     VStack {
                         ZStack {
@@ -48,7 +40,7 @@ struct ContractCard: View {
 
                             VStack { // Card Content VStack
                                 playerInfo
-                                
+
                                 // event and cost/gain info
                                 contractInfo
 
@@ -104,7 +96,7 @@ extension ContractCard {
             }
         }
     }
-    
+
     private var contractInfo: some View {
         VStack(spacing: 0) {
             Text("\(contract.eventThreshold) \(contract.event)")
@@ -137,7 +129,6 @@ extension ContractCard {
         )
         .padding(.top, 16)
         // Card border
-        
 
     }
 
