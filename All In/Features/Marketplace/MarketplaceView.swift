@@ -144,13 +144,13 @@ struct MarketplaceView: View {
                         .font(.system(size: 12))
                 }
             }
-            
+
             // Previous sorting configuration
 //            PillSelectView(Stat.getAll()) { newStat in
 //                selectedStat = newStat
 //            }
 //            .padding(EdgeInsets(top: -8, leading: -8, bottom: -8, trailing: -8))
-            
+
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(Contract.dummyData, id: \.id) { contract in
@@ -173,7 +173,7 @@ struct MarketplaceView: View {
                     columns: [
                         GridItem(.flexible(), spacing: 10),
                         GridItem(.flexible(), spacing: 10)
-                    ],
+                    ]
                 ) {
                     ForEach(marketplaceViewModel.filteredContracts, id: \.id) { contract in
                         ContractCard(contract: contract)

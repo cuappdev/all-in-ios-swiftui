@@ -16,32 +16,19 @@ struct ContentView: View {
 
     var body: some View {
         if let user = googleAuthManager.user {
-            VStack(spacing: 0) {
+            VStack {
                 Group {
                     if tabNavigationManager.selectedTab == .home {
-                        HomeView(user: user)
+                        HomeView(user: User.dummyData[0])
                             .transition(transitionModifier)
                     } else if tabNavigationManager.selectedTab == .market {
                         MarketplaceView()
                             .transition(transitionModifier)
                     } else if tabNavigationManager.selectedTab == .betTracker {
-                        BetTrackerView(user: user)
+                        BetTrackerView(user: User.dummyData[0])
                             .transition(transitionModifier)
                     }
                 }
-        VStack {
-            Group {
-                if tabNavigationManager.selectedTab == .home {
-                    HomeView(user: User.dummyData[0])
-                        .transition(transitionModifier)
-                } else if tabNavigationManager.selectedTab == .market {
-                    MarketplaceView()
-                        .transition(transitionModifier)
-                } else if tabNavigationManager.selectedTab == .betTracker {
-                    BetTrackerView(user: User.dummyData[0])
-                        .transition(transitionModifier)
-                }
-            }
 
                 if !tabNavigationManager.hideTabBar {
                     TabBar(selectedPage: $tabNavigationManager.selectedTab)
@@ -83,9 +70,10 @@ extension View {
             LinearGradient(
                 colors: colors,
                 startPoint: .topLeading,
-                endPoint: .bottomTrailing)
+                endPoint: .bottomTrailing
+            )
         )
-            .mask(self)
+        .mask(self)
     }
 }
 
