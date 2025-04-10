@@ -19,6 +19,15 @@ struct TabBar: View {
 
     var body: some View {
         VStack {
+            Rectangle()
+                .fill(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ))
+                .frame(maxWidth: .infinity)
+                .frame(height: 1)
+
             HStack {
                 ForEach(pages, id: \.id) { page in
                     tabButton(page: page) {
@@ -40,9 +49,11 @@ struct TabBar: View {
                     }
                 }
             }
+            .padding()
 
             Spacer()
-        }.padding()
+        }
+        .background(Constants.Colors.background)
     }
 
     func tabButton(page: TabBarPage, content: () -> some View) -> some View {
