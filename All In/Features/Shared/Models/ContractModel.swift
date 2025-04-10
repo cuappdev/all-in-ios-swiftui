@@ -58,6 +58,19 @@ enum Rarity: String, Codable {
         }
     }
 
+    func getPackImage() -> Image {
+        switch self {
+        case .common:
+            return Image("common")
+        case .rare:
+            return Image("rare")
+        case .epic:
+            return Image("epic")
+        case .legendary:
+            return Image("legendary")
+        }
+    }
+
     func getColor() -> Color {
         switch self {
         case .common:
@@ -94,7 +107,7 @@ extension Contract {
             id: 0,
             buyPrice: 1000,
             rarity: Rarity.common,
-            opposingTeam: "columbia",
+            opposingTeam: "Columbia",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
@@ -107,7 +120,7 @@ extension Contract {
             id: 1,
             buyPrice: 1400,
             rarity: Rarity.common,
-            opposingTeam: "harvard",
+            opposingTeam: "Harvard",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
@@ -120,7 +133,7 @@ extension Contract {
             id: 2,
             buyPrice: 1000,
             rarity: Rarity.common,
-            opposingTeam: "princeton",
+            opposingTeam: "Princeton",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
@@ -133,7 +146,7 @@ extension Contract {
             id: 3,
             buyPrice: 1000,
             rarity: Rarity.common,
-            opposingTeam: "dartmouth",
+            opposingTeam: "Dartmouth",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
@@ -146,7 +159,7 @@ extension Contract {
             id: 4,
             buyPrice: 1000,
             rarity: Rarity.common,
-            opposingTeam: "harvard",
+            opposingTeam: "Harvard",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
@@ -159,7 +172,7 @@ extension Contract {
             id: 5,
             buyPrice: 1000,
             rarity: Rarity.common,
-            opposingTeam: "harvard",
+            opposingTeam: "Harvard",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),

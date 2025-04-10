@@ -19,15 +19,6 @@ struct ContractCard: View {
 
     @State var showSheet = false
 
-    var myGradient = Gradient(
-        colors: [
-            Constants.Colors.gradientBlue,
-            Constants.Colors.gradientLightBlue,
-            Constants.Colors.gradientPurple,
-            Constants.Colors.gradientLavender
-        ]
-    )
-
     var body: some View {
         Button {
             showSheet = true
@@ -36,7 +27,7 @@ struct ContractCard: View {
                 VStack(alignment: .center, spacing: 26) {
                     VStack {
                         ZStack {
-                            Constants.Colors.white.ignoresSafeArea()
+                            Constants.Colors.backgroundBlack.ignoresSafeArea()
 
                             VStack { // Card Content VStack
                                 playerInfo
@@ -52,7 +43,14 @@ struct ContractCard: View {
                             .overlay(
                                 RoundedRectangle(cornerRadius: 16)
                                     .inset(by: 1)
-                                    .stroke(LinearGradient(gradient: myGradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2)
+                                    .strokeBorder(
+                                        LinearGradient(
+                                            gradient: Constants.Colors.gradient,
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ),
+                                        lineWidth: 2
+                                    )
                             )
                         }
                     }
@@ -61,7 +59,7 @@ struct ContractCard: View {
         }
         .sheet(isPresented: $showSheet) {
             PlayerContractSheetView(fromPlayer: player, fromStat: Stat.assists, showSheet: $showSheet)
-                .presentationDetents([.fraction(0.9)])
+                .presentationDetents([.fraction(0.6)])
         }
     }
 }
@@ -125,7 +123,14 @@ extension ContractCard {
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(LinearGradient(gradient: myGradient, startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1)
+                .strokeBorder(
+                    LinearGradient(
+                        gradient: Constants.Colors.gradient,
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    lineWidth: 1
+                )
         )
         .padding(.top, 16)
         // Card border

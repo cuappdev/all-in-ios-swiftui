@@ -1,17 +1,17 @@
 //
-//  RarityChestSheetViewModel.swift
+//  RarityPackSheetViewModel.swift
 //  All In
 //
-//  Created by Caitlyn Jin on 10/26/24.
+//  Created by jiwon jeong on 4/3/25.
 //
 
 import Foundation
 
-extension RarityChestSheetView {
+extension RarityPackSheetView {
 
     @MainActor
-    class ViewModel: ObservableObject {
 
+    class ViewModel: ObservableObject {
         // MARK: - Properties
 
         @Published var returnedContract: Contract?
@@ -28,7 +28,5 @@ extension RarityChestSheetView {
 //                }
 //            }
         }
-
     }
-
 }

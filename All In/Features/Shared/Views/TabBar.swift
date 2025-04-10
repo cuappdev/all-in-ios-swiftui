@@ -5,56 +5,88 @@
 //  Created by Peter Bidoshi  on 3/17/24.
 //
 
+import Foundation
 import SwiftUI
 
 struct TabBar: View {
-    let page: String
-    let tabItemSize: CGFloat = 24
+
+    @Binding var selectedPage: TabBarPage
+
+    private let pages: [TabBarPage] = [.home, .market, .betTracker]
+    private let tabItemSize: CGFloat = 24
+    private let unselectedColor = Constants.Colors.white
+    private let selectedColor = Constants.Colors.gradientLightBlue
 
     var body: some View {
-        ZStack {
-            Constants.Colors.background
-                .ignoresSafeArea(edges: .bottom)
+        VStack {
+            Rectangle()
+                .fill(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ))
+                .frame(maxWidth: .infinity)
+                .frame(height: 1)
+
             HStack {
-                VStack {
-                    Image("home")
-                        .renderingMode(.template)
-                        .resizable()
-                        .frame(width: tabItemSize, height: tabItemSize)
-                        .foregroundStyle(page == "home" ? Constants.Colors.red : Constants.Colors.white)
-                    Text("Home")
-                        .font(.system(size: 12, weight: .regular))
-                        .foregroundStyle(page == "home" ? Constants.Colors.red : Constants.Colors.white)
-                }
-                Spacer()
-                VStack {
-                    Image("marketplace")
-                        .renderingMode(.template)
-                        .resizable()
-                        .frame(width: tabItemSize, height: tabItemSize)
-                        .foregroundStyle(page == "market" ? Constants.Colors.red : Constants.Colors.white)
-                    Text("Marketplace")
-                        .font(.system(size: 12, weight: .regular))
-                        .foregroundStyle(page == "market" ? Constants.Colors.red : Constants.Colors.white)
-                }
-                Spacer()
-                VStack {
-                    Image("bet-tracker")
-                        .renderingMode(.template)
-                        .resizable()
-                        .frame(width: tabItemSize, height: tabItemSize)
-                        .foregroundStyle(page == "profile" ? Constants.Colors.red : Constants.Colors.white)
-                    Text("Bet Tracker")
-                        .font(.system(size: 12, weight: .regular))
-                        .foregroundStyle(page == "profile" ? Constants.Colors.red : Constants.Colors.white)
+                ForEach(pages, id: \.id) { page in
+                    tabButton(page: page) {
+                        VStack {
+                            Image(page.image)
+                                .renderingMode(.template)
+                                .resizable()
+                                .frame(width: tabItemSize, height: tabItemSize)
+                                .foregroundStyle(selectedPage == page ? selectedColor: unselectedColor)
+
+                            Text(page.name)
+                                .font(.system(size: 12, weight: .regular))
+                                .foregroundStyle(selectedPage == page ? selectedColor: unselectedColor)
+                        }
+                    }
+
+                    if page.id != pages.last?.id {
+                        Spacer()
+                    }
                 }
             }
-            .padding(EdgeInsets(top: 0, leading: 32, bottom: 24, trailing: 32))
+            .padding()
+
+            Spacer()
         }
-        .toolbarBackground(Constants.Colors.background, for: .tabBar)
+        .background(Constants.Colors.background)
+    }
+
+    func tabButton(page: TabBarPage, content: () -> some View) -> some View {
+        Button {
+            selectedPage = page
+        } label: {
+            content()
+        }
+        .frame(width: 96, height: 48)
     }
 }
 
+class TabNavigationManager: ObservableObject {
+    @Published var selectedTab: TabBarPage = .home
+    @Published var hideTabBar: Bool = false
+
+    func signIn() {
+
+    }
+}
+
+struct TabBarPage: Equatable {
+
+    let id: Int
+    let name: String
+    let image: String
+
+    static let home = TabBarPage(id: 0, name: "Home", image: "home")
+    static let market = TabBarPage(id: 1, name: "Marketplace", image: "marketplace")
+    static let betTracker = TabBarPage(id: 2, name: "Bet Tracker", image: "bet-tracker")
+}
+
 #Preview {
-    TabBar(page: "market")
+    TabBar(selectedPage: .constant(.home))
+        .background(Constants.Colors.backgroundBlack)
 }

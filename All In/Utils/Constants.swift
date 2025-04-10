@@ -37,8 +37,18 @@ struct Constants {
         static let backgroundBlack = Color(hex: 0x15141B)
         // System
         static let background = Color(hex: 0x15141B)
-
         static let borderGradient = Gradient(
+
+        // Charts
+        static let greenChart = Color(hex: 0x47CD89)
+        static let redChart = Color(hex: 0xF97066)
+        static let moneyGreen = Color(hex: 0x47CD89)
+
+        // System
+        static let background = Color(hex: 0x15141B)
+
+        // Gradient
+        static let gradient = Gradient(
             colors: [
                 Constants.Colors.gradientBlue,
                 Constants.Colors.gradientLightBlue,
@@ -56,7 +66,31 @@ struct Constants {
         static let subheader = Font.system(size: 18, weight: .bold, design: .default)
         static let bodyBold = Font.system(size: 16, weight: .semibold, design: .default)
         static let body = Font.system(size: 16, weight: .regular, design: .default)
-        static let caption = Font.system(size: 12, weight: .regular, design: .default)
+        static let pillButton = Font.system(size: 12, weight: .semibold, design: .default)
+
+        // Profile
+        static let headerProfile = Font.custom("LexendDeca-SemiBold", size: 24)
+        static let subheaderProfile = Font.custom("LexendDeca-SemiBold", size: 18)
+        static let cardHeader = Font.custom("LexendDeca-SemiBold", size: 12)
+        static let cardContent = Font.custom("LexendDeca-Medium", size: 22)
+        static let profileCard = Font.custom("LexendDeca-SemiBold", size: 20)
+        static let caption = Font.custom("LexendDeca-Medium", size: 12)
+        static let subFAQ = Font.custom("LexendDeca-Light", size: 15)
+        static let faqDetail = Font.custom("LexendDeca-Medium", size: 16)
+        static let faqDetail2 = Font.custom("LexendDeca-Light", size: 14)
+        static let marketPlaceTitle = Font.custom("LexendDeca-SemiBold", size: 15)
+
+        // Main
+        static let mainHeader = Font.custom("LexendDeca-Medium", size: 16)
+        static let mainPack = Font.custom("LexendDeca-Medium", size: 12)
+        static let pillButtonMain = Font.custom("LexendDeca-Light", size: 14)
+        static let mainCardHeader = Font.custom("LexendDeca-SemiBold", size: 24)
+        static let sheetDescription = Font.custom("LexendDeca-Medium", size: 15)
+        static let packSubtitle = Font.custom("LexendDeca-Light", size: 15)
+        static let sheetBuy = Font.custom("LexendDeca-Light", size: 16)
+        static let rankingTitle = Font.custom("LexendDeca-SemiBold", size: 32)
+        static let rankingPill = Font.custom("LexendDeca-Medium", size: 16)
+        static let betsSubtitle = Font.custom("LexendDeca-Light", size: 12)
     }
 
     struct UserDefaultKeys {

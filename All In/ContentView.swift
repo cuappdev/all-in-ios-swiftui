@@ -9,38 +9,39 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var tabSelection = 0
+    @EnvironmentObject var tabNavigationManager: TabNavigationManager
+
+    private let transitionModifier = AnyTransition.opacity.animation(.easeInOut(duration: 0.15))
 
     var body: some View {
-        ZStack {
-            TabView(selection: $tabSelection) {
-                HomeView(tabSelection: $tabSelection)
-                    .tag(0)
-                    .tabItem {
-                        EmptyView()
-                    }
-
-                MarketplaceView(tabSelection: $tabSelection)
-                    .tag(1)
-                    .tabItem {
-                        EmptyView()
-                    }
-
-                ProfileView(tabSelection: $tabSelection, user: User.dummyData[0])
-                    .tag(2)
-                    .tabItem {
-                        EmptyView()
-                    }
+        VStack(spacing: 0) {
+            Group {
+                if tabNavigationManager.selectedTab == .home {
+                    HomeView(user: User.dummyData[0])
+                        .transition(transitionModifier)
+                } else if tabNavigationManager.selectedTab == .market {
+                    MarketplaceView()
+                        .transition(transitionModifier)
+                } else if tabNavigationManager.selectedTab == .betTracker {
+                    BetTrackerView(user: User.dummyData[0])
+                        .transition(transitionModifier)
+                }
             }
-            .onAppear {
-                UITabBar.appearance().unselectedItemTintColor = .white
 
+            if !tabNavigationManager.hideTabBar {
+                TabBar(selectedPage: $tabNavigationManager.selectedTab)
+                    .frame(height: 96)
+                    .transition(.opacity)
             }
         }
+        .ignoresSafeArea(.container, edges: .top)
+        .background(Constants.Colors.background)
     }
 
 }
 
 #Preview {
     ContentView()
+        .environmentObject(TabNavigationManager())
+        .environmentObject(ProfileViewViewModel())
 }
