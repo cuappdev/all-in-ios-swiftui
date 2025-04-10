@@ -39,7 +39,7 @@ struct ContractEndingCard: View {
                             .truncationMode(.tail)
 
                     // TODO: No sport associated with a player, temporary holder sport for now
-                    Text("\(Date().monthDayFormat) |  Ice Hockey")
+                    Text("\(Date().monthDayFormat) |  Men's Basketball")
                         .font(.system(size: 14))
                         .foregroundColor(.black.opacity(0.8))
                         .lineLimit(1)
@@ -54,11 +54,11 @@ struct ContractEndingCard: View {
 
                 VStack(alignment: .trailing, spacing: 4) {
                     Text("Cost: \(contract.buyPrice, specifier: "%.2f")")
-                        .foregroundColor(.red)
+                        .foregroundColor(Constants.Colors.red)
                         .font(.system(size: 14, weight: .semibold))
 
                     Text("Gain: \(contract.value, specifier: "%.2f")")
-                        .foregroundColor(.green)
+                        .foregroundColor(Constants.Colors.lightGreen)
                         .font(.system(size: 14, weight: .semibold))
                 }
                 .padding(.trailing, 12)
@@ -91,7 +91,6 @@ struct ContractEndingCard: View {
 extension ContractEndingCard {
     private var playerInfo: some View {
         HStack {
-
             Image("Player\(player.number)")
                 .resizable()
                 .frame(width: 50, height: 50)
