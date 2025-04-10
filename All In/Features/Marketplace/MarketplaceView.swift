@@ -16,8 +16,6 @@ struct MarketplaceView: View {
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
-//    let user: User
-
     // MARK: UI
 
     var body: some View {
@@ -25,15 +23,13 @@ struct MarketplaceView: View {
             ScrollView {
                 VStack(spacing: 24) {
                     pageInformation
-//                    Divider()
-//                    content
                     searchBar
                     recommendedContracts
-//                    allContracts
+                    contractsToday
+                    allContracts
                 }
                 .padding(24)
             }
-//            .ignoresSafeArea(edges: .top)
             .background(Constants.Colors.background)
         }
     }
@@ -64,7 +60,7 @@ struct MarketplaceView: View {
                         .foregroundStyle(Constants.Colors.white)
                         .font(.system(size: 24))
 
-                    // TODO: Fix
+                    // TODO: Look into?
                     Text(profileViewModel.user.balance.withCommas())
                         .font(Constants.Fonts.subheaderProfile)
                         .foregroundStyle(Constants.Colors.white)
@@ -92,6 +88,11 @@ struct MarketplaceView: View {
                     },
                     alignment: .trailing
                 )
+                .padding(.trailing, 50)
+            Spacer()
+
+            // For filtering feature
+            Image("sorting_button")
         }
         .padding()
         .overlay(
@@ -105,42 +106,78 @@ struct MarketplaceView: View {
     }
 
     private var recommendedContracts: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
+        VStack(alignment: .leading, spacing: 24) {
+            HStack(spacing: 4) {
                 Text("Your Recommended Contracts")
                     .font(Constants.Fonts.mainHeader)
                     .foregroundStyle(Constants.Colors.white)
-                // NOTE: Uncomment if we want to bring it to a separate page
+                // NOTE: Comment out for chevron to add page.
 //                Image(systemName: "chevron.right")
 //                    .foregroundStyle(Constants.Colors.white)
 //                    .font(.system(size: 12))
-                Spacer()
             }
 
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(Contract.dummyData.prefix(5), id: \.id) { contract in
+                        ContractCard(contract: contract)
+                            .frame(width: 180)
+                    }
+                }
+            }
         }
+        .padding(.top, 16)
     }
 
-    private var allContracts: some View {
-        ScrollView {
-            ZStack {
-                Constants.Colors.background
+    private var contractsToday: some View {
+        VStack(alignment: .leading, spacing: 24) {
+            NavigationLink {
+                ContractsEndingView(contracts: Contract.dummyData.prefix(5).map { $0 })
+            } label: {
+                HStack {
+                    Text("Contracts Ending Today")
+                        .gradientForeground(colors: [Constants.Colors.gradientBlue, Constants.Colors.gradientLightBlue, Constants.Colors.gradientLavender, Constants.Colors.gradientPurple])
+                        .font(Constants.Fonts.mainHeader)
 
-                VStack {
-                    PillSelectView(Stat.getAll()) { newStat in
-                        selectedStat = newStat
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(Constants.Colors.gradientLightBlue)
+                        .font(.system(size: 12))
+                }
+            }
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(Contract.dummyData, id: \.id) { contract in
+                        ContractEndingCard(contract: contract)
+                            .frame(width: UIScreen.main.bounds.width - 80)
                     }
-                    .padding(EdgeInsets(top: -8, leading: -8, bottom: -8, trailing: -8))
-                    LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(marketplaceViewModel.filteredContracts, id: \.id) { contract in ContractCard(contract: contract)
-                        }
-                        .cornerRadius(16)
-                    }
-                .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
                 }
             }
         }
     }
 
+    private var allContracts: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                Text("All Contracts")
+                    .font(Constants.Fonts.mainHeader)
+                    .foregroundStyle(Constants.Colors.white)
+
+                LazyVGrid(
+                    columns: [
+                        GridItem(.flexible(), spacing: 10),
+                        GridItem(.flexible(), spacing: 10)
+                    ],
+                ) {
+                    ForEach(marketplaceViewModel.filteredContracts, id: \.id) { contract in
+                        ContractCard(contract: contract)
+                            .scaleEffect(0.95)
+                    }
+                }
+            }
+            .background(Constants.Colors.background)
+        }
+    }
 }
 
 #Preview {

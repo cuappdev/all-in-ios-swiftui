@@ -40,6 +40,19 @@ struct ContentView: View {
 
 }
 
+extension View {
+    // Gradient function used for "contracts ending today" card backgrounds
+    public func gradientForeground(colors: [Color]) -> some View {
+        self.overlay(
+            LinearGradient(
+                colors: colors,
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing)
+        )
+            .mask(self)
+    }
+}
+
 #Preview {
     ContentView()
         .environmentObject(TabNavigationManager())

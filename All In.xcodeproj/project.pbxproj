@@ -26,6 +26,8 @@
 		29C9CBE02D9DCB2F00E38F7A /* SportPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBDF2D9DCB2D00E38F7A /* SportPill.swift */; };
 		29C9CBE22D9DDE5A00E38F7A /* RarityPackSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBE12D9DDE5500E38F7A /* RarityPackSheetView.swift */; };
 		29C9CBE42D9DE5CF00E38F7A /* PlayerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */; };
+		2CCD4FE32DA77CF500A4E87C /* ContractsEndingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD4FE22DA77CE900A4E87C /* ContractsEndingView.swift */; };
+		2CCD4FE52DA77E4700A4E87C /* ContractEndingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD4FE42DA77E4000A4E87C /* ContractEndingCard.swift */; };
 		897DFBDE2CCED80600246B0D /* PlayerChestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */; };
 		897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */; };
 		897DFBE02CCED80600246B0D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB92CCED80600246B0D /* SheetView.swift */; };
@@ -119,6 +121,8 @@
 		29C9CBE12D9DDE5500E38F7A /* RarityPackSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityPackSheetView.swift; sourceTree = "<group>"; };
 		29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCard.swift; sourceTree = "<group>"; };
 		29DB4FC32D8CDEAC00E489DB /* All-In-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "All-In-Info.plist"; sourceTree = SOURCE_ROOT; };
+		2CCD4FE22DA77CE900A4E87C /* ContractsEndingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsEndingView.swift; sourceTree = "<group>"; };
+		2CCD4FE42DA77E4000A4E87C /* ContractEndingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractEndingCard.swift; sourceTree = "<group>"; };
 		897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChestViewModel.swift; sourceTree = "<group>"; };
 		897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityChestSheetViewModel.swift; sourceTree = "<group>"; };
 		897DFBB92CCED80600246B0D /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
@@ -299,6 +303,7 @@
 		897DFBC82CCED80600246B0D /* Marketplace */ = {
 			isa = PBXGroup;
 			children = (
+				2CCD4FE22DA77CE900A4E87C /* ContractsEndingView.swift */,
 				D0EB53242DA4AF2B00F988EB /* SellContract */,
 				897DFBC62CCED80600246B0D /* ViewModels */,
 				897DFBC72CCED80600246B0D /* MarketplaceView.swift */,
@@ -342,6 +347,7 @@
 		897DFBDB2CCED80600246B0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2CCD4FE42DA77E4000A4E87C /* ContractEndingCard.swift */,
 				2971A8642D9F8701008DADC4 /* ActiveBetCard.swift */,
 				2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */,
 				29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */,
@@ -687,6 +693,7 @@
 				D0EB53262DA4AF3E00F988EB /* SellSelectedContractView.swift in Sources */,
 				897DFBFC2CCED80C00246B0D /* Color+Extension.swift in Sources */,
 				29C9CBE22D9DDE5A00E38F7A /* RarityPackSheetView.swift in Sources */,
+				2CCD4FE52DA77E4700A4E87C /* ContractEndingCard.swift in Sources */,
 				897DFBFD2CCED80C00246B0D /* Date+Extension.swift in Sources */,
 				897DFBFE2CCED80C00246B0D /* NSNumberFormatter.swift in Sources */,
 				897DFBE62CCED80600246B0D /* WheelItemUIView.swift in Sources */,
@@ -715,6 +722,7 @@
 				D0B4A2522DA6E3F000A1722C /* Response.swift in Sources */,
 				D0B4A2502DA6E3EB00A1722C /* Body.swift in Sources */,
 				897DFBF52CCED80600246B0D /* ContractCard.swift in Sources */,
+				2CCD4FE32DA77CF500A4E87C /* ContractsEndingView.swift in Sources */,
 				897DFBF62CCED80600246B0D /* PlayerContractSheetView.swift in Sources */,
 				29C8A00D2D8F8E8000F9B3F5 /* Pill.swift in Sources */,
 				29C8A00E2D8F8E8000F9B3F5 /* BetTrackerView.swift in Sources */,
