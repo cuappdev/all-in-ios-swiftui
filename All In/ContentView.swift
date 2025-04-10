@@ -29,12 +29,13 @@ struct ContentView: View {
                             .transition(transitionModifier)
                     }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .animation(.spring(), value: tabNavigationManager.hideTabBar)
 
-                if !tabNavigationManager.hideTabBar {
-                    TabBar(selectedPage: $tabNavigationManager.selectedTab)
-                        .frame(height: 96)
-                        .transition(.opacity)
-                }
+                TabBar(selectedPage: $tabNavigationManager.selectedTab)
+                    .frame(height: tabNavigationManager.hideTabBar ? 0 : 96)
+                    .opacity(tabNavigationManager.hideTabBar ? 0 : 1)
+                    .animation(.spring(), value: tabNavigationManager.hideTabBar)
             }
         } else {
             Constants.Colors.background

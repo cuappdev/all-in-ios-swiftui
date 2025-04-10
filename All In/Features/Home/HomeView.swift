@@ -18,6 +18,8 @@ struct HomeView: View {
     @State private var selectedSport: Sport = Sport.all.first(where: { $0.name == "Basketball" }) ?? Sport.all[0]
     @EnvironmentObject var tabNavigationManager: TabNavigationManager
 
+    var padding: CGFloat = 24
+
     let user: User
 
     private func getVisibleUsers(currentUser: User) -> [User] {
@@ -51,7 +53,7 @@ struct HomeView: View {
 
                     rankingsSection
                 }
-                .padding(24)
+                .padding(padding)
             }
             .background(Constants.Colors.background)
             .ignoresSafeArea(edges: .bottom)
@@ -210,7 +212,9 @@ struct HomeView: View {
                         PlayerCard(player: player)
                     }
                 }
+                .padding(padding)
             }
+            .padding(-padding)
         }
         .navigationDestination(isPresented: $showPlayerInfo) {
             PlayerSeeAllScreen(players: players, selectedSport: selectedSport)

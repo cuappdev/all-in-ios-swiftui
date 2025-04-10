@@ -72,7 +72,7 @@ struct ContractEndingCard: View {
                     endPoint: .trailing
                 )
             )
-            .cornerRadius(16)
+            .cornerRadius(12)
             .padding(.horizontal, 8)
         }
         .sheet(isPresented: $showSheet) {

@@ -14,6 +14,8 @@ struct MarketplaceView: View {
     @State var selectedStat: Stat = .points
     @State private var showingFAQ = false
 
+    var padding: CGFloat = 24
+
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     // MARK: UI
@@ -28,7 +30,7 @@ struct MarketplaceView: View {
                     contractsToday
                     allContracts
                 }
-                .padding(24)
+                .padding(padding)
             }
             .background(Constants.Colors.background)
         }
@@ -124,7 +126,9 @@ struct MarketplaceView: View {
                             .frame(width: 180)
                     }
                 }
+                .padding(padding)
             }
+            .padding(-padding)
         }
         .padding(.top, 16)
     }
@@ -158,7 +162,9 @@ struct MarketplaceView: View {
                             .frame(width: UIScreen.main.bounds.width - 80)
                     }
                 }
+                .padding(padding)
             }
+            .padding(-padding)
         }
     }
 

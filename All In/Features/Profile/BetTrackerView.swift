@@ -16,6 +16,7 @@ struct BetTrackerView: View {
     @State private var showingFAQ = false
 
     let user: User
+    let padding: CGFloat = 24
 
     enum TimeFilter {
         case weekly
@@ -427,7 +428,9 @@ struct BetTrackerView: View {
                             .frame(width: 180)
                     }
                 }
+                .padding(padding)
             }
+            .padding(-padding)
         }
         .padding(.top, 16)
     }
@@ -456,7 +459,9 @@ struct BetTrackerView: View {
                             ActiveBetCard(contract: contract)
                         }
                     }
+                    .padding(padding)
                 }
+                .padding(-padding)
             }
         }
         .padding(.top, 16)

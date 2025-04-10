@@ -44,7 +44,7 @@ struct ContractCard: View {
                                 contractInfo
 
                             }
-                            .frame(width: 181, height: 222)
+                            .frame(width: UIScreen.main.bounds.width / 2 - 24, height: 222)
                             .background(Constants.Colors.blackBlue)
                             .cornerRadius(16)
                             // Card border
@@ -57,7 +57,7 @@ struct ContractCard: View {
                                             startPoint: .topLeading,
                                             endPoint: .bottomTrailing
                                         ),
-                                        lineWidth: 2
+                                        lineWidth: 1
                                     )
                             )
                         }
