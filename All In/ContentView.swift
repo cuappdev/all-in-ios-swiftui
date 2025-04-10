@@ -14,7 +14,7 @@ struct ContentView: View {
     private let transitionModifier = AnyTransition.opacity.animation(.easeInOut(duration: 0.15))
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             Group {
                 if tabNavigationManager.selectedTab == .home {
                     HomeView(user: User.dummyData[0])
@@ -34,7 +34,7 @@ struct ContentView: View {
                     .transition(.opacity)
             }
         }
-        .ignoresSafeArea()
+        .ignoresSafeArea(.container, edges: .top)
         .background(Constants.Colors.background)
     }
 
