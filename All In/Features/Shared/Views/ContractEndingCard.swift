@@ -23,47 +23,47 @@ struct ContractEndingCard: View {
         Button {
             showSheet = true
         } label: {
-            HStack(spacing: 12) {
+            HStack(spacing: 10) {
                 Image("Player\(player.number)")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 60, height: 60)
+                    .frame(width: 50, height: 50)
                     .clipShape(Circle())
                     .padding(.leading, 12)
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text("\(player.firstName) \(player.lastName) v. \(contract.opposingTeam)")
-                            .font(.system(size: 16, weight: .semibold))
+                            .font(.system(size: 14, weight: .semibold))
                             .foregroundColor(.black)
                             .lineLimit(1)
                             .truncationMode(.tail)
 
                     // TODO: No sport associated with a player, temporary holder sport for now
                     Text("\(Date().monthDayFormat) |  Men's Basketball")
-                        .font(.system(size: 14))
+                        .font(.system(size: 12))
                         .foregroundColor(.black.opacity(0.8))
                         .lineLimit(1)
                         .truncationMode(.tail)
 
                     Text(contract.event)
-                        .font(.system(size: 14))
+                        .font(.system(size: 12))
                         .foregroundColor(.black.opacity(0.8))
                 }
 
                 Spacer()
 
-                VStack(alignment: .trailing, spacing: 4) {
+                VStack(alignment: .trailing) {
                     Text("Cost: \(contract.buyPrice, specifier: "%.2f")")
                         .foregroundColor(Constants.Colors.red)
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.system(size: 12, weight: .bold))
 
                     Text("Gain: \(contract.value, specifier: "%.2f")")
                         .foregroundColor(Constants.Colors.lightGreen)
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.system(size: 12, weight: .bold))
                 }
                 .padding(.trailing, 12)
             }
-            .frame(height: 100)
+            .frame(height: 90)
             .background(
                 LinearGradient(
                     gradient: Gradient(colors: [Constants.Colors.gradientBlue, Constants.Colors.gradientLightBlue,
