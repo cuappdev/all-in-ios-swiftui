@@ -37,15 +37,11 @@ struct Constants {
         static let backgroundBlack = Color(hex: 0x15141B)
         // System
         static let background = Color(hex: 0x15141B)
-        static let borderGradient = Gradient(
 
         // Charts
         static let greenChart = Color(hex: 0x47CD89)
         static let redChart = Color(hex: 0xF97066)
         static let moneyGreen = Color(hex: 0x47CD89)
-
-        // System
-        static let background = Color(hex: 0x15141B)
 
         // Gradient
         static let gradient = Gradient(
