@@ -10,10 +10,25 @@ import SwiftUI
 struct ContentView: View {
 
     @EnvironmentObject var tabNavigationManager: TabNavigationManager
+    @EnvironmentObject var googleAuthManager: GoogleAuthManager
 
     private let transitionModifier = AnyTransition.opacity.animation(.easeInOut(duration: 0.15))
 
     var body: some View {
+        if let user = googleAuthManager.user {
+            VStack(spacing: 0) {
+                Group {
+                    if tabNavigationManager.selectedTab == .home {
+                        HomeView(user: user)
+                            .transition(transitionModifier)
+                    } else if tabNavigationManager.selectedTab == .market {
+                        MarketplaceView()
+                            .transition(transitionModifier)
+                    } else if tabNavigationManager.selectedTab == .betTracker {
+                        BetTrackerView(user: user)
+                            .transition(transitionModifier)
+                    }
+                }
         VStack {
             Group {
                 if tabNavigationManager.selectedTab == .home {
@@ -28,14 +43,35 @@ struct ContentView: View {
                 }
             }
 
-            if !tabNavigationManager.hideTabBar {
-                TabBar(selectedPage: $tabNavigationManager.selectedTab)
-                    .frame(height: 96)
-                    .transition(.opacity)
+                if !tabNavigationManager.hideTabBar {
+                    TabBar(selectedPage: $tabNavigationManager.selectedTab)
+                        .frame(height: 96)
+                        .transition(.opacity)
+                }
             }
+            .ignoresSafeArea(.container, edges: .top)
+            .background(Constants.Colors.background)
+        } else {
+            Constants.Colors.background
+                .ignoresSafeArea()
+                .onAppear {
+                    Task {
+                        if !googleAuthManager.isSigningIn {
+                            do {
+                                try await GoogleAuthManager.shared.refreshSignInIfNeeded()
+                            } catch {
+                                GoogleAuthManager.shared.logger.info("Failed to find a session, trying Google Login; Error: \(error)")
+                                do {
+                                    try await GoogleAuthManager.shared.signIn()
+                                } catch {
+                                    GoogleAuthManager.shared.logger.error("Failed to sign in; Error: \(error)")
+                                }
+                            }
+                        }
+                    }
+                }
+
         }
-        .ignoresSafeArea()
-        .background(Constants.Colors.background)
     }
 
 }
