@@ -29,17 +29,46 @@ struct ContentView: View {
                             .transition(transitionModifier)
                     }
                 }
+            }
 
             if !tabNavigationManager.hideTabBar {
                 TabBar(selectedPage: $tabNavigationManager.selectedTab)
                     .frame(height: 96)
                     .transition(.opacity)
             }
+        } else {
+            Constants.Colors.background
+                .onAppear {
+                    Task {
+                        do {
+                            try await googleAuthManager.refreshSignInIfNeeded()
+                        } catch {
+                            googleAuthManager.logger.info("Failed to find google sign in session: \(error)")
+                            do {
+                                try await googleAuthManager.signIn()
+                            } catch {
+                                googleAuthManager.logger.error("Failed to sign in: \(error)")
+                            }
+                        }
+                    }
+                }
         }
-        .ignoresSafeArea(.container, edges: .top)
-        .background(Constants.Colors.background)
     }
 
+}
+
+extension View {
+    // Gradient function used for "contracts ending today" card backgrounds
+    public func gradientForeground(colors: [Color]) -> some View {
+        self.overlay(
+            LinearGradient(
+                colors: colors,
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
+            .mask(self)
+    }
 }
 
 #Preview {
