@@ -11,7 +11,6 @@ struct ContractCard: View {
 
     @State private var contract: Contract
     @State private var player: Player
-    var compact: Bool = false
 
     init(contract: Contract) {
         _contract = State(initialValue: contract)
