@@ -35,7 +35,10 @@ class GoogleAuthManager: ObservableObject {
 
     @MainActor
     func signIn() async throws {
-        self.isSigningIn = true
+        await MainActor.run {
+            self.isSigningIn = true
+        }
+
         guard let presentingViewController = await (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
 
         let gidSignInResult = try await GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController)
@@ -50,7 +53,10 @@ class GoogleAuthManager: ObservableObject {
     /// Try to refresh the access token of the current user if it exists, or the restored user.
     /// If this function throws a full logout is needed.
     func refreshSignInIfNeeded() async throws {
-        self.isSigningIn = true
+        await MainActor.run {
+            self.isSigningIn = true
+        }
+
         // Restore or verify sign-in
         if GIDSignIn.sharedInstance.currentUser == nil {
             try await GIDSignIn.sharedInstance.restorePreviousSignIn()
@@ -63,7 +69,6 @@ class GoogleAuthManager: ObservableObject {
 
         // Refresh tokens
         try await currentUser.refreshTokensIfNeeded()
-
         try await getCredentialsFromGoogleUser(user: currentUser)
 
         let user = try await NetworkManager.shared.authorize()

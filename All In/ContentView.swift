@@ -16,29 +16,32 @@ struct ContentView: View {
 
     var body: some View {
         if let user = googleAuthManager.user {
-            VStack {
+            VStack(spacing: 0) {
                 Group {
                     if tabNavigationManager.selectedTab == .home {
-                        HomeView(user: User.dummyData[0])
+                        HomeView(user: user)
                             .transition(transitionModifier)
                     } else if tabNavigationManager.selectedTab == .market {
                         MarketplaceView()
                             .transition(transitionModifier)
                     } else if tabNavigationManager.selectedTab == .betTracker {
-                        BetTrackerView(user: User.dummyData[0])
+                        BetTrackerView(user: user)
                             .transition(transitionModifier)
                     }
                 }
-            }
 
-            if !tabNavigationManager.hideTabBar {
-                TabBar(selectedPage: $tabNavigationManager.selectedTab)
-                    .frame(height: 96)
-                    .transition(.opacity)
+                if !tabNavigationManager.hideTabBar {
+                    TabBar(selectedPage: $tabNavigationManager.selectedTab)
+                        .frame(height: 96)
+                        .transition(.opacity)
+                }
             }
         } else {
             Constants.Colors.background
+                .ignoresSafeArea()
                 .onAppear {
+                    guard googleAuthManager.user == nil, !googleAuthManager.isSigningIn else { return }
+
                     Task {
                         do {
                             try await googleAuthManager.refreshSignInIfNeeded()

@@ -31,6 +31,7 @@ struct User: Codable, Identifiable {
     let email: String
     let image: String
     let balance: Int
+    let createdAt: Date
     let contracts: [Contract]
     let sellerTransactions: [Transaction]
     let buyerTransactions: [Transaction]
@@ -47,6 +48,7 @@ extension User {
             email: "ml123@cornell.edu",
             image: "profile",
             balance: 5000,
+            createdAt: Date(),
             contracts: [
                 Contract.dummyData[2],
                 Contract.dummyData[3],
@@ -102,6 +104,7 @@ extension User {
             email: "aw123@cornell.edu",
             image: "image",
             balance: 4000,
+            createdAt: Date(),
             contracts: [
                 Contract.dummyData[3],
                 Contract.dummyData[4],
@@ -157,6 +160,7 @@ extension User {
             email: "lj123@cornell.edu",
             image: "image",
             balance: 3000,
+            createdAt: Date(),
             contracts: [],
             sellerTransactions: [],
             buyerTransactions: []
@@ -208,6 +212,7 @@ extension User {
             email: "act238@cornell.edu",
             image: "image",
             balance: 1000,
+            createdAt: Date(),
             contracts: [
                 Contract.dummyData[0],
                 Contract.dummyData[1]
@@ -262,6 +267,7 @@ extension User {
             email: "pb384@cornell.edu",
             image: "image",
             balance: 1500,
+            createdAt: Date(),
             contracts: [],
             sellerTransactions: [],
             buyerTransactions: []
@@ -313,6 +319,7 @@ extension User {
             email: "cl123@cornell.edu",
             image: "image",
             balance: 1200,
+            createdAt: Date(),
             contracts: [],
             sellerTransactions: [],
             buyerTransactions: []
@@ -364,6 +371,7 @@ extension User {
             email: "jj456@cornell.edu",
             image: "image",
             balance: 2000,
+            createdAt: Date(),
             contracts: [],
             sellerTransactions: [],
             buyerTransactions: []
@@ -415,6 +423,7 @@ extension User {
             email: "aw789@cornell.edu",
             image: "image",
             balance: 1800,
+            createdAt: Date(),
             contracts: [],
             sellerTransactions: [],
             buyerTransactions: []

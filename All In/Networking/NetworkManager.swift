@@ -29,10 +29,33 @@ class NetworkManager: APIClient {
     // MARK: - Properties
 
     private let hostURL: String = Keys.serverURL
+    private let decoder = JSONDecoder()
 
     // MARK: - Init
 
-    private init() { }
+    private init() {
+        decoder.dateDecodingStrategy = .custom { decoder in
+            let container = try decoder.singleValueContainer()
+            let dateString = try container.decode(String.self)
+
+            let dateFormatter = ISO8601DateFormatter()
+            dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+
+            // Check if the string already has timezone information
+            let hasTimezoneInfo = dateString.hasSuffix("Z") ||
+                                  dateString.contains("+") ||
+                                  (dateString.count > 10 && dateString.dropFirst(10).contains("-"))
+
+            // Append "Z" to indicate UTC if needed
+            let dateStringWithUTC = hasTimezoneInfo ? dateString : dateString + "Z"
+
+            if let date = dateFormatter.date(from: dateStringWithUTC) {
+                return date
+            }
+
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "Expected date string to be ISO8601-formatted.")
+        }
+    }
 
     // MARK: - Template Helper Functions
 
@@ -51,7 +74,7 @@ class NetworkManager: APIClient {
 
         try await handleResponse(data: data, response: response)
 
-        return try JSONDecoder().decode(T.self, from: data)
+        return try decoder.decode(T.self, from: data)
     }
 
     /// Template function to POST data to a specified URL with an encodable body and decodes the response into a specified type `T`.
@@ -74,7 +97,7 @@ class NetworkManager: APIClient {
 
         try await handleResponse(data: data, response: response)
 
-        return try JSONDecoder().decode(T.self, from: data)
+        return try decoder.decode(T.self, from: data)
     }
 
     /// Overloaded post function for requests without a return
@@ -95,7 +118,7 @@ class NetworkManager: APIClient {
 
         try await handleResponse(data: data, response: response)
 
-        return try JSONDecoder().decode(T.self, from: data)
+        return try decoder.decode(T.self, from: data)
     }
 
     /// Template function to DELETE data to a specified URL with an encodable body and decodes the response into a specified type `T`.
@@ -134,18 +157,17 @@ class NetworkManager: APIClient {
             throw URLError(.badServerResponse)
         }
 
-        // if 401, try to refresh token
-        if httpResponse.statusCode == 401 {
-            do {
-                try await GoogleAuthManager.shared.refreshSignInIfNeeded()
-            } catch {
-                GoogleAuthManager.shared.accessToken = nil
-                GoogleAuthManager.shared.user = nil
-            }
-        }
-
         if httpResponse.statusCode != 200 {
-            if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {
+            if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
+                // if 401, try to refresh token
+                if errorResponse.httpCode == 401 {
+                    do {
+                        try await GoogleAuthManager.shared.refreshSignInIfNeeded()
+                    } catch {
+                        GoogleAuthManager.shared.accessToken = nil
+                        GoogleAuthManager.shared.user = nil
+                    }
+                }
                 throw errorResponse
             } else {
                 throw URLError(.init(rawValue: httpResponse.statusCode))
@@ -156,7 +178,7 @@ class NetworkManager: APIClient {
     // MARK: - Auth Networking Functions
 
     func authorize() async throws -> User? {
-        let url = try constructURL(endpoint: "/users/me")
+        let url = try constructURL(endpoint: "/users/me/")
 
         return try await get(url: url)
     }
