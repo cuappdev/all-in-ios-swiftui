@@ -45,7 +45,7 @@ struct MarketplaceView: View {
                     set: { if !$0 { selectedContract = nil } }
                 )) {
                     if let contract = selectedContract {
-                        BuyContractView(contract: contract, user: profileViewModel.user)
+                        BuyContractView(contract: contract, user: profileViewModel.user, rarity: contract.rarity)
                     }
                 }
                 .navigationDestination(isPresented: $showingFAQ) {
