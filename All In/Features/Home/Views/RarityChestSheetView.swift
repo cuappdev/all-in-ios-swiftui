@@ -20,6 +20,7 @@ struct RarityChestSheetView: View {
             subTitle: "",
             description: "Contains a \(rarity.string) contract",
             buttonText: "Buy Now",
+            price: 1720,
             showSheet: $showSheet
         ) {
             // The middle of the half sheet

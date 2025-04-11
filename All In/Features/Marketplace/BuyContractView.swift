@@ -133,8 +133,8 @@ struct BuyContractView: View {
                         )
                 )
                 .sheet(isPresented: $showSheet) {
-                    PlayerContractSheetView(fromPlayer: player, fromStat: Stat.assists, showSheet: $showSheet)
-                        .presentationDetents([.fraction(0.6)])
+                    PlayerContractSheetView(fromPlayer: player, fromContract: contract, fromStat: Stat.assists, showSheet: $showSheet)
+                        .presentationDetents([.fraction(0.8)])
                 }
             }
         }

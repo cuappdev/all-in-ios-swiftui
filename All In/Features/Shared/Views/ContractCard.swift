@@ -65,9 +65,6 @@ struct ContractCard: View {
                 }
             }
         }
-//        .sheet(isPresented: $showSheet) {
-//            BuyContractView(contract: contract, user: ProfileViewViewModel().user)
-//        }
     }
 }
 

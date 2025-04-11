@@ -76,8 +76,8 @@ struct ContractEndingCard: View {
             .padding(.horizontal, 8)
         }
         .sheet(isPresented: $showSheet) {
-            PlayerContractSheetView(fromPlayer: player, fromStat: Stat.assists, showSheet: $showSheet)
-                .presentationDetents([.fraction(0.6)])
+            PlayerContractSheetView(fromPlayer: player, fromContract: contract, fromStat: Stat.assists, showSheet: $showSheet)
+                .presentationDetents([.fraction(0.8)])
         }
     }
 }
