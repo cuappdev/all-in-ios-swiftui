@@ -48,17 +48,15 @@ struct PlayerChestSheetView: View {
                     .foregroundColor(Constants.Colors.white)
                     .font(.system(size: 24, weight: .bold))
 
-//                GeometryReader { geo in
                     player.graph(stat: selectedStat, selectedDate: activeDate) { strDate in
                         // ON DRAG COMPLETION HANDLER
                         activeDate = Date(timeIntervalSinceReferenceDate: TimeInterval(strDate))
                     }
                     .frame(height: 210)
-//                }
             }
             } buttonCallback: {
-                // TODO: add networking call
-                print("BUY CHEST NETWORKING CALL HERE")
+                // TODO:
+//                CartManager.shared.addMarketplaceContract(player: player, eventDescription: <#T##String#>, price: 1720, potentialWin: <#T##Int#>)
         }
         .background(Constants.Colors.background)
     }

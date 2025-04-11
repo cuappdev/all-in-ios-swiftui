@@ -13,6 +13,7 @@ struct PlayerContractSheetView: View {
     let position: String
     let number: Int
     let stat: Stat
+    let contract: Contract
 
     let player: Player
 
@@ -21,13 +22,14 @@ struct PlayerContractSheetView: View {
     @State var selectedStat: Stat = .points
     @State var activeDate: Date = Date()
 
-    init(fromPlayer player: Player, fromStat stat: Stat, showSheet: Binding<Bool>) {
+    init(fromPlayer player: Player, fromContract contract: Contract, fromStat stat: Stat, showSheet: Binding<Bool>) {
         name = "\(player.firstName[player.firstName.startIndex]). \(player.lastName)"
         position = player.position[0]
         number = player.number
         self.player = player
         _showSheet = showSheet
         self.stat = stat
+        self.contract = contract
     }
 
     var body: some View {
@@ -55,11 +57,15 @@ struct PlayerContractSheetView: View {
                         }
                 }
                 .background(Constants.Colors.background)
-            }
+            } buttonCallback: {
+                // TODO: what shoule potential win
+                CartManager.shared.addMarketplaceContract(player: player, eventDescription: contract.event, price: contract.buyPrice, potentialWin: 1)
+        }
+        .background(Constants.Colors.background)
         }
 
 }
 
 #Preview {
-    PlayerContractSheetView(fromPlayer: Player.dummyData[0], fromStat: Stat.fieldGoalsMade, showSheet: .constant(true))
+    PlayerContractSheetView(fromPlayer: Player.dummyData[0], fromContract: Contract.dummyData[0], fromStat: Stat.fieldGoalsMade, showSheet: .constant(true))
 }
