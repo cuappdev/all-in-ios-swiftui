@@ -28,6 +28,7 @@ struct MarketplaceView: View {
 
     var padding: CGFloat = 24
 
+    var padding: CGFloat = 24
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     // MARK: UI
@@ -159,6 +160,75 @@ struct MarketplaceView: View {
                     ForEach(Contract.dummyData.prefix(5), id: \.id) { contract in
                         ContractCard(contract: contract)
                             .frame(width: 180)
+                }
+            }
+
+            HStack {
+                Spacer()
+
+                HStack(spacing: 7) {
+                    Image(systemName: "dollarsign.circle")
+                        .foregroundStyle(Constants.Colors.white)
+                        .font(.system(size: 24))
+
+                    // TODO: Look into?
+                    Text(profileViewModel.user.balance.withCommas())
+                        .font(Constants.Fonts.subheaderProfile)
+                        .foregroundStyle(Constants.Colors.white)
+                }
+            }
+        }
+    }
+
+    private var searchBar: some View {
+        HStack {
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(
+                    marketplaceViewModel.searchText.isEmpty ? Constants.Colors.grey03 : Constants.Colors.red
+                )
+            TextField("Search", text: $marketplaceViewModel.searchText)
+                .foregroundColor(Constants.Colors.grey03)
+                .overlay(
+                    Image(
+                        systemName: "x.circle.fill"
+                    )
+                    .offset(x: 8)
+                    .opacity(marketplaceViewModel.searchText.isEmpty ? 0.0 : 1.0)
+                    .onTapGesture {
+                        marketplaceViewModel.searchText = ""
+                    },
+                    alignment: .trailing
+                )
+                .padding(.trailing, 50)
+            Spacer()
+
+            // For filtering feature
+            Image("sorting_button")
+        }
+        .padding()
+        .overlay(
+            RoundedRectangle(cornerRadius: 30)
+                .stroke(Constants.Colors.grey02, lineWidth: 1)
+        )
+        .background(
+            RoundedRectangle(cornerRadius: 30)
+                .fill(Constants.Colors.white)
+        )
+    }
+
+    private var recommendedContracts: some View {
+        VStack(alignment: .leading, spacing: 24) {
+            Text("Your Recommended Contracts")
+                .font(Constants.Fonts.mainHeader)
+                .foregroundStyle(Constants.Colors.white)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(Contract.dummyData.prefix(5), id: \.id) { contract in
+                        ContractCard(contract: contract) {
+                            selectedContract = contract
+                        }
+                        .frame(width: 180)
                     }
                 }
                 .padding(padding)
@@ -216,9 +286,11 @@ struct MarketplaceView: View {
                         GridItem(.flexible(), spacing: 10)
                     ]
                 ) {
-                    ForEach(marketplaceViewModel.filteredContracts, id: \.id) { contract in
-                        ContractCard(contract: contract)
-                            .scaleEffect(0.95)
+                    ForEach(Contract.dummyData.prefix(5), id: \.id) { contract in
+                        ContractCard(contract: contract) {
+                            selectedContract = contract
+                        }
+                        .scaleEffect(0.95)
                     }
                 }
             }
@@ -230,4 +302,5 @@ struct MarketplaceView: View {
 #Preview {
     MarketplaceView()
         .environmentObject(ProfileViewViewModel())
+        .environmentObject(TabNavigationManager())
 }

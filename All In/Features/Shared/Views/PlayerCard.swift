@@ -21,18 +21,17 @@ struct PlayerCard: View {
             showSheet = true
         } label: {
             VStack(alignment: .center, spacing: 8) {
-                Image("Player\(player.number)")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 50, height: 50)
-                    .clipShape(Circle())
-                    .padding(.top, 16)
+                AsyncImage(url: URL(string: player.image)) { image in
+                    image.resizable()
+                } placeholder: {
+                    EmptyView()
+                }
 
                 Text("\(player.firstName.prefix(1)). \(player.lastName)")
                     .font(Constants.Fonts.cardHeader)
                     .foregroundStyle(Constants.Colors.white)
 
-                Text("#\(player.number) | \(player.position[0].prefix(2))")
+                Text("#\(player.number) | \(player.positions[0].prefix(2))")
                     .font(Constants.Fonts.caption)
                     .foregroundStyle(Constants.Colors.white)
                     .padding(.bottom, 16)
@@ -53,8 +52,8 @@ struct PlayerCard: View {
             )
         }
         .sheet(isPresented: $showSheet) {
-            PlayerContractSheetView(fromPlayer: player, fromStat: Stat.assists, showSheet: $showSheet)
-                .presentationDetents([.fraction(0.6)])
+            PlayerChestSheetView(fromPlayer: player, showSheet: $showSheet)
+                .presentationDetents([.fraction(0.8)])
         }
     }
 }

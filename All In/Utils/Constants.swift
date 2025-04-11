@@ -44,6 +44,9 @@ struct Constants {
         // System
         static let background = Color(hex: 0x15141B)
 
+        static let cartBlue = Color(hex: 0x1F70C7)
+        static let cartLightBlue = Color(hex: 0x99C5F4)
+
         // Gradient
         static let gradient = Gradient(
             colors: [
@@ -89,6 +92,9 @@ struct Constants {
         static let rankingTitle = Font.custom("LexendDeca-SemiBold", size: 32)
         static let rankingPill = Font.custom("LexendDeca-Medium", size: 16)
         static let betsSubtitle = Font.custom("LexendDeca-Light", size: 12)
+
+        // Cart
+        static let cart = Font.custom("LexendDeca-Light", size: 16)
     }
 
     struct UserDefaultKeys {

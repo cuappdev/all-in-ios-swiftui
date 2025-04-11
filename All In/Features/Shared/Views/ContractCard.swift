@@ -11,18 +11,18 @@ struct ContractCard: View {
 
     @State private var contract: Contract
     @State private var player: Player
+    @State private var onTap: () -> Void
 
-    init(contract: Contract) {
-        _contract = State(initialValue: contract)
-        _player = State(initialValue: Contract.getPlayer(contract))
+    init(contract: Contract, onTap: @escaping () -> Void) {
+        self.contract = contract
+        self.player = Contract.getPlayer(contract)
+        self.onTap = onTap
     }
 
     @State var showSheet = false
 
     var body: some View {
-        Button {
-            showSheet = true
-        } label: {
+        Button(action: onTap) {
             ZStack(alignment: .bottom) {
                 RoundedRectangle(cornerRadius: 16)
                     .inset(by: 0.5)
@@ -63,15 +63,11 @@ struct ContractCard: View {
                 }
             }
         }
-        .sheet(isPresented: $showSheet) {
-            PlayerContractSheetView(fromPlayer: player, fromStat: Stat.assists, showSheet: $showSheet)
-                .presentationDetents([.fraction(0.6)])
-        }
     }
 }
 
 #Preview {
-    ContractCard(contract: Contract.dummyData[0])
+    ContractCard(contract: Contract.dummyData[0], onTap: {})
 }
 
 // MARK: Components

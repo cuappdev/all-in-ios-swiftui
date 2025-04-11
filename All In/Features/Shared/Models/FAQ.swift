@@ -96,4 +96,33 @@ struct FAQ: Identifiable {
             """
         )
     ]
+
+    static let marketplaceFAQs: [FAQ] = [
+        FAQ(
+            question: "What does Marketplace include?",
+            answer: """
+            The marketplace is includes all of your recommended contracts, the contracts ending today, \
+            and all of the contracts that have been posted by users..
+            """
+        ),
+        FAQ(
+            question: "What can I buy in Marketplace?",
+            answer: """
+            The marketplace serves as a second economy from what the Home screen offers, \
+            which are rarity and player packs. \
+            The key difference is that while you get a randomized contract based on the \
+            condition you buy it under in Home, \
+            in Marketplace, you are able to see the full information of the contract. \
+            However, the contract has been placed \
+            onto the marketplace by a user, set at a price by the user.
+            """
+        ),
+        FAQ(
+            question: "How do you buy or sell?",
+            answer: """
+            At the bottom of the screen, you will see a floating button with the icon of a cart. \
+            Click onto the
+            """
+        )
+    ]
 }
