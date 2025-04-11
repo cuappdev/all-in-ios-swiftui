@@ -9,17 +9,22 @@ import SwiftUI
 
 struct FilterView: View {
 
-    @State var presentPopup = false
-    @State private var priceLowValue: Double = 0
-    @State private var priceHighValue: Double = 10000
-    @State private var payoutLowValue: Double = 0
-    @State private var payoutHighValue: Double = 10000
+    @Binding var presentPopup: Bool
+    @Binding var sportFilters: Set<String>
+    @Binding var rarityFilters: Set<String>
+    @Binding var selectedSort: SortOption?
+    @Binding var selectedSport: String?
+    @Binding var selectedRarity: String?
+    @Binding var priceLowValue: Double
+    @Binding var priceHighValue: Double
+    @Binding var payoutLowValue: Double
+    @Binding var payoutHighValue: Double 
+    
+    
+    @State private var sortByPopup = false
+    @State private var alteredState = false
     @State private var showSale = false
-    @State private var sportFilters = Set<String>()
-    @State private var rarityFilters = Set<String>()
-    @State private var selectedSort: SortOption?
-    @State private var selectedSport: String?
-     @State private var selectedRarity: String?
+   
 
     private var sports: [String] = ["Basketball", "Hockey", "Baseball", "Swim", "Volleyball", "Track & Field", "Tennis"]
     private var rarities: [String] = ["Common", "Epic", "Rare", "Legendary"]
@@ -32,6 +37,19 @@ struct FilterView: View {
 
     let gridItem = GridItem(.adaptive(minimum: 100), spacing: 10)
 
+    public init(presentPopup: Binding<Bool>, sportFilters: Binding<Set<String>>, rarityFilters: Binding<Set<String>>, selectedSort: Binding<SortOption?>, selectedSport: Binding<String?>, selectedRarity: Binding<String?>, priceLowValue: Binding<Double>, priceHighValue: Binding<Double>, payoutLowValue: Binding<Double>, payoutHighValue: Binding<Double>) {
+            self._presentPopup = presentPopup
+            self._sportFilters = sportFilters
+            self._rarityFilters = rarityFilters
+            self._selectedSport = selectedSport
+            self._selectedRarity = selectedRarity
+            self._selectedSort = selectedSort
+            self._priceLowValue = priceLowValue
+            self._priceHighValue = priceHighValue
+            self._payoutLowValue = payoutLowValue
+            self._payoutHighValue = payoutHighValue
+        }
+    
     var body: some View {
         ZStack {
             VStack {
@@ -47,7 +65,7 @@ struct FilterView: View {
                         .foregroundStyle(Constants.Colors.white)
 
                     Button {
-                        presentPopup.toggle()
+                        sortByPopup.toggle()
                     } label: {
                         Text("\(selectedSort?.title ?? "Any")")
                             .font(.custom("Rubik", size: 20))
@@ -66,13 +84,14 @@ struct FilterView: View {
                     VStack {
                     Text("Price Range")
                             .font(.system(size: 20, weight: .bold))
-                            .foregroundStyle(Constants.Colors.white)                        .padding(.leading, 28)
-                        .padding(.bottom, 24)
+                            .foregroundStyle(Constants.Colors.white)                       .padding(.leading, 32)
+                            .padding(.bottom, 20)
+                            .padding(.top, 16)
                     }
 
                     // SLIDER
-                    RangeSlider(lowValue: $priceLowValue, highValue: $priceHighValue, range: 0...10000)
-                        .padding(.leading, 28)
+                    RangeSlider(lowValue: $priceLowValue, highValue: $priceHighValue, alteredState: $alteredState, range: 0...10000)
+                        .padding(.leading, 32)
                         .offset(y: -20)
                         .padding(.bottom, 20)
 
@@ -80,12 +99,13 @@ struct FilterView: View {
                             .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(Constants.Colors.white)
                             .foregroundStyle(.gray)
-                            .padding(.leading, 28)
-                            .padding(.bottom, 24)
+                            .padding(.leading, 32)
+                            .padding(.bottom, 20)
 
-                    RangeSlider(lowValue: $payoutLowValue, highValue: $payoutHighValue, range: 0...10000)
-                        .padding(.leading, 28)
+                    RangeSlider(lowValue: $payoutLowValue, highValue: $payoutHighValue, alteredState:     $alteredState, range: 0...10000)
+                        .padding(.leading, 32)
                         .offset(y: -20)
+                        .padding(.bottom, 20)
 
                 }
 
@@ -96,35 +116,60 @@ struct FilterView: View {
                         .font(.system(size: 20, weight: .bold))
                         .foregroundStyle(Constants.Colors.white)
                         .padding(.bottom, 8)
+                        .padding(.top, 16)
                     FlowLayout(spacing: 10) {
                                       ForEach(sports, id: \.self) { sport in
                                           FilterButton(
                                               title: sport,
                                               isSelected: selectedSport == sport,
+                                              type: "Sport",
                                               action: {
-                                                  selectedSport = selectedSport == sport ? nil : sport
+                                                  
+                                                  if selectedSport == sport {
+                                                         selectedSport = nil
+                                                      alteredState = true
+
+                                                         sportFilters.remove(sport)
+                                                     } else {
+                                                         selectedSport = sport
+                                                         alteredState = true
+
+                                                         sportFilters = [sport]
+                                                     }
                                               }
                                           )
                                       }
                     }
                 }
-                .padding(.leading, 28)
+                .padding(.leading, 32)
 
                 gradientDivider
 
                 VStack(alignment: .leading) {
-                    Text("Rarity")
+                    Text("Rarity Level")
                         .font(.system(size: 20, weight: .bold))
                         .foregroundStyle(.white)
                         .padding(.bottom, 8)
+                        .padding(.top, 16)
 
                     HStack {
                         ForEach(rarities, id: \.self) { rarity in
                             FilterButton(
                                 title: rarity,
                                 isSelected: selectedRarity == rarity,
+                                type: "Rarity",
                                 action: {
-                                    selectedRarity = selectedRarity == rarity ? nil : rarity
+                                    if selectedRarity == rarity {
+                                        selectedRarity = nil
+                                            rarityFilters.remove(rarity)
+                                        alteredState = true
+
+                                       } else {
+                                           selectedRarity = rarity
+                                           alteredState = true
+
+                                           rarityFilters = [rarity]
+                                       }
                                 }
                             )
                         }
@@ -135,6 +180,12 @@ struct FilterView: View {
                     Button {
                         sportFilters.removeAll()
                         rarityFilters.removeAll()
+                        priceLowValue = 0
+                        priceHighValue = 10000
+                        payoutLowValue = 0
+                        payoutHighValue = 10000
+                        selectedSport = nil  // Reset the selected sport
+                        selectedRarity = nil // Reset the selected rarity
                     } label: {
                         Text("Reset")
                             .font(.system(size: 20, weight: .bold))
@@ -146,14 +197,32 @@ struct FilterView: View {
                     Spacer()
 
                     Button {
-
+                        // networking goes here...
+                        
+                        presentPopup = false
                     } label: {
                             Text("Apply filters")
                                 .font(.system(size: 20, weight: .bold))
-                                .foregroundStyle(.white.opacity(0.4))
+                                .foregroundStyle(sportFilters.isEmpty && rarityFilters.isEmpty && priceLowValue == 0 && priceHighValue == 10000 && payoutLowValue == 0 && payoutHighValue == 10000 && selectedSort == nil || alteredState == false ? .white.opacity(0.4) : .black)
                                 .padding(.horizontal, 14)
                                 .padding(.vertical, 8)
-                                .background(sportFilters.isEmpty && rarityFilters.isEmpty ? .gray.opacity(0.2) : .purple)
+                                .background(
+                                    Group {
+                                        if sportFilters.isEmpty && rarityFilters.isEmpty && priceLowValue == 0 && priceHighValue == 10000 && payoutLowValue == 0 && payoutHighValue == 10000 && selectedSort == nil || alteredState == false{
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .fill(.gray.opacity(0.2))
+                                        } else {
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .fill(
+                                                    LinearGradient(
+                                                        gradient: Constants.Colors.gradient,
+                                                        startPoint: .topLeading,
+                                                        endPoint: .bottomTrailing
+                                                    )
+                                                )
+                                        }
+                                    }
+                                )
                                 .cornerRadius(20)
 
                     }
@@ -162,11 +231,11 @@ struct FilterView: View {
                 .padding(.top, 32)
             }
 
-            if presentPopup {
-                SortByView(selectedSort: $selectedSort)
-                    .offset(x: 88, y: -142)
+            if sortByPopup {
+                SortByView(selectedSort: $selectedSort, alteredState: $alteredState)
+                    .offset(x: 88, y: -180)
                     .onTapGesture {
-                        presentPopup.toggle()
+                        sortByPopup.toggle()
                     }
             }
         }
@@ -189,10 +258,10 @@ struct FilterView: View {
 
     struct SortByView: View {
         @Binding var selectedSort: SortOption?
+        @Binding var alteredState: Bool
 
         let sortOptions = [
             SortOption(title: "Any"),
-            SortOption(title: "Newly listed"),
             SortOption(title: "Price: High to Low"),
             SortOption(title: "Price: Low to High")
         ]
@@ -202,11 +271,13 @@ struct FilterView: View {
                 ForEach(sortOptions) { option in
                     Button(action: {
                         selectedSort = option
+                        alteredState = true
+                    
                     }) {
                         VStack(alignment: .leading, spacing: 0) {
                             Text(option.title)
                                 .font(.system(size: 17, weight: selectedSort == option ? .bold : .regular))
-                                .foregroundColor(.black)
+                                .foregroundColor(.white)
                                 .padding(.vertical, 12)
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -218,13 +289,17 @@ struct FilterView: View {
                 }
             }
             .padding(.horizontal, 16)
-            .background(Color.white)
+            .background(Constants.Colors.blackBlue)
             .frame(width: 171)
             .overlay(
                 RoundedRectangle(cornerRadius: 13)
-                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                    .stroke( LinearGradient(
+                        gradient: Constants.Colors.gradient,
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                        ), lineWidth: 1)
             )
-            }
+        }
     }
 }
 
@@ -233,19 +308,37 @@ func reset() {}
 struct FilterButton: View {
     let title: String
     let isSelected: Bool
+    let type: String
     let action: () -> Void
-
+    
     var body: some View {
         Button(action: action) {
-            Text(title)
-                .font(.system(size: 13.29))
-                .padding(.horizontal, 16)
-                .padding(.vertical, 8)
-                .foregroundColor(isSelected ? .white : .white)
-                .background(isSelected ? Color.blue : Color.blue.opacity(0.7))
-                .clipShape(Capsule())
+            if type == "Sport" {
+                Text(title)
+                    .font(.system(size: 13.29))
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    .foregroundColor(
+                        title == "Basketball" ? (isSelected ? .black : .white) : (.gray)
+                    )
+                    .background(
+                        title == "Basketball" ?
+                        (isSelected ? Constants.Colors.lightBlue  : Color.blue.opacity(0.7)) : Color.black
+                        )
+                    .clipShape(Capsule())
+                
+            } else {
+                Text(title)
+                    .font(.system(size: 13.29))
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    .foregroundColor(
+                        isSelected ? .black : .white
+                    )
+                    .background(isSelected ? Constants.Colors.lightBlue : Color.blue.opacity(0.7))
+                    .clipShape(Capsule())
+            }
         }
-
     }
 }
 
@@ -309,6 +402,7 @@ struct FlowLayout: Layout {
         }
     }
 }
+
 struct SortOption: Identifiable, Equatable {
     let id = UUID()
     let title: String
@@ -317,6 +411,7 @@ struct SortOption: Identifiable, Equatable {
 struct RangeSlider: View {
     @Binding var lowValue: Double
     @Binding var highValue: Double
+    @Binding var alteredState: Bool
     let range: ClosedRange<Double>
     let step: Double = 50 // Define the step value
 
@@ -393,6 +488,7 @@ struct RangeSlider: View {
                                     if newValue <= highValue - step {
                                         lowValue = newValue
                                     }
+                                    alteredState = true
                                 }
                         )
 
@@ -412,6 +508,8 @@ struct RangeSlider: View {
                                     if newValue >= lowValue + step {
                                         highValue = newValue
                                     }
+                                    alteredState = true
+
                                 }
                         )
                 }
@@ -434,6 +532,4 @@ struct RangeSlider: View {
     }
 }
 
-#Preview {
-    FilterView()
-}
+
