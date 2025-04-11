@@ -13,9 +13,11 @@ struct MarketplaceView: View {
     @EnvironmentObject var profileViewModel: ProfileViewViewModel
     @State var selectedStat: Stat = .points
     @State private var showingFAQ = false
+    @State private var showBuyContract = false
+    @State private var selectedContract: Contract?
 
     var padding: CGFloat = 24
-
+//    let user: User
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     // MARK: UI
@@ -25,14 +27,33 @@ struct MarketplaceView: View {
             ScrollView {
                 VStack(spacing: 24) {
                     pageInformation
+
                     searchBar
+
                     recommendedContracts
+
                     contractsToday
+
                     allContracts
                 }
                 .padding(padding)
             }
             .background(Constants.Colors.background)
+            .navigationDestination(isPresented: Binding(
+                get: { selectedContract != nil },
+                set: { if !$0 { selectedContract = nil } }
+            )) {
+                if let contract = selectedContract {
+                    BuyContractView(contract: contract, user: profileViewModel.user)
+                }
+            }
+            .navigationDestination(isPresented: $showingFAQ) {
+                FrequentAskedQuestion(
+                    faqs: FAQ.marketplaceFAQs,
+                    headerTitle: "FAQs About Marketplace",
+                    subheaderTitle: "Frequently Asked Questions"
+                )
+            }
         }
     }
 
@@ -109,21 +130,17 @@ struct MarketplaceView: View {
 
     private var recommendedContracts: some View {
         VStack(alignment: .leading, spacing: 24) {
-            HStack(spacing: 4) {
-                Text("Your Recommended Contracts")
-                    .font(Constants.Fonts.mainHeader)
-                    .foregroundStyle(Constants.Colors.white)
-                // NOTE: Comment out for chevron to add page.
-//                Image(systemName: "chevron.right")
-//                    .foregroundStyle(Constants.Colors.white)
-//                    .font(.system(size: 12))
-            }
+            Text("Your Recommended Contracts")
+                .font(Constants.Fonts.mainHeader)
+                .foregroundStyle(Constants.Colors.white)
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
                     ForEach(Contract.dummyData.prefix(5), id: \.id) { contract in
-                        ContractCard(contract: contract)
-                            .frame(width: 180)
+                        ContractCard(contract: contract) {
+                            selectedContract = contract
+                        }
+                        .frame(width: 180)
                     }
                 }
                 .padding(padding)
@@ -181,9 +198,11 @@ struct MarketplaceView: View {
                         GridItem(.flexible(), spacing: 10)
                     ]
                 ) {
-                    ForEach(marketplaceViewModel.filteredContracts, id: \.id) { contract in
-                        ContractCard(contract: contract)
-                            .scaleEffect(0.95)
+                    ForEach(Contract.dummyData.prefix(5), id: \.id) { contract in
+                        ContractCard(contract: contract) {
+                            selectedContract = contract
+                        }
+                        .scaleEffect(0.95)
                     }
                 }
             }
@@ -195,4 +214,5 @@ struct MarketplaceView: View {
 #Preview {
     MarketplaceView()
         .environmentObject(ProfileViewViewModel())
+        .environmentObject(TabNavigationManager())
 }
