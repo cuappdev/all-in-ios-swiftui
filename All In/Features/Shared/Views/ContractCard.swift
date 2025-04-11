@@ -67,7 +67,7 @@ struct ContractCard: View {
         }
         .sheet(isPresented: $showSheet) {
             PlayerContractSheetView(fromPlayer: player, fromStat: Stat.assists, showSheet: $showSheet)
-                .presentationDetents([.fraction(0.6)])
+                .presentationDetents([.fraction(0.8)])
         }
     }
 }

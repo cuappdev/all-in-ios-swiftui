@@ -32,50 +32,39 @@ struct PlayerChestSheetView: View {
         SheetView(
             title: name,
             subTitle: "#\(number) | \(position)",
-            description: "Contains a contract tied to this player",
-            buttonText: "Buy Now",
+            description: "Contains a contract involving \(name)",
+            buttonText: "Add to Cart",
+            price: 1720,
             showSheet: $showSheet
         ) {
             // The middle of the half sheet
-            VStack {
-
+            VStack(alignment: .leading) {
                 PillSelectView(Stat.getAll()) { newStat in
                     selectedStat = newStat
-                }.padding(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: -24))
-
-                HStack {
-                    Text(selectedStat.getName())
-                        .foregroundColor(Constants.Colors.grey03)
-                        .font(.system(size: 24, weight: .bold))
-                        .frame(width: 365, height: 50, alignment: .leading)
                 }
+                .padding(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: -24))
 
-                player.graph(stat: selectedStat, selectedDate: activeDate) { strDate in
-                    // ON DRAG COMPLETION HANDLER
-                    activeDate = Date(timeIntervalSinceReferenceDate: TimeInterval(strDate))
-                }
+                Text(selectedStat.getName())
+                    .foregroundColor(Constants.Colors.white)
+                    .font(.system(size: 24, weight: .bold))
 
-                ZStack(alignment: .topTrailing) {
-                    Image("PlayerChest")
-                        .resizable()
-                        .frame(width: 112, height: 96)
-
-                    Image("INSERT-PLAYER")
-                        .resizable()
-                        .frame(width: 48, height: 64)
-                        .background()
-                        .clipShape(Circle())
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 100)
-                                .inset(by: 0.5)
-                                .stroke(Constants.Colors.grey02)
-                                .frame(width: 48, height: 48)
-                        )
-                }
+//                GeometryReader { geo in
+                    player.graph(stat: selectedStat, selectedDate: activeDate) { strDate in
+                        // ON DRAG COMPLETION HANDLER
+                        activeDate = Date(timeIntervalSinceReferenceDate: TimeInterval(strDate))
+                    }
+                    .frame(height: 210)
+//                }
             }
             } buttonCallback: {
+                // TODO: add networking call
                 print("BUY CHEST NETWORKING CALL HERE")
         }
+        .background(Constants.Colors.background)
     }
 
+}
+
+#Preview {
+    PlayerChestSheetView(fromPlayer: Player.dummyData[0], showSheet: .constant(true))
 }

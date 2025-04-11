@@ -77,7 +77,7 @@ struct ActiveBetCard: View {
             )
         }
         .sheet(isPresented: $showSheet) {
-            PlayerContractSheetView(fromPlayer: player, fromStat: Stat.assists, showSheet: $showSheet)
+            PlayerChestSheetView(fromPlayer: player, showSheet: $showSheet)
                 .presentationDetents([.fraction(0.6)])
         }
     }

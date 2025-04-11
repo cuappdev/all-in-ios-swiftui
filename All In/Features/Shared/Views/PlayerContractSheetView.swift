@@ -31,27 +31,35 @@ struct PlayerContractSheetView: View {
     }
 
     var body: some View {
-        SheetView(
-            title: name,
-            subTitle: "#\(number) | \(position)",
-            description: "Contains a contract tied to this player",
-            buttonText: "Buy Now",
-            showSheet: $showSheet
-        ) {
-            // The middle of the half sheet
-            VStack {
-                HStack {
-                    Text(stat.getName())
-                        .foregroundColor(Constants.Colors.grey03)
+            SheetView(
+                title: name,
+                subTitle: "#\(number) | \(position)",
+                description: "Contains a contract involving \(name)",
+                buttonText: "Add to Cart",
+                price: 1720,
+                showSheet: $showSheet
+            ) {
+                VStack {
+                    PillSelectView(Stat.getAll()) { newStat in
+                        selectedStat = newStat
+                    }
+                    .padding(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: -24))
+
+                    Text(selectedStat.getName())
+                        .foregroundColor(Constants.Colors.white)
                         .font(.system(size: 24, weight: .bold))
-                        .frame(width: 365, height: 50, alignment: .leading)
+
+                        player.graph(stat: selectedStat, selectedDate: activeDate) { strDate in
+                            // ON DRAG COMPLETION HANDLER
+                            activeDate = Date(timeIntervalSinceReferenceDate: TimeInterval(strDate))
+                        }
                 }
-                player.graph(stat: selectedStat, selectedDate: activeDate) { strDate in
-                    // ON DRAG COMPLETION HANDLER
-                    activeDate = Date(timeIntervalSinceReferenceDate: TimeInterval(strDate))
-                }
+                .background(Constants.Colors.background)
             }
         }
-    }
 
+}
+
+#Preview {
+    PlayerContractSheetView(fromPlayer: Player.dummyData[0], fromStat: Stat.fieldGoalsMade, showSheet: .constant(true))
 }
