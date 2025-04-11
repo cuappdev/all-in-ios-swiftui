@@ -47,6 +47,13 @@ struct MarketplaceView: View {
                     BuyContractView(contract: contract, user: profileViewModel.user)
                 }
             }
+            .navigationDestination(isPresented: $showingFAQ) {
+                FrequentAskedQuestion(
+                    faqs: FAQ.marketplaceFAQs,
+                    headerTitle: "FAQs About Marketplace",
+                    subheaderTitle: "Frequently Asked Questions"
+                )
+            }
         }
     }
 
@@ -207,4 +214,5 @@ struct MarketplaceView: View {
 #Preview {
     MarketplaceView()
         .environmentObject(ProfileViewViewModel())
+        .environmentObject(TabNavigationManager())
 }
