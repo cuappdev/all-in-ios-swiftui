@@ -87,6 +87,7 @@
 		D0EB53232DA4A97E00F988EB /* SellContractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB53222DA4A94000F988EB /* SellContractView.swift */; };
 		D0EB53262DA4AF3E00F988EB /* SellSelectedContractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB53252DA4AF3E00F988EB /* SellSelectedContractView.swift */; };
 		D0F6A9F62BD887F100D75BAD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0F6A9F52BD887F100D75BAD /* SnapKit */; };
+		D857FC652DA8F082007CE85E /* SuccessfullyBuyContractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D857FC642DA8F082007CE85E /* SuccessfullyBuyContractView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,7 @@
 		D0CD31812BD5A2F500E7136C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D0EB53222DA4A94000F988EB /* SellContractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellContractView.swift; sourceTree = "<group>"; };
 		D0EB53252DA4AF3E00F988EB /* SellSelectedContractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellSelectedContractView.swift; sourceTree = "<group>"; };
+		D857FC642DA8F082007CE85E /* SuccessfullyBuyContractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessfullyBuyContractView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +327,7 @@
 				D0EB53242DA4AF2B00F988EB /* SellContract */,
 				897DFBC62CCED80600246B0D /* ViewModels */,
 				897DFBC72CCED80600246B0D /* MarketplaceView.swift */,
+				D857FC642DA8F082007CE85E /* SuccessfullyBuyContractView.swift */,
 			);
 			path = Marketplace;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				897DFBE82CCED80600246B0D /* HomeView.swift in Sources */,
 				897DFBE92CCED80600246B0D /* MarketplaceViewModel.swift in Sources */,
 				897DFBEA2CCED80600246B0D /* MarketplaceView.swift in Sources */,
+				D857FC652DA8F082007CE85E /* SuccessfullyBuyContractView.swift in Sources */,
 				897DFBEC2CCED80600246B0D /* PlayerAveragesModel.swift in Sources */,
 				897DFBED2CCED80600246B0D /* PlayerDataModel.swift in Sources */,
 				897DFBEE2CCED80600246B0D /* PlayerModel.swift in Sources */,

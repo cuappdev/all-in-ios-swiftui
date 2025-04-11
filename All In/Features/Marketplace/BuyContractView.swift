@@ -31,6 +31,7 @@ struct BuyContractView: View {
     @State private var price: Int?
     @State private var priceString: String = ""
     @State private var showSheet = false
+    @State private var navigateToSuccess = false
 
     init(contract: Contract, user: User, rarity: Rarity) {
         self.contract = contract
@@ -40,24 +41,30 @@ struct BuyContractView: View {
     }
 
     var body: some View {
-        VStack {
-            headingCostGain
+        NavigationStack {
+            VStack {
 
-            Spacer()
+                headingCostGain
 
-            historicalData
-                .padding(.bottom)
+                Spacer()
 
-            chartInformation
+                historicalData
+                    .padding(.bottom)
 
-            Spacer()
+                chartInformation
 
-            confirmButton(disabled: price == nil)
+                Spacer()
+
+                confirmButton(disabled: price == nil)
+            }
+            .padding(16)
+            .background(Constants.Colors.background)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
+            .navigationDestination(isPresented: $navigateToSuccess) {
+                SuccessfullyBuyContractView(contract: contract, user: user)
+            }
         }
-        .padding(16)
-        .background(Constants.Colors.background)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
     }
 
     var headingCostGain: some View {
@@ -165,9 +172,9 @@ struct BuyContractView: View {
     func confirmButton(disabled: Bool) -> some View {
         HStack {
             Button(action: {
-                dismiss()
+                navigateToSuccess = true
             }) {
-                Text("Buy Now")
+                Text("Confirm to Buy")
                     .font(Constants.Fonts.sheetBuy)
                     .foregroundStyle(Constants.Colors.black)
                     .frame(maxWidth: .infinity)
@@ -201,7 +208,6 @@ struct BuyContractView: View {
             }
             .padding(.leading, 15)
             .padding(.bottom, 24)
-
         }
     }
 
