@@ -9,6 +9,18 @@ import SwiftUI
 
 struct MarketplaceView: View {
 
+    @State var presentPopup = false
+    @State private var showFilterPopup = false
+    @State private var selectedSport: String?
+    @State private var selectedRarity: String?
+    @State private var sportFilters = Set<String>()
+    @State private var rarityFilters = Set<String>()
+    @State private var selectedSort: SortOption?
+    @State var priceLowValue: Double = 0
+    @State var priceHighValue: Double = 10000
+    @State var payoutLowValue: Double = 0
+    @State var payoutHighValue: Double = 10000
+    
     @StateObject var marketplaceViewModel = MarketplaceViewModel()
     @EnvironmentObject var profileViewModel: ProfileViewViewModel
     @State var selectedStat: Stat = .points
@@ -38,6 +50,20 @@ struct MarketplaceView: View {
                         allContracts
                     }
                     .padding(padding)
+                    .sheet(isPresented: $presentPopup) {
+                        FilterView(
+                            presentPopup: $presentPopup,
+                            sportFilters: $sportFilters,
+                            rarityFilters: $rarityFilters,
+                            selectedSort: $selectedSort,
+                            selectedSport: $selectedSport,
+                            selectedRarity: $selectedRarity,
+                            priceLowValue: $priceLowValue,
+                            priceHighValue: $priceHighValue,
+                            payoutLowValue: $payoutLowValue,
+                            payoutHighValue: $payoutHighValue
+                        )
+                    }
                 }
                 .background(Constants.Colors.background)
                 .navigationDestination(isPresented: Binding(
@@ -119,41 +145,53 @@ struct MarketplaceView: View {
         }
     }
 
+    
     private var searchBar: some View {
-        HStack {
-            Image(systemName: "magnifyingglass")
-                .foregroundColor(
-                    marketplaceViewModel.searchText.isEmpty ? Constants.Colors.grey03 : Constants.Colors.red
-                )
-            TextField("Search", text: $marketplaceViewModel.searchText)
-                .foregroundColor(Constants.Colors.grey03)
-                .overlay(
-                    Image(
-                        systemName: "x.circle.fill"
+        HStack{
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(
+                        marketplaceViewModel.searchText.isEmpty ? Constants.Colors.grey03 : Constants.Colors.red
                     )
-                    .offset(x: 8)
-                    .opacity(marketplaceViewModel.searchText.isEmpty ? 0.0 : 1.0)
-                    .onTapGesture {
-                        marketplaceViewModel.searchText = ""
-                    },
-                    alignment: .trailing
-                )
-                .padding(.trailing, 50)
-            Spacer()
-
-            // For filtering feature
-            Image("sorting_button")
+               
+                TextField("Search", text: $marketplaceViewModel.searchText)
+                    .foregroundColor(Constants.Colors.grey03)
+                    .overlay(
+                        Image(
+                            systemName: "x.circle.fill"
+                        )
+                        .offset(x: 8)
+                        .opacity(marketplaceViewModel.searchText.isEmpty ? 0.0 : 1.0)
+                        .onTapGesture {
+                            marketplaceViewModel.searchText = ""
+                        },
+                        alignment: .trailing
+                    )
+                    .padding(.trailing, 50)
+                
+                Spacer()
+                
+                
+            }
+            .padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(Constants.Colors.grey02, lineWidth: 1)
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 30)
+                    .fill(Constants.Colors.white)
+            )
+            .frame(width: 309)
+            
+            Button{
+                presentPopup = true
+            } label: {
+                Image("filterIcon")
+            }
         }
-        .padding()
-        .overlay(
-            RoundedRectangle(cornerRadius: 30)
-                .stroke(Constants.Colors.grey02, lineWidth: 1)
-        )
-        .background(
-            RoundedRectangle(cornerRadius: 30)
-                .fill(Constants.Colors.white)
-        )
     }
+        
 
     private var recommendedContracts: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -170,9 +208,9 @@ struct MarketplaceView: View {
                         .frame(width: 180)
                     }
                 }
-                .padding(padding)
+                .padding(24)
             }
-            .padding(-padding)
+            .padding(-24)
         }
         .padding(.top, 16)
     }
@@ -206,9 +244,9 @@ struct MarketplaceView: View {
                             .frame(width: UIScreen.main.bounds.width - 80)
                     }
                 }
-                .padding(padding)
+                .padding(24)
             }
-            .padding(-padding)
+            .padding(-24)
         }
     }
 
@@ -237,6 +275,7 @@ struct MarketplaceView: View {
         }
     }
 }
+
 
 #Preview {
     MarketplaceView()
