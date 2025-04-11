@@ -21,6 +21,9 @@ struct PlayerCard: View {
             showSheet = true
         } label: {
             VStack(alignment: .center, spacing: 8) {
+                Image("Player\(player.number)")
+                    .resizable()
+                    .scaledToFit()
                 AsyncImage(url: URL(string: player.image)) { image in
                     image.resizable()
                 } placeholder: {

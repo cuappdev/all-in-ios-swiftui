@@ -69,18 +69,18 @@ struct HomeView: View {
                     CartView(user: user)
                 }
                 .onAppear {
-                    Task {
-                        do {
-                            let networkedPlayers = try await NetworkManager.shared.getPlayers()
-                            guard !networkedPlayers.isEmpty else { return }
-                            
-                            await MainActor.run {
-                                players = networkedPlayers
-                            }
-                        } catch {
-                            NetworkManager.shared.logger.error("Error in \(#file) \(#function): \(error)")
-                        }
-                    }
+//                    Task {
+//                        do {
+//                            let networkedPlayers = try await NetworkManager.shared.getPlayers()
+//                            guard !networkedPlayers.isEmpty else { return }
+//                            
+//                            await MainActor.run {
+//                                players = networkedPlayers
+//                            }
+//                        } catch {
+//                            NetworkManager.shared.logger.error("Error in \(#file) \(#function): \(error)")
+//                        }
+//                    }
                 }
             }
             
