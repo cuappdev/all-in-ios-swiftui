@@ -190,5 +190,27 @@ class NetworkManager: APIClient {
 
         return try await get(url: url)
     }
+    
+    // MARK: - Get Top 5 Players
+
+    func getUsers(page: Int = 0, size: Int = 5, sortBy: String = "balance", direction: String = "desc") async throws -> [User] {
+        let queryItems = [
+            URLQueryItem(name: "page", value: "\(page)"),
+            URLQueryItem(name: "size", value: "\(size)"),
+            URLQueryItem(name: "sortBy", value: sortBy),
+            URLQueryItem(name: "direction", value: direction)
+        ]
+
+        var urlComponents = URLComponents(string: "\(hostURL)/users/")!
+        urlComponents.queryItems = queryItems
+
+        guard let url = urlComponents.url else {
+            logger.error("Invalid URL for fetching users")
+            throw URLError(.badURL)
+        }
+
+        let response: PaginatedResponse<User> = try await get(url: url)
+        return response.content
+    }
 
 }
