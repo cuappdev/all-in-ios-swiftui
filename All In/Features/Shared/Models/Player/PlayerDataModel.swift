@@ -8,13 +8,9 @@
 import Foundation
 
 enum Stat {
-
     case fieldGoalsMade
-    case fieldGoalsAttempted
     case threePointersMade
-    case threePointersAttempted
     case freeThrowsMade
-    case freeThrowsAttempted
     case rebounds
     case assists
     case steals
@@ -27,16 +23,10 @@ enum Stat {
         switch self {
         case .fieldGoalsMade:
             return "Field Goals Made"
-        case .fieldGoalsAttempted:
-            return "Field Goals Attempted"
         case .threePointersMade:
             return "Three Pointers Made"
-        case .threePointersAttempted:
-            return "Three Pointers Attempted"
         case .freeThrowsMade:
             return "Free Throws Made"
-        case .freeThrowsAttempted:
-            return "Free Throws Attempted"
         case .rebounds:
             return "Rebounds"
         case .assists:
@@ -58,16 +48,10 @@ enum Stat {
         switch self {
         case .fieldGoalsMade:
             return "FGM"
-        case .fieldGoalsAttempted:
-            return "FGA"
         case .threePointersMade:
             return "3PM"
-        case .threePointersAttempted:
-            return "3PA"
         case .freeThrowsMade:
             return "FTM"
-        case .freeThrowsAttempted:
-            return "FTA"
         case .rebounds:
             return "Reb"
         case .assists:
@@ -88,11 +72,8 @@ enum Stat {
     static func getAll() -> [Stat] {
         [
             .fieldGoalsMade,
-            .fieldGoalsAttempted,
             .threePointersMade,
-            .threePointersAttempted,
             .freeThrowsMade,
-            .freeThrowsAttempted,
             .rebounds,
             .assists,
             .steals,
@@ -106,11 +87,8 @@ enum Stat {
     static func getAllAbv() -> [String] {
         [
             Stat.fieldGoalsMade.getAbv(),
-            Stat.fieldGoalsAttempted.getAbv(),
             Stat.threePointersMade.getAbv(),
-            Stat.threePointersAttempted.getAbv(),
             Stat.freeThrowsMade.getAbv(),
-            Stat.freeThrowsAttempted.getAbv(),
             Stat.rebounds.getAbv(),
             Stat.assists.getAbv(),
             Stat.steals.getAbv(),
@@ -120,45 +98,34 @@ enum Stat {
             Stat.points.getAbv()
         ]
     }
-
 }
 
-struct PlayerData: Identifiable, Codable, Hashable {
-
+// Updated PlayerData model to match Swagger documentation
+struct PlayerData: Identifiable, Codable, Equatable, Hashable {
     var id: Int
     var gameDate: Date
-    var opponent: String
-    var played: Bool
+    var opposingTeam: String // Changed from opponent to opposingTeam
     var points: Int
     var minutes: Int
-    var fieldGoalsMade: Int
-    var fieldGoalsAttempted: Int
-    var threePointersMade: Int
-    var threePointersAttempted: Int
-    var freeThrowsMade: Int
-    var freeThrowsAttempted: Int
+    var fieldGoals: Int // Changed from fieldGoalsMade
+    var threePointers: Int // Changed from threePointersMade
+    var freeThrows: Int // Changed from freeThrowsMade
     var rebounds: Int
     var assists: Int
     var steals: Int
     var blocks: Int
     var turnovers: Int
-    var personalFouls: Int
+    var fouls: Int // Changed from personalFouls
     var playerId: Int
 
     func getNumberFromStat(_ stat: Stat) -> Int {
         switch stat {
         case .fieldGoalsMade:
-            return fieldGoalsMade
-        case .fieldGoalsAttempted:
-            return fieldGoalsAttempted
+            return fieldGoals
         case .threePointersMade:
-            return threePointersMade
-        case .threePointersAttempted:
-            return threePointersAttempted
+            return threePointers
         case .freeThrowsMade:
-            return freeThrowsMade
-        case .freeThrowsAttempted:
-            return freeThrowsAttempted
+            return freeThrows
         case .rebounds:
             return rebounds
         case .assists:
@@ -170,164 +137,144 @@ struct PlayerData: Identifiable, Codable, Hashable {
         case .turnovers:
             return turnovers
         case .personalFouls:
-            return personalFouls
+            return fouls
         case .points:
             return points
         }
     }
 
+    // Required for Hashable conformance
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    // Required for Equatable conformance
+    static func == (lhs: PlayerData, rhs: PlayerData) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
+// Updated dummy data to match the new structure
 extension PlayerData {
-
     static let dummyData = [
         PlayerData(
             id: 0,
             gameDate: Date(),
-            opponent: "columbia",
-            played: true,
+            opposingTeam: "COLUMBIA",
             points: 40,
             minutes: 50,
-            fieldGoalsMade: 2,
-            fieldGoalsAttempted: 12,
-            threePointersMade: 18,
-            threePointersAttempted: 20,
-            freeThrowsMade: 2,
-            freeThrowsAttempted: 10,
+            fieldGoals: 12,
+            threePointers: 18,
+            freeThrows: 2,
             rebounds: 4,
             assists: 5,
             steals: 50,
             blocks: 20,
             turnovers: 1,
-            personalFouls: 50,
+            fouls: 50,
             playerId: 40
         ),
         PlayerData(
             id: 1,
             gameDate: Date().addingTimeInterval(-86400),
-            opponent: "harvard",
-            played: true,
+            opposingTeam: "HARVARD",
             points: 46,
             minutes: 50,
-            fieldGoalsMade: 25,
-            fieldGoalsAttempted: 2,
-            threePointersMade: 22,
-            threePointersAttempted: 225,
-            freeThrowsMade: 215,
-            freeThrowsAttempted: 42,
+            fieldGoals: 25,
+            threePointers: 22,
+            freeThrows: 15,
             rebounds: 132,
             assists: 10,
             steals: 22,
             blocks: 58,
             turnovers: 40,
-            personalFouls: 2,
+            fouls: 2,
             playerId: 55
         ),
         PlayerData(
             id: 2,
             gameDate: Date().addingTimeInterval(-172800),
-            opponent: "princeton",
-            played: false,
+            opposingTeam: "PRINCETON",
             points: 15,
             minutes: 0,
-            fieldGoalsMade: 0,
-            fieldGoalsAttempted: 0,
-            threePointersMade: 0,
-            threePointersAttempted: 0,
-            freeThrowsMade: 0,
-            freeThrowsAttempted: 0,
+            fieldGoals: 0,
+            threePointers: 0,
+            freeThrows: 0,
             rebounds: 0,
             assists: 0,
             steals: 0,
             blocks: 0,
             turnovers: 0,
-            personalFouls: 0,
+            fouls: 0,
             playerId: 0
         ),
         PlayerData(
             id: 3,
             gameDate: Date().addingTimeInterval(-172800 - 86400),
-            opponent: "princeton",
-            played: false,
+            opposingTeam: "PRINCETON",
             points: 10,
             minutes: 0,
-            fieldGoalsMade: 0,
-            fieldGoalsAttempted: 0,
-            threePointersMade: 0,
-            threePointersAttempted: 0,
-            freeThrowsMade: 0,
-            freeThrowsAttempted: 0,
+            fieldGoals: 0,
+            threePointers: 0,
+            freeThrows: 0,
             rebounds: 0,
             assists: 0,
             steals: 0,
             blocks: 0,
             turnovers: 0,
-            personalFouls: 0,
+            fouls: 0,
             playerId: 0
         ),
         PlayerData(
             id: 4,
             gameDate: Date().addingTimeInterval(-172800 - 172800),
-            opponent: "princeton",
-            played: false,
+            opposingTeam: "PRINCETON",
             points: 13,
             minutes: 0,
-            fieldGoalsMade: 0,
-            fieldGoalsAttempted: 0,
-            threePointersMade: 0,
-            threePointersAttempted: 0,
-            freeThrowsMade: 0,
-            freeThrowsAttempted: 0,
+            fieldGoals: 0,
+            threePointers: 0,
+            freeThrows: 0,
             rebounds: 0,
             assists: 0,
             steals: 0,
             blocks: 0,
             turnovers: 0,
-            personalFouls: 0,
+            fouls: 0,
             playerId: 0
         ),
         PlayerData(
             id: 5,
             gameDate: Date().addingTimeInterval(-172800 - 172800 - 86400),
-            opponent: "dartmouth",
-            played: false,
+            opposingTeam: "DARTMOUTH",
             points: 23,
             minutes: 0,
-            fieldGoalsMade: 0,
-            fieldGoalsAttempted: 0,
-            threePointersMade: 0,
-            threePointersAttempted: 0,
-            freeThrowsMade: 0,
-            freeThrowsAttempted: 0,
+            fieldGoals: 0,
+            threePointers: 0,
+            freeThrows: 0,
             rebounds: 0,
             assists: 0,
             steals: 0,
             blocks: 0,
             turnovers: 0,
-            personalFouls: 0,
+            fouls: 0,
             playerId: 0
         ),
         PlayerData(
             id: 6,
             gameDate: Date().addingTimeInterval(-172800 - 172800 - 172800),
-            opponent: "lehigh",
-            played: false,
+            opposingTeam: "LEHIGH",
             points: 34,
             minutes: 0,
-            fieldGoalsMade: 0,
-            fieldGoalsAttempted: 0,
-            threePointersMade: 0,
-            threePointersAttempted: 0,
-            freeThrowsMade: 0,
-            freeThrowsAttempted: 0,
+            fieldGoals: 0,
+            threePointers: 0,
+            freeThrows: 0,
             rebounds: 0,
             assists: 0,
             steals: 0,
             blocks: 0,
             turnovers: 0,
-            personalFouls: 0,
+            fouls: 0,
             playerId: 0
         )
     ]
-
 }

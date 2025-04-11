@@ -23,3 +23,9 @@ struct ErrorResponse: Codable, Error, Equatable, LocalizedError {
         error
     }
 }
+
+// MARK: - Paginated Response
+
+struct PaginatedResponse<T: Decodable>: Decodable {
+    let content: [T]
+}

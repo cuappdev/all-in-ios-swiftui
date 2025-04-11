@@ -8,21 +8,36 @@
 import SwiftUI
 
 struct BuyContractView: View {
-//    let contracts: [Contract]
     let contract: Contract
     let player: Player
     let user: User
+    let rarity: Rarity
 
+    
+    private func getPriceForRarity(_ rarity: Rarity) -> Int {
+        switch rarity {
+        case .common:
+            return 1_720
+        case .rare:
+            return 2_500
+        case .epic:
+            return 3_800
+        case .legendary:
+            return 5_000
+        }
+    }
+    
     @Environment(\.dismiss) private var dismiss
     @State private var price: Int?
     @State private var priceString: String = ""
     @State private var showSheet = false
     @State private var navigateToSuccess = false
 
-    init(contract: Contract, user: User) {
+    init(contract: Contract, user: User, rarity: Rarity) {
         self.contract = contract
         self.player = Contract.getPlayer(contract)
         self.user = user
+        self.rarity = rarity
     }
 
     var body: some View {
@@ -155,32 +170,49 @@ struct BuyContractView: View {
     }
 
     func confirmButton(disabled: Bool) -> some View {
-        Button {
-            navigateToSuccess = true
-        } label: {
-            Text("Confirm to Buy")
-                .font(Constants.Fonts.rankingPill)
-                .foregroundStyle(disabled ? Constants.Colors.white : Constants.Colors.black)
-                .frame(maxWidth: .infinity)
-                .frame(height: 64)
-                .background( disabled ?
-                     LinearGradient(
-                         gradient: Gradient(colors: [Constants.Colors.grey03]),
-                         startPoint: .topLeading,
-                         endPoint: .bottomTrailing
-                     ) :
-                     LinearGradient(
-                         gradient: Constants.Colors.gradient,
-                         startPoint: .topLeading,
-                         endPoint: .bottomTrailing
-                     )
-                )
-                .cornerRadius(12)
+        HStack {
+            Button(action: {
+                navigateToSuccess = true
+            }) {
+                Text("Confirm to Buy")
+                    .font(Constants.Fonts.sheetBuy)
+                    .foregroundStyle(Constants.Colors.black)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .background(
+                        LinearGradient(
+                            gradient: Constants.Colors.gradient,
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .cornerRadius(12)
+            }
+            .padding(.leading, 10)
+            .padding(.bottom, 24)
+            
+            Button(action: {
+                let price = getPriceForRarity(rarity)
+                CartManager.shared.addRarityPack(rarity: rarity, price: price)
+            }) {
+                Image("add-cart")
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(.white)
+                    .frame(width: 25, height: 25)
+                    .padding(8)
+                    .background(Color.gray)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding(.trailing, 10)
+                    .animation(nil)
+            }
+            .padding(.leading, 15)
+            .padding(.bottom, 24)
         }
     }
 
 }
 
 #Preview {
-    BuyContractView(contract: User.dummyData[0].contracts[0], user: User.dummyData[0])
+    BuyContractView(contract: User.dummyData[0].contracts[0], user: User.dummyData[0], rarity: .common)
 }
