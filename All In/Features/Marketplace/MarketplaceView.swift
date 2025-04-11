@@ -27,9 +27,13 @@ struct MarketplaceView: View {
             ScrollView {
                 VStack(spacing: 24) {
                     pageInformation
+
                     searchBar
+
                     recommendedContracts
+
                     contractsToday
+
                     allContracts
                 }
                 .padding(padding)
