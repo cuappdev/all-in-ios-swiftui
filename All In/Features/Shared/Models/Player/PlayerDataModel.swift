@@ -9,11 +9,8 @@ import Foundation
 
 enum Stat {
     case fieldGoalsMade
-    case fieldGoalsAttempted
     case threePointersMade
-    case threePointersAttempted
     case freeThrowsMade
-    case freeThrowsAttempted
     case rebounds
     case assists
     case steals
@@ -26,16 +23,10 @@ enum Stat {
         switch self {
         case .fieldGoalsMade:
             return "Field Goals Made"
-        case .fieldGoalsAttempted:
-            return "Field Goals Attempted"
         case .threePointersMade:
             return "Three Pointers Made"
-        case .threePointersAttempted:
-            return "Three Pointers Attempted"
         case .freeThrowsMade:
             return "Free Throws Made"
-        case .freeThrowsAttempted:
-            return "Free Throws Attempted"
         case .rebounds:
             return "Rebounds"
         case .assists:
@@ -57,16 +48,10 @@ enum Stat {
         switch self {
         case .fieldGoalsMade:
             return "FGM"
-        case .fieldGoalsAttempted:
-            return "FGA"
         case .threePointersMade:
             return "3PM"
-        case .threePointersAttempted:
-            return "3PA"
         case .freeThrowsMade:
             return "FTM"
-        case .freeThrowsAttempted:
-            return "FTA"
         case .rebounds:
             return "Reb"
         case .assists:
@@ -87,11 +72,8 @@ enum Stat {
     static func getAll() -> [Stat] {
         [
             .fieldGoalsMade,
-            .fieldGoalsAttempted,
             .threePointersMade,
-            .threePointersAttempted,
             .freeThrowsMade,
-            .freeThrowsAttempted,
             .rebounds,
             .assists,
             .steals,
@@ -105,11 +87,8 @@ enum Stat {
     static func getAllAbv() -> [String] {
         [
             Stat.fieldGoalsMade.getAbv(),
-            Stat.fieldGoalsAttempted.getAbv(),
             Stat.threePointersMade.getAbv(),
-            Stat.threePointersAttempted.getAbv(),
             Stat.freeThrowsMade.getAbv(),
-            Stat.freeThrowsAttempted.getAbv(),
             Stat.rebounds.getAbv(),
             Stat.assists.getAbv(),
             Stat.steals.getAbv(),
@@ -139,57 +118,14 @@ struct PlayerData: Identifiable, Codable, Equatable, Hashable {
     var fouls: Int // Changed from personalFouls
     var playerId: Int
 
-    // Additional properties from your original model that aren't in Swagger
-    // These will be computed properties
-    var played: Bool {
-        return minutes > 0
-    }
-
-    var fieldGoalsMade: Int {
-        return fieldGoals
-    }
-
-    var fieldGoalsAttempted: Int {
-        // This is not in the API but maintain compatibility
-        return fieldGoals * 2 // Placeholder calculation
-    }
-
-    var threePointersMade: Int {
-        return threePointers
-    }
-
-    var threePointersAttempted: Int {
-        // This is not in the API but maintain compatibility
-        return threePointers * 2 // Placeholder calculation
-    }
-
-    var freeThrowsMade: Int {
-        return freeThrows
-    }
-
-    var freeThrowsAttempted: Int {
-        // This is not in the API but maintain compatibility
-        return freeThrows * 2 // Placeholder calculation
-    }
-
-    var personalFouls: Int {
-        return fouls
-    }
-
     func getNumberFromStat(_ stat: Stat) -> Int {
         switch stat {
         case .fieldGoalsMade:
             return fieldGoals
-        case .fieldGoalsAttempted:
-            return fieldGoalsAttempted
         case .threePointersMade:
             return threePointers
-        case .threePointersAttempted:
-            return threePointersAttempted
         case .freeThrowsMade:
             return freeThrows
-        case .freeThrowsAttempted:
-            return freeThrowsAttempted
         case .rebounds:
             return rebounds
         case .assists:
