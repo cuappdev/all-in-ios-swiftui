@@ -1,4 +1,6 @@
 *.DS_Store
 .build/
-**/xcuserdata/
-xcshareddata/swiftpm/
+xcuserdata/
+xcshareddata/
+*.xcuserstate
+/All In/Supporting

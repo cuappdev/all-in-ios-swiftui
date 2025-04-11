@@ -12,29 +12,26 @@ struct PlayerSeeAllScreen: View {
     // MARK: - Properties
 
     @Environment(\.dismiss) private var dismiss
-    @State private var selectedSport: Sport
+    var players: [Player]
+    var selectedSport: Sport
     @EnvironmentObject var tabNavigationManager: TabNavigationManager
-    
+
     // States for continuous scrolling animation
     @State private var rightScrollOffset: CGFloat = 0
     @State private var leftScrollOffset: CGFloat = 0
-    
+
     // Timer for automatic scrolling
     @State private var scrollTimer: Timer?
-    
-    init(sport: Sport = Sport.all.first(where: { $0.name == "Basketball" }) ?? Sport.all[0]) {
-        self._selectedSport = State(initialValue: sport)
-    }
-    
+
     private func startScrollAnimation() {
         // Calculate the total width of one set of players
         let playerWidth: CGFloat = 100 + 16 // Card width + spacing
         let totalWidth = CGFloat(Player.dummyData.count) * playerWidth
-        
+
         // Initialize offsets
         rightScrollOffset = 0
         leftScrollOffset = -totalWidth
-        
+
         // Create a timer for continuous scrolling
         scrollTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
             // Update scroll offsets
@@ -44,7 +41,7 @@ struct PlayerSeeAllScreen: View {
                 if rightScrollOffset < -totalWidth {
                     rightScrollOffset = 0
                 }
-                
+
                 // Left-moving row (second row)
                 leftScrollOffset += 1
                 if leftScrollOffset > 0 {
@@ -53,15 +50,15 @@ struct PlayerSeeAllScreen: View {
             }
         }
     }
-    
+
     // MARK: - UI
-    
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 2) {
                 VStack(spacing: 10) {
                     headerView
-                    
+
                     Text("Player Pack")
                         .font(Constants.Fonts.headerProfile)
                         .foregroundStyle(Constants.Colors.white)
@@ -72,7 +69,7 @@ struct PlayerSeeAllScreen: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(24)
-                
+
                 ScrollView {
                     VStack(spacing: 20) {
                         ForEach(0..<4) { rowIndex in
@@ -95,7 +92,7 @@ struct PlayerSeeAllScreen: View {
             }
         }
     }
-    
+
     private var headerView: some View {
         HStack {
             Button {
@@ -105,16 +102,16 @@ struct PlayerSeeAllScreen: View {
                     .foregroundStyle(Constants.Colors.white)
                     .font(.system(size: 24))
             }
-            
+
             Spacer()
         }
     }
-    
+
     private func scrollingPlayerRow(isRightDirection: Bool) -> some View {
         // Create a container for continuous scrolling effect
         GeometryReader { geometry in
             let rowWidth = geometry.size.width
-            
+
             HStack(spacing: 16) {
                 // Duplicate the players
                 ForEach(0..<2) { _ in
@@ -136,6 +133,6 @@ struct PlayerSeeAllScreen: View {
 }
 
 #Preview {
-    PlayerSeeAllScreen()
+    PlayerSeeAllScreen(players: Player.dummyData, selectedSport: .basketball)
         .environmentObject(TabNavigationManager())
 }

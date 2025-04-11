@@ -30,6 +30,8 @@
 		29C9CBE02D9DCB2F00E38F7A /* SportPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBDF2D9DCB2D00E38F7A /* SportPill.swift */; };
 		29C9CBE22D9DDE5A00E38F7A /* RarityPackSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBE12D9DDE5500E38F7A /* RarityPackSheetView.swift */; };
 		29C9CBE42D9DE5CF00E38F7A /* PlayerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */; };
+		2CCD4FE32DA77CF500A4E87C /* ContractsEndingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD4FE22DA77CE900A4E87C /* ContractsEndingView.swift */; };
+		2CCD4FE52DA77E4700A4E87C /* ContractEndingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD4FE42DA77E4000A4E87C /* ContractEndingCard.swift */; };
 		897DFBDE2CCED80600246B0D /* PlayerChestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */; };
 		897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */; };
 		897DFBE02CCED80600246B0D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB92CCED80600246B0D /* SheetView.swift */; };
@@ -68,8 +70,20 @@
 		D0155A882B950FF7003FE6BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0155A872B950FF7003FE6BC /* Preview Assets.xcassets */; };
 		D047C6312BD6E9DA007F6103 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = D047C6302BD6E9DA007F6103 /* AlamofireImage */; };
 		D057FD852BA76F8600EF552D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D057FD842BA76F8600EF552D /* Constants.swift */; };
+		D0B4A23C2DA6E09E00A1722C /* GoogleAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4A23B2DA6E09100A1722C /* GoogleAuthManager.swift */; };
+		D0B4A23F2DA6E0EF00A1722C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = D0B4A23E2DA6E0EF00A1722C /* GoogleSignIn */; };
+		D0B4A2412DA6E0EF00A1722C /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D0B4A2402DA6E0EF00A1722C /* GoogleSignInSwift */; };
+		D0B4A2442DA6E1C900A1722C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D0B4A2432DA6E1C900A1722C /* FirebaseAuth */; };
+		D0B4A2462DA6E29900A1722C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4A2452DA6E29700A1722C /* ApiClient.swift */; };
+		D0B4A2482DA6E30400A1722C /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4A2472DA6E30200A1722C /* Keys.swift */; };
+		D0B4A2502DA6E3EB00A1722C /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4A24F2DA6E3EA00A1722C /* Body.swift */; };
+		D0B4A2522DA6E3F000A1722C /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4A2512DA6E3EF00A1722C /* Response.swift */; };
+		D0B4A2542DA6EA3300A1722C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0B4A2532DA6EA3300A1722C /* GoogleService-Info.plist */; };
+		D0B4A25C2DA6F45200A1722C /* Keys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D0B4A25B2DA6F45200A1722C /* Keys.xcconfig */; };
 		D0CD31822BD5A2F500E7136C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD31812BD5A2F500E7136C /* NetworkManager.swift */; };
 		D0CD31852BD5A3EC00E7136C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D0CD31842BD5A3EC00E7136C /* Alamofire */; };
+		D0EB53232DA4A97E00F988EB /* SellContractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB53222DA4A94000F988EB /* SellContractView.swift */; };
+		D0EB53262DA4AF3E00F988EB /* SellSelectedContractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EB53252DA4AF3E00F988EB /* SellSelectedContractView.swift */; };
 		D0F6A9F62BD887F100D75BAD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0F6A9F52BD887F100D75BAD /* SnapKit */; };
 /* End PBXBuildFile section */
 
@@ -114,7 +128,9 @@
 		29C9CBDF2D9DCB2D00E38F7A /* SportPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportPill.swift; sourceTree = "<group>"; };
 		29C9CBE12D9DDE5500E38F7A /* RarityPackSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityPackSheetView.swift; sourceTree = "<group>"; };
 		29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCard.swift; sourceTree = "<group>"; };
-		29DB4FC32D8CDEAC00E489DB /* All-In-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "All-In-Info.plist"; sourceTree = SOURCE_ROOT; };
+		29DB4FC32D8CDEAC00E489DB /* All-In-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "All-In-Info.plist"; sourceTree = SOURCE_ROOT; };
+		2CCD4FE22DA77CE900A4E87C /* ContractsEndingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsEndingView.swift; sourceTree = "<group>"; };
+		2CCD4FE42DA77E4000A4E87C /* ContractEndingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractEndingCard.swift; sourceTree = "<group>"; };
 		897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChestViewModel.swift; sourceTree = "<group>"; };
 		897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityChestSheetViewModel.swift; sourceTree = "<group>"; };
 		897DFBB92CCED80600246B0D /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
@@ -155,7 +171,17 @@
 		D0155A8D2B950FF7003FE6BC /* All InTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "All InTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0155A972B950FF7003FE6BC /* All InUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "All InUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D057FD842BA76F8600EF552D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D098BCB62DA8CA97000861A3 /* ci_post_clone.sh  */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ci_post_clone.sh "; sourceTree = "<group>"; };
+		D0B4A23B2DA6E09100A1722C /* GoogleAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthManager.swift; sourceTree = "<group>"; };
+		D0B4A2452DA6E29700A1722C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		D0B4A2472DA6E30200A1722C /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		D0B4A24F2DA6E3EA00A1722C /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		D0B4A2512DA6E3EF00A1722C /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		D0B4A2532DA6EA3300A1722C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D0B4A25B2DA6F45200A1722C /* Keys.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Keys.xcconfig; sourceTree = "<group>"; };
 		D0CD31812BD5A2F500E7136C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D0EB53222DA4A94000F988EB /* SellContractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellContractView.swift; sourceTree = "<group>"; };
+		D0EB53252DA4AF3E00F988EB /* SellSelectedContractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellSelectedContractView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +189,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B4A2412DA6E0EF00A1722C /* GoogleSignInSwift in Frameworks */,
+				D0B4A2442DA6E1C900A1722C /* FirebaseAuth in Frameworks */,
 				D0CD31852BD5A3EC00E7136C /* Alamofire in Frameworks */,
+				D0B4A23F2DA6E0EF00A1722C /* GoogleSignIn in Frameworks */,
 				D0F6A9F62BD887F100D75BAD /* SnapKit in Frameworks */,
 				D047C6312BD6E9DA007F6103 /* AlamofireImage in Frameworks */,
 			);
@@ -287,6 +316,8 @@
 		897DFBC82CCED80600246B0D /* Marketplace */ = {
 			isa = PBXGroup;
 			children = (
+				2CCD4FE22DA77CE900A4E87C /* ContractsEndingView.swift */,
+				D0EB53242DA4AF2B00F988EB /* SellContract */,
 				897DFBC62CCED80600246B0D /* ViewModels */,
 				897DFBC72CCED80600246B0D /* MarketplaceView.swift */,
 			);
@@ -329,6 +360,7 @@
 		897DFBDB2CCED80600246B0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2CCD4FE42DA77E4000A4E87C /* ContractEndingCard.swift */,
 				2971A8642D9F8701008DADC4 /* ActiveBetCard.swift */,
 				2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */,
 				29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */,
@@ -383,6 +415,7 @@
 		D0155A742B950FF6003FE6BC = {
 			isa = PBXGroup;
 			children = (
+				D098BCB52DA8CA8C000861A3 /* ci_scripts */,
 				D0155A7F2B950FF6003FE6BC /* All In */,
 				D0155A902B950FF7003FE6BC /* All InTests */,
 				D0155A9A2B950FF7003FE6BC /* All InUITests */,
@@ -406,9 +439,10 @@
 				29DB4FC32D8CDEAC00E489DB /* All-In-Info.plist */,
 				9928219F2BC0931200B592F7 /* AllInApp.swift */,
 				D0155A822B950FF6003FE6BC /* ContentView.swift */,
-				CE101CDC2BA776ED00218E40 /* Resources */,
 				897DFBDD2CCED80600246B0D /* Features */,
 				D0CD31802BD5A2EB00E7136C /* Networking */,
+				CE101CDC2BA776ED00218E40 /* Resources */,
+				D0B4A25A2DA6F28B00A1722C /* Supporting */,
 				D057FD832BA76F7B00EF552D /* Utils */,
 			);
 			path = "All In";
@@ -442,6 +476,7 @@
 		D057FD832BA76F7B00EF552D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D0B4A2472DA6E30200A1722C /* Keys.swift */,
 				D057FD842BA76F8600EF552D /* Constants.swift */,
 				897DFBFB2CCED80C00246B0D /* Extensions */,
 				89E4FAA72CEA8F9600A952B1 /* Logger.swift */,
@@ -449,12 +484,42 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		D098BCB52DA8CA8C000861A3 /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				D098BCB62DA8CA97000861A3 /* ci_post_clone.sh  */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
+		D0B4A25A2DA6F28B00A1722C /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				D0B4A25B2DA6F45200A1722C /* Keys.xcconfig */,
+				D0B4A2532DA6EA3300A1722C /* GoogleService-Info.plist */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
 		D0CD31802BD5A2EB00E7136C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D0B4A2452DA6E29700A1722C /* ApiClient.swift */,
+				D0B4A24F2DA6E3EA00A1722C /* Body.swift */,
+				D0B4A23B2DA6E09100A1722C /* GoogleAuthManager.swift */,
 				D0CD31812BD5A2F500E7136C /* NetworkManager.swift */,
+				D0B4A2512DA6E3EF00A1722C /* Response.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		D0EB53242DA4AF2B00F988EB /* SellContract */ = {
+			isa = PBXGroup;
+			children = (
+				D0EB53222DA4A94000F988EB /* SellContractView.swift */,
+				D0EB53252DA4AF3E00F988EB /* SellSelectedContractView.swift */,
+			);
+			path = SellContract;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,18 +532,19 @@
 				D0155A792B950FF6003FE6BC /* Sources */,
 				D0155A7A2B950FF6003FE6BC /* Frameworks */,
 				D0155A7B2B950FF6003FE6BC /* Resources */,
-				892478412CCD75A50086F335 /* SwiftLint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8924784B2CCD7A270086F335 /* PBXTargetDependency */,
 			);
 			name = "All In";
 			packageProductDependencies = (
 				D0CD31842BD5A3EC00E7136C /* Alamofire */,
 				D047C6302BD6E9DA007F6103 /* AlamofireImage */,
 				D0F6A9F52BD887F100D75BAD /* SnapKit */,
+				D0B4A23E2DA6E0EF00A1722C /* GoogleSignIn */,
+				D0B4A2402DA6E0EF00A1722C /* GoogleSignInSwift */,
+				D0B4A2432DA6E1C900A1722C /* FirebaseAuth */,
 			);
 			productName = "All In";
 			productReference = D0155A7D2B950FF6003FE6BC /* All In.app */;
@@ -557,6 +623,8 @@
 				D047C62F2BD6E9DA007F6103 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 				D0F6A9F42BD887F100D75BAD /* XCRemoteSwiftPackageReference "SnapKit" */,
 				892478402CCD723B0086F335 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				D0B4A23D2DA6E0EF00A1722C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				D0B4A2422DA6E1C900A1722C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = D0155A7E2B950FF6003FE6BC /* Products */;
 			projectDirPath = "";
@@ -574,12 +642,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B4A25C2DA6F45200A1722C /* Keys.xcconfig in Resources */,
 				D0155A882B950FF7003FE6BC /* Preview Assets.xcassets in Resources */,
 				29C66D082D8CDC4F00166BD7 /* LexendDeca-Medium.ttf in Resources */,
 				29C66D092D8CDC4F00166BD7 /* LexendDeca-Light.ttf in Resources */,
 				29C66D0A2D8CDC4F00166BD7 /* LexendDeca-Regular.ttf in Resources */,
 				29C66D0B2D8CDC4F00166BD7 /* LexendDeca-SemiBold.ttf in Resources */,
 				D0155A852B950FF7003FE6BC /* Assets.xcassets in Resources */,
+				D0B4A2542DA6EA3300A1722C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,28 +668,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		892478412CCD75A50086F335 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint >/dev/null; then\n    swiftlint --fix && swiftlint\nelse\n    echo \"ERROR: SwiftLint not installed\"\n    exit 1\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0155A792B950FF6003FE6BC /* Sources */ = {
@@ -641,9 +689,11 @@
 				897DFBE42CCED80600246B0D /* RarityChestView.swift in Sources */,
 				897DFBE52CCED80600246B0D /* UIWheelViewController.swift in Sources */,
 				29C9CBE02D9DCB2F00E38F7A /* SportPill.swift in Sources */,
+				D0EB53262DA4AF3E00F988EB /* SellSelectedContractView.swift in Sources */,
 				897DFBFC2CCED80C00246B0D /* Color+Extension.swift in Sources */,
 				297C08712DA8C5BE00903B79 /* CartViewModel.swift in Sources */,
 				29C9CBE22D9DDE5A00E38F7A /* RarityPackSheetView.swift in Sources */,
+				2CCD4FE52DA77E4700A4E87C /* ContractEndingCard.swift in Sources */,
 				897DFBFD2CCED80C00246B0D /* Date+Extension.swift in Sources */,
 				897DFBFE2CCED80C00246B0D /* NSNumberFormatter.swift in Sources */,
 				897DFBE62CCED80600246B0D /* WheelItemUIView.swift in Sources */,
@@ -658,6 +708,7 @@
 				897DFBEF2CCED80600246B0D /* ChestModel.swift in Sources */,
 				897DFBF02CCED80600246B0D /* ContractModel.swift in Sources */,
 				297C08672DA8C12E00903B79 /* CartView.swift in Sources */,
+				D0B4A23C2DA6E09E00A1722C /* GoogleAuthManager.swift in Sources */,
 				89E4FAA82CEA8F9600A952B1 /* Logger.swift in Sources */,
 				2971A8652D9F8706008DADC4 /* ActiveBetCard.swift in Sources */,
 				897DFBF12CCED80600246B0D /* TransactionModel.swift in Sources */,
@@ -665,14 +716,20 @@
 				291A4C272D9F0D8400C0B445 /* PlayerSeeAllScreen.swift in Sources */,
 				897DFBF22CCED80600246B0D /* UserModel.swift in Sources */,
 				294B422A2D9C7244008A0CC3 /* RarityPackView.swift in Sources */,
+				D0EB53232DA4A97E00F988EB /* SellContractView.swift in Sources */,
 				897DFBF32CCED80600246B0D /* PillSelectView.swift in Sources */,
 				897DFBF42CCED80600246B0D /* ViewController.swift in Sources */,
+				D0B4A2482DA6E30400A1722C /* Keys.swift in Sources */,
+				D0B4A2522DA6E3F000A1722C /* Response.swift in Sources */,
+				D0B4A2502DA6E3EB00A1722C /* Body.swift in Sources */,
 				897DFBF52CCED80600246B0D /* ContractCard.swift in Sources */,
+				2CCD4FE32DA77CF500A4E87C /* ContractsEndingView.swift in Sources */,
 				897DFBF62CCED80600246B0D /* PlayerContractSheetView.swift in Sources */,
 				29C8A00D2D8F8E8000F9B3F5 /* Pill.swift in Sources */,
 				29C8A00E2D8F8E8000F9B3F5 /* BetTrackerView.swift in Sources */,
 				29C8A00F2D8F8E8000F9B3F5 /* ProfileViewViewModel.swift in Sources */,
 				29C8A0112D8F8E9D00F9B3F5 /* FAQ.swift in Sources */,
+				D0B4A2462DA6E29900A1722C /* ApiClient.swift in Sources */,
 				2951F2692D8CCD7C0056F078 /* DailyGainLoss.swift in Sources */,
 				897DFBF72CCED80600246B0D /* TabBar.swift in Sources */,
 				D057FD852BA76F8600EF552D /* Constants.swift in Sources */,
@@ -701,10 +758,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8924784B2CCD7A270086F335 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 8924784A2CCD7A270086F335 /* SwiftLintBuildToolPlugin */;
-		};
 		D0155A8F2B950FF7003FE6BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D0155A7C2B950FF6003FE6BC /* All In */;
@@ -720,6 +773,7 @@
 /* Begin XCBuildConfiguration section */
 		D0155A9F2B950FF7003FE6BC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0B4A25B2DA6F45200A1722C /* Keys.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -783,6 +837,7 @@
 		};
 		D0155AA02B950FF7003FE6BC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0B4A25B2DA6F45200A1722C /* Keys.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -845,6 +900,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"All In/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -859,8 +915,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cuappdev.All-In";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cornellappdev.all-in";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -876,6 +932,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"All In/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -890,8 +947,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cuappdev.All-In";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cornellappdev.all-in";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1025,6 +1082,22 @@
 				minimumVersion = 4.3.0;
 			};
 		};
+		D0B4A23D2DA6E0EF00A1722C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+		D0B4A2422DA6E1C900A1722C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.11.0;
+			};
+		};
 		D0CD31832BD5A3EC00E7136C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1044,15 +1117,25 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8924784A2CCD7A270086F335 /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 892478402CCD723B0086F335 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
 		D047C6302BD6E9DA007F6103 /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D047C62F2BD6E9DA007F6103 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
+		};
+		D0B4A23E2DA6E0EF00A1722C /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0B4A23D2DA6E0EF00A1722C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		D0B4A2402DA6E0EF00A1722C /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0B4A23D2DA6E0EF00A1722C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		D0B4A2432DA6E1C900A1722C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0B4A2422DA6E1C900A1722C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 		D0CD31842BD5A3EC00E7136C /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

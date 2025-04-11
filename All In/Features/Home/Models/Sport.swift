@@ -12,14 +12,22 @@ struct Sport: Identifiable, Equatable {
     let name: String
     let icon: String
 
+    static let basketball = Sport(name: "Basketball", icon: "basketball.fill")
+    static let hockey = Sport(name: "Hockey", icon: "hockey.puck.fill")
+    static let lacrosse = Sport(name: "Lacrosse", icon: "figure.lacrosse")
+    static let football = Sport(name: "Football", icon: "football.fill")
+    static let baseball = Sport(name: "Baseball", icon: "baseball.fill")
+    static let soccer = Sport(name: "Soccer", icon: "soccerball")
+    static let tennis = Sport(name: "Tennis", icon: "tennisball.fill")
+
     static let all: [Sport] = [
-        Sport(name: "Basketball", icon: "basketball.fill"),
-        Sport(name: "Hockey", icon: "hockey.puck.fill"),
-        Sport(name: "Lacrosse", icon: "figure.lacrosse"),
-        Sport(name: "Football", icon: "football.fill"),
-        Sport(name: "Baseball", icon: "baseball.fill"),
-        Sport(name: "Soccer", icon: "soccerball"),
-        Sport(name: "Tennis", icon: "tennisball.fill")
+        basketball,
+        hockey,
+        lacrosse,
+        football,
+        baseball,
+        soccer,
+        tennis
     ]
 
     static func == (lhs: Sport, rhs: Sport) -> Bool {

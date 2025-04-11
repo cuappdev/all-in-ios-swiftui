@@ -17,11 +17,12 @@ struct Contract: Identifiable, Codable {
     var eventThreshold: Int
     var creationTime: Date
     var value: Int
+    var expirationTime: Date
     var expired: Bool?
     var forSale: Bool
     var sellPrice: Int?
     var playerId: Int
-    var ownerId: Int
+    var ownerUid: Int
 
 }
 
@@ -31,6 +32,13 @@ enum Rarity: String, Codable {
     case rare
     case epic
     case legendary
+
+    enum CodingKeys: String, CodingKey {
+        case common = "COMMON"
+        case rare = "RARE"
+        case epic = "EPIC"
+        case legendary = "LEGENDARY"
+    }
 
     var string: String {
         switch self {
@@ -107,79 +115,85 @@ extension Contract {
             id: 0,
             buyPrice: 1000,
             rarity: Rarity.common,
-            opposingTeam: "columbia",
+            opposingTeam: "Columbia",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
+            expirationTime: Date(),
             forSale: true,
             playerId: 0,
-            ownerId: 0
+            ownerUid: 0
         ),
         Contract(
             id: 1,
             buyPrice: 1400,
             rarity: Rarity.common,
-            opposingTeam: "harvard",
+            opposingTeam: "Harvard",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
             value: 1600,
+            expirationTime: Date(),
             forSale: true,
             playerId: 1,
-            ownerId: 0
+            ownerUid: 0
         ),
         Contract(
             id: 2,
             buyPrice: 1000,
             rarity: Rarity.common,
-            opposingTeam: "princeton",
+            opposingTeam: "Princeton",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
+            expirationTime: Date(),
             forSale: true,
             playerId: 2,
-            ownerId: 0
+            ownerUid: 0
         ),
         Contract(
             id: 3,
             buyPrice: 1000,
             rarity: Rarity.common,
-            opposingTeam: "dartmouth",
+            opposingTeam: "Dartmouth",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
+            expirationTime: Date(),
             forSale: true,
             playerId: 3,
-            ownerId: 0
+            ownerUid: 0
         ),
         Contract(
             id: 4,
             buyPrice: 1000,
             rarity: Rarity.common,
-            opposingTeam: "harvard",
+            opposingTeam: "Harvard",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
+            expirationTime: Date().addingTimeInterval(-20000),
             forSale: true,
             playerId: 2,
-            ownerId: 0
+            ownerUid: 0
         ),
         Contract(
             id: 5,
             buyPrice: 1000,
             rarity: Rarity.common,
-            opposingTeam: "harvard",
+            opposingTeam: "Harvard",
             event: "FGA",
             eventThreshold: 4,
             creationTime: Date().addingTimeInterval(-100000),
             value: 2400,
+            expirationTime: Date().addingTimeInterval(100000),
             forSale: true,
             playerId: 1,
-            ownerId: 0
+            ownerUid: 0
         )
     ]
 

@@ -19,6 +19,15 @@ struct TabBar: View {
 
     var body: some View {
         VStack {
+            Rectangle()
+                .fill(LinearGradient(
+                    gradient: Constants.Colors.gradient,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ))
+                .frame(maxWidth: .infinity)
+                .frame(height: 1)
+
             HStack {
                 ForEach(pages, id: \.id) { page in
                     tabButton(page: page) {
@@ -40,9 +49,11 @@ struct TabBar: View {
                     }
                 }
             }
+            .padding()
 
             Spacer()
-        }.padding()
+        }
+        .background(Constants.Colors.background)
     }
 
     func tabButton(page: TabBarPage, content: () -> some View) -> some View {
@@ -58,6 +69,10 @@ struct TabBar: View {
 class TabNavigationManager: ObservableObject {
     @Published var selectedTab: TabBarPage = .home
     @Published var hideTabBar: Bool = false
+
+    func signIn() {
+
+    }
 }
 
 struct TabBarPage: Equatable {
@@ -69,7 +84,6 @@ struct TabBarPage: Equatable {
     static let home = TabBarPage(id: 0, name: "Home", image: "home")
     static let market = TabBarPage(id: 1, name: "Marketplace", image: "marketplace")
     static let betTracker = TabBarPage(id: 2, name: "Bet Tracker", image: "bet-tracker")
-
 }
 
 #Preview {

@@ -111,8 +111,10 @@ struct RankingsView: View {
     private var podiumView: some View {
         ZStack {
             // Get top 3 users
-            let topUsers = User.dummyData.filter { $0.ranking <= 3 }
-                .sorted { $0.ranking < $1.ranking }
+            // TODO: FIX
+//            let topUsers = User.dummyData.filter { $0.ranking <= 3 }
+//                .sorted { $0.ranking < $1.ranking }
+            let topUsers = User.dummyData
 
             // Second place (right)
             if topUsers.count >= 2 {
@@ -196,9 +198,11 @@ struct RankingsView: View {
 
     private var rankingListView: some View {
         VStack(spacing: 12) {
-            ForEach(User.dummyData.filter { $0.ranking >= 4 }
-                .sorted(by: { $0.ranking < $1.ranking })) { user in
-                    rankingRow(user: user)
+            // TODO: FIX
+//            ForEach(User.dummyData.filter { $0.ranking >= 4 }
+//                .sorted(by: { $0.ranking < $1.ranking })) { user in
+            ForEach(User.dummyData) { user in
+                rankingRow(user: user)
             }
         }
         .padding(16)
@@ -234,7 +238,9 @@ struct RankingsView: View {
 
             Spacer()
 
-            Text("#\(user.ranking)")
+            // TODO: FIX
+//            Text("#\(user.ranking)")
+            Text("#1")
                 .font(Constants.Fonts.cardHeader)
                 .foregroundStyle(Constants.Colors.white)
         }

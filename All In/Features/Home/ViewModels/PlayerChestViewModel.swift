@@ -20,9 +20,9 @@ extension PlayerChestView {
         // MARK: - Requests
 
         func getUserImage() {
-            NetworkManager.shared.getUserImage(completion: { image in
-                self.chestPlayer = Image(uiImage: image)
-            })
+//            NetworkManager.shared.getUserImage(completion: { image in
+//                self.chestPlayer = Image(uiImage: image)
+//            })
         }
 
     }
