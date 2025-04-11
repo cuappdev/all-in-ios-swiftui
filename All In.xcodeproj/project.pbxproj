@@ -163,7 +163,6 @@
 		D0155A8D2B950FF7003FE6BC /* All InTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "All InTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0155A972B950FF7003FE6BC /* All InUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "All InUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D057FD842BA76F8600EF552D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D098BCB62DA8CA97000861A3 /* ci_post_clone.sh  */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ci_post_clone.sh "; sourceTree = "<group>"; };
 		D0B4A23B2DA6E09100A1722C /* GoogleAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthManager.swift; sourceTree = "<group>"; };
 		D0B4A2452DA6E29700A1722C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		D0B4A2472DA6E30200A1722C /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
@@ -431,7 +430,6 @@
 				CE101CDC2BA776ED00218E40 /* Resources */,
 				D0B4A25A2DA6F28B00A1722C /* Supporting */,
 				D057FD832BA76F7B00EF552D /* Utils */,
-				D098BCB52DA8CA8C000861A3 /* ci_scripts */,
 			);
 			path = "All In";
 			sourceTree = "<group>";
@@ -470,14 +468,6 @@
 				89E4FAA72CEA8F9600A952B1 /* Logger.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		D098BCB52DA8CA8C000861A3 /* ci_scripts */ = {
-			isa = PBXGroup;
-			children = (
-				D098BCB62DA8CA97000861A3 /* ci_post_clone.sh  */,
-			);
-			path = ci_scripts;
 			sourceTree = "<group>";
 		};
 		D0B4A25A2DA6F28B00A1722C /* Supporting */ = {
