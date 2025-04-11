@@ -38,3 +38,8 @@ struct RarityChestSheetView: View {
     }
 
 }
+
+#Preview{
+    RarityChestSheetView(showSheet: .constant(true), rarity: .common)
+}
+
