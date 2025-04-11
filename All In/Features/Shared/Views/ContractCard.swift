@@ -11,24 +11,24 @@ struct ContractCard: View {
 
     @State private var contract: Contract
     @State private var player: Player
+    @State private var onTap: () -> Void
 
-    init(contract: Contract) {
-        _contract = State(initialValue: contract)
-        _player = State(initialValue: Contract.getPlayer(contract))
+    init(contract: Contract, onTap: @escaping () -> Void) {
+        self.contract = contract
+        self.player = Contract.getPlayer(contract)
+        self.onTap = onTap
     }
 
     @State var showSheet = false
 
     var body: some View {
-        Button {
-            showSheet = true
-        } label: {
+        Button(action: onTap) {
             ZStack(alignment: .bottom) {
                 RoundedRectangle(cornerRadius: 16)
                     .inset(by: 0.5)
                     .stroke(Constants.Colors.grey00, lineWidth: 2)
                     .frame(width: 150, height: 150)
-                    .background(.white)
+//                    .background(.white)
                     .cornerRadius(16)
                     .shadow(color: Constants.Colors.grey00, radius: 5, x: 0, y: 4)
 
@@ -44,7 +44,7 @@ struct ContractCard: View {
                                 contractInfo
 
                             }
-                            .frame(width: 181, height: 222)
+                            .frame(width: UIScreen.main.bounds.width / 2 - 24, height: 222)
                             .background(Constants.Colors.blackBlue)
                             .cornerRadius(16)
                             // Card border
@@ -57,7 +57,7 @@ struct ContractCard: View {
                                             startPoint: .topLeading,
                                             endPoint: .bottomTrailing
                                         ),
-                                        lineWidth: 2
+                                        lineWidth: 1
                                     )
                             )
                         }
@@ -65,15 +65,11 @@ struct ContractCard: View {
                 }
             }
         }
-        .sheet(isPresented: $showSheet) {
-            PlayerContractSheetView(fromPlayer: player, fromStat: Stat.assists, showSheet: $showSheet)
-                .presentationDetents([.fraction(0.8)])
-        }
     }
 }
 
 #Preview {
-    ContractCard(contract: Contract.dummyData[0])
+    ContractCard(contract: Contract.dummyData[0], onTap: {})
 }
 
 // MARK: Components
