@@ -24,7 +24,7 @@ struct PlayerContractSheetView: View {
 
     init(fromPlayer player: Player, fromContract contract: Contract, fromStat stat: Stat, showSheet: Binding<Bool>) {
         name = "\(player.firstName[player.firstName.startIndex]). \(player.lastName)"
-        position = player.position[0]
+        position = player.positions[0]
         number = player.number
         self.player = player
         _showSheet = showSheet

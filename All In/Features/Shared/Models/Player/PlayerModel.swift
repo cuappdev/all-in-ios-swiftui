@@ -12,17 +12,17 @@ import Charts
 // TODO: Add the rest of the data
 
 struct Player: Identifiable, Codable {
-
     var id: Int
     var firstName: String
     var lastName: String
-    var position: [String]
+    var positions: [String]
     var number: Int
-    var height: Int
+    var height: String
     var weight: Int
     var hometown: String
-    var highschool: String
-    var contracts: [Contract]
+    var highSchool: String
+    var image: String
+    var contracts: [String]
     var playerData: [PlayerData]
 
     func graph(stat: Stat, selectedDate: Date, completion: @escaping (Int) -> Void) -> some View {
@@ -127,77 +127,79 @@ struct Player: Identifiable, Codable {
             }
         )
     }
-
 }
 
 extension Player {
-
     static let dummyData: [Player] = [
         Player(
             id: 0,
             firstName: "Evan",
             lastName: "Williams",
-            position: ["Forward"],
+            positions: ["GUARD", "FORWARD"],
             number: 0,
-            height: 79,
+            height: "79",
             weight: 220,
             hometown: "Murphy, Texas",
-            highschool: "Plano East Senior HS",
-            contracts: Contract.dummyData,
+            highSchool: "Plano East Senior HS",
+            image: "",
+            contracts: ["Standard NBA Contract 2024-2025"],
             playerData: PlayerData.dummyData
         ),
         Player(
             id: 1,
             firstName: "Nazir",
             lastName: "Williams",
-            position: ["Guard"],
+            positions: ["GUARD"],
             number: 1,
-            height: 75,
+            height: "75",
             weight: 180,
             hometown: "Nyack, New York",
-            highschool: "Blair Academy",
-            contracts: Contract.dummyData,
+            highSchool: "Blair Academy",
+            image: "",
+            contracts: ["Two-way Contract 2024-2026"],
             playerData: PlayerData.dummyData
         ),
         Player(
             id: 2,
             firstName: "Ian",
             lastName: "Imegwu",
-            position: ["Forward"],
+            positions: ["FORWARD"],
             number: 2,
-            height: 81,
+            height: "81",
             weight: 226,
             hometown: "Short Hills, New Jersey",
-            highschool: "Blair Academy",
-            contracts: Contract.dummyData,
+            highSchool: "Blair Academy",
+            image: "",
+            contracts: ["Rookie Contract 2024-2028"],
             playerData: PlayerData.dummyData
         ),
         Player(
             id: 3,
             firstName: "Ryan",
             lastName: "Kiachian",
-            position: ["Forward", "Center"],
+            positions: ["FORWARD", "CENTER"],
             number: 3,
-            height: 82,
+            height: "82",
             weight: 228,
             hometown: "Los Altos Hills, California",
-            highschool: "Bellarmine College Preparatory",
-            contracts: Contract.dummyData,
+            highSchool: "Bellarmine College Preparatory",
+            image: "",
+            contracts: ["Standard NBA Contract 2023-2025"],
             playerData: PlayerData.dummyData
         ),
         Player(
             id: 4,
             firstName: "Dylan",
             lastName: "Wang",
-            position: ["Guard"],
+            positions: ["GUARD"],
             number: 5,
-            height: 72,
+            height: "72",
             weight: 170,
             hometown: "Los Altos Hills, California",
-            highschool: "Bellarmine College Preparatory",
-            contracts: Contract.dummyData,
+            highSchool: "Bellarmine College Preparatory",
+            image: "",
+            contracts: ["Exhibit 10 Contract 2024"],
             playerData: PlayerData.dummyData
         )
     ]
-
 }

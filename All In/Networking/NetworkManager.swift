@@ -41,6 +41,8 @@ class NetworkManager: APIClient {
             let dateFormatter = ISO8601DateFormatter()
             dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
 
+            dateFormatter.formatOptions = []
+
             // Check if the string already has timezone information
             let hasTimezoneInfo = dateString.hasSuffix("Z") ||
                                   dateString.contains("+") ||
@@ -50,6 +52,11 @@ class NetworkManager: APIClient {
             let dateStringWithUTC = hasTimezoneInfo ? dateString : dateString + "Z"
 
             if let date = dateFormatter.date(from: dateStringWithUTC) {
+                return date
+            }
+
+            dateFormatter.formatOptions = []
+            if let date = dateFormatter.date(from: dateString) {
                 return date
             }
 
