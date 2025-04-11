@@ -20,6 +20,7 @@ extension RarityPackSheetView {
         // MARK: - Requests
 
         func getRarityContract(rarity: Rarity) {
+            showWheelSpin = true
 //            NetworkManager.shared.getRarityContract(buyPrice: 1200, rarity: rarity) { contract in
 //                self.returnedContract = contract
 //

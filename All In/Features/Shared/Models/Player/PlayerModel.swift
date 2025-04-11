@@ -40,58 +40,90 @@ struct Player: Identifiable, Codable {
         }
 
         return (
-            Chart {
-                ForEach(Array(zip(playerData.indices, playerData)), id: \.1) { idx, data in
-                    BarMark(
-                        x: .value("Date", data.gameDate, unit: .weekday),
-                        y: .value("Value", data.getNumberFromStat(stat))
-                    )
-                    .foregroundStyle(idx != activeIndex ? Constants.Colors.grey02 : Constants.Colors.red)
-                    .cornerRadius(5)
-                    .annotation {
-                        VStack {
-                            Image("fordham")
-                                .resizable()
-                                .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                                .frame(width: 20)
-                                .foregroundStyle(idx != activeIndex ? Constants.Colors.grey02 : Constants.Colors.red)
-                                .opacity(idx != activeIndex ? 0 : 1)
-                            Text("\(data.getNumberFromStat(stat))")
-                                .foregroundStyle(idx != activeIndex ? Constants.Colors.grey02 : Constants.Colors.red)
-                                .opacity(idx != activeIndex ? 0 : 1)
-                                .font(Constants.Fonts.bodyBold)
+            ZStack(alignment: .bottom) {
+                Chart {
+                    ForEach(Array(zip(playerData.indices, playerData)), id: \.1) { idx, data in
+                        BarMark(
+                            x: .value("Date", data.gameDate, unit: .weekday),
+                            y: .value("Value", data.getNumberFromStat(stat))
+                        )
+                        .foregroundStyle(idx != activeIndex ? Constants.Colors.white : Constants.Colors.red)
+                        .clipShape(Rectangle())
+                        .cornerRadius(0)
+                        .annotation {
+                            VStack {
+                                Text("\(data.getNumberFromStat(stat))")
+                                    .foregroundStyle(idx != activeIndex ? Constants.Colors.white : Constants.Colors.red)
+                                    .opacity(idx != activeIndex ? 0 : 1)
+                                    .font(Constants.Fonts.bodyBold)
+                            }
                         }
                     }
                 }
-            }
-            .animation(.easeInOut(duration: 0.2))
-            .aspectRatio(1.0, contentMode: .fit)
-            .chartOverlay { pr in
-                GeometryReader { geoProxy in
-                    Rectangle()
-                        .foregroundStyle(.black.opacity(0.0001))
-                        .gesture(DragGesture().onChanged { value in
-                            let origin = geoProxy[pr.plotAreaFrame].origin
-                            let location = CGPoint(
-                                x: value.location.x - origin.x,
-                                y: value.location.y - origin.y
-                            )
-
-                            let (day, _) = pr.value(at: location, as: (Int, Double).self)!
-                            completion(day)
-                        })
-                        .onTapGesture(count: 1, coordinateSpace: .local, perform: { value in
-                            let origin = geoProxy[pr.plotAreaFrame].origin
-                            let location = CGPoint(
-                                x: value.x - origin.x,
-                                y: value.y - origin.y
-                            )
-
-                            let (day, _) = pr.value(at: location, as: (Int, Double).self)!
-                            completion(day)
-                        })
-
+                .chartXAxis {
+                    AxisMarks {
+                        AxisTick()
+                    }
                 }
+                .chartYAxis {
+                    AxisMarks(position: .leading) {
+                        AxisTick()
+                        AxisValueLabel()
+                            .foregroundStyle(Constants.Colors.white)
+                    }
+                }
+                .padding(.vertical, 15)
+                .padding(.horizontal, 10)
+                .animation(.easeInOut(duration: 0.2))
+                .aspectRatio(1.8, contentMode: .fit)
+                .chartOverlay { pr in
+                    GeometryReader { geoProxy in
+                        ZStack {
+                            // styled rounded rectangle
+                            RoundedRectangle(cornerRadius: 8)
+                                .strokeBorder(
+                                    LinearGradient(
+                                        gradient: Constants.Colors.gradient,
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    ),
+                                    lineWidth: 1
+                                )
+
+                            // invisible gesture response rectangle
+                            Rectangle()
+                                .foregroundStyle(.clear)
+                                .contentShape(Rectangle())
+                                .gesture(DragGesture().onChanged { value in
+                                    let origin = geoProxy[pr.plotAreaFrame].origin
+                                    let location = CGPoint(
+                                        x: value.location.x - origin.x,
+                                        y: value.location.y - origin.y
+                                    )
+
+                                    let (day, _) = pr.value(at: location, as: (Int, Double).self)!
+                                    completion(day)
+                                })
+                                .onTapGesture(count: 1, coordinateSpace: .local, perform: { value in
+                                    let origin = geoProxy[pr.plotAreaFrame].origin
+                                    let location = CGPoint(
+                                        x: value.x - origin.x,
+                                        y: value.y - origin.y
+                                    )
+
+                                    let (day, _) = pr.value(at: location, as: (Int, Double).self)!
+                                    completion(day)
+                                })
+                        }
+                    }
+                }
+
+                Rectangle()
+                    .fill(Color.white)
+                    .frame(height: 1)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 5)
+                    .padding(.top, 0)
             }
         )
     }

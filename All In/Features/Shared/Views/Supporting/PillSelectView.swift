@@ -26,11 +26,22 @@ struct PillSelectView: View {
                     ZStack {
                         Text("\(pills[index].getAbv())")
                             .font(Constants.Fonts.bodyBold)
-                            .foregroundStyle(index != selectedIndex ? Constants.Colors.black : Constants.Colors.white)
+                            .foregroundStyle(Constants.Colors.white)
                             .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
-                            .background {
-                                RoundedRectangle(cornerRadius: 50)
-                                    .fill(index != selectedIndex ? Constants.Colors.grey01 : Constants.Colors.black)
+                            .background(
+                                (index != selectedIndex ? Constants.Colors.background : Constants.Colors.gradientBlue)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                            )
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .strokeBorder(
+                                        LinearGradient(
+                                            gradient: Constants.Colors.gradient,
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ),
+                                        lineWidth: 1
+                                    )
                             }
                     }
                     .onTapGesture {
