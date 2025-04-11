@@ -424,7 +424,7 @@ struct BetTrackerView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
                     ForEach(Contract.dummyData.prefix(5), id: \.id) { contract in
-                        ContractCard(contract: contract)
+                        ContractCard(contract: contract, onTap: {})
                             .frame(width: 180)
                     }
                 }
