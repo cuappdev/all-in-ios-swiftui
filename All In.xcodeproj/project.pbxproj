@@ -26,10 +26,9 @@
 		29C9CBE02D9DCB2F00E38F7A /* SportPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBDF2D9DCB2D00E38F7A /* SportPill.swift */; };
 		29C9CBE22D9DDE5A00E38F7A /* RarityPackSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBE12D9DDE5500E38F7A /* RarityPackSheetView.swift */; };
 		29C9CBE42D9DE5CF00E38F7A /* PlayerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */; };
-		2E5C52E12DA825D200D1C2FD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2E5C52E02DA825D200D1C2FD /* FirebaseAnalytics */; };
-		2E5C52E32DA825D200D1C2FD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2E5C52E22DA825D200D1C2FD /* FirebaseAuth */; };
-		2E5C52E52DA825D200D1C2FD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2E5C52E42DA825D200D1C2FD /* FirebaseStorage */; };
-		2E5C52E72DA826E800D1C2FD /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5C52E62DA826E500D1C2FD /* FilterView.swift */; };
+		2CCD4FE32DA77CF500A4E87C /* ContractsEndingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD4FE22DA77CE900A4E87C /* ContractsEndingView.swift */; };
+		2CCD4FE52DA77E4700A4E87C /* ContractEndingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD4FE42DA77E4000A4E87C /* ContractEndingCard.swift */; };
+		2EBFAB752DA8DBED003A3344 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBFAB742DA8DBED003A3344 /* FilterView.swift */; };
 		897DFBDE2CCED80600246B0D /* PlayerChestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */; };
 		897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */; };
 		897DFBE02CCED80600246B0D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB92CCED80600246B0D /* SheetView.swift */; };
@@ -122,7 +121,9 @@
 		29C9CBE12D9DDE5500E38F7A /* RarityPackSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityPackSheetView.swift; sourceTree = "<group>"; };
 		29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCard.swift; sourceTree = "<group>"; };
 		29DB4FC32D8CDEAC00E489DB /* All-In-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "All-In-Info.plist"; sourceTree = SOURCE_ROOT; };
-		2E5C52E62DA826E500D1C2FD /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		2CCD4FE22DA77CE900A4E87C /* ContractsEndingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsEndingView.swift; sourceTree = "<group>"; };
+		2CCD4FE42DA77E4000A4E87C /* ContractEndingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractEndingCard.swift; sourceTree = "<group>"; };
+		2EBFAB742DA8DBED003A3344 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChestViewModel.swift; sourceTree = "<group>"; };
 		897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityChestSheetViewModel.swift; sourceTree = "<group>"; };
 		897DFBB92CCED80600246B0D /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
@@ -163,6 +164,7 @@
 		D0155A8D2B950FF7003FE6BC /* All InTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "All InTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0155A972B950FF7003FE6BC /* All InUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "All InUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D057FD842BA76F8600EF552D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D098BCB62DA8CA97000861A3 /* ci_post_clone.sh  */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ci_post_clone.sh "; sourceTree = "<group>"; };
 		D0B4A23B2DA6E09100A1722C /* GoogleAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthManager.swift; sourceTree = "<group>"; };
 		D0B4A2452DA6E29700A1722C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		D0B4A2472DA6E30200A1722C /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
@@ -182,11 +184,8 @@
 			files = (
 				D0B4A2412DA6E0EF00A1722C /* GoogleSignInSwift in Frameworks */,
 				D0CD31852BD5A3EC00E7136C /* Alamofire in Frameworks */,
-				2E5C52E12DA825D200D1C2FD /* FirebaseAnalytics in Frameworks */,
 				D0B4A23F2DA6E0EF00A1722C /* GoogleSignIn in Frameworks */,
 				D0F6A9F62BD887F100D75BAD /* SnapKit in Frameworks */,
-				2E5C52E52DA825D200D1C2FD /* FirebaseStorage in Frameworks */,
-				2E5C52E32DA825D200D1C2FD /* FirebaseAuth in Frameworks */,
 				D047C6312BD6E9DA007F6103 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,10 +304,11 @@
 		897DFBC82CCED80600246B0D /* Marketplace */ = {
 			isa = PBXGroup;
 			children = (
+				2CCD4FE22DA77CE900A4E87C /* ContractsEndingView.swift */,
 				D0EB53242DA4AF2B00F988EB /* SellContract */,
 				897DFBC62CCED80600246B0D /* ViewModels */,
 				897DFBC72CCED80600246B0D /* MarketplaceView.swift */,
-				2E5C52E62DA826E500D1C2FD /* FilterView.swift */,
+				2EBFAB742DA8DBED003A3344 /* FilterView.swift */,
 			);
 			path = Marketplace;
 			sourceTree = "<group>";
@@ -349,6 +349,7 @@
 		897DFBDB2CCED80600246B0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2CCD4FE42DA77E4000A4E87C /* ContractEndingCard.swift */,
 				2971A8642D9F8701008DADC4 /* ActiveBetCard.swift */,
 				2973B0642D875F06003C9CF5 /* FrequentAskedQuestion.swift */,
 				29C9CBE32D9DE5CC00E38F7A /* PlayerCard.swift */,
@@ -403,6 +404,7 @@
 		D0155A742B950FF6003FE6BC = {
 			isa = PBXGroup;
 			children = (
+				D098BCB52DA8CA8C000861A3 /* ci_scripts */,
 				D0155A7F2B950FF6003FE6BC /* All In */,
 				D0155A902B950FF7003FE6BC /* All InTests */,
 				D0155A9A2B950FF7003FE6BC /* All InUITests */,
@@ -471,6 +473,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		D098BCB52DA8CA8C000861A3 /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				D098BCB62DA8CA97000861A3 /* ci_post_clone.sh  */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
 		D0B4A25A2DA6F28B00A1722C /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,12 +521,10 @@
 				D0155A792B950FF6003FE6BC /* Sources */,
 				D0155A7A2B950FF6003FE6BC /* Frameworks */,
 				D0155A7B2B950FF6003FE6BC /* Resources */,
-				892478412CCD75A50086F335 /* SwiftLint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8924784B2CCD7A270086F335 /* PBXTargetDependency */,
 			);
 			name = "All In";
 			packageProductDependencies = (
@@ -525,9 +533,6 @@
 				D0F6A9F52BD887F100D75BAD /* SnapKit */,
 				D0B4A23E2DA6E0EF00A1722C /* GoogleSignIn */,
 				D0B4A2402DA6E0EF00A1722C /* GoogleSignInSwift */,
-				2E5C52E02DA825D200D1C2FD /* FirebaseAnalytics */,
-				2E5C52E22DA825D200D1C2FD /* FirebaseAuth */,
-				2E5C52E42DA825D200D1C2FD /* FirebaseStorage */,
 			);
 			productName = "All In";
 			productReference = D0155A7D2B950FF6003FE6BC /* All In.app */;
@@ -652,28 +657,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		892478412CCD75A50086F335 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint >/dev/null; then\n    swiftlint --fix && swiftlint\nelse\n    echo \"ERROR: SwiftLint not installed\"\n    exit 1\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		D0155A792B950FF6003FE6BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -696,6 +679,7 @@
 				D0EB53262DA4AF3E00F988EB /* SellSelectedContractView.swift in Sources */,
 				897DFBFC2CCED80C00246B0D /* Color+Extension.swift in Sources */,
 				29C9CBE22D9DDE5A00E38F7A /* RarityPackSheetView.swift in Sources */,
+				2CCD4FE52DA77E4700A4E87C /* ContractEndingCard.swift in Sources */,
 				897DFBFD2CCED80C00246B0D /* Date+Extension.swift in Sources */,
 				897DFBFE2CCED80C00246B0D /* NSNumberFormatter.swift in Sources */,
 				897DFBE62CCED80600246B0D /* WheelItemUIView.swift in Sources */,
@@ -707,7 +691,6 @@
 				897DFBEC2CCED80600246B0D /* PlayerAveragesModel.swift in Sources */,
 				897DFBED2CCED80600246B0D /* PlayerDataModel.swift in Sources */,
 				897DFBEE2CCED80600246B0D /* PlayerModel.swift in Sources */,
-				2E5C52E72DA826E800D1C2FD /* FilterView.swift in Sources */,
 				897DFBEF2CCED80600246B0D /* ChestModel.swift in Sources */,
 				897DFBF02CCED80600246B0D /* ContractModel.swift in Sources */,
 				D0B4A23C2DA6E09E00A1722C /* GoogleAuthManager.swift in Sources */,
@@ -717,6 +700,7 @@
 				29C9CBDC2D9DCA7700E38F7A /* Sport.swift in Sources */,
 				291A4C272D9F0D8400C0B445 /* PlayerSeeAllScreen.swift in Sources */,
 				897DFBF22CCED80600246B0D /* UserModel.swift in Sources */,
+				2EBFAB752DA8DBED003A3344 /* FilterView.swift in Sources */,
 				294B422A2D9C7244008A0CC3 /* RarityPackView.swift in Sources */,
 				D0EB53232DA4A97E00F988EB /* SellContractView.swift in Sources */,
 				897DFBF32CCED80600246B0D /* PillSelectView.swift in Sources */,
@@ -725,6 +709,7 @@
 				D0B4A2522DA6E3F000A1722C /* Response.swift in Sources */,
 				D0B4A2502DA6E3EB00A1722C /* Body.swift in Sources */,
 				897DFBF52CCED80600246B0D /* ContractCard.swift in Sources */,
+				2CCD4FE32DA77CF500A4E87C /* ContractsEndingView.swift in Sources */,
 				897DFBF62CCED80600246B0D /* PlayerContractSheetView.swift in Sources */,
 				29C8A00D2D8F8E8000F9B3F5 /* Pill.swift in Sources */,
 				29C8A00E2D8F8E8000F9B3F5 /* BetTrackerView.swift in Sources */,
@@ -758,10 +743,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8924784B2CCD7A270086F335 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 8924784A2CCD7A270086F335 /* SwiftLintBuildToolPlugin */;
-		};
 		D0155A8F2B950FF7003FE6BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D0155A7C2B950FF6003FE6BC /* All In */;
@@ -904,6 +885,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"All In/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -918,8 +900,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cuappdev.All-In";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cornellappdev.all-in";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -935,6 +917,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"All In/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = ZGMCXU7X3U;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -949,8 +932,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cuappdev.All-In";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cornellappdev.all-in";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1119,26 +1102,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2E5C52E02DA825D200D1C2FD /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2E5C52DF2DA825D200D1C2FD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		2E5C52E22DA825D200D1C2FD /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2E5C52DF2DA825D200D1C2FD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		2E5C52E42DA825D200D1C2FD /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2E5C52DF2DA825D200D1C2FD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
-		};
-		8924784A2CCD7A270086F335 /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 892478402CCD723B0086F335 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
 		D047C6302BD6E9DA007F6103 /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D047C62F2BD6E9DA007F6103 /* XCRemoteSwiftPackageReference "AlamofireImage" */;

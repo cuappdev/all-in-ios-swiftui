@@ -1,67 +1,79 @@
 //
-//  ContractCard.swift
+//  ContractEndingCard.swift
 //  All In
 //
-//  Created by Daniel Chuang on 3/17/24.
+//  Created by Angelina Chen on 4/10/25.
 //
 
 import SwiftUI
 
-struct ContractCard: View {
+struct ContractEndingCard: View {
 
-    @State private var contract: Contract
-    @State private var player: Player
+    private var contract: Contract
+    private var player: Player
+
+    @State private var showSheet = false
 
     init(contract: Contract) {
-        _contract = State(initialValue: contract)
-        _player = State(initialValue: Contract.getPlayer(contract))
+        self.contract = contract
+        self.player = Contract.getPlayer(contract)
     }
-
-    @State var showSheet = false
 
     var body: some View {
         Button {
             showSheet = true
         } label: {
-            ZStack(alignment: .bottom) {
-                RoundedRectangle(cornerRadius: 16)
-                    .inset(by: 0.5)
-                    .stroke(Constants.Colors.grey00, lineWidth: 2)
-                    .frame(width: 150, height: 150)
-//                    .background(.white)
-                    .cornerRadius(16)
-                    .shadow(color: Constants.Colors.grey00, radius: 5, x: 0, y: 4)
+            HStack(spacing: 10) {
+                Image("Player\(player.number)")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle())
+                    .padding(.leading, 12)
 
-                VStack(alignment: .center, spacing: 26) {
-                    VStack {
-                        ZStack {
-                            Constants.Colors.backgroundBlack.ignoresSafeArea()
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("\(player.firstName) \(player.lastName) v. \(contract.opposingTeam)")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(.black)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
 
-                            VStack { // Card Content VStack
-                                playerInfo
-                                // event and cost/gain info
-                                contractInfo
-                            }
-                            .frame(width: UIScreen.main.bounds.width / 2 - 24, height: 222)
-                            .background(Constants.Colors.blackBlue)
-                            .cornerRadius(16)
-                            // Card border
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .inset(by: 1)
-                                    .strokeBorder(
-                                        LinearGradient(
-                                            gradient: Constants.Colors.gradient,
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        ),
-                                        lineWidth: 1
-                                    )
-                            )
-                        }
-                    }
+                    // TODO: No sport associated with a player, temporary holder sport for now
+                    Text("\(Date().monthDayFormat) |  Men's Basketball")
+                        .font(.system(size: 12))
+                        .foregroundColor(.black.opacity(0.8))
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+
+                    Text(contract.event)
+                        .font(.system(size: 12))
+                        .foregroundColor(.black.opacity(0.8))
                 }
+
+                Spacer()
+
+                VStack(alignment: .trailing) {
+                    Text("Cost: \(contract.buyPrice, specifier: "%.2f")")
+                        .foregroundColor(Constants.Colors.red)
+                        .font(.system(size: 12, weight: .bold))
+
+                    Text("Gain: \(contract.value, specifier: "%.2f")")
+                        .foregroundColor(Constants.Colors.lightGreen)
+                        .font(.system(size: 12, weight: .bold))
+                }
+                .padding(.trailing, 12)
             }
+            .frame(height: 90)
+            .background(
+                LinearGradient(
+                    gradient: Gradient(colors: [Constants.Colors.gradientBlue, Constants.Colors.gradientLightBlue,
+                                                Constants.Colors.gradientLavender, Constants.Colors.gradientPurple]),
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+            )
+            .cornerRadius(12)
+            .padding(.horizontal, 8)
         }
         .sheet(isPresented: $showSheet) {
             PlayerContractSheetView(fromPlayer: player, fromStat: Stat.assists, showSheet: $showSheet)
@@ -71,14 +83,14 @@ struct ContractCard: View {
 }
 
 #Preview {
-    ContractCard(contract: Contract.dummyData[0])
+    ContractEndingCard(contract: Contract.dummyData[0])
 }
 
 // MARK: Components
-extension ContractCard {
+
+extension ContractEndingCard {
     private var playerInfo: some View {
         HStack {
-            // Player Image and Name
             Image("Player\(player.number)")
                 .resizable()
                 .frame(width: 50, height: 50)
@@ -107,7 +119,6 @@ extension ContractCard {
                 .font(.system(size: 12, weight: .bold))
                 .foregroundStyle(Constants.Colors.white)
 
-            // Dashed line
             Path { path in
                 path.move(to: CGPoint(x: -60, y: 10))
                 path.addLine(to: CGPoint(x: 60, y: 10))
@@ -139,7 +150,6 @@ extension ContractCard {
                 )
         )
         .padding(.top, 16)
-        // Card border
 
     }
 
