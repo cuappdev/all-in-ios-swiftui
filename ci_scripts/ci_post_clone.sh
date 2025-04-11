@@ -4,6 +4,10 @@ echo "Downloading Secrets"
 brew install wget
 cd "$CI_PRIMARY_REPOSITORY_PATH/All in"
 
+ls -a
+
+echo "$CI_PRIMARY_REPOSITORY_PATH/All in"
+
 if [ ! -d "Supporting" ]; then
     mkdir -p Supporting
     echo "Created Supporting directory"
