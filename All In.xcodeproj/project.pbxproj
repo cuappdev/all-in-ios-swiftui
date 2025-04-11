@@ -520,12 +520,10 @@
 				D0155A792B950FF6003FE6BC /* Sources */,
 				D0155A7A2B950FF6003FE6BC /* Frameworks */,
 				D0155A7B2B950FF6003FE6BC /* Resources */,
-				892478412CCD75A50086F335 /* SwiftLint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8924784B2CCD7A270086F335 /* PBXTargetDependency */,
 			);
 			name = "All In";
 			packageProductDependencies = (
@@ -659,28 +657,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		892478412CCD75A50086F335 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint >/dev/null; then\n    swiftlint --fix && swiftlint\nelse\n    echo \"ERROR: SwiftLint not installed\"\n    exit 1\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		D0155A792B950FF6003FE6BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -766,10 +742,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8924784B2CCD7A270086F335 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 8924784A2CCD7A270086F335 /* SwiftLintBuildToolPlugin */;
-		};
 		D0155A8F2B950FF7003FE6BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D0155A7C2B950FF6003FE6BC /* All In */;
@@ -1129,11 +1101,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8924784A2CCD7A270086F335 /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 892478402CCD723B0086F335 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
 		D047C6302BD6E9DA007F6103 /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D047C62F2BD6E9DA007F6103 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
