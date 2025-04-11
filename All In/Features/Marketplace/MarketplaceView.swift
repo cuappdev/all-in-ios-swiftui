@@ -192,28 +192,42 @@ struct MarketplaceView: View {
                     Image(
                         systemName: "x.circle.fill"
                     )
-                    .offset(x: 8)
-                    .opacity(marketplaceViewModel.searchText.isEmpty ? 0.0 : 1.0)
-                    .onTapGesture {
-                        marketplaceViewModel.searchText = ""
-                    },
-                    alignment: .trailing
-                )
-                .padding(.trailing, 50)
-            Spacer()
-
-            // For filtering feature
-            Image("sorting_button")
+                TextField("Search", text: $marketplaceViewModel.searchText)
+                    .foregroundColor(Constants.Colors.grey03)
+                    .overlay(
+                        Image(
+                            systemName: "x.circle.fill"
+                        )
+                        .offset(x: 8)
+                        .opacity(marketplaceViewModel.searchText.isEmpty ? 0.0 : 1.0)
+                        .onTapGesture {
+                            marketplaceViewModel.searchText = ""
+                        },
+                        alignment: .trailing
+                    )
+                    .padding(.trailing, 50)
+                
+                Spacer()
+                
+                
+            }
+            .padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(Constants.Colors.grey02, lineWidth: 1)
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 30)
+                    .fill(Constants.Colors.white)
+            )
+            .frame(width: 309)
+            Button{
+                presentPopup = true
+            } label: {
+                Image("filterIcon")
+            }
+            
         }
-        .padding()
-        .overlay(
-            RoundedRectangle(cornerRadius: 30)
-                .stroke(Constants.Colors.grey02, lineWidth: 1)
-        )
-        .background(
-            RoundedRectangle(cornerRadius: 30)
-                .fill(Constants.Colors.white)
-        )
     }
 
     private var recommendedContracts: some View {
