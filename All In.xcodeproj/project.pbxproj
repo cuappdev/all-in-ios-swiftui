@@ -34,6 +34,7 @@
 		2C5B87C62DA8D274004CD0F7 /* BuyContractChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B87C52DA8D26D004CD0F7 /* BuyContractChart.swift */; };
 		2CCD4FE32DA77CF500A4E87C /* ContractsEndingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD4FE22DA77CE900A4E87C /* ContractsEndingView.swift */; };
 		2CCD4FE52DA77E4700A4E87C /* ContractEndingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD4FE42DA77E4000A4E87C /* ContractEndingCard.swift */; };
+		2EB4B3502DA90AD600D99C76 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB4B34F2DA90AD300D99C76 /* FilterView.swift */; };
 		897DFBDE2CCED80600246B0D /* PlayerChestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */; };
 		897DFBDF2CCED80600246B0D /* RarityChestSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */; };
 		897DFBE02CCED80600246B0D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DFBB92CCED80600246B0D /* SheetView.swift */; };
@@ -136,6 +137,7 @@
 		2C5B87C52DA8D26D004CD0F7 /* BuyContractChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyContractChart.swift; sourceTree = "<group>"; };
 		2CCD4FE22DA77CE900A4E87C /* ContractsEndingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsEndingView.swift; sourceTree = "<group>"; };
 		2CCD4FE42DA77E4000A4E87C /* ContractEndingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractEndingCard.swift; sourceTree = "<group>"; };
+		2EB4B34F2DA90AD300D99C76 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		897DFBB62CCED80600246B0D /* PlayerChestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerChestViewModel.swift; sourceTree = "<group>"; };
 		897DFBB72CCED80600246B0D /* RarityChestSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RarityChestSheetViewModel.swift; sourceTree = "<group>"; };
 		897DFBB92CCED80600246B0D /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 		897DFBC82CCED80600246B0D /* Marketplace */ = {
 			isa = PBXGroup;
 			children = (
+				2EB4B34F2DA90AD300D99C76 /* FilterView.swift */,
 				2C5B87C52DA8D26D004CD0F7 /* BuyContractChart.swift */,
 				2C5B87C32DA8C0C8004CD0F7 /* BuyContractView.swift */,
 				2CCD4FE22DA77CE900A4E87C /* ContractsEndingView.swift */,
@@ -686,6 +689,7 @@
 				291A4C292D9F6FF500C0B445 /* RarityPackSheetViewModel.swift in Sources */,
 				897DFBE22CCED80600246B0D /* PlayerChestView.swift in Sources */,
 				897DFBE32CCED80600246B0D /* RarityChestSheetView.swift in Sources */,
+				2EB4B3502DA90AD600D99C76 /* FilterView.swift in Sources */,
 				897DFBE42CCED80600246B0D /* RarityChestView.swift in Sources */,
 				897DFBE52CCED80600246B0D /* UIWheelViewController.swift in Sources */,
 				29C9CBE02D9DCB2F00E38F7A /* SportPill.swift in Sources */,
