@@ -79,5 +79,5 @@ extension View {
     ContentView()
         .environmentObject(TabNavigationManager())
         .environmentObject(ProfileViewViewModel())
-//        .environmentObject(MarketplaceViewModel())
+//         .environmentObject(MarketplaceViewModel())
 }
