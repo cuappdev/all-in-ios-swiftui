@@ -15,44 +15,71 @@ struct MarketplaceView: View {
     @State private var showingFAQ = false
     @State private var showBuyContract = false
     @State private var selectedContract: Contract?
+    @State private var showCartView = false
 
     var padding: CGFloat = 24
-//    let user: User
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     // MARK: UI
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 24) {
-                    pageInformation
-
-                    searchBar
-
-                    recommendedContracts
-
-                    contractsToday
-
-                    allContracts
+        ZStack {
+            NavigationStack {
+                ScrollView {
+                    VStack(spacing: 24) {
+                        pageInformation
+                        
+                        searchBar
+                        
+                        recommendedContracts
+                        
+                        contractsToday
+                        
+                        allContracts
+                    }
+                    .padding(padding)
                 }
-                .padding(padding)
-            }
-            .background(Constants.Colors.background)
-            .navigationDestination(isPresented: Binding(
-                get: { selectedContract != nil },
-                set: { if !$0 { selectedContract = nil } }
-            )) {
-                if let contract = selectedContract {
-                    BuyContractView(contract: contract, user: profileViewModel.user)
+                .background(Constants.Colors.background)
+                .navigationDestination(isPresented: Binding(
+                    get: { selectedContract != nil },
+                    set: { if !$0 { selectedContract = nil } }
+                )) {
+                    if let contract = selectedContract {
+                        BuyContractView(contract: contract, user: profileViewModel.user)
+                    }
+                }
+                .navigationDestination(isPresented: $showingFAQ) {
+                    FrequentAskedQuestion(
+                        faqs: FAQ.marketplaceFAQs,
+                        headerTitle: "FAQs About Marketplace",
+                        subheaderTitle: "Frequently Asked Questions"
+                    )
+                }
+                .navigationDestination(isPresented: $showCartView) {
+                    CartView(user: profileViewModel.user)
                 }
             }
-            .navigationDestination(isPresented: $showingFAQ) {
-                FrequentAskedQuestion(
-                    faqs: FAQ.marketplaceFAQs,
-                    headerTitle: "FAQs About Marketplace",
-                    subheaderTitle: "Frequently Asked Questions"
-                )
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        showCartView = true
+                    }) {
+                        Image("cart")
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(.white)
+                            .frame(width: 24, height: 24)
+                            .padding()
+                            .background(Color.blue)
+                            .clipShape(Circle())
+                            .shadow(radius: 4)
+                    }
+                        .padding(.bottom, 15)
+                        .padding(.trailing, 15)
+                }
             }
         }
     }

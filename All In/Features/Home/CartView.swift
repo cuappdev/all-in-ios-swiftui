@@ -90,6 +90,7 @@ struct CartView: View {
 
                 confirmButton()
             }
+            .navigationBarBackButtonHidden(true)
         }
 
     }

@@ -15,6 +15,7 @@ struct HomeView: View {
     @State private var showPlayerInfo = false
     @State private var showRankingInfo = false
     @State private var showingFAQ = false
+    @State private var showCartView = false
     @State private var selectedSport: Sport = Sport.all.first(where: { $0.name == "Basketball" }) ?? Sport.all[0]
     @EnvironmentObject var tabNavigationManager: TabNavigationManager
 
@@ -38,44 +39,71 @@ struct HomeView: View {
     // MARK: - UI
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 24) {
-                    profileCard
-
-                    activeBetsSection
-
-                    sportFilterPills
-
-                    raritySection
-
-                    playersSection
-
-                    rankingsSection
-                }
-                .padding(padding)
-            }
-            .background(Constants.Colors.background)
-            .ignoresSafeArea(edges: .bottom)
-            .navigationDestination(isPresented: $showingFAQ) {
-                FrequentAskedQuestion(
-                    faqs: FAQ.homeFAQs,
-                    headerTitle: "FAQs About Home",
-                    subheaderTitle: "Frequently Asked Questions"
-                )
-            }
-            .onAppear {
-                Task {
-                    do {
-                        let networkedPlayers = try await NetworkManager.shared.getPlayers()
-                        guard !networkedPlayers.isEmpty else { return }
-
-                        await MainActor.run {
-                            players = networkedPlayers
-                        }
-                    } catch {
-                        NetworkManager.shared.logger.error("Error in \(#file) \(#function): \(error)")
+        ZStack {
+            NavigationStack {
+                ScrollView {
+                    VStack(spacing: 24) {
+                        profileCard
+                        
+                        activeBetsSection
+                        
+                        sportFilterPills
+                        
+                        raritySection
+                        
+                        playersSection
+                        
+                        rankingsSection
                     }
+                    .padding(padding)
+                }
+                .background(Constants.Colors.background)
+                .ignoresSafeArea(edges: .bottom)
+                .navigationDestination(isPresented: $showingFAQ) {
+                    FrequentAskedQuestion(
+                        faqs: FAQ.homeFAQs,
+                        headerTitle: "FAQs About Home",
+                        subheaderTitle: "Frequently Asked Questions"
+                    )
+                }
+                .navigationDestination(isPresented: $showCartView) {
+                    CartView(user: user)
+                }
+                .onAppear {
+                    Task {
+                        do {
+                            let networkedPlayers = try await NetworkManager.shared.getPlayers()
+                            guard !networkedPlayers.isEmpty else { return }
+                            
+                            await MainActor.run {
+                                players = networkedPlayers
+                            }
+                        } catch {
+                            NetworkManager.shared.logger.error("Error in \(#file) \(#function): \(error)")
+                        }
+                    }
+                }
+            }
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        showCartView = true
+                    }) {
+                        Image("cart")
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(.white)
+                            .frame(width: 24, height: 24)
+                            .padding()
+                            .background(Color.blue)
+                            .clipShape(Circle())
+                            .shadow(radius: 4)
+                    }
+                        .padding(.bottom, 15)
+                        .padding(.trailing, 15)
                 }
             }
         }
@@ -300,6 +328,7 @@ struct HomeView: View {
     }
 
 }
+    
 
 #Preview {
     HomeView(user: User.dummyData[1])
