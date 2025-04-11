@@ -57,6 +57,7 @@ struct MarketplaceView: View {
                         payoutLowValue: $payoutLowValue,
                         payoutHighValue: $payoutHighValue
                     )
+                   // FilterView()
                 }
             }
             .background(Constants.Colors.background)
