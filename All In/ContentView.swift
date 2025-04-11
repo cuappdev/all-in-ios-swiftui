@@ -40,9 +40,9 @@ struct ContentView: View {
                             .opacity(tabNavigationManager.hideTabBar ? 0 : 1)
                             .animation(.spring(), value: tabNavigationManager.hideTabBar)
                     }
-                    .navigationDestination(isPresented: $showCart) {
-                        CartView(user: user)
-                    }
+//                    .navigationDestination(isPresented: $showCart) {
+//                        CartView(user: user)
+//                    }
                 } else {
                     Constants.Colors.background
                         .ignoresSafeArea()
@@ -65,26 +65,26 @@ struct ContentView: View {
                 }
             }
 
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        showCart = true
-                    }) {
-                        Image("cart")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .padding()
-                            .background(Constants.Colors.cartBlue)
-                            .clipShape(Circle())
-                            .shadow(radius: 4)
-
-                    }
-                    .padding(.bottom, 110)
-                    .padding(.trailing, 15)
-                }
-            }
+//            VStack {
+//                Spacer()
+//                HStack {
+//                    Spacer()
+//                    Button(action: {
+//                        showCart = true
+//                    }) {
+//                        Image("cart")
+//                            .resizable()
+//                            .frame(width: 30, height: 30)
+//                            .padding()
+//                            .background(Constants.Colors.cartBlue)
+//                            .clipShape(Circle())
+//                            .shadow(radius: 4)
+//
+//                    }
+//                    .padding(.bottom, 110)
+//                    .padding(.trailing, 15)
+//                }
+//            }
         }
     }
 }
