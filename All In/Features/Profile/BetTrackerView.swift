@@ -415,10 +415,6 @@ struct BetTrackerView: View {
                 Text("Recommended Marketplace Contracts")
                     .font(Constants.Fonts.marketPlaceTitle)
                     .foregroundStyle(Constants.Colors.white)
-
-                Image(systemName: "chevron.right")
-                    .foregroundStyle(Constants.Colors.white)
-                    .font(.system(size: 12))
             }
 
             ScrollView(.horizontal, showsIndicators: false) {
@@ -441,10 +437,6 @@ struct BetTrackerView: View {
                 Text("Active Bets")
                     .font(Constants.Fonts.marketPlaceTitle)
                     .foregroundStyle(Constants.Colors.white)
-
-                Image(systemName: "chevron.right")
-                    .foregroundStyle(Constants.Colors.white)
-                    .font(.system(size: 12))
             }
 
             if user.contracts.isEmpty {
