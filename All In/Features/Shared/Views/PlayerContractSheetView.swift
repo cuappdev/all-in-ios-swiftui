@@ -39,7 +39,7 @@ struct PlayerContractSheetView: View {
                 price: 1720,
                 showSheet: $showSheet
             ) {
-                VStack {
+                VStack(alignment: .leading) {
                     PillSelectView(Stat.getAll()) { newStat in
                         selectedStat = newStat
                     }
