@@ -71,26 +71,45 @@ struct RarityPackSheetView: View {
                         .font(Constants.Fonts.sheetDescription)
                         .foregroundStyle(Constants.Colors.grey03)
                 }
-
-                Button(action: {
-                    viewModel.getRarityContract(rarity: rarity)
-                }) {
-                    Text("Buy Now")
-                        .font(Constants.Fonts.sheetBuy)
-                        .foregroundStyle(Constants.Colors.black)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                        .background(
-                            LinearGradient(
-                                gradient: Constants.Colors.gradient,
-                                startPoint: .leading,
-                                endPoint: .trailing
+                
+                HStack(spacing: -25) {
+                    Button(action: {
+                        viewModel.getRarityContract(rarity: rarity)
+                    }) {
+                        Text("Buy Now")
+                            .font(Constants.Fonts.sheetBuy)
+                            .foregroundStyle(Constants.Colors.black)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(
+                                LinearGradient(
+                                    gradient: Constants.Colors.gradient,
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
                             )
-                        )
-                        .cornerRadius(12)
+                            .cornerRadius(12)
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 24)
+                    
+                    Button(action: {
+//                        viewModel.getRarityContract(rarity: rarity)
+                    }) {
+                        Image("add-cart")
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(.white)
+                            .frame(width: 30, height: 30)
+                            .padding(8)
+                            .background(Color.gray)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .padding(.trailing, 10)
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 24)
+
                 }
-                .padding(.horizontal, 24)
-                .padding(.bottom, 24)
 
             }
         }
