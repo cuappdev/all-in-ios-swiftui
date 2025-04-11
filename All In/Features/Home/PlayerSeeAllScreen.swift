@@ -12,7 +12,8 @@ struct PlayerSeeAllScreen: View {
     // MARK: - Properties
 
     @Environment(\.dismiss) private var dismiss
-    @State private var selectedSport: Sport
+    var players: [Player]
+    var selectedSport: Sport
     @EnvironmentObject var tabNavigationManager: TabNavigationManager
 
     // States for continuous scrolling animation
@@ -21,10 +22,6 @@ struct PlayerSeeAllScreen: View {
 
     // Timer for automatic scrolling
     @State private var scrollTimer: Timer?
-
-    init(sport: Sport = Sport.all.first(where: { $0.name == "Basketball" }) ?? Sport.all[0]) {
-        self._selectedSport = State(initialValue: sport)
-    }
 
     private func startScrollAnimation() {
         // Calculate the total width of one set of players
@@ -136,6 +133,6 @@ struct PlayerSeeAllScreen: View {
 }
 
 #Preview {
-    PlayerSeeAllScreen()
+    PlayerSeeAllScreen(players: Player.dummyData, selectedSport: .basketball)
         .environmentObject(TabNavigationManager())
 }
