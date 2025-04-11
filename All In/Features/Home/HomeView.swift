@@ -18,22 +18,21 @@ struct HomeView: View {
     @State private var showCartView = false
     @State private var selectedSport: Sport = Sport.all.first(where: { $0.name == "Basketball" }) ?? Sport.all[0]
     @EnvironmentObject var tabNavigationManager: TabNavigationManager
+    @State private var visibleUsers: [User] = []
 
     var padding: CGFloat = 24
 
     let user: User
 
-    private func getVisibleUsers(currentUser: User) -> [User] {
-        // TODO: FIX
-//        let allUsersSorted = User.dummyData.sorted(by: { $0.ranking < $1.ranking })
-//
-//        guard let currentUserIndex = allUsersSorted.firstIndex(where: { $0.id == currentUser.id }) else {
-//            return Array(allUsersSorted.prefix(5))
-//        }
-//
-//        let endIndex = min(currentUserIndex + 5, allUsersSorted.count)
-//        return Array(allUsersSorted[currentUserIndex..<endIndex])
-        []
+    private func getVisibleUsers() async {
+        do {
+            let users = try await NetworkManager.shared.getUsers(size: 5, sortBy: "balance", direction: "desc")
+            await MainActor.run {
+                visibleUsers = users
+            }
+        } catch {
+            NetworkManager.shared.logger.error("Failed to fetch visible users: \(error)")
+        }
     }
 
     // MARK: - UI
@@ -105,6 +104,11 @@ struct HomeView: View {
                         .padding(.bottom, 15)
                         .padding(.trailing, 15)
                 }
+            }
+        }
+        .onAppear {
+            Task {
+                await getVisibleUsers()
             }
         }
     }
@@ -265,12 +269,17 @@ struct HomeView: View {
                 }
             }
 
-            // Ranking cards container
             VStack(spacing: 12) {
-                let usersToShow = getVisibleUsers(currentUser: user)
-
-                ForEach(usersToShow) { user in
-                    rankingCard(user: user)
+                if visibleUsers.isEmpty {
+                    Text("No rankings to display right now.")
+                        .font(Constants.Fonts.caption)
+                        .foregroundStyle(Constants.Colors.grey00)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding()
+                } else {
+                    ForEach(Array(visibleUsers.enumerated()), id: \.element.id) { index, user in
+                        rankingCard(user: user, rank: index + 1)
+                    }
                 }
             }
             .padding(16)
@@ -285,10 +294,10 @@ struct HomeView: View {
                     ), lineWidth: 1)
             )
         }
-
     }
 
-    private func rankingCard(user: User) -> some View {
+
+    private func rankingCard(user: User, rank: Int) -> some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
                 Text("@\(user.username)")
@@ -310,7 +319,7 @@ struct HomeView: View {
 
             // TODO: FIX
 //            Text("#\(user.ranking)")
-            Text("#1")
+            Text("#\(rank)")
                 .font(Constants.Fonts.cardHeader)
                 .foregroundStyle(Constants.Colors.white)
         }
