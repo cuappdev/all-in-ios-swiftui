@@ -105,6 +105,7 @@ struct RarityPackSheetView: View {
                             .background(Color.gray)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .padding(.trailing, 10)
+                            .animation(nil)
                     }
                     .padding(.horizontal, 24)
                     .padding(.bottom, 24)
