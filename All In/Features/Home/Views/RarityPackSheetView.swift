@@ -94,13 +94,14 @@ struct RarityPackSheetView: View {
                     .padding(.bottom, 24)
                     
                     Button(action: {
-//                        viewModel.getRarityContract(rarity: rarity)
+                        let price = getPriceForRarity(rarity)
+                        CartManager.shared.addRarityPack(rarity: rarity, price: price)
                     }) {
                         Image("add-cart")
                             .resizable()
                             .renderingMode(.template)
                             .foregroundColor(.white)
-                            .frame(width: 30, height: 30)
+                            .frame(width: 25, height: 25)
                             .padding(8)
                             .background(Color.gray)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
