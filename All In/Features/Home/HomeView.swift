@@ -10,6 +10,7 @@ struct HomeView: View {
 
     // MARK: - Properties
 
+    @State private var players = Player.dummyData
     @State private var showRarityInfo = false
     @State private var showPlayerInfo = false
     @State private var showRankingInfo = false
@@ -17,17 +18,21 @@ struct HomeView: View {
     @State private var selectedSport: Sport = Sport.all.first(where: { $0.name == "Basketball" }) ?? Sport.all[0]
     @EnvironmentObject var tabNavigationManager: TabNavigationManager
 
+    var padding: CGFloat = 24
+
     let user: User
 
     private func getVisibleUsers(currentUser: User) -> [User] {
-        let allUsersSorted = User.dummyData.sorted(by: { $0.ranking < $1.ranking })
-
-        guard let currentUserIndex = allUsersSorted.firstIndex(where: { $0.id == currentUser.id }) else {
-            return Array(allUsersSorted.prefix(5))
-        }
-
-        let endIndex = min(currentUserIndex + 5, allUsersSorted.count)
-        return Array(allUsersSorted[currentUserIndex..<endIndex])
+        // TODO: FIX
+//        let allUsersSorted = User.dummyData.sorted(by: { $0.ranking < $1.ranking })
+//
+//        guard let currentUserIndex = allUsersSorted.firstIndex(where: { $0.id == currentUser.id }) else {
+//            return Array(allUsersSorted.prefix(5))
+//        }
+//
+//        let endIndex = min(currentUserIndex + 5, allUsersSorted.count)
+//        return Array(allUsersSorted[currentUserIndex..<endIndex])
+        []
     }
 
     // MARK: - UI
@@ -48,7 +53,7 @@ struct HomeView: View {
 
                     rankingsSection
                 }
-                .padding(24)
+                .padding(padding)
             }
             .background(Constants.Colors.background)
             .ignoresSafeArea(edges: .bottom)
@@ -58,6 +63,20 @@ struct HomeView: View {
                     headerTitle: "FAQs About Home",
                     subheaderTitle: "Frequently Asked Questions"
                 )
+            }
+            .onAppear {
+                Task {
+                    do {
+                        let networkedPlayers = try await NetworkManager.shared.getPlayers()
+                        guard !networkedPlayers.isEmpty else { return }
+
+                        await MainActor.run {
+                            players = networkedPlayers
+                        }
+                    } catch {
+                        NetworkManager.shared.logger.error("Error in \(#file) \(#function): \(error)")
+                    }
+                }
             }
         }
     }
@@ -123,6 +142,7 @@ struct HomeView: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var sportFilterPills: some View {
@@ -173,7 +193,7 @@ struct HomeView: View {
     private var playersSection: some View {
         VStack(alignment: .leading, spacing: 24) {
             HStack {
-                Text("Player")
+                Text("Players")
                     .font(Constants.Fonts.mainHeader)
                     .foregroundStyle(Constants.Colors.white)
 
@@ -188,14 +208,16 @@ struct HomeView: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
-                    ForEach(Player.dummyData.prefix(5), id: \.id) { player in
+                    ForEach(players, id: \.id) { player in
                         PlayerCard(player: player)
                     }
                 }
+                .padding(padding)
             }
+            .padding(-padding)
         }
         .navigationDestination(isPresented: $showPlayerInfo) {
-            PlayerSeeAllScreen(sport: selectedSport)
+            PlayerSeeAllScreen(players: players, selectedSport: selectedSport)
         }
     }
 
@@ -258,7 +280,9 @@ struct HomeView: View {
 
             Spacer()
 
-            Text("#\(user.ranking)")
+            // TODO: FIX
+//            Text("#\(user.ranking)")
+            Text("#1")
                 .font(Constants.Fonts.cardHeader)
                 .foregroundStyle(Constants.Colors.white)
         }
