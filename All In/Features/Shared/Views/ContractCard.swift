@@ -39,10 +39,8 @@ struct ContractCard: View {
 
                             VStack { // Card Content VStack
                                 playerInfo
-
                                 // event and cost/gain info
                                 contractInfo
-
                             }
                             .frame(width: 181, height: 222)
                             .background(Constants.Colors.blackBlue)
